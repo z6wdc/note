@@ -69,6 +69,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-count" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/21/pandas-count/" class="article-date">
+  <time class="dt-published" datetime="2021-07-21T13:45:46.000Z" itemprop="datePublished">2021-07-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/21/pandas-count/">pandas count</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.count.html">count</a></p>
+<p>用來計算 non-missing values 的個數</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = pd.Series([<span class="number">0.0</span>, <span class="number">1.0</span>, np.nan])</span><br><span class="line">s.count()</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+
+<p>np.nan 不會被 <code>count</code> 計算進去</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-count/" data-id="clur2e0bu006dfjq42k2y5vi8" data-title="pandas count" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-index" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/21/pandas-index/" class="article-date">
@@ -125,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="clujwu1sh0078eyoggfwy5q7l" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="clur2e0bz0077fjq41frs29wc" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -176,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/NumPy-linspace/" data-id="clujwu1r40019eyog5u74aczo" data-title="NumPy linspace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/NumPy-linspace/" data-id="clur2e0an0018fjq4hqme62l3" data-title="NumPy linspace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -223,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-get-loc/" data-id="clujwu1sf006xeyog7jew2n6r" data-title="pandas get_loc" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-get-loc/" data-id="clur2e0bx006wfjq4fnx8bcf9" data-title="pandas get_loc" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -274,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-pivot/" data-id="clujwu1sk007neyog1drofm1m" data-title="pandas pivot" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-pivot/" data-id="clur2e0c2007jfjq4fgiu66jg" data-title="pandas pivot" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -322,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-replace/" data-id="clujwu1sm007weyog55zb51t8" data-title="pandas replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-replace/" data-id="clur2e0c4007vfjq4238o2lbm" data-title="pandas replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -371,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/Parameters-and-Arguments/" data-id="clujwu1r8001meyog58q8f55r" data-title="Parameters and Arguments" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/Parameters-and-Arguments/" data-id="clur2e0aq001lfjq4ar5aaxr0" data-title="Parameters and Arguments" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -421,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-duplicated/" data-id="clujwu1se006reyog5855di0k" data-title="pandas duplicated" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-duplicated/" data-id="clur2e0bw006qfjq42xqj9xdl" data-title="pandas duplicated" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -469,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-qcut/" data-id="clujwu1sj007keyog04c53y0n" data-title="pandas qcut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-qcut/" data-id="clur2e0c2007mfjq4gdfsatet" data-title="pandas qcut" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -516,54 +565,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-quantile/" data-id="clujwu1sl007qeyog587jdlc9" data-title="pandas quantile" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-quantile/" data-id="clur2e0c3007pfjq496l44de4" data-title="pandas quantile" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-exec" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/Python-exec/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T07:07:08.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/Python-exec/">Python exec</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#exec">exec</a></p>
-<p><code>exec</code> 可以把字串當成程式碼來執行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="string">&#x27;print([x for x in range(10)])&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/Python-exec/" data-id="clujwu1rk002veyog3vs42mcd" data-title="Python exec" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -608,7 +614,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
+      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -630,6 +636,10 @@
       <ul>
         
           <li>
+            <a href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/04/03/Relational-Database/">關聯資料庫</a>
           </li>
         
@@ -643,10 +653,6 @@
         
           <li>
             <a href="/note/2023/01/31/pdca/">仕事の進め方とPDCA</a>
-          </li>
-        
-          <li>
-            <a href="/note/2023/01/31/logical-communication/">論理的なコミュニケーション</a>
           </li>
         
       </ul>

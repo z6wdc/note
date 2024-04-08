@@ -69,6 +69,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-three-schema-architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2024/04/08/three-schema-architecture/" class="article-date">
+  <time class="dt-published" datetime="2024-04-08T23:34:50.000Z" itemprop="datePublished">2024-04-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/ja/">ja</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="3層スキーマ"><a href="#3層スキーマ" class="headerlink" title="3層スキーマ"></a>3層スキーマ</h2><p>データベースは、3層のスキーマ(枠組み)からなる</p>
+<ul>
+<li>外部スキーマ(ユーザーから見たDB、ビュー)</li>
+<li>概念スキーマ(開発者から見たDB、テーブル)</li>
+<li>内部スキーマ(DBMから見たDB、データ物理的配置)</li>
+</ul>
+<h2 id="論理設計と物理設計"><a href="#論理設計と物理設計" class="headerlink" title="論理設計と物理設計"></a>論理設計と物理設計</h2><h3 id="論理設計-概念スキーマの設計"><a href="#論理設計-概念スキーマの設計" class="headerlink" title="論理設計(概念スキーマの設計)"></a>論理設計(概念スキーマの設計)</h3><p>データを管理するためのデータモデルの設計</p>
+<h3 id="物理設計-内部スキーマの設計"><a href="#物理設計-内部スキーマの設計" class="headerlink" title="物理設計(内部スキーマの設計)"></a>物理設計(内部スキーマの設計)</h3><p>DDLによる実装やストレージの構成などの設計</p>
+<h3 id="概念スキーマはなぜ必要"><a href="#概念スキーマはなぜ必要" class="headerlink" title="概念スキーマはなぜ必要?"></a>概念スキーマはなぜ必要?</h3><p>データ独立性を確保するのに、概念スキーマは絶対に必要</p>
+<h3 id="データ独立性とは"><a href="#データ独立性とは" class="headerlink" title="データ独立性とは?"></a>データ独立性とは?</h3><p>外部スキーマを変更しても、内部スキーマを変更する必要がない状態(論理的データ独立性)</p>
+<p>もしくは、内部スキーマを変更しても、外部スキーマを変更する必要がない状態(物理的データ独立性)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2024/04/08/three-schema-architecture/" data-id="clur2e0ce0093fjq4ew587lmb" data-title="3層スキーマ" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Relational-Database" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2024/04/03/Relational-Database/" class="article-date">
@@ -103,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="clujwu1rz004ueyog6uwh5j4m" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="clur2e0bi004wfjq41s6t5pej" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -173,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/01/23/career-self-reliance/" data-id="clujwu1s30058eyoggmko1r1t" data-title="キャリア自律" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/01/23/career-self-reliance/" data-id="clur2e0bl0057fjq4fi240hho" data-title="キャリア自律" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -286,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2023/01/31/thinking-framework/" data-id="clujwu1st008yeyogh0dm0fuv" data-title="「思考のスピード」は型で速くなる" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2023/01/31/thinking-framework/" data-id="clur2e0cd0090fjq48z37120p" data-title="「思考のスピード」は型で速くなる" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -362,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2023/01/31/pdca/" data-id="clujwu1sp008feyog0ktphyn4" data-title="仕事の進め方とPDCA" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2023/01/31/pdca/" data-id="clur2e0c9008efjq41ogwgqlk" data-title="仕事の進め方とPDCA" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -530,7 +585,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2023/01/31/logical-communication/" data-id="clujwu1s80060eyog9blwbluc" data-title="論理的なコミュニケーション" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2023/01/31/logical-communication/" data-id="clur2e0br005zfjq494mw13sr" data-title="論理的なコミュニケーション" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -575,7 +630,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/22/linux-command-cal/" data-id="clujwu1s8005weyog73d1etoj" data-title="linux command cal" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/22/linux-command-cal/" data-id="clur2e0bq005vfjq48e4reb97" data-title="linux command cal" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -667,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/A-Tour-of-Go-basic-2/" data-id="clujwu1qm0001eyog3vl9dsgb" data-title="A Tour of Go basic 2" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/A-Tour-of-Go-basic-2/" data-id="clur2e0a30001fjq4ftfc811g" data-title="A Tour of Go basic 2" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -780,7 +835,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/A-Tour-of-Go-basic-1/" data-id="clujwu1qi0000eyogdl5o7oxc" data-title="A Tour of Go basic 1" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/A-Tour-of-Go-basic-1/" data-id="clur2e09x0000fjq4ci7w4ly2" data-title="A Tour of Go basic 1" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -833,55 +888,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-RuneCountInString/" data-id="clujwu1qx000leyogh0iobkmg" data-title="Go RuneCountInStringで文字列の文字数を取得" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Go-Range" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2022/12/11/Go-Range/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T22:41:47.000Z" itemprop="datePublished">2022-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/Go-Range/">Go Range</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Range"><a href="#Range" class="headerlink" title="Range"></a>Range</h2><p>Range　は要素の値のコピーが返されるので、<br>返される要素を変更しても、元の値を影響しない<br>変更したい場合は、直接参照すれば</p>
-<h3 id="サンプルコード"><a href="#サンプルコード" class="headerlink" title="サンプルコード"></a>サンプルコード</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	users := [<span class="number">3</span>]<span class="type">string</span>&#123;<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, users)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, u := <span class="keyword">range</span> users &#123;</span><br><span class="line">		u += <span class="string">&quot;edited&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, users)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(users); i++ &#123;</span><br><span class="line">		users[i] += <span class="string">&quot; edited&quot;</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%#v\n&quot;</span>, users)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[3]string&#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#125;</span><br><span class="line">[3]string&#123;&quot;A&quot;, &quot;B&quot;, &quot;C&quot;&#125;</span><br><span class="line">[3]string&#123;&quot;A edited&quot;, &quot;B edited&quot;, &quot;C edited&quot;&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Range/" data-id="clujwu1qw000heyogabwg69jo" data-title="Go Range" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-RuneCountInString/" data-id="clur2e0ad000lfjq4cec1djxu" data-title="Go RuneCountInStringで文字列の文字数を取得" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -930,7 +937,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
+      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -952,6 +959,10 @@
       <ul>
         
           <li>
+            <a href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/04/03/Relational-Database/">關聯資料庫</a>
           </li>
         
@@ -965,10 +976,6 @@
         
           <li>
             <a href="/note/2023/01/31/pdca/">仕事の進め方とPDCA</a>
-          </li>
-        
-          <li>
-            <a href="/note/2023/01/31/logical-communication/">論理的なコミュニケーション</a>
           </li>
         
       </ul>

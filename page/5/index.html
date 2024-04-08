@@ -69,6 +69,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/02/Python-json/" class="article-date">
+  <time class="dt-published" datetime="2021-08-02T09:07:51.000Z" itemprop="datePublished">2021-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/02/Python-json/">Python json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html">json</a></p>
+<p>Python 中拿來處理 <code>json</code> 的 module</p>
+<h2 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h2><p>Serialize obj as a JSON formatted stream to fp</p>
+<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps"></a>dumps</h2><p>Serialize obj to a JSON formatted <code>str</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.dumps([<span class="string">&#x27;foo&#x27;</span>, &#123;<span class="string">&#x27;bar&#x27;</span>: (<span class="string">&#x27;baz&#x27;</span>, <span class="literal">None</span>, <span class="number">1.0</span>, <span class="number">2</span>)&#125;])</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ensure-ascii-True"><a href="#ensure-ascii-True" class="headerlink" title="ensure_ascii&#x3D;True"></a>ensure_ascii&#x3D;True</h3><p>使用 <code>dump</code> 跟 <code>dumps</code> 的時候</p>
+<p>必須注意 <code>ensure_ascii</code> 的預設值為 <code>True</code></p>
+<p>有時沒有注意這設定的話，會造成亂碼</p>
+<h2 id="load"><a href="#load" class="headerlink" title="load"></a>load</h2><p>Deserialize fp to a Python object</p>
+<h2 id="loads"><a href="#loads" class="headerlink" title="loads"></a>loads</h2><p>Deserialize <code>s</code> to a Python object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.loads(<span class="string">&#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&#x27;foo&#x27;, &#123;&#x27;bar&#x27;: [&#x27;baz&#x27;, None, 1.0, 2]&#125;]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="clur2e0b50035fjq4996zbc4i" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-pprint" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/08/01/Python-pprint/" class="article-date">
@@ -103,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="clujwu1rq003oeyog4dgiemgy" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="clur2e0b8003nfjq43ms75lfh" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -151,7 +207,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="clujwu1ry004qeyog2jv4aj9h" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="clur2e0bg004pfjq43ea21uar" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -206,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="clujwu1rh002geyoga24ghvnr" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="clur2e0aw002cfjq4f6pe468c" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -261,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="clujwu1rx004neyog2i8yeziz" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="clur2e0bg004mfjq495uo88n8" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -308,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/27/sklearn-train-test-split/" data-id="clujwu1su0091eyog4wwudix0" data-title="sklearn train_test_split" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/sklearn-train-test-split/" data-id="clur2e0cc008xfjq4bfr04gf8" data-title="sklearn train_test_split" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -355,7 +411,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/27/NumPy-reshape/" data-id="clujwu1r5001geyog1br99qtp" data-title="NumPy reshape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/NumPy-reshape/" data-id="clur2e0ap001ffjq48vdw1iti" data-title="NumPy reshape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -403,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-str-isdigit/" data-id="clujwu1rv004ceyog2s797cd8" data-title="Python str isdigit" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-str-isdigit/" data-id="clur2e0bd004bfjq4ebpk0x15" data-title="Python str isdigit" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -451,7 +507,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-all/" data-id="clujwu1rf0024eyog2rhy6lcq" data-title="Python all" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-all/" data-id="clur2e0au0023fjq46pov7tvf" data-title="Python all" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -499,94 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-any/" data-id="clujwu1rg0027eyog8595gki2" data-title="Python any" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-Operator-precedence" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/25/Python-Operator-precedence/" class="article-date">
-  <time class="dt-published" datetime="2021-07-25T10:12:48.000Z" itemprop="datePublished">2021-07-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/25/Python-Operator-precedence/">Python Operator precedence</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a></p>
-<p>Python 中運算子的優先順序</p>
-<p>通常為了閱讀方便</p>
-<p>都會加上 () 讓人方便理解</p>
-<p>不過有些順序還是可以記起來比較方便</p>
-<h2 id="Boolean-precedence"><a href="#Boolean-precedence" class="headerlink" title="Boolean precedence"></a>Boolean precedence</h2><table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>not <code>x</code></td>
-<td>Boolean NOT</td>
-</tr>
-<tr>
-<td>and</td>
-<td>Boolean AND</td>
-</tr>
-<tr>
-<td>or</td>
-<td>Boolean OR</td>
-</tr>
-</tbody></table>
-<h2 id="Comparisons-precedence"><a href="#Comparisons-precedence" class="headerlink" title="Comparisons precedence"></a>Comparisons precedence</h2><p>然後</p>
-<p><code>Comparisons</code> 都比 <code>Boolean</code> 優先</p>
-<table>
-<thead>
-<tr>
-<th>Operator</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>in, not in, is, is not, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D;, !&#x3D;, &#x3D;&#x3D;</td>
-<td>Comparisons, including membership tests and identity tests</td>
-</tr>
-<tr>
-<td>not <code>x</code></td>
-<td>Boolean NOT</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/25/Python-Operator-precedence/" data-id="clujwu1ra001yeyog7d0j5z0o" data-title="Python Operator precedence" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-any/" data-id="clur2e0av0026fjq43tin7dgh" data-title="Python any" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -635,7 +604,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
+      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -657,6 +626,10 @@
       <ul>
         
           <li>
+            <a href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/04/03/Relational-Database/">關聯資料庫</a>
           </li>
         
@@ -670,10 +643,6 @@
         
           <li>
             <a href="/note/2023/01/31/pdca/">仕事の進め方とPDCA</a>
-          </li>
-        
-          <li>
-            <a href="/note/2023/01/31/logical-communication/">論理的なコミュニケーション</a>
           </li>
         
       </ul>

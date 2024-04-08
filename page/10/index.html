@@ -69,6 +69,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-groupby" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/29/pandas-groupby/" class="article-date">
+  <time class="dt-published" datetime="2021-06-29T15:22:58.000Z" itemprop="datePublished">2021-06-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/29/pandas-groupby/">pandas groupby</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">groupby</a></p>
+<p><code>groupby</code> 用來對資料做集結</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<p>也可對複數個 column 做集結</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby([<span class="string">&#x27;column1&#x27;</span>,<span class="string">&#x27;column2&#x27;</span>]).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<p>集結後也可以指定對哪個 column 做處理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定複數個 column</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[[<span class="string">&#x27;column2&#x27;</span>,<span class="string">&#x27;column3&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>不指定的話，就是對 column1 以外的 column 做處理</p>
+<p>關於處理，也可以同時指定多個</p>
+<p>例如同時使用 <code>count</code> <code>sum</code> <code>max</code> <code>min</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).agg([<span class="string">&#x27;count&#x27;</span>,<span class="string">&#x27;sum&#x27;</span>,<span class="string">&#x27;max&#x27;</span>,<span class="string">&#x27;min&#x27;</span>])[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="clur2e0by006zfjq47lwbgah5" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-head-tail" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/06/29/pandas-head-tail/" class="article-date">
@@ -116,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="clujwu1sh0076eyog5lcefn3k" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="clur2e0by0072fjq4467y960p" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -178,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="clujwu1sn0085eyogeyke4m7n" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="clur2e0c60084fjq45vy40e9h" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -238,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="clujwu1sq008heyogcsdefkfo" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="clur2e0c9008gfjq45ofleo59" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -289,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="clujwu1rj002meyog1rd94db9" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="clur2e0ay002ifjq4c1iggy3u" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -351,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="clujwu1sp008beyog0zpu0azd" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="clur2e0c8008afjq4dw4acmzb" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -405,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="clujwu1sn0083eyogc4yt2rpc" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="clur2e0c50082fjq4af157990" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -460,7 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="clujwu1sg0073eyog5jw0161q" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="clur2e0bz0075fjq46cbiakf9" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -546,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="clujwu1rp003heyogeza13tm5" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="clur2e0b7003gfjq4bwpy8r4a" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -626,70 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="clujwu1ro003deyogdz0y3k1d" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-random-module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/05/18/Python-random-module/" class="article-date">
-  <time class="dt-published" datetime="2021-05-18T13:36:49.000Z" itemprop="datePublished">2021-05-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/05/18/Python-random-module/">Python random module</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Python 有 random 這個 module<br>除了可以產生亂數外，還可以隨機挑選資料  </p>
-<h2 id="How-to-import"><a href="#How-to-import" class="headerlink" title="How to import"></a>How to import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
-
-<h2 id="Functions-for-integers"><a href="#Functions-for-integers" class="headerlink" title="Functions for integers"></a>Functions for integers</h2><h3 id="randint"><a href="#randint" class="headerlink" title="randint"></a>randint</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random.randint(<span class="number">0</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-
-<p>randint 會隨機從 0 &lt;&#x3D; n &lt;&#x3D; 100 的數字隨機挑選一個整數</p>
-<h2 id="Functions-for-sequences"><a href="#Functions-for-sequences" class="headerlink" title="Functions for sequences"></a>Functions for sequences</h2><h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.choices(numbers, k=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>choices</code> 會隨機從指定的 list 中重複取出你要的數目</p>
-<p>要注意的是指定數目的時候需要寫出 keyword <code>k</code></p>
-<p>像是例子中 k&#x3D;3 就會取出三個</p>
-<p>不指定 k 的話，預設值為 1</p>
-<h3 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.sample(numbers, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>sample</code> 會隨機從指定的 list 中取出你要的數目</p>
-<p>而且數字不重複</p>
-<p>但要取出的數目不能大於 list 的 length</p>
-<p>不然就會發生下面的</p>
-<p><code>ValueError: Sample larger than population or is negative</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="clujwu1rr003reyog4m3w0cq4" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="clur2e0b6003cfjq40jvk5tww" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -738,7 +736,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
+      <a href="/note/tags/BigQuery/" style="font-size: 11.43px;">BigQuery</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 12.86px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -760,6 +758,10 @@
       <ul>
         
           <li>
+            <a href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/04/03/Relational-Database/">關聯資料庫</a>
           </li>
         
@@ -773,10 +775,6 @@
         
           <li>
             <a href="/note/2023/01/31/pdca/">仕事の進め方とPDCA</a>
-          </li>
-        
-          <li>
-            <a href="/note/2023/01/31/logical-communication/">論理的なコミュニケーション</a>
           </li>
         
       </ul>
