@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Category: zh-Hant-TW | note</title>
+  <title>MongoDB install | note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="note">
-<meta property="og:url" content="http://z6wdc.github.io/note/categories/zh-Hant-TW/page/6/index.html">
+  <meta name="description" content="Install MongoDB Community Edition on macOSInstall123brew tap mongodb&#x2F;brewbrew updatebrew install mongodb-community@7.0  Run1brew services start mongodb-community@7.0  Stop1brew services stop mongodb-c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB install">
+<meta property="og:url" content="http://z6wdc.github.io/note/2024/04/11/MongoDB-install/index.html">
 <meta property="og:site_name" content="note">
+<meta property="og:description" content="Install MongoDB Community Edition on macOSInstall123brew tap mongodb&#x2F;brewbrew updatebrew install mongodb-community@7.0  Run1brew services start mongodb-community@7.0  Stop1brew services stop mongodb-c">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-11T19:38:11.000Z">
+<meta property="article:modified_time" content="2024-04-11T10:43:13.833Z">
 <meta property="article:author" content="z6wdc">
+<meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
@@ -67,216 +72,68 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/note/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/20/SQL-LIKE/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-20T06:48:47.000Z" itemprop="datePublished">Jul 20</time>
+        <section id="main"><article id="post-MongoDB-install" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2024/04/11/MongoDB-install/" class="article-date">
+  <time class="dt-published" datetime="2024-04-11T19:38:11.000Z" itemprop="datePublished">2024-04-11</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/en/">en</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/20/SQL-LIKE/">SQL LIKE</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      MongoDB install
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/19/pandas-str-contains/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-19T02:54:59.000Z" itemprop="datePublished">Jul 19</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/19/pandas-str-contains/">pandas str.contains</a>
-    </h1>
-  
+        <h2 id="Install-MongoDB-Community-Edition-on-macOS"><a href="#Install-MongoDB-Community-Edition-on-macOS" class="headerlink" title="Install MongoDB Community Edition on macOS"></a>Install MongoDB Community Edition on macOS</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew update</span><br><span class="line">brew install mongodb-community@7.0</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/18/pandas-options/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-18T00:36:07.000Z" itemprop="datePublished">Jul 18</time>
-</a>
+<h3 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@7.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="Stop"><a href="#Stop" class="headerlink" title="Stop"></a>Stop</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services stop mongodb-community@7.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongosh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/manual/installation/">https://www.mongodb.com/docs/manual/installation/</a></p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/18/pandas-options/">pandas options</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/18/git-remote/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-18T00:18:02.000Z" itemprop="datePublished">Jul 18</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2024/04/11/MongoDB-install/" data-id="cluv42e900013cxor49vjczzf" data-title="MongoDB install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/18/git-remote/">git remote</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/17/pandas-cut/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-17T23:40:47.000Z" itemprop="datePublished">Jul 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/17/pandas-cut/">pandas cut</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/15/Python-Decorators/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-15T23:19:13.000Z" itemprop="datePublished">Jul 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/15/Python-Decorators/">Python Decorators</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2024/04/08/three-schema-architecture/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">3層スキーマ</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/14/git-config-core-ignorecase/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-14T23:36:22.000Z" itemprop="datePublished">Jul 14</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/14/git-config-core-ignorecase/">git config core.ignorecase</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/14/Python-str-strip/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-14T23:19:03.000Z" itemprop="datePublished">Jul 14</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/14/Python-str-strip/">Python str.strip</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/13/Python-re-search-vs-match/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-13T16:00:37.000Z" itemprop="datePublished">Jul 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/13/Python-re-search-vs-match/">Python re search vs match</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/13/pandas-dtypes/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-13T03:08:45.000Z" itemprop="datePublished">Jul 13</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/13/pandas-dtypes/">pandas dtypes</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/note/categories/zh-Hant-TW/page/5/">&laquo; Prev</a><a class="page-number" href="/note/categories/zh-Hant-TW/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/categories/zh-Hant-TW/page/4/">4</a><a class="page-number" href="/note/categories/zh-Hant-TW/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/note/categories/zh-Hant-TW/page/7/">7</a><a class="page-number" href="/note/categories/zh-Hant-TW/page/8/">8</a><a class="page-number" href="/note/categories/zh-Hant-TW/page/9/">9</a><a class="extend next" rel="next" href="/note/categories/zh-Hant-TW/page/7/">Next &raquo;</a>
-  </nav>
 
 </section>
         
