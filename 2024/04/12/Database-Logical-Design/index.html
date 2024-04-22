@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Category: zh-Hant-TW | note</title>
+  <title>論理設計 | note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="note">
-<meta property="og:url" content="http://z6wdc.github.io/note/categories/zh-Hant-TW/page/7/index.html">
+  <meta name="description" content="論理設計のステップ論理設計は以下の4つのステップからなる 1. エンティティの抽出どんなデータを管理するエンティティ(テーブル)が必要かを明確にする 2. エンティティの定義エンティティ(テーブル)ごとにどんな属性(カラム)が必要かを明確にする エンティティとは?システムにおいて管理する必要があるデータのこと エンティティ(Entity)は日本語で「実体」という意味 具体的には、顧客、社員、店舗の">
+<meta property="og:type" content="article">
+<meta property="og:title" content="論理設計">
+<meta property="og:url" content="http://z6wdc.github.io/note/2024/04/12/Database-Logical-Design/index.html">
 <meta property="og:site_name" content="note">
+<meta property="og:description" content="論理設計のステップ論理設計は以下の4つのステップからなる 1. エンティティの抽出どんなデータを管理するエンティティ(テーブル)が必要かを明確にする 2. エンティティの定義エンティティ(テーブル)ごとにどんな属性(カラム)が必要かを明確にする エンティティとは?システムにおいて管理する必要があるデータのこと エンティティ(Entity)は日本語で「実体」という意味 具体的には、顧客、社員、店舗の">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-12T21:09:39.000Z">
+<meta property="article:modified_time" content="2024-04-22T07:50:39.435Z">
 <meta property="article:author" content="z6wdc">
+<meta property="article:tag" content="DB">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
@@ -67,216 +72,83 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/note/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/13/pandas-info/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-13T03:03:23.000Z" itemprop="datePublished">Jul 13</time>
+        <section id="main"><article id="post-Database-Logical-Design" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2024/04/12/Database-Logical-Design/" class="article-date">
+  <time class="dt-published" datetime="2024-04-12T21:09:39.000Z" itemprop="datePublished">2024-04-12</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/ja/">ja</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/13/pandas-info/">pandas info</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      論理設計
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/13/NumPy-inf/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-13T02:54:49.000Z" itemprop="datePublished">Jul 13</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/13/NumPy-inf/">NumPy inf</a>
-    </h1>
-  
+        <h2 id="論理設計のステップ"><a href="#論理設計のステップ" class="headerlink" title="論理設計のステップ"></a>論理設計のステップ</h2><p>論理設計は以下の4つのステップからなる</p>
+<h3 id="1-エンティティの抽出"><a href="#1-エンティティの抽出" class="headerlink" title="1. エンティティの抽出"></a>1. エンティティの抽出</h3><p>どんなデータを管理するエンティティ(テーブル)が必要かを明確にする</p>
+<h3 id="2-エンティティの定義"><a href="#2-エンティティの定義" class="headerlink" title="2. エンティティの定義"></a>2. エンティティの定義</h3><p>エンティティ(テーブル)ごとにどんな属性(カラム)が必要かを明確にする</p>
+<h4 id="エンティティとは"><a href="#エンティティとは" class="headerlink" title="エンティティとは?"></a>エンティティとは?</h4><p>システムにおいて管理する必要があるデータのこと</p>
+<p>エンティティ(Entity)は日本語で「実体」という意味</p>
+<p>具体的には、顧客、社員、店舗のような物理的実体を伴うものもあれば、注文、予約というような概念としてしか存在しないものもある</p>
+<p>RDBにおいては、テーブルの名前になるものという理解でもよい</p>
+<h3 id="3-正規化"><a href="#3-正規化" class="headerlink" title="3. 正規化"></a>3. 正規化</h3><p>テーブルを分割することでデータの冗長性(ムダ、重複)をなくす</p>
+<p>正規形には第1~第5正規形までが存在する</p>
+<p>業務では第3正規形までを考えることが多い</p>
+<h4 id="第1正規形"><a href="#第1正規形" class="headerlink" title="第1正規形"></a>第1正規形</h4><p>「1つのフィールドには1つの値しか含まない」という原則が守られた形</p>
+<h4 id="第2正規形"><a href="#第2正規形" class="headerlink" title="第2正規形"></a>第2正規形</h4><p>部分関数従属が解消されていて、完全関数従属のみのテーブルになっている形</p>
+<h5 id="関数従属性とは"><a href="#関数従属性とは" class="headerlink" title="関数従属性とは"></a>関数従属性とは</h5><p><code>y = f (x)</code>というように<code>x</code>の値を1つ決めれば<code>y</code>の値が1つに決まる関係性のこと</p>
+<p>この関係が成立している状態「<code>y</code>は<code>x</code>に従属するという</p>
+<p>このとき記号では「<code>&#123;x&#125;→&#123;y&#125;</code>」というように表す</p>
+<h4 id="第3正規形"><a href="#第3正規形" class="headerlink" title="第3正規形"></a>第3正規形</h4><p>推移的関数従属が解消されている形</p>
+<h5 id="推移的関数従属とは"><a href="#推移的関数従属とは" class="headerlink" title="推移的関数従属とは"></a>推移的関数従属とは</h5><p>2段階の関数従属がある状態</p>
+<h3 id="4-ER図の作成"><a href="#4-ER図の作成" class="headerlink" title="4. ER図の作成"></a>4. ER図の作成</h3><p>複数のテーブルの関係性(リレーション)を可視化するには、<br>ER図(Entity Relationship Diagram)を用いる</p>
+<h4 id="リレーションの種類"><a href="#リレーションの種類" class="headerlink" title="リレーションの種類"></a>リレーションの種類</h4><p>外部キーなどによって、同じ意味の列を持つテーブル間には、 関連(リレーション)があり、</p>
+<p>テーブル間のリレーションには以下の2種類がある</p>
+<ol>
+<li>1対多(1:N)</li>
+<li>1対1(1:1)</li>
+</ol>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/12/Recommender-System-Model/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-12T03:40:47.000Z" itemprop="datePublished">Jul 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/12/Recommender-System-Model/">Recommender System Model</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/11/Mac-pbcopy-pbpaste/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-11T13:23:10.000Z" itemprop="datePublished">Jul 11</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2024/04/12/Database-Logical-Design/" data-id="clvanqxmr0006dlovg27b5cc1" data-title="論理設計" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/11/Mac-pbcopy-pbpaste/">Mac pbcopy pbpaste</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/09/Python-str-replace/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-09T16:41:40.000Z" itemprop="datePublished">Jul 9</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/09/Python-str-replace/">Python str.replace</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-06T01:48:47.000Z" itemprop="datePublished">Jul 6</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/">BigQuery SELECT * EXCEPT</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2024/04/11/MongoDB-install/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MongoDB install</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/05/Python-collections-defaultdict/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-05T15:01:37.000Z" itemprop="datePublished">Jul 5</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/05/Python-collections-defaultdict/">Python collections defaultdict</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/07/04/pandas-clip/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-07-04T06:23:42.000Z" itemprop="datePublished">Jul 4</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/07/04/pandas-clip/">pandas clip</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/06/30/pandas-isnull/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-06-30T15:32:27.000Z" itemprop="datePublished">Jun 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/06/30/pandas-isnull/">pandas isnull</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/note/2021/06/29/pandas-groupby/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-06-29T15:22:58.000Z" itemprop="datePublished">Jun 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/note/2021/06/29/pandas-groupby/">pandas groupby</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/note/categories/zh-Hant-TW/page/6/">&laquo; Prev</a><a class="page-number" href="/note/categories/zh-Hant-TW/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/categories/zh-Hant-TW/page/5/">5</a><a class="page-number" href="/note/categories/zh-Hant-TW/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/note/categories/zh-Hant-TW/page/8/">8</a><a class="page-number" href="/note/categories/zh-Hant-TW/page/9/">9</a><a class="extend next" rel="next" href="/note/categories/zh-Hant-TW/page/8/">Next &raquo;</a>
-  </nav>
 
 </section>
         
