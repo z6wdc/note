@@ -69,6 +69,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-cut" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/17/pandas-cut/" class="article-date">
+  <time class="dt-published" datetime="2021-07-17T23:40:47.000Z" itemprop="datePublished">2021-07-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/17/pandas-cut/">pandas cut</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html">cut</a></p>
+<p>把資料分成 n 組區間</p>
+<p>n 用 <code>bins</code> 來指定</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.cut(age_data[<span class="string">&#x27;YEARS_BIRTH&#x27;</span>], bins=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>也可以自己指定區間的上下界</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cut_rule = [-np.inf, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, np.inf]</span><br><span class="line"></span><br><span class="line">app_train[<span class="string">&#x27;CNT_CHILDREN_GROUP&#x27;</span>] = pd.cut(app_train[<span class="string">&#x27;CNT_CHILDREN&#x27;</span>], cut_rule)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm38icfzg006tfbqj3e8yanbd" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-Decorators" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/15/Python-Decorators/" class="article-date">
@@ -103,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm2lg2fy70021eoq37npdc9ih" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm38icfyd0021fbqj9ddzbptf" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -159,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm2lg2fz5005peoq3c5tbajpw" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm38icfza005pfbqjhb7c16y5" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -220,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm2lg2fyx004qeoq3edi075wf" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm38icfz1004qfbqj29hyekkz" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -269,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm2lg2fyt0045eoq30nh9a9sn" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm38icfyw0045fbqj8r6p5yvv" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -377,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm2lg2fzd006xeoq33kkydhm3" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm38icfzh006zfbqjb6vmdw99" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -433,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm2lg2fzh007leoq36jzx606y" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm38icfzl007nfbqjcyac6uon" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -479,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm2lg2fy2001eeoq36wmsd2ef" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm38icfy8001efbqj54iv82o4" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -689,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm2lg2fz00051eoq39tnzd2f7" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm38icfz40051fbqjhnia5ndh" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -740,67 +791,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm2lg2fy10017eoq32cffcv5l" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm38icfy50017fbqj6aencu7l" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-str-replace" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/09/Python-str-replace/" class="article-date">
-  <time class="dt-published" datetime="2021-07-09T16:41:40.000Z" itemprop="datePublished">2021-07-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/09/Python-str-replace/">Python str.replace</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.replace">str.replace()</a></p>
-<p>可用來對字串中的字做替換</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>沒有指定 <code>count</code> 的話，就會對所有字做替換</p>
-<p>有指定 <code>count</code> 的話</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<p>就只會替換前面 <code>count</code> 次的字</p>
-<p>另外如果 <code>count</code> 設定一個超過目標次數的數值</p>
-<p>也不會出現錯誤</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm2lg2fyw004neoq33ntxdqkx" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -854,7 +849,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -865,6 +860,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2024/11/08/git-revert/">git revert</a>
+          </li>
         
           <li>
             <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
@@ -880,10 +879,6 @@
         
           <li>
             <a href="/note/2024/04/11/MongoDB-install/">MongoDB install</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/08/three-schema-architecture/">3層スキーマ</a>
           </li>
         
       </ul>
