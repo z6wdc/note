@@ -1,10 +1,12 @@
 ---
-title: "Detached HEAD"
-date: 2022-12-11T15:11:21+09:00
+title: Detached HEAD
+date: 2025-02-18T15:11:21+09:00
 categories: ["zh-Hant-TW"]
 tags: ["git"]
 ---
+
 ## 什麼是 Detached HEAD？
+
 **Detached HEAD** 狀態表示你的 `HEAD` 並未指向任何分支，而是直接指向了一個特定的 commit。
 
 ## 何時會進入 Detached HEAD？
@@ -22,15 +24,16 @@ git checkout <tag-name>
 ```
 
 ## Detached HEAD 的影響
+
 - **你所做的任何 commit 不會被分支保留**：
   
   - 若切換到其他分支，這些 commit 會「遺失」（實際上還存在於 `reflog` 中）。
   
   - **解決方法**：在 Detached HEAD 下完成工作後，創建一個新分支保留：
 
-    ```bash
-    git checkout -b new-branch
-    ```
+```bash  
+git checkout -b new-branch
+```
 
 ## 如何離開 Detached HEAD？
 
