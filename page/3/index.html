@@ -69,6 +69,173 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Go-Echo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2022/12/11/Go-Echo/" class="article-date">
+  <time class="dt-published" datetime="2022-12-11T22:38:39.000Z" itemprop="datePublished">2022-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/ja/">ja</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2022/12/11/Go-Echo/">Go Echo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Echoとは"><a href="#Echoとは" class="headerlink" title="Echoとは"></a>Echoとは</h2><p>High performance, extensible, minimalist Go web framework</p>
+<p><a target="_blank" rel="noopener" href="https://echo.labstack.com/">https://echo.labstack.com/</a></p>
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><h4 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h4><p><strong>Go</strong>のバージョンは<code>1.16</code>を使う</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir myapp &amp;&amp; cd myapp</span><br><span class="line">go mod init myapp</span><br><span class="line">go get github.com/labstack/echo/v4</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello, World!"></a>Hello, World!</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	</span><br><span class="line">	&quot;github.com/labstack/echo/v4&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	e := echo.New()</span><br><span class="line">	e.GET(&quot;/&quot;, func(c echo.Context) error &#123;</span><br><span class="line">		return c.String(http.StatusOK, &quot;Hello, World!&quot;)</span><br><span class="line">	&#125;)</span><br><span class="line">	e.Logger.Fatal(e.Start(&quot;:1323&quot;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>server</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run server.go</span><br></pre></td></tr></table></figure>
+
+<h3 id="Guide-Reference"><a href="#Guide-Reference" class="headerlink" title="Guide Reference"></a>Guide Reference</h3><p><a target="_blank" rel="noopener" href="https://echo.labstack.com/guide/">https://echo.labstack.com/guide/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Echo/" data-id="cm7hf05be000mhfovhd37gdde" data-title="Go Echo" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Go-Structs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2022/12/11/Go-Structs/" class="article-date">
+  <time class="dt-published" datetime="2022-12-11T22:35:31.000Z" itemprop="datePublished">2022-12-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/ja/">ja</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2022/12/11/Go-Structs/">Go Structs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Structs-とは"><a href="#Structs-とは" class="headerlink" title="Structs とは"></a>Structs とは</h2><p><code>Go</code> には関連する情報をまとめするため、 <code>structs</code> が使われる</p>
+<h2 id="Defining-and-Declaring"><a href="#Defining-and-Declaring" class="headerlink" title="Defining and Declaring"></a>Defining and Declaring</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	firstName <span class="type">string</span></span><br><span class="line">	lastName  <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> aaa person</span><br><span class="line">	fmt.Println(aaa) <span class="comment">// The default value is a empty string.</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;%+v\n&quot;</span>, aaa) <span class="comment">// Use the &quot;%+v&quot; can print the fields also.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Updating Struct Values</span></span><br><span class="line">    aaa.firstName = <span class="string">&quot;aaa&quot;</span></span><br><span class="line">    aaa.lastName = <span class="string">&quot;player&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Embedding-Structs"><a href="#Embedding-Structs" class="headerlink" title="Embedding Structs"></a>Embedding Structs</h2><p><code>Structs</code> に <code>structs</code> も宣言できる</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> contactInfo <span class="keyword">struct</span> &#123;</span><br><span class="line">	email   <span class="type">string</span></span><br><span class="line">	zipCode <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	firstName <span class="type">string</span></span><br><span class="line">	lastName  <span class="type">string</span></span><br><span class="line">	contact   contactInfo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	aaa := person&#123;</span><br><span class="line">		firstName: <span class="string">&quot;aaa&quot;</span>,</span><br><span class="line">		lastName:  <span class="string">&quot;player&quot;</span>,</span><br><span class="line">		contact: contactInfo&#123;</span><br><span class="line">			email:   <span class="string">&quot;aaa@mail.com&quot;</span>,</span><br><span class="line">			zipCode: <span class="number">1234567</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(aaa)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>宣言するときに、 <code>contactInfo</code> だけを宣言すると</p>
+<p><code>contactInfo contactInfo</code> の書き方と同じになる</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> contactInfo <span class="keyword">struct</span> &#123;</span><br><span class="line">	email   <span class="type">string</span></span><br><span class="line">	zipCode <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> person <span class="keyword">struct</span> &#123;</span><br><span class="line">	firstName <span class="type">string</span></span><br><span class="line">	lastName  <span class="type">string</span></span><br><span class="line">	contactInfo</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Updating-Struct-Values"><a href="#Updating-Struct-Values" class="headerlink" title="Updating Struct Values"></a>Updating Struct Values</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> player <span class="keyword">struct</span> &#123;</span><br><span class="line">	name  <span class="type">string</span></span><br><span class="line">	score <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := player&#123;<span class="string">&quot;aaa&quot;</span>, <span class="number">0</span>&#125;</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">	a.updateScore(<span class="number">1</span>)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p player)</span></span> updateScore(s <span class="type">int</span>) &#123;</span><br><span class="line">	p.score = s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;aaa 0&#125;</span><br><span class="line">&#123;aaa 0&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上記の<code>updateScore</code> functionを使っても<code>a</code>のスコアが更新できない</p>
+<h3 id="Pass-By-Value"><a href="#Pass-By-Value" class="headerlink" title="Pass By Value"></a>Pass By Value</h3><p><code>Go</code>は<code>Pass By Value</code>なので、下記のように</p>
+<table>
+<thead>
+<tr>
+<th>address</th>
+<th>value</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0001</td>
+<td>{aaa 0} 元のa値</td>
+<td>更新されなかった</td>
+</tr>
+<tr>
+<td>0002</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>0003</td>
+<td>{aaa 0} コピーされた値</td>
+<td>funcがこの値を更新した</td>
+</tr>
+</tbody></table>
+<p>元の<code>a</code>のスコアが更新されなかった</p>
+<h3 id="Pointer"><a href="#Pointer" class="headerlink" title="Pointer"></a>Pointer</h3><table>
+<thead>
+<tr>
+<th>address</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0001</td>
+<td>{aaa 0}</td>
+</tr>
+</tbody></table>
+<p>Turn <em><strong>address</strong></em> into <strong>value</strong> with <code>*address</code></p>
+<p>Turn <strong>value</strong> into <em><strong>address</strong></em> with <code>&amp;value</code></p>
+<h3 id="Point-Receiver"><a href="#Point-Receiver" class="headerlink" title="Point Receiver"></a>Point Receiver</h3><p>ReceiverのTypeに*を追加することで</p>
+<p><code>(p *player)</code></p>
+<p>宣言するtypeはstruct playerではなく、struct playerのaddressになる</p>
+<p>そうすれば、struct <code>a</code>のaddressのvalueをpassでき</p>
+<p>元の<code>a</code>の値を更新できるようになる</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> player <span class="keyword">struct</span> &#123;</span><br><span class="line">	name  <span class="type">string</span></span><br><span class="line">	score <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := player&#123;<span class="string">&quot;aaa&quot;</span>, <span class="number">0</span>&#125;</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">	pointerA := &amp;a <span class="comment">// Turn value into address</span></span><br><span class="line">	pointerA.updateScore(<span class="number">1</span>)</span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *player)</span></span> updateScore(s <span class="type">int</span>) &#123;</span><br><span class="line">    <span class="comment">// Turn value into address</span></span><br><span class="line">	(*p).score = s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;aaa 0&#125;</span><br><span class="line">&#123;aaa 1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ちなみに、</p>
+<p>aのvalueをadressに転換しなくても、<code>Go</code>も処理してくれる</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> player <span class="keyword">struct</span> &#123;</span><br><span class="line">	name  <span class="type">string</span></span><br><span class="line">	score <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := player&#123;<span class="string">&quot;aaa&quot;</span>, <span class="number">0</span>&#125;</span><br><span class="line">	fmt.Println(a)</span><br><span class="line"></span><br><span class="line">	a.updateScore(<span class="number">1</span>) <span class="comment">// Use a, the player struct type</span></span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(p *player)</span></span> updateScore(s <span class="type">int</span>) &#123;</span><br><span class="line">	(*p).score = s</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>結果も同じ</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;aaa 0&#125;</span><br><span class="line">&#123;aaa 1&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Structs/" data-id="cm7hf05bi000uhfovh86b28qv" data-title="Go Structs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git-diff" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2022/12/11/git-diff/" class="article-date">
@@ -122,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-diff/" data-id="cm79wv8ee005wguqe14zmdhyy" data-title="git diff" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-diff/" data-id="cm7hf05cw005whfovf0ob7myu" data-title="git diff" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -174,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-alias/" data-id="cm79wv8ec005pguqe7ru19kih" data-title="git alias" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-alias/" data-id="cm7hf05cv005phfoveoldgvu0" data-title="git alias" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -231,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-hello-world/" data-id="cm79wv8d0000zguqe4wnx8ruo" data-title="Go Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-hello-world/" data-id="cm7hf05bj000zhfovg2dd1zv3" data-title="Go Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -288,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-Requests-allow_redirects/" data-id="cm79wv8dd0029guqe1h9s9vj6" data-title="Python Requests パラメータ allow_redirects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-Requests-allow_redirects/" data-id="cm7hf05bu0029hfov1p11cpru" data-title="Python Requests パラメータ allow_redirects" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -338,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-main-module/" data-id="cm79wv8do003iguqe01o246x7" data-title="Python パッケージ中の main モジュール" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-main-module/" data-id="cm7hf05c8003ihfovfxleclrk" data-title="Python パッケージ中の main モジュール" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -395,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm79wv8ea005iguqeak9oeq5r" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm7hf05cr005fhfovh4cd8add" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -447,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cm79wv8d10012guqe1wgi0q76" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cm7hf05bk0012hfovaj567v0h" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -496,109 +663,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cm79wv8dy0049guqe1leuhqio" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-requests-redirection" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/30/Python-requests-redirection/" class="article-date">
-  <time class="dt-published" datetime="2021-09-30T12:23:52.000Z" itemprop="datePublished">2021-09-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/30/Python-requests-redirection/">Python requests redirection</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history">Redirection and History</a></p>
-<p>requests 預設會自動 redirect</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;http://github.com/&#x27;</span>)</span><br><span class="line">r.status_code</span><br><span class="line"><span class="comment"># 200</span></span><br><span class="line"></span><br><span class="line">r.history</span><br><span class="line"><span class="comment"># [&lt;Response [301]&gt;]</span></span><br></pre></td></tr></table></figure>
-
-<p>但可以用 <code>allow_redirects</code> 關掉</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;http://github.com/&#x27;</span>, allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">r.status_code</span><br><span class="line"><span class="comment">#301</span></span><br><span class="line"></span><br><span class="line">r.history</span><br><span class="line"><span class="comment">#[]</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cm79wv8dz004cguqe6fz22d32" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-dotenv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/30/Python-dotenv/" class="article-date">
-  <time class="dt-published" datetime="2021-09-30T12:17:56.000Z" itemprop="datePublished">2021-09-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/30/Python-dotenv/">Python dotenv</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://github.com/theskumar/python-dotenv">dotenv</a></p>
-<p>dotenv 會讀取 <code>.env</code> 這個檔案裡面的 <code>key-value</code></p>
-<p>並設定成環境變數</p>
-<p><code>.env</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Development settings</span><br><span class="line">DOMAIN=example.org</span><br><span class="line">ADMIN_EMAIL=admin@$&#123;DOMAIN&#125;</span><br><span class="line">ROOT_URL=$&#123;DOMAIN&#125;/app</span><br></pre></td></tr></table></figure>
-
-<p>使用方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"></span><br><span class="line">load_dotenv()  <span class="comment"># take environment variables from .env.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code of your application, which uses environment variables (e.g. from `os.environ` or</span></span><br><span class="line"><span class="comment"># `os.getenv`) as if they came from the actual environment.</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cm79wv8dk002xguqehbrzc3df" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cm7hf05ce0049hfov94ca28bb" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -616,7 +681,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/2/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/2/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -656,7 +721,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -669,23 +734,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/23/socket/">socket</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/pipe/">pipe</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
           <li>
             <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/10/12/Functions-vs-Methods/">Functions vs Methods</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/12/Database-Logical-Design/">論理設計</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/11/MongoDB-install/">MongoDB install</a>
           </li>
         
       </ul>

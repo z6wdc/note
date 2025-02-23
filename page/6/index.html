@@ -69,6 +69,109 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-xmltodict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/01/Python-xmltodict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-01T01:39:39.000Z" itemprop="datePublished">2021-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/01/Python-xmltodict/">Python xmltodict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/martinblech/xmltodict#readme">xmltodict</a></p>
+<p>這是一個可以把 xml 轉成 dict 的 module</p>
+<p><code>xmltodict.parse</code> 的 <a target="_blank" rel="noopener" href="https://github.com/martinblech/xmltodict/blob/ae19c452ca000bf243bfc16274c060bf3bf7cf51/xmltodict.py#L198">return value</a> 會是 <code>OrderedDict</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xmltodict</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;sample.xml&#x27;</span>) <span class="keyword">as</span> fd:</span><br><span class="line">    doc = xmltodict.parse(fd.read())</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="cm7hf05ck004xhfov9lin3ryx" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-csv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/01/Python-csv/" class="article-date">
+  <time class="dt-published" datetime="2021-08-01T01:08:10.000Z" itemprop="datePublished">2021-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/01/Python-csv/">Python csv</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/csv.html?highlight=csv#module-csv">csv</a></p>
+<p>可以用 <code>csv</code> 這個 module 來讀取跟寫入</p>
+<h2 id="csv-reader"><a href="#csv-reader" class="headerlink" title="csv.reader"></a>csv.reader</h2><p>讀取範例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
+
+<p>指定 <code>newline=&#39;&#39;</code> 會比較安全</p>
+<p>這樣 <code>csv</code> 就會處理每個平台上的 newline</p>
+<h2 id="csv-writer"><a href="#csv-writer" class="headerlink" title="csv.writer"></a>csv.writer</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f)</span><br><span class="line">    writer.writerows(someiterable)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dialects-and-Formatting-Parameters"><a href="#Dialects-and-Formatting-Parameters" class="headerlink" title="Dialects and Formatting Parameters"></a>Dialects and Formatting Parameters</h2><p>可以透過參數來讀取不同類型的 csv file</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;passwd&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f, delimiter=<span class="string">&#x27;:&#x27;</span>, quoting=csv.QUOTE_NONE)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="cm7hf05c1002mhfov791ra93l" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-the-with-statement" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/31/Python-the-with-statement/" class="article-date">
@@ -110,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="cm79wv8e4004uguqeh2l54l3g" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="cm7hf05ck004uhfovb9qyhlrt" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -157,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/27/sklearn-train-test-split/" data-id="cm79wv8f3009dguqe4qqrgo7l" data-title="sklearn train_test_split" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/sklearn-train-test-split/" data-id="cm7hf05dl009ghfov4yh102c1" data-title="sklearn train_test_split" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -204,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/27/NumPy-reshape/" data-id="cm79wv8d7001oguqehhp68qcr" data-title="NumPy reshape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/NumPy-reshape/" data-id="cm7hf05bp001ohfov78juci5r" data-title="NumPy reshape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -252,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-str-isdigit/" data-id="cm79wv8e1004jguqeend6fsj5" data-title="Python str isdigit" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-str-isdigit/" data-id="cm7hf05ch004jhfov8gvg7kte" data-title="Python str isdigit" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -300,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-all/" data-id="cm79wv8de002cguqe67cu2yoc" data-title="Python all" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-all/" data-id="cm7hf05bv002chfovb9adg8oh" data-title="Python all" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -348,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-any/" data-id="cm79wv8df002fguqe9rcu8unm" data-title="Python any" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-any/" data-id="cm7hf05bv002fhfovf1rq7yrc" data-title="Python any" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -435,7 +538,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/25/Python-Operator-precedence/" data-id="cm79wv8dc0026guqecxmw823c" data-title="Python Operator precedence" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/25/Python-Operator-precedence/" data-id="cm7hf05bt0026hfov7xod0xk2" data-title="Python Operator precedence" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -486,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/25/sklearn-MinMaxScaler/" data-id="cm79wv8f20092guqe09nk3e93" data-title="sklearn MinMaxScaler" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/25/sklearn-MinMaxScaler/" data-id="cm7hf05dk009ahfovabynas0l" data-title="sklearn MinMaxScaler" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -500,107 +603,11 @@
 
 
   
-    <article id="post-pandas-any" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/23/pandas-any/" class="article-date">
-  <time class="dt-published" datetime="2021-07-23T14:42:33.000Z" itemprop="datePublished">2021-07-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/23/pandas-any/">pandas any</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.any.html">any()</a></p>
-<p>檢查是否有任何一個值為 <code>True</code></p>
-<p>全部都是 <code>False</code> 的話就為 <code>False</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="literal">False</span>, <span class="literal">False</span>]).<span class="built_in">any</span>()</span><br><span class="line"><span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">False</span>]).<span class="built_in">any</span>()</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-any/" data-id="cm79wv8ek006nguqea17r0172" data-title="pandas any" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-all" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/23/pandas-all/" class="article-date">
-  <time class="dt-published" datetime="2021-07-23T14:35:26.000Z" itemprop="datePublished">2021-07-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/23/pandas-all/">pandas all</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.all.html">all()</a></p>
-<p>確認所有的值是不是都為 <code>True</code></p>
-<p>不是的話就是 <code>False</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">True</span>]).<span class="built_in">all</span>()</span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">False</span>]).<span class="built_in">all</span>()</span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-all/" data-id="cm79wv8ej006lguqe0j8m1s2z" data-title="pandas all" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/5/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/7/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/5/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/7/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -640,7 +647,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -653,23 +660,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/23/socket/">socket</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/pipe/">pipe</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
           <li>
             <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/10/12/Functions-vs-Methods/">Functions vs Methods</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/12/Database-Logical-Design/">論理設計</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/11/MongoDB-install/">MongoDB install</a>
           </li>
         
       </ul>

@@ -69,6 +69,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-any" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/23/pandas-any/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T14:42:33.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/23/pandas-any/">pandas any</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.any.html">any()</a></p>
+<p>檢查是否有任何一個值為 <code>True</code></p>
+<p>全部都是 <code>False</code> 的話就為 <code>False</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="literal">False</span>, <span class="literal">False</span>]).<span class="built_in">any</span>()</span><br><span class="line"><span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">False</span>]).<span class="built_in">any</span>()</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-any/" data-id="cm7hf05d0006nhfov2uax84xh" data-title="pandas any" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-all" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/23/pandas-all/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T14:35:26.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/23/pandas-all/">pandas all</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.all.html">all()</a></p>
+<p>確認所有的值是不是都為 <code>True</code></p>
+<p>不是的話就是 <code>False</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">True</span>]).<span class="built_in">all</span>()</span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"></span><br><span class="line">pd.Series([<span class="literal">True</span>, <span class="literal">False</span>]).<span class="built_in">all</span>()</span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-all/" data-id="cm7hf05d0006lhfov9rqi0li6" data-title="pandas all" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-read-csv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/23/pandas-read-csv/" class="article-date">
@@ -109,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-read-csv/" data-id="cm79wv8ew008bguqe5u8k3mer" data-title="pandas read_csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-read-csv/" data-id="cm7hf05dc0088hfovfg4p3tc0" data-title="pandas read_csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -158,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-get-dummies/" data-id="cm79wv8eo0079guqefi2lhemu" data-title="pandas get_dummies" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/pandas-get-dummies/" data-id="cm7hf05d40079hfovcsdt69r5" data-title="pandas get_dummies" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -206,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/sklearn-LabelEncoder/" data-id="cm79wv8f20096guqe0wc5hfnb" data-title="sklearn LabelEncoder" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/sklearn-LabelEncoder/" data-id="cm7hf05dk0097hfov99730bqr" data-title="sklearn LabelEncoder" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -256,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/NumPy-log1p/" data-id="cm79wv8d6001kguqe9ztyh3yk" data-title="NumPy log1p" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/NumPy-log1p/" data-id="cm7hf05bo001khfov41wqb7xx" data-title="NumPy log1p" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -355,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/SciPy-stats-boxcox/" data-id="cm79wv8e8005bguqe79lv83wr" data-title="SciPy stats boxcox" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/SciPy-stats-boxcox/" data-id="cm7hf05cp0058hfov7ddxfquw" data-title="SciPy stats boxcox" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -402,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/Python-floating-point-literals/" data-id="cm79wv8dm0036guqe9yg168kt" data-title="Python floating point literals" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/Python-floating-point-literals/" data-id="cm7hf05c60036hfov1krjbuem" data-title="Python floating point literals" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -451,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-count/" data-id="cm79wv8el006tguqeg75v5ca0" data-title="pandas count" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-count/" data-id="cm7hf05d1006thfovfbza8umd" data-title="pandas count" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -521,105 +617,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="cm79wv8eq007nguqe75ox4h6z" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-NumPy-linspace" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/21/NumPy-linspace/" class="article-date">
-  <time class="dt-published" datetime="2021-07-21T01:19:25.000Z" itemprop="datePublished">2021-07-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/21/NumPy-linspace/">NumPy linspace</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html">linspace</a></p>
-<p>可以利用 <code>linspace</code> 來做等距離的 list</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">2.0</span>, <span class="number">3.0</span>, num=<span class="number">5</span>)</span><br><span class="line"><span class="comment"># array([2.  , 2.25, 2.5 , 2.75, 3.  ])</span></span><br></pre></td></tr></table></figure>
-
-<p>可以利用 <code>endpoint</code> 來設定要不要包含尾端值</p>
-<p>預設為 <code>True</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">2.0</span>, <span class="number">3.0</span>, num=<span class="number">5</span>, endpoint=<span class="literal">False</span>)</span><br><span class="line"><span class="comment"># array([2. ,  2.2,  2.4,  2.6,  2.8])</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/NumPy-linspace/" data-id="cm79wv8d5001hguqe983t2vjj" data-title="NumPy linspace" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-get-loc" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/pandas-get-loc/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T12:15:01.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/pandas-get-loc/">pandas get_loc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.get_loc.html">get_loc</a></p>
-<p>可以取得 <code>Index</code> 的 location</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">college.columns.get_loc(<span class="string">&#x27;UGDS_WHITE&#x27;</span>)</span><br><span class="line">college.index.get_loc(<span class="string">&#x27;Birmingham Southern College&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-get-loc/" data-id="cm79wv8eo007bguqeakg751be" data-title="pandas get_loc" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="cm7hf05d6007nhfovdpobb7wd" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -637,7 +635,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/6/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/5/">5</a><a class="page-number" href="/note/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/note/page/8/">8</a><a class="page-number" href="/note/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/8/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/6/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/5/">5</a><a class="page-number" href="/note/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/note/page/8/">8</a><a class="page-number" href="/note/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/8/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -677,7 +675,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -690,23 +688,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/23/socket/">socket</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/pipe/">pipe</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
+          </li>
+        
+          <li>
             <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
           <li>
             <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/10/12/Functions-vs-Methods/">Functions vs Methods</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/12/Database-Logical-Design/">論理設計</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/04/11/MongoDB-install/">MongoDB install</a>
           </li>
         
       </ul>

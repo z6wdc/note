@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>socket | note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Socket 是進程間通信（IPC）的一種方式，允許不同機器上的進程或同一台機器上的進程之間進行數據傳輸。以下是 Socket 的一些主要特性： 1. 雙向通信 Socket 支援 雙向通信，即數據可以在同一時間從兩端傳輸。這使得 Socket 成為許多網路應用的理想選擇，因為它允許即時的雙向數據交流。  2. 跨平台通信 Socket 可以用於不同系統間的通信。例如，兩個不同操作系統上的應用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="socket">
+<meta property="og:url" content="http://z6wdc.github.io/note/2025/02/23/socket/index.html">
+<meta property="og:site_name" content="note">
+<meta property="og:description" content="Socket 是進程間通信（IPC）的一種方式，允許不同機器上的進程或同一台機器上的進程之間進行數據傳輸。以下是 Socket 的一些主要特性： 1. 雙向通信 Socket 支援 雙向通信，即數據可以在同一時間從兩端傳輸。這使得 Socket 成為許多網路應用的理想選擇，因為它允許即時的雙向數據交流。  2. 跨平台通信 Socket 可以用於不同系統間的通信。例如，兩個不同操作系統上的應用程序">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-23T17:17:35.000Z">
+<meta property="article:modified_time" content="2025-02-23T09:16:42.707Z">
+<meta property="article:author" content="z6wdc">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/note/favicon.ico">
+  
+  
+  
+<link rel="stylesheet" href="/note/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/note/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/note/" id="logo">note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/note/">Home</a>
+        
+          <a class="main-nav-link" href="/note/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/note/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://z6wdc.github.io/note"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-socket" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/02/23/socket/" class="article-date">
+  <time class="dt-published" datetime="2025-02-23T17:17:35.000Z" itemprop="datePublished">2025-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      socket
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>Socket</strong> 是進程間通信（IPC）的一種方式，允許不同機器上的進程或同一台機器上的進程之間進行數據傳輸。以下是 Socket 的一些主要特性：</p>
+<h2 id="1-雙向通信"><a href="#1-雙向通信" class="headerlink" title="1. 雙向通信"></a>1. 雙向通信</h2><ul>
+<li><strong>Socket</strong> 支援 <strong>雙向通信</strong>，即數據可以在同一時間從兩端傳輸。這使得 Socket 成為許多網路應用的理想選擇，因為它允許即時的雙向數據交流。</li>
+</ul>
+<h2 id="2-跨平台通信"><a href="#2-跨平台通信" class="headerlink" title="2. 跨平台通信"></a>2. 跨平台通信</h2><ul>
+<li><strong>Socket</strong> 可以用於不同系統間的通信。例如，兩個不同操作系統上的應用程序（如 Windows 和 Linux）也可以使用 TCP&#x2F;IP 或其他協議通過 Socket 進行通信。</li>
+</ul>
+<h2 id="3-支援多種協議"><a href="#3-支援多種協議" class="headerlink" title="3. 支援多種協議"></a>3. 支援多種協議</h2><ul>
+<li><strong>Socket</strong> 不僅限於 TCP&#x2F;IP 協議，它還支持多種不同的協議，例如：<ul>
+<li><strong>SOCK_STREAM</strong>：提供可靠、順序且無錯誤的字節流傳輸，通常使用 TCP 協議。</li>
+<li><strong>SOCK_DGRAM</strong>：提供無連接的數據包服務，通常使用 UDP 協議。</li>
+<li><strong>SOCK_RAW</strong>：允許應用程序直接操作網路層協議（如 ICMP）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-連接與非連接模式"><a href="#4-連接與非連接模式" class="headerlink" title="4. 連接與非連接模式"></a>4. 連接與非連接模式</h2><ul>
+<li><strong>連接模式（Connection-oriented）</strong>：如 TCP 協議的 Socket，進程間需要建立連接（通常使用 <code>connect()</code> 和 <code>accept()</code>）後才能進行數據交換。</li>
+<li><strong>非連接模式（Connectionless）</strong>：如 UDP 協議的 Socket，數據可以直接發送到目的地，無需建立持久的連接。</li>
+</ul>
+<h2 id="5-帶外數據（Out-of-Band-Data）"><a href="#5-帶外數據（Out-of-Band-Data）" class="headerlink" title="5. 帶外數據（Out-of-Band Data）"></a>5. 帶外數據（Out-of-Band Data）</h2><ul>
+<li>Socket 支援帶外數據的傳輸，這使得應用程序可以在正常數據流外傳送緊急訊息。例如，TCP 協議支援此功能以傳送高優先級訊息。</li>
+</ul>
+<h2 id="6-多對多通信"><a href="#6-多對多通信" class="headerlink" title="6. 多對多通信"></a>6. 多對多通信</h2><ul>
+<li><strong>Socket</strong> 支援多對多通信，可以用於設計各種分佈式應用程式，例如客戶端-服務器架構。多個客戶端可以連接到同一伺服器，並與伺服器進行通信。</li>
+</ul>
+<h2 id="7-多種資料交換方式"><a href="#7-多種資料交換方式" class="headerlink" title="7. 多種資料交換方式"></a>7. 多種資料交換方式</h2><ul>
+<li><p><strong>阻塞與非阻塞模式</strong>：</p>
+<ul>
+<li><strong>阻塞模式</strong>：默認情況下，Socket 操作是阻塞的，即讀取操作會等待讀取數據，寫入操作會等徹底寫入數據。</li>
+<li><strong>非阻塞模式</strong>：在非阻塞模式下，Socket 操作會立即返回，如果無法完成操作（如讀取或寫入），會返回錯誤代碼。</li>
+</ul>
+</li>
+<li><p><strong>選擇（Select）</strong>：可以使用 <code>select()</code> 或 <code>poll()</code> 等系統調用來監視多個 Socket，檢測是否有數據可讀或可寫。</p>
+</li>
+</ul>
+<h2 id="8-安全性"><a href="#8-安全性" class="headerlink" title="8. 安全性"></a>8. 安全性</h2><ul>
+<li><strong>加密</strong>：Socket 通常可以與加密協議（如 SSL&#x2F;TLS）結合使用，來加密數據並保護通信過程中的隱私和安全性。</li>
+</ul>
+<h2 id="9-Socket-Domain"><a href="#9-Socket-Domain" class="headerlink" title="9. Socket Domain"></a>9. Socket Domain</h2><ul>
+<li><p><strong>Socket Domain</strong> 是指 Socket 的一種分類，描述了通信的範圍與區域。根據 Socket Domain，Socket 可以被劃分為不同的類型，主要有：</p>
+<ul>
+<li><p><strong>AF_INET（IPv4）</strong>：</p>
+<ul>
+<li>用於基於 IPv4 協議的通信。這是最常見的 Socket 類型，適用於互聯網通信。</li>
+</ul>
+</li>
+<li><p><strong>AF_INET6（IPv6）</strong>：</p>
+<ul>
+<li>用於基於 IPv6 協議的通信。隨著 IPv6 的普及，這種 Socket 類型也變得越來越重要。</li>
+</ul>
+</li>
+<li><p><strong>AF_UNIX（Unix 域 Socket）</strong>：</p>
+<ul>
+<li>用於同一台機器上的進程間通信（IPC）。這類 Socket 不通過網路，而是通過內核提供的 Unix 域進行通信，常用於本地應用程式的進程間數據交換。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="10-用途"><a href="#10-用途" class="headerlink" title="10. 用途"></a>10. 用途</h2><ul>
+<li><strong>網路通信</strong>：Socket 是網路通信的基礎，許多網路應用（如 HTTP、FTP、SMTP）都依賴於 Socket 來實現進程間通信。</li>
+<li><strong>分佈式應用</strong>：通過 Socket，開發者可以構建多層次的分佈式應用程式，實現客戶端和伺服器之間的通信。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm7hf05dm009jhfovcc436ah9" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2025/02/23/pipe/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pipe</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/note/categories/en/">en</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/ja/">ja</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/BigQuery/" rel="tag">BigQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GoogleCloudPlatform/" rel="tag">GoogleCloudPlatform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/ProfessionalCloudArchitect/" rel="tag">ProfessionalCloudArchitect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/note/tags/BigQuery/" style="font-size: 11.67px;">BigQuery</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 13.33px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/ProfessionalCloudArchitect/" style="font-size: 10px;">ProfessionalCloudArchitect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 15px;">ビジネス</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/note/2025/02/23/socket/">socket</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/pipe/">pipe</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
+          </li>
+        
+          <li>
+            <a href="/note/2024/11/08/git-revert/">git revert</a>
+          </li>
+        
+          <li>
+            <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 z6wdc<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/note/" class="mobile-nav-link">Home</a>
+  
+    <a href="/note/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/note/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/note/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/note/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
