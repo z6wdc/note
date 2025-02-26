@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>scalability | note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="水平擴展Scale Out與垂直擴展Scale Up 1. Scale Out（水平擴展） 概念：增加更多的機器（伺服器&#x2F;節點）來分擔負載。 方式：透過分散式架構，讓多台機器共同處理請求。 優勢： 可動態新增節點以應對需求增加，彈性較大。 故障容錯性較高，單點故障不會影響整個系統。 適合高併發、高流量的應用，如雲端服務、大型網站等。   缺點： 系統架構較複雜，通常需要負載平衡器（Loa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scalability">
+<meta property="og:url" content="http://z6wdc.github.io/note/2025/02/26/scalability/index.html">
+<meta property="og:site_name" content="note">
+<meta property="og:description" content="水平擴展Scale Out與垂直擴展Scale Up 1. Scale Out（水平擴展） 概念：增加更多的機器（伺服器&#x2F;節點）來分擔負載。 方式：透過分散式架構，讓多台機器共同處理請求。 優勢： 可動態新增節點以應對需求增加，彈性較大。 故障容錯性較高，單點故障不會影響整個系統。 適合高併發、高流量的應用，如雲端服務、大型網站等。   缺點： 系統架構較複雜，通常需要負載平衡器（Loa">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-26T09:31:54.000Z">
+<meta property="article:modified_time" content="2025-02-26T23:41:33.293Z">
+<meta property="article:author" content="z6wdc">
+<meta property="article:tag" content="System Design">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/note/favicon.ico">
+  
+  
+  
+<link rel="stylesheet" href="/note/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/note/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/note/" id="logo">note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/note/">Home</a>
+        
+          <a class="main-nav-link" href="/note/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/note/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://z6wdc.github.io/note"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-scalability" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/02/26/scalability/" class="article-date">
+  <time class="dt-published" datetime="2025-02-26T09:31:54.000Z" itemprop="datePublished">2025-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      scalability
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>水平擴展Scale Out與垂直擴展Scale Up</p>
+<h2 id="1-Scale-Out（水平擴展）"><a href="#1-Scale-Out（水平擴展）" class="headerlink" title="1. Scale Out（水平擴展）"></a>1. Scale Out（水平擴展）</h2><ul>
+<li><strong>概念</strong>：增加更多的機器（伺服器&#x2F;節點）來分擔負載。</li>
+<li><strong>方式</strong>：透過分散式架構，讓多台機器共同處理請求。</li>
+<li><strong>優勢</strong>：<ul>
+<li>可動態新增節點以應對需求增加，彈性較大。</li>
+<li>故障容錯性較高，單點故障不會影響整個系統。</li>
+<li>適合高併發、高流量的應用，如雲端服務、大型網站等。</li>
+</ul>
+</li>
+<li><strong>缺點</strong>：<ul>
+<li>系統架構較複雜，通常需要負載平衡器（Load Balancer）。</li>
+<li>可能涉及數據一致性與同步的挑戰。</li>
+</ul>
+</li>
+<li><strong>適用場景</strong>：<ul>
+<li>微服務架構</li>
+<li>分散式數據庫</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-Scale-Up（垂直擴展）"><a href="#2-Scale-Up（垂直擴展）" class="headerlink" title="2. Scale Up（垂直擴展）"></a>2. Scale Up（垂直擴展）</h2><ul>
+<li><strong>概念</strong>：升級現有機器的硬體資源（CPU、RAM、SSD等）來提升效能。</li>
+<li><strong>方式</strong>：更換或升級伺服器的處理器、記憶體、磁碟等硬體資源，使單一機器能夠處理更大負載。</li>
+<li><strong>優勢</strong>：<ul>
+<li>變更架構較簡單，不需要改變應用程式邏輯或數據分佈。</li>
+<li>適合需要強大運算能力的應用，如單節點資料庫、ML 訓練伺服器等。</li>
+</ul>
+</li>
+<li><strong>缺點</strong>：<ul>
+<li>受硬體限制，一台機器的升級有極限。</li>
+<li>當機或故障的風險較高，因為所有負載集中在單一節點。</li>
+<li>升級成本可能較高，特別是高端伺服器硬體價格昂貴。</li>
+</ul>
+</li>
+<li><strong>適用場景</strong>：<ul>
+<li>單節點應用（如單機版資料庫）</li>
+<li>低延遲高效能計算需求（如金融交易系統）</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-比較總結"><a href="#3-比較總結" class="headerlink" title="3. 比較總結"></a>3. 比較總結</h2><table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Scale Out（水平擴展）</strong></th>
+<th><strong>Scale Up（垂直擴展）</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>擴展方式</strong></td>
+<td>增加多台機器</td>
+<td>升級單台機器</td>
+</tr>
+<tr>
+<td><strong>成本</strong></td>
+<td>隨需求增加，但單台伺服器成本較低</td>
+<td>可能昂貴（高端硬體）</td>
+</tr>
+<tr>
+<td><strong>效能上限</strong></td>
+<td>幾乎無限（取決於架構設計）</td>
+<td>受硬體限制</td>
+</tr>
+<tr>
+<td><strong>容錯能力</strong></td>
+<td>高（可分散負載）</td>
+<td>低（單點故障影響大）</td>
+</tr>
+<tr>
+<td><strong>適用場景</strong></td>
+<td>分散式系統、雲端架構</td>
+<td>單機應用、高效能計算</td>
+</tr>
+</tbody></table>
+<h2 id="4-結論"><a href="#4-結論" class="headerlink" title="4. 結論"></a>4. 結論</h2><ul>
+<li><strong>高併發、高流量、需要擴充性的系統適合 Scale Out（水平擴展）</strong>。</li>
+<li><strong>低延遲、高性能計算或單機應用適合 Scale Up（垂直擴展）</strong>。</li>
+</ul>
+<p>在實務上，現代雲端架構通常會優先考慮 <strong>Scale Out</strong>，但有些應用（如資料庫主機）可能會先透過 <strong>Scale Up</strong> 提升效能，再考慮 <strong>Scale Out</strong> 來分散負載。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm7mk7rnf0091fnqh9ktv3wlr" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2025/02/23/socket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">socket</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/note/categories/en/">en</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/ja/">ja</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GoogleCloudPlatform/" rel="tag">GoogleCloudPlatform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 11.67px;">Google Cloud Platform</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 10px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 15px;">ビジネス</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/note/2025/02/26/scalability/">scalability</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/socket/">socket</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/23/pipe/">pipe</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
+          </li>
+        
+          <li>
+            <a href="/note/2024/11/08/git-revert/">git revert</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 z6wdc<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/note/" class="mobile-nav-link">Home</a>
+  
+    <a href="/note/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/note/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/note/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/note/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
