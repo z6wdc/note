@@ -2,7 +2,7 @@
 title: BigQuery SELECT list expression references column x which is neither grouped nor aggregated at [position]
 date: 2021-05-05T19:05:52+09:00
 categories: ["zh-Hant-TW"]
-tags: ["GoogleCloudPlatform","BigQuery"]
+tags: ["Google Cloud Platform","Big Query"]
 ---
 當我們使用 `GROUP BY` 的時候  
 就有機會看到這 error message

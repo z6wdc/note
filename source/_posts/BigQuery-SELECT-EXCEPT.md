@@ -2,7 +2,7 @@
 title: BigQuery SELECT * EXCEPT
 date: 2021-07-06T10:48:47+09:00
 categories: ["zh-Hant-TW"]
-tags: ["GoogleCloudPlatform","BigQuery"]
+tags: ["Google Cloud Platform","Big Query"]
 ---
 [SELECT * EXCEPT](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_except)
 
