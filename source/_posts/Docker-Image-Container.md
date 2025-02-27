@@ -1,7 +1,6 @@
 ---
 title: Docker Image Container
 date: 2021-09-19T17:23:56+09:00
-categories: ["en"]
 tags: ["Docker"]
 ---
 ## Image

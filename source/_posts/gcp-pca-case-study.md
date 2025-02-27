@@ -2,7 +2,7 @@
 title: "Professional Cloud Architect Case Study"
 date: 2022-10-31T13:43:27+09:00
 categories: ["ja"]
-tags: ["GoogleCloudPlatform","Professional Cloud Architect"]
+tags: ["Google Cloud Platform","Professional Cloud Architect"]
 ---
 
 - [Case Study](https://cloud.google.com/certification/guides/professional-cloud-architect?hl=ja)

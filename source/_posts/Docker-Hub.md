@@ -1,7 +1,6 @@
 ---
 title: Docker Hub
 date: 2021-09-20T12:36:52+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Docker"]
 ---
 [docker hub](https://hub.docker.com/)
