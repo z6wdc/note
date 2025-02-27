@@ -1,7 +1,6 @@
 ---
 title: "A Tour of Go basic 1"
 date: 2022-12-12T07:44:31+09:00
-categories: ["ja"]
 tags: ["Go"]
 ---
 ## Using the tour

@@ -1,7 +1,6 @@
 ---
 title: Docker Volume
 date: 2021-09-20T17:43:55+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Docker"]
 ---
 [Volume](https://docs.docker.com/storage/volumes/)
