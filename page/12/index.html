@@ -69,6 +69,149 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/05/21/Python-map/" class="article-date">
+  <time class="dt-published" datetime="2021-05-21T22:09:40.000Z" itemprop="datePublished">2021-05-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/05/21/Python-map/">Python map()</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>我們可以利用</p>
+<p>Python Built-in Function 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#map">map()</a></p>
+<p>來對 iterable object 做想要的處理</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h2><p><code>map(function, iterable, ...)</code></p>
+<p>function 就是要對 iterable 使用的函式</p>
+<p>回傳值為 map object</p>
+<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<p>這個例子中</p>
+<p><code>map()</code> 會把 <code>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</code> 這個 list 裡面的字串當作參數</p>
+<p>去使用 <code>int()</code> 這個 function</p>
+<p>因為 <code>map()</code> 回傳值為 map object</p>
+<p>最後對回傳值使用 <code>list()</code> 可以方便檢查結果</p>
+<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">list2 = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(add, list1, list2))</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[4, 6]</span><br></pre></td></tr></table></figure>
+
+<p><code>map()</code> 也可以使用自己定義的 function</p>
+<p>如果自定義的 function 有兩個參數</p>
+<p>後面就必須帶入相對應數量的 iterable</p>
+<p>這個例子中為兩個 list</p>
+<p>另外當 list 不一樣長的時候</p>
+<p>最短的 list 處理完時就會停止</p>
+<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, [<span class="string">&#x27;10&#x27;</span>]*<span class="number">10</span>, <span class="built_in">range</span>(<span class="number">2</span>, <span class="number">11</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
+
+<p>這個例子中還是使用 <code>int()</code></p>
+<p>這次對 <code>int()</code> 輸入兩個參數</p>
+<p>第一個為要轉換的數字，使用了字串 10</p>
+<p>第二個是要轉換的進制</p>
+<p>因為是 <code>range(2, 11)</code></p>
+<p>所以結果會印出 10 這個數</p>
+<p>在 2 進位到 10 進位下的數值</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cm7ncfn5n003mgvq92zmyhmb0" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-random-module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/05/18/Python-random-module/" class="article-date">
+  <time class="dt-published" datetime="2021-05-18T13:36:49.000Z" itemprop="datePublished">2021-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/05/18/Python-random-module/">Python random module</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Python 有 random 這個 module<br>除了可以產生亂數外，還可以隨機挑選資料  </p>
+<h2 id="How-to-import"><a href="#How-to-import" class="headerlink" title="How to import"></a>How to import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
+
+<h2 id="Functions-for-integers"><a href="#Functions-for-integers" class="headerlink" title="Functions for integers"></a>Functions for integers</h2><h3 id="randint"><a href="#randint" class="headerlink" title="randint"></a>randint</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random.randint(<span class="number">0</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<p>randint 會隨機從 0 &lt;&#x3D; n &lt;&#x3D; 100 的數字隨機挑選一個整數</p>
+<h2 id="Functions-for-sequences"><a href="#Functions-for-sequences" class="headerlink" title="Functions for sequences"></a>Functions for sequences</h2><h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.choices(numbers, k=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>choices</code> 會隨機從指定的 list 中重複取出你要的數目</p>
+<p>要注意的是指定數目的時候需要寫出 keyword <code>k</code></p>
+<p>像是例子中 k&#x3D;3 就會取出三個</p>
+<p>不指定 k 的話，預設值為 1</p>
+<h3 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.sample(numbers, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>sample</code> 會隨機從指定的 list 中取出你要的數目</p>
+<p>而且數字不重複</p>
+<p>但要取出的數目不能大於 list 的 length</p>
+<p>不然就會發生下面的</p>
+<p><code>ValueError: Sample larger than population or is negative</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cm7ncfn5q0040gvq91uav9fpq" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-int" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/05/06/Python-int/" class="article-date">
@@ -115,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-int/" data-id="cm7mk7rm4003cfnqhds641796" data-title="Python int()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-int/" data-id="cm7ncfn5l003cgvq90cpnemti" data-title="Python int()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -164,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-List-Comprehension/" data-id="cm7mk7rlp0023fnqhapssbxic" data-title="Python List Comprehension" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-List-Comprehension/" data-id="cm7ncfn5b0023gvq93t4ufbui" data-title="Python List Comprehension" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -184,10 +327,6 @@
   <time class="dt-published" datetime="2021-05-05T10:05:52.000Z" itemprop="datePublished">2021-05-05</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -196,7 +335,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/">BigQuery SELECT list expression references column x which is neither grouped nor aggregated at [position]</a>
+      <a class="p-name article-title" href="/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/">Big Query SELECT list expression references column x which is neither grouped nor aggregated at [position]</a>
     </h1>
   
 
@@ -218,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/" data-id="cm7mk7rl40005fnqhcbd92hds" data-title="BigQuery SELECT list expression references column x which is neither grouped nor aggregated at [position]" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/" data-id="cm7ncfn4l0004gvq92kle8rk9" data-title="Big Query SELECT list expression references column x which is neither grouped nor aggregated at [position]" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -257,7 +396,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GoogleCloudPlatform/" rel="tag">GoogleCloudPlatform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
     </div>
   </div>
 
@@ -267,7 +406,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 11.67px;">Google Cloud Platform</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 10px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 15px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -289,6 +428,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/27/Go-set-implementation/">Go set implementation</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/02/26/scalability/">scalability</a>
           </li>
         
@@ -298,14 +445,6 @@
         
           <li>
             <a href="/note/2025/02/23/pipe/">pipe</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
       </ul>

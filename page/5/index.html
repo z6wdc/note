@@ -69,6 +69,108 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-select-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/12/pandas-select-dtypes/" class="article-date">
+  <time class="dt-published" datetime="2021-09-12T14:04:13.000Z" itemprop="datePublished">2021-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/12/pandas-select-dtypes/">pandas select_dtypes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">select_dtypes</a> 可以對你的 column 做 filter</p>
+<p>包含 <code>float64</code> 類別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(include=[<span class="string">&#x27;float64&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>排除 <code>int64</code> 類別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(exclude=[<span class="string">&#x27;int64&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cm7ncfn6m008igvq9bwckfn08" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-os-makedirs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/10/Python-os-makedirs/" class="article-date">
+  <time class="dt-published" datetime="2021-09-10T16:40:29.000Z" itemprop="datePublished">2021-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/10/Python-os-makedirs/">Python os makedirs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/os.html#os.makedirs">os.makedirs</a></p>
+<p>可以用來建立新的 directory</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(<span class="string">&#x27;path/dir&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果指定的 path 上面 directory 已經存在的話</p>
+<p>會跳出 <code>FileExistsError</code></p>
+<p>但可以指定 <code>exist_ok</code> 為 <code>True</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(<span class="string">&#x27;path/dir&#x27;</span>, exist_ok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cm7ncfn5o003tgvq9fwt626re" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-dataframe-from-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/08/29/pandas-dataframe-from-dict/" class="article-date">
@@ -107,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm7mk7rmz006zfnqh2z29hql5" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm7ncfn6d0073gvq94qmv7zbs" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -158,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm7mk7rng0098fnqh9vw372li" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm7ncfn6u009bgvq9g2140e20" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -207,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm7mk7rm20030fnqh0tcd4512" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm7ncfn5j0030gvq90uehegsw" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -263,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm7mk7rlm001rfnqhb97h74ym" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm7ncfn54001ngvq9frf85d9a" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -312,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm7mk7rlo001xfnqhgxk967nr" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm7ncfn56001xgvq9hvi964gt" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -369,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm7mk7rnh009bfnqh9x9o8jr3" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm7ncfn6x009kgvq98vmve5ky" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -434,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm7mk7rlw002sfnqh4j047nde" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm7ncfn5h002rgvq9bhsk4epy" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -492,137 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cm7mk7rme004gfnqh4oq4hjbn" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-re-match-objects" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/05/Python-re-match-objects/" class="article-date">
-  <time class="dt-published" datetime="2021-08-05T23:18:06.000Z" itemprop="datePublished">2021-08-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/05/Python-re-match-objects/">Python re Match Objects</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/re.html#match-objects">Match Objects</a></p>
-<h2 id="Match-group"><a href="#Match-group" class="headerlink" title="Match.group"></a>Match.group</h2><p>可以利用 <code>group()</code> 來列印出匹配的值</p>
-<p>index 預設為零</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.group()</span><br><span class="line"><span class="comment"># The entire match</span></span><br><span class="line"><span class="comment"># &#x27;Isaac Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># The entire match</span></span><br><span class="line"><span class="comment"># &#x27;Isaac Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># The first parenthesized subgroup.</span></span><br><span class="line"><span class="comment"># &#x27;Isaac&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># The second parenthesized subgroup.</span></span><br><span class="line"><span class="comment"># &#x27;Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment"># Multiple arguments give us a tuple.</span></span><br><span class="line"><span class="comment"># (&#x27;Isaac&#x27;, &#x27;Newton&#x27;)</span></span><br></pre></td></tr></table></figure>
-
-<p>如果正規表達式有設定 <code>(?P&lt;name&gt;...)</code> 的 syntax</p>
-<p>可以利用 <code>name</code> 來指定匹配到的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.group(<span class="string">&#x27;first_name&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;Malcolm&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="string">&#x27;last_name&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;Reynolds&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>沒有匹配到的話，就會回傳 <code>None</code></p>
-<h2 id="Match-lastindex"><a href="#Match-lastindex" class="headerlink" title="Match.lastindex"></a>Match.lastindex</h2><p>使用 <code>group()</code> 的時候</p>
-<p>如果代入負數或是大於匹配的結果</p>
-<p>會發生 <code>IndexError</code></p>
-<p>可以利用 <code>lastindex</code> 先找出最大的 index</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.lastindex</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Match-lastgroup"><a href="#Match-lastgroup" class="headerlink" title="Match.lastgroup"></a>Match.lastgroup</h2><p>如果正規表達式有設定  <code>(?P&lt;name&gt;...)</code> 的 syntax</p>
-<p>可以用 <code>lastgroup</code> 來找最後一筆匹配的值的 name</p>
-<h2 id="Match-groups"><a href="#Match-groups" class="headerlink" title="Match.groups"></a>Match.groups</h2><p>可以利用 <code>groups()</code> 來一次列印出匹配的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groups</span><br><span class="line"><span class="comment"># (&#x27;Isaac&#x27;, &#x27;Newton&#x27;)</span></span><br></pre></td></tr></table></figure>
-
-<p>如果沒有成功匹配就會印出 <code>None</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\d+)\.?(\d+)?&quot;</span>, <span class="string">&quot;24&quot;</span>)</span><br><span class="line">m.groups()</span><br><span class="line"><span class="comment"># Second group defaults to None.</span></span><br><span class="line"><span class="comment"># (&#x27;24&#x27;, None)</span></span><br><span class="line"></span><br><span class="line">m.groups(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"><span class="comment"># Now, the second group defaults to &#x27;0&#x27;.</span></span><br><span class="line"><span class="comment"># (&#x27;24&#x27;, 0)</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Match-groupdict"><a href="#Match-groupdict" class="headerlink" title="Match.groupdict"></a>Match.groupdict</h2><p>可以一次列印出設定的 name 與對應的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groupdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: &#x27;Reynolds&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>如果沒有成功匹配就會印出 <code>None</code></p>
-<p>一樣可以設定預設值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\W+)?&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groupdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: None&#125;</span></span><br><span class="line"></span><br><span class="line">m.groupdict(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: &#x27;&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cm7mk7rma0042fnqhe0298dvy" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/02/Python-json/" class="article-date">
-  <time class="dt-published" datetime="2021-08-02T09:07:51.000Z" itemprop="datePublished">2021-08-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/02/Python-json/">Python json</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html">json</a></p>
-<p>Python 中拿來處理 <code>json</code> 的 module</p>
-<h2 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h2><p>Serialize obj as a JSON formatted stream to fp</p>
-<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps"></a>dumps</h2><p>Serialize obj to a JSON formatted <code>str</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.dumps([<span class="string">&#x27;foo&#x27;</span>, &#123;<span class="string">&#x27;bar&#x27;</span>: (<span class="string">&#x27;baz&#x27;</span>, <span class="literal">None</span>, <span class="number">1.0</span>, <span class="number">2</span>)&#125;])</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="ensure-ascii-True"><a href="#ensure-ascii-True" class="headerlink" title="ensure_ascii&#x3D;True"></a>ensure_ascii&#x3D;True</h3><p>使用 <code>dump</code> 跟 <code>dumps</code> 的時候</p>
-<p>必須注意 <code>ensure_ascii</code> 的預設值為 <code>True</code></p>
-<p>有時沒有注意這設定的話，會造成亂碼</p>
-<h2 id="load"><a href="#load" class="headerlink" title="load"></a>load</h2><p>Deserialize fp to a Python object</p>
-<h2 id="loads"><a href="#loads" class="headerlink" title="loads"></a>loads</h2><p>Deserialize <code>s</code> to a Python object</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.loads(<span class="string">&#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&#x27;foo&#x27;, &#123;&#x27;bar&#x27;: [&#x27;baz&#x27;, None, 1.0, 2]&#125;]</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cm7mk7rm5003ffnqhdc2i1nu9" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cm7ncfn5t004egvq91ysj0x6y" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -661,7 +633,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GoogleCloudPlatform/" rel="tag">GoogleCloudPlatform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
     </div>
   </div>
 
@@ -671,7 +643,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 11.67px;">Google Cloud Platform</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 10px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 15px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -693,6 +665,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/27/Go-set-implementation/">Go set implementation</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/02/26/scalability/">scalability</a>
           </li>
         
@@ -702,14 +682,6 @@
         
           <li>
             <a href="/note/2025/02/23/pipe/">pipe</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
       </ul>

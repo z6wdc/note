@@ -69,6 +69,163 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-re-search-vs-match" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/Python-re-search-vs-match/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T16:00:37.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/Python-re-search-vs-match/">Python re search vs match</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/re.html#search-vs-match"><code>search</code> vs <code>match</code></a></p>
+<p>在 Python 中</p>
+<p><code>re.search()</code> 會找目標文字中第一個出現的字串</p>
+<p><code>re.match()</code> 只會找目標文字中最初出現的字串</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.<span class="keyword">match</span>(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;abcdef&quot;</span>) <span class="comment"># No match</span></span><br><span class="line">re.search(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;abcdef&quot;</span>) <span class="comment"># Match</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm7ncfn5s0047gvq93aye8smz" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/pandas-dtypes/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T03:08:45.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/pandas-dtypes/">pandas dtypes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dtypes.html">dtypes</a></p>
+<p><code>DataFrame</code> 有 <code>dtypes</code> 這個 property</p>
+<p>可以用來檢查各個 columns 的型別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+<p>而在 <code>pandas</code> 有下列的型別</p>
+<table>
+<thead>
+<tr>
+<th>Common data type name</th>
+<th>NumPy&#x2F;pandas object</th>
+<th>Pandas string name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Boolean</td>
+<td>np.bool</td>
+<td>bool</td>
+<td>Stored as a single byte</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>np.int</td>
+<td>int</td>
+<td>Defaulted to 64 bits. Unsigned ints are also available - np.uint.</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>np.float</td>
+<td>float</td>
+<td>Defaulted to 64 bits.</td>
+</tr>
+<tr>
+<td>Complex</td>
+<td>np.complex</td>
+<td>complex</td>
+<td>Rarely seen in data analysis.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>np.object</td>
+<td>O, object</td>
+<td>Typically strings but is a ctach-all for columns with multiple different types or other Python objects(tuples, lists, dicts, and so on).</td>
+</tr>
+<tr>
+<td>Datetime</td>
+<td>np.datetime64, pd.Timestamp</td>
+<td>datetime64</td>
+<td>Specific moment in time with nanosecond precision.</td>
+</tr>
+<tr>
+<td>Timedelta</td>
+<td>np.timedelta64, pd.Timedelta</td>
+<td>timedelta64</td>
+<td>An amount of time, from days to nanoseconds.</td>
+</tr>
+<tr>
+<td>Categorical</td>
+<td>pd.Categorical</td>
+<td>category</td>
+<td>Specific only to pandas. Useful for object columns with relatively few unique values.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm7ncfn6d0076gvq9ep4u48t0" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-info" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/13/pandas-info/" class="article-date">
@@ -111,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm7mk7rn4007rfnqh9vgl6bz3" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm7ncfn6h007tgvq9degl0376" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -157,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm7mk7rlk001efnqh2c0fbg17" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm7ncfn51001bgvq9e2542y4r" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -367,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm7mk7rmj0051fnqhcclq8cdg" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm7ncfn600053gvq9b2xugsr1" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -418,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm7mk7rli0017fnqh36c04xuo" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm7ncfn500014gvq9ffwzc78b" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -474,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm7mk7rmf004nfnqhdkwa1mgt" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm7ncfn5w004pgvq9cn0t3b0t" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -494,10 +651,6 @@
   <time class="dt-published" datetime="2021-07-06T01:48:47.000Z" itemprop="datePublished">2021-07-06</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -506,7 +659,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/">BigQuery SELECT * EXCEPT</a>
+      <a class="p-name article-title" href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/">Big Query SELECT * EXCEPT</a>
     </h1>
   
 
@@ -522,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm7mk7rl30004fnqhdfubedsf" data-title="BigQuery SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm7ncfn4k0003gvq9fu8f200s" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -577,7 +730,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm7mk7rlu002jfnqh5bkw3mh4" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm7ncfn5e002igvq9afpe7uq7" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -626,129 +779,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm7mk7rmy006rfnqhemjo33ou" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-isnull" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/30/pandas-isnull/" class="article-date">
-  <time class="dt-published" datetime="2021-06-30T15:32:27.000Z" itemprop="datePublished">2021-06-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/30/pandas-isnull/">pandas isnull</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isnull.html">isnull()</a></p>
-<p>可以用 <code>isnull()</code> 來找出 <code>NaN</code> 的值</p>
-<p>也可以寫成 <code>isna()</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull()</span><br></pre></td></tr></table></figure>
-
-<p>也可以和 <code>any()</code> 跟 <code>sum()</code> 搭配使用</p>
-<h2 id="sum"><a href="#sum" class="headerlink" title="sum()"></a>sum()</h2><p>可以計算每一個 column 各有幾個 <code>NaN</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<p>也可以計算每一個 row 各有幾個 <code>NaN</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="any"><a href="#any" class="headerlink" title="any()"></a>any()</h2><p>用 <code>any()</code> 來判斷每一個 column 有沒有 <code>NaN</code> 值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">any</span>()</span><br></pre></td></tr></table></figure>
-
-<p>想要看那一個 row 缺值的話</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">query = df.isnull().<span class="built_in">any</span>(axis=<span class="number">1</span>)</span><br><span class="line">df[query].head()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cm7mk7rn5007tfnqhg5l4ch0n" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-groupby" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/29/pandas-groupby/" class="article-date">
-  <time class="dt-published" datetime="2021-06-29T15:22:58.000Z" itemprop="datePublished">2021-06-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/29/pandas-groupby/">pandas groupby</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">groupby</a></p>
-<p><code>groupby</code> 用來對資料做集結</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<p>也可對複數個 column 做集結</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby([<span class="string">&#x27;column1&#x27;</span>,<span class="string">&#x27;column2&#x27;</span>]).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<p>集結後也可以指定對哪個 column 做處理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>也可以指定複數個 column</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[[<span class="string">&#x27;column2&#x27;</span>,<span class="string">&#x27;column3&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>不指定的話，就是對 column1 以外的 column 做處理</p>
-<p>關於處理，也可以同時指定多個</p>
-<p>例如同時使用 <code>count</code> <code>sum</code> <code>max</code> <code>min</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).agg([<span class="string">&#x27;count&#x27;</span>,<span class="string">&#x27;sum&#x27;</span>,<span class="string">&#x27;max&#x27;</span>,<span class="string">&#x27;min&#x27;</span>])[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cm7mk7rn2007ffnqhalw61ng0" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm7ncfn6b006ugvq95ehb6tay" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -787,7 +818,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GoogleCloudPlatform/" rel="tag">GoogleCloudPlatform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
     </div>
   </div>
 
@@ -797,7 +828,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 11.67px;">Google Cloud Platform</a> <a href="/note/tags/GoogleCloudPlatform/" style="font-size: 10px;">GoogleCloudPlatform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 15px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
     </div>
   </div>
 
@@ -819,6 +850,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/02/27/Go-set-implementation/">Go set implementation</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/02/26/scalability/">scalability</a>
           </li>
         
@@ -828,14 +867,6 @@
         
           <li>
             <a href="/note/2025/02/23/pipe/">pipe</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
-          </li>
-        
-          <li>
-            <a href="/note/2024/11/08/git-revert/">git revert</a>
           </li>
         
       </ul>
