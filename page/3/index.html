@@ -69,69 +69,12 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Go-RuneCountInString" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2022/12/11/Go-RuneCountInString/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T22:42:59.000Z" itemprop="datePublished">2022-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/Go-RuneCountInString/">Go RuneCountInStringで文字列の文字数を取得</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><code>Go</code> にて文字列の文字数を取得したい時に</p>
-<p><code>len</code> の場合</p>
-<p><code>byte</code>で数えるまたは一つの <code>Unicode character</code>は<code>1~4</code>bytesが使われるため</p>
-<p>英語以外の文字列はうまく文字数を取れないことがあります。</p>
-<p><code>unicode/utf-8</code> パッケージの <code>RuneCountInString</code> 関数を使えば</p>
-<p>文字列の文字数を取得できるようになります。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;unicode/utf8&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	name := <span class="string">&quot;テスト太郎&quot;</span></span><br><span class="line">	fmt.Println(<span class="string">&quot;len:&quot;</span>, <span class="built_in">len</span>(name))</span><br><span class="line">	fmt.Println(<span class="string">&quot;RuneCountInString:&quot;</span>, utf8.RuneCountInString(name))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">len: 15</span><br><span class="line">RuneCountInString: 5</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-RuneCountInString/" data-id="cm7ncfn4u000jgvq9gud8ecle" data-title="Go RuneCountInStringで文字列の文字数を取得" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-Go-Range" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2022/12/11/Go-Range/" class="article-date">
   <time class="dt-published" datetime="2022-12-11T22:41:47.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -156,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Range/" data-id="cm7ncfn4s000hgvq90nmf3hi4" data-title="Go Range" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Range/" data-id="cm7ow8ti2000ggmqc2qq953yd" data-title="Go Range" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -176,10 +119,6 @@
   <time class="dt-published" datetime="2022-12-11T22:40:20.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -213,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-edit-commit/" data-id="cm7ncfn670062gvq9gfv94537" data-title="git コミットを修正する" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-edit-commit/" data-id="cm7ow8tji004dgmqc8jo81xiq" data-title="git コミットを修正する" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -233,10 +172,6 @@
   <time class="dt-published" datetime="2022-12-11T22:38:39.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -267,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Echo/" data-id="cm7ncfn4r000ggvq9hydvft1p" data-title="Go Echo" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Echo/" data-id="cm7ow8ti1000fgmqc3szt32bd" data-title="Go Echo" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -287,10 +222,6 @@
   <time class="dt-published" datetime="2022-12-11T22:35:31.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -380,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Structs/" data-id="cm7ncfn4v000mgvq984vp4fga" data-title="Go Structs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-Structs/" data-id="cm7ow8ti4000kgmqc2lighhus" data-title="Go Structs" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -400,10 +331,6 @@
   <time class="dt-published" datetime="2022-12-11T06:11:21.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -447,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-diff/" data-id="cm7ncfn66005ygvq93n5hdrxu" data-title="git diff" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-diff/" data-id="cm7ow8tjh004agmqc6ra793t4" data-title="git diff" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -467,10 +394,6 @@
   <time class="dt-published" datetime="2022-12-11T06:07:15.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -499,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-alias/" data-id="cm7ncfn65005rgvq983tadvg5" data-title="git alias" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-alias/" data-id="cm7ow8tjf0045gmqc4o9g96ku" data-title="git alias" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -519,10 +442,6 @@
   <time class="dt-published" datetime="2022-12-11T06:05:39.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -556,7 +475,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-hello-world/" data-id="cm7ncfn4w000pgvq9263q1vm2" data-title="Go Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-hello-world/" data-id="cm7ow8ti6000ngmqc3f6tfysb" data-title="Go Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -576,10 +495,6 @@
   <time class="dt-published" datetime="2022-12-11T05:59:56.000Z" itemprop="datePublished">2022-12-11</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/note/categories/ja/">ja</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -613,7 +528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-Requests-allow_redirects/" data-id="cm7ncfn5d0029gvq9duej6qsq" data-title="Python Requests パラメータ allow_redirects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-Requests-allow_redirects/" data-id="cm7ow8tii001ogmqcedzgeymy" data-title="Python Requests パラメータ allow_redirects" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -663,11 +578,64 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-main-module/" data-id="cm7ncfn5m003jgvq9ddycafpd" data-title="Python パッケージ中の main モジュール" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-main-module/" data-id="cm7ow8tix002igmqc6z141klc" data-title="Python パッケージ中の main モジュール" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-gcp-pca-case-study" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2022/10/31/gcp-pca-case-study/" class="article-date">
+  <time class="dt-published" datetime="2022-10-31T04:43:27.000Z" itemprop="datePublished">2022-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2022/10/31/gcp-pca-case-study/">Professional Cloud Architect Case Study</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.google.com/certification/guides/professional-cloud-architect?hl=ja">Case Study</a></li>
+</ul>
+<h2 id="解説"><a href="#解説" class="headerlink" title="解説"></a>解説</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-ehr-healthcare/">EHR Healthcare</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-helicopter-racing-league/">Helicopter Racing League</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-mountkirk-games/">Mountkirk Games</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-terramearth/">TerramEarth</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm7ow8tjd0040gmqc1g2t31lb" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li></ul>
 
     </footer>
   </div>
@@ -692,7 +660,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/note/categories/en/">en</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/ja/">ja</a></li><li class="category-list-item"><a class="category-list-link" href="/note/categories/zh-Hant-TW/">zh-Hant-TW</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/note/categories/ja/">ja</a></li></ul>
     </div>
   </div>
 
@@ -712,7 +680,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 14.29px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 12.86px;">ビジネス</a>
     </div>
   </div>
 
