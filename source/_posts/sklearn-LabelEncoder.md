@@ -1,7 +1,6 @@
 ---
 title: sklearn LabelEncoder
 date: 2021-07-23T14:33:30+09:00
-categories: ["zh-Hant-TW"]
 tags: ["sklearn"]
 ---
 [LabelEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)

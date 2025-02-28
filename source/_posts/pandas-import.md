@@ -1,7 +1,6 @@
 ---
 title: pandas import
 date: 2021-06-05T13:01:27+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 

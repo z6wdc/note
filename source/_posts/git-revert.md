@@ -1,7 +1,6 @@
 ---
 title: git revert
 date: 2024-11-08 15:37:08
-categories: ["zh-Hant-TW"]
 tags: ["git"]
 ---
 當要還原的時候有 `git reset` 跟 `git revert` 可以選擇

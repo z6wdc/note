@@ -1,7 +1,6 @@
 ---
 title: pandas pivot
 date: 2021-07-20T17:08:05+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [pivot](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html)

@@ -1,8 +1,6 @@
 ---
 title: socket
 date: 2025-02-23 17:17:35
-categories: ["zh-Hant-TW"]
-tags:
 ---
 **Socket** 是進程間通信（IPC）的一種方式，允許不同機器上的進程或同一台機器上的進程之間進行數據傳輸。以下是 Socket 的一些主要特性：
 

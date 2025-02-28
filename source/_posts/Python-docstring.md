@@ -1,7 +1,6 @@
 ---
 title: Python docstring
 date: 2021-06-25T12:05:57+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [docstring](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring)

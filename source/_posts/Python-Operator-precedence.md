@@ -1,7 +1,6 @@
 ---
 title: Python Operator precedence
 date: 2021-07-25T19:12:48+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)

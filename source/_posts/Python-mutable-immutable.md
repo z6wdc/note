@@ -1,7 +1,6 @@
 ---
 title: Python mutable immutable
 date: 2021-05-22T08:49:09+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 Python 的 [object](https://docs.python.org/3/reference/datamodel.html#objects-values-and-types) 有分成

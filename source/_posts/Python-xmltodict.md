@@ -1,7 +1,6 @@
 ---
 title: Python xmltodict
 date: 2021-08-01T10:39:39+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [xmltodict](https://github.com/martinblech/xmltodict#readme)

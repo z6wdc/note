@@ -1,7 +1,6 @@
 ---
 title: Python os makedirs
 date: 2021-09-11T01:40:29+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [os.makedirs](https://docs.python.org/3/library/os.html#os.makedirs)

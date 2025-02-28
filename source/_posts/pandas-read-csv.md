@@ -1,7 +1,6 @@
 ---
 title: pandas read_csv
 date: 2021-07-23T21:39:10+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [read_csv()](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)

@@ -1,7 +1,6 @@
 ---
 title: pip install
 date: 2021-06-28T22:09:40+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [pip install](https://pip.pypa.io/en/stable/cli/pip_install/#)

@@ -1,7 +1,6 @@
 ---
 title: pandas index
 date: 2021-07-21T16:14:02+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [index](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Index.html)

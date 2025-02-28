@@ -1,7 +1,6 @@
 ---
 title: "git alias"
 date: 2022-12-11T15:07:15+09:00
-categories: ["ja"]
 tags: ["git"]
 ---
 ## aliasとは

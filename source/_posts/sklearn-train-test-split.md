@@ -1,7 +1,6 @@
 ---
 title: sklearn train_test_split
 date: 2021-07-27T18:54:10+09:00
-categories: ["zh-Hant-TW"]
 tags: ["sklearn"]
 ---
 [sklearn.model_selection.train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)

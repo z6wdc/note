@@ -1,7 +1,6 @@
 ---
 title: "git diff"
 date: 2022-12-11T15:11:21+09:00
-categories: ["ja"]
 tags: ["git"]
 ---
 ## git diff とは

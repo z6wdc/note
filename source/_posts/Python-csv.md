@@ -1,7 +1,6 @@
 ---
 title: Python csv
 date: 2021-08-01T10:08:10+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [csv](https://docs.python.org/3/library/csv.html?highlight=csv#module-csv)

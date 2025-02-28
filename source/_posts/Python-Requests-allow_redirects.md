@@ -1,7 +1,6 @@
 ---
 title: "Python Requests パラメータ allow_redirects"
 date: 2022-12-11T14:59:56+09:00
-categories: ["ja"]
 tags: ["Python"]
 ---
 ## allow_redirects

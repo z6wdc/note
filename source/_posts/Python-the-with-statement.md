@@ -1,7 +1,6 @@
 ---
 title: Python the with statement
 date: 2021-07-31T13:35:20+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [The with statement](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement)

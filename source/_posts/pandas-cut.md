@@ -1,7 +1,6 @@
 ---
 title: pandas cut
 date: 2021-07-18T08:40:47+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [cut](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html)

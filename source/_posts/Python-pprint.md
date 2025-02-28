@@ -1,7 +1,6 @@
 ---
 title: Python pprint
 date: 2021-08-01T12:25:59+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [pprint](https://docs.python.org/3/library/pprint.html)

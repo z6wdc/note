@@ -1,7 +1,6 @@
 ---
 title: Python any
 date: 2021-07-26T21:39:36+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 Python Built-in Function 的 [any()](https://docs.python.org/3/library/functions.html#any)

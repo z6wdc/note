@@ -1,7 +1,6 @@
 ---
 title: Python datetime strftime vs strptime
 date: 2021-09-17T11:05:55+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 ## strftime

@@ -1,7 +1,6 @@
 ---
 title: Python dotenv
 date: 2021-09-30T21:17:56+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [dotenv](https://github.com/theskumar/python-dotenv)

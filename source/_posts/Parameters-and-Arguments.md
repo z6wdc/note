@@ -1,7 +1,6 @@
 ---
 title: Parameters and Arguments
 date: 2021-07-20T16:34:59+09:00
-categories: ["zh-Hant-TW"]
 tags: ["programming"]
 ---
 `Parameters`

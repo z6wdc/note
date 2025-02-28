@@ -1,7 +1,6 @@
 ---
 title: Python json
 date: 2021-08-02T18:07:51+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [json](https://docs.python.org/3/library/json.html)

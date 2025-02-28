@@ -1,7 +1,6 @@
 ---
 title: pandas quantile
 date: 2021-07-20T16:13:58+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [qunatile](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.quantile.html)

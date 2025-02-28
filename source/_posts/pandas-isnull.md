@@ -1,7 +1,6 @@
 ---
 title: pandas isnull
 date: 2021-07-01T00:32:27+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [isnull()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isnull.html)

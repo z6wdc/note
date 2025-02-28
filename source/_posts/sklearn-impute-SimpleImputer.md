@@ -1,7 +1,6 @@
 ---
 title: sklearn impute SimpleImputer
 date: 2021-08-10T14:06:21+09:00
-categories: ["zh-Hant-TW"]
 tags: ["sklearn"]
 ---
 [sklearn.impute.SimpleImputer](https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html)

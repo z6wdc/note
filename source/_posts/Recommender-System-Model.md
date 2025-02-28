@@ -1,7 +1,6 @@
 ---
 title: Recommender System Model
 date: 2021-07-12T12:40:47+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Recommender System"]
 ---
 

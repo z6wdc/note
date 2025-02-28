@@ -1,7 +1,6 @@
 ---
 title: pandas all
 date: 2021-07-23T23:35:26+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [all()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.all.html)

@@ -1,7 +1,6 @@
 ---
 title: Python enumerate
 date: 2021-08-19T00:38:58+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [enumerate](https://docs.python.org/3/library/functions.html#enumerate)

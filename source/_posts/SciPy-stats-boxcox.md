@@ -1,7 +1,6 @@
 ---
 title: SciPy stats boxcox
 date: 2021-07-23T11:26:42+09:00
-categories: ["zh-Hant-TW"]
 tags: ["SciPy"]
 ---
 [boxcox](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html)

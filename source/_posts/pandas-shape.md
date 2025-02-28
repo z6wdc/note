@@ -1,7 +1,6 @@
 ---
 title: pandas shape
 date: 2021-06-24T17:41:34+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 想知道 `DataFrame` 有幾個 row 跟 columns 的時候

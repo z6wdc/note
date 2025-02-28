@@ -1,7 +1,6 @@
 ---
 title: pandas any
 date: 2021-07-23T23:42:33+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [any()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.any.html)

@@ -1,7 +1,6 @@
 ---
 title: NumPy log1p
 date: 2021-07-23T11:52:40+09:00
-categories: ["zh-Hant-TW"]
 tags: ["NumPy"]
 ---
 [lop1p](https://numpy.org/doc/stable/reference/generated/numpy.log1p.html)
