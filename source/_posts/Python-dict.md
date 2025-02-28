@@ -1,7 +1,6 @@
 ---
 title: Python dict
 date: 2021-08-06T15:00:25+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [dict](https://docs.python.org/3/library/stdtypes.html#dict)

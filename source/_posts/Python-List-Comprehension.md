@@ -1,7 +1,6 @@
 ---
 title: Python List Comprehension
 date: 2021-05-06T20:18:13+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 在 Python 中有 [List Comprehension](https://docs.python.org/3/tutorial/datastructures.html?#list-comprehensions) 這個簡潔的 syntax

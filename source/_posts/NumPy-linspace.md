@@ -1,7 +1,6 @@
 ---
 title: NumPy linspace
 date: 2021-07-21T10:19:25+09:00
-categories: ["zh-Hant-TW"]
 tags: ["NumPy"]
 ---
 [linspace](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html)

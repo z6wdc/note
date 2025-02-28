@@ -1,7 +1,6 @@
 ---
 title: Python collections defaultdict
 date: 2021-07-06T00:01:37+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [defaultdict](https://docs.python.org/3/library/collections.html#defaultdict-objects)

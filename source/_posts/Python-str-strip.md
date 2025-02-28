@@ -1,7 +1,6 @@
 ---
 title: Python str.strip
 date: 2021-07-15T08:19:03+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [strip()](https://docs.python.org/3/library/stdtypes.html?#str.strip)

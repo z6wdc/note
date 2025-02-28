@@ -1,7 +1,6 @@
 ---
 title: pandas head tail
 date: 2021-06-29T22:34:25+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [head](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html)

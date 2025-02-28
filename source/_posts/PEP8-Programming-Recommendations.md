@@ -1,7 +1,6 @@
 ---
 title: PEP8 Programming Recommendations
 date: 2021-08-18T20:43:12+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Programming Recommendations](https://www.python.org/dev/peps/pep-0008/#programming-recommendations)

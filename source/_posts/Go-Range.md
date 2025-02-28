@@ -1,7 +1,6 @@
 ---
 title: "Go Range"
 date: 2022-12-12T07:41:47+09:00
-categories: ["ja"]
 tags: ["Go"]
 ---
 ## Range

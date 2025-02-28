@@ -1,7 +1,6 @@
 ---
 title: Mac pbcopy pbpaste
 date: 2021-07-11T22:23:10+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Mac"]
 ---
 Mac 可以利用 `pbcopy` 這指令來複製

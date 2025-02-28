@@ -1,7 +1,6 @@
 ---
 title: Python all
 date: 2021-07-26T21:43:05+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 Python Built-in Function 的 [all()](https://docs.python.org/3/library/functions.html#all)

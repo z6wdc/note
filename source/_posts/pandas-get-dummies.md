@@ -1,7 +1,6 @@
 ---
 title: pandas get_dummies
 date: 2021-07-23T18:56:04+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [get_dummies()](https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html)

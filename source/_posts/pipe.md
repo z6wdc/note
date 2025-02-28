@@ -1,7 +1,6 @@
 ---
 title: pipe
 date: 2025-02-23 16:57:05
-categories: ["zh-Hant-TW"]
 tags:
 ---
 **Pipe** 是一種進程間通信（IPC, Inter-Process Communication）機制，通常用於在同一台機器上的進程之間傳遞數據。以下是 Pipe 的一些主要特性：

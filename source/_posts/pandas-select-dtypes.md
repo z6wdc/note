@@ -1,7 +1,6 @@
 ---
 title: pandas select_dtypes
 date: 2021-09-12T23:04:13+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [select_dtypes](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html) 可以對你的 column 做 filter

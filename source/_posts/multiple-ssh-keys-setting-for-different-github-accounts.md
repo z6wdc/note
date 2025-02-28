@@ -1,7 +1,6 @@
 ---
 title: 為不同的 GitHub 帳號設定多把 SSH key
 date: 2024-10-23 11:44:18
-categories: ["zh-Hant-TW"]
 tags: [GitHub]
 ---
 如果有多個 github 帳號（例如個人用，工作用）

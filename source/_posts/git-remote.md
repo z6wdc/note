@@ -1,7 +1,6 @@
 ---
 title: git remote
 date: 2021-07-18T09:18:02+09:00
-categories: ["zh-Hant-TW"]
 tags: ["git"]
 ---
 [git remote](https://git-scm.com/docs/git-remote)

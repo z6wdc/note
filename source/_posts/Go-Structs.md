@@ -1,7 +1,6 @@
 ---
 title: "Go Structs"
 date: 2022-12-12T07:35:31+09:00
-categories: ["ja"]
 tags: ["Go"]
 ---
 ## Structs とは

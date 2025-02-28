@@ -1,7 +1,6 @@
 ---
 title: "Go Echo"
 date: 2022-12-12T07:38:39+09:00
-categories: ["ja"]
 tags: ["Go","Echo"]
 ---
 ## Echoとは

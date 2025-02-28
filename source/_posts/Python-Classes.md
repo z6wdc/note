@@ -1,7 +1,6 @@
 ---
 title: Python Classes
 date: 2021-08-18T15:56:26+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Classes](https://docs.python.org/3/tutorial/classes.html)

@@ -1,7 +1,6 @@
 ---
 title: Python requests redirection
 date: 2021-09-30T21:23:52+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Redirection and History](https://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history)

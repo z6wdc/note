@@ -1,7 +1,6 @@
 ---
 title: git config core.ignorecase
 date: 2021-07-15T08:36:22+09:00
-categories: ["zh-Hant-TW"]
 tags: ["git"]
 ---
 

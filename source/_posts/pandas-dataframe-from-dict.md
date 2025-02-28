@@ -1,7 +1,6 @@
 ---
 title: pandas dataframe from_dict
 date: 2021-08-29T23:13:12+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [from_dict](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html)

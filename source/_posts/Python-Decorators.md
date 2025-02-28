@@ -1,7 +1,6 @@
 ---
 title: Python Decorators
 date: 2021-07-16T08:19:13+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Decorators](https://www.python.org/dev/peps/pep-0318/#examples)

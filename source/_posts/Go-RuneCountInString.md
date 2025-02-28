@@ -1,7 +1,6 @@
 ---
 title: "Go RuneCountInStringで文字列の文字数を取得"
 date: 2022-12-12T07:42:59+09:00
-categories: ["ja"]
 tags: ["Go"]
 ---
 `Go` にて文字列の文字数を取得したい時に

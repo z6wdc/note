@@ -1,7 +1,6 @@
 ---
 title: pandas str.contains
 date: 2021-07-19T11:54:59+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [str.contains](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html)

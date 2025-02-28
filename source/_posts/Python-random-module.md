@@ -1,7 +1,6 @@
 ---
 title: Python random module
 date: 2021-05-18T22:36:49+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 Python 有 random 這個 module  

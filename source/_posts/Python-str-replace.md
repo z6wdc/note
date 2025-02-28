@@ -1,7 +1,6 @@
 ---
 title: Python str.replace
 date: 2021-07-10T01:41:40+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [str.replace()](https://docs.python.org/3/library/stdtypes.html#str.replace)

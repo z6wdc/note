@@ -1,7 +1,6 @@
 ---
 title: Python re search vs match
 date: 2021-07-14T01:00:37+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [`search` vs `match`](https://docs.python.org/3/library/re.html#search-vs-match)

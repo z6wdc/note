@@ -1,7 +1,6 @@
 ---
 title: SQL LIKE
 date: 2021-07-20T15:48:47+09:00
-categories: ["zh-Hant-TW"]
 tags: ["SQL"]
 ---
 [LIKE](https://dev.mysql.com/doc/refman/8.0/en/pattern-matching.html)

@@ -1,7 +1,6 @@
 ---
 title: Python reduce()
 date: 2021-10-20T11:30:05+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [reduce](https://docs.python.org/3/library/functools.html#functools.reduce)

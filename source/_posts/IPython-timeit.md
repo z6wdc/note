@@ -1,7 +1,6 @@
 ---
 title: "IPython timeit"
 date: 2022-10-31T11:41:14+09:00
-categories: ["zh-Hant-TW"]
 tags: ["IPython"]
 ---
 [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)

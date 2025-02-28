@@ -1,7 +1,6 @@
 ---
 title: pandas sort_values
 date: 2021-06-28T22:24:52+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [sort_values()](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html)

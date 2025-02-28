@@ -1,7 +1,6 @@
 ---
 title: Detached HEAD
 date: 2025-02-18T15:11:21+09:00
-categories: ["zh-Hant-TW"]
 tags: ["git"]
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: seaborn plot types
 date: 2021-08-23T02:14:14+09:00
-categories: ["zh-Hant-TW"]
 tags: ["seaborn"]
 ---
 在做 Data Visualization 時

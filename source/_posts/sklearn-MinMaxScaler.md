@@ -1,7 +1,6 @@
 ---
 title: sklearn MinMaxScaler
 date: 2021-07-25T18:23:58+09:00
-categories: ["zh-Hant-TW"]
 tags: ["sklearn"]
 ---
 [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)

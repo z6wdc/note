@@ -1,7 +1,6 @@
 ---
 title: NumPy reshape
 date: 2021-07-27T11:44:59+09:00
-categories: ["zh-Hant-TW"]
 tags: ["NumPy"]
 ---
 [reshape](https://numpy.org/doc/stable/reference/generated/numpy.reshape.html)

@@ -1,7 +1,6 @@
 ---
 title: pandas options
 date: 2021-07-18T09:36:07+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [options](https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html)

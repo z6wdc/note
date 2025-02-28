@@ -1,7 +1,6 @@
 ---
 title: Go set implementation
 date: 2025-02-27 09:21:33
-categories: ["zh-Hant-TW"]
 tags: ["Go"]
 ---
 Golang 沒有內建的 `set`，但可以使用 `map` 來模擬 `set`，

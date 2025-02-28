@@ -1,7 +1,6 @@
 ---
 title: 關聯資料庫
 date: 2024-04-03 22:46:12
-categories: ["zh-Hant-TW"]
 tags: ["RDB"]
 ---
 

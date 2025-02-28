@@ -1,7 +1,6 @@
 ---
 title: Python re Match Objects
 date: 2021-08-06T08:18:06+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 [Match Objects](https://docs.python.org/3/library/re.html#match-objects)

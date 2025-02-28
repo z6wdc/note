@@ -1,7 +1,6 @@
 ---
 title: scalability
 date: 2025-02-26 09:31:54
-categories: ["zh-Hant-TW"]
 tags: ['System Design']
 ---
 

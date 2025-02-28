@@ -1,7 +1,6 @@
 ---
 title: Functions vs Methods
 date: 2024-10-12 14:27:29
-categories: ["en"]
 tags: ["Scala"]
 ---
 ## difference

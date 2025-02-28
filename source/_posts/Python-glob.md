@@ -1,7 +1,6 @@
 ---
 title: Python glob
 date: 2021-09-29T23:01:26+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 ['glob'](https://docs.python.org/3/library/glob.html)

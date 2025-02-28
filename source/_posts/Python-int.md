@@ -1,7 +1,6 @@
 ---
 title: Python int()
 date: 2021-05-07T01:02:43+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 Python Built-in Function 的 [int()](https://docs.python.org/3/library/functions.html#int)

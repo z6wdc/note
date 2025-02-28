@@ -1,7 +1,6 @@
 ---
 title: Python map()
 date: 2021-05-22T07:09:40+09:00
-categories: ["zh-Hant-TW"]
 tags: ["Python"]
 ---
 我們可以利用

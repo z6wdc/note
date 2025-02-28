@@ -1,7 +1,6 @@
 ---
 title: "Go Hello World"
 date: 2022-12-11T15:05:39+09:00
-categories: ["ja"]
 tags: ["Go"]
 ---
 ## install

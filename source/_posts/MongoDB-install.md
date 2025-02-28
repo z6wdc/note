@@ -1,7 +1,6 @@
 ---
 title: MongoDB install
 date: 2024-04-11 19:38:11
-categories: ["en"]
 tags: ["MongoDB"]
 ---
 ## Install MongoDB Community Edition on macOS

@@ -1,7 +1,6 @@
 ---
 title: pandas groupby
 date: 2021-06-30T00:22:58+09:00
-categories: ["zh-Hant-TW"]
 tags: ["pandas"]
 ---
 [groupby](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html)
