@@ -1,7 +1,6 @@
 ---
 title: Python パッケージ中の main モジュール
 date: 2022-12-11T14:48:24+09:00
-categories: ["ja"]
 tags: ["Python"]
 ---
 ## `__main__.py`
