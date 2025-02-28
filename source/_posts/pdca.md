@@ -1,7 +1,6 @@
 ---
 title: "仕事の進め方とPDCA"
 date: 2023-01-31T18:59:20+09:00
-categories: ["ja"]
 tags: ["ビジネス"]
 ---
 ## 仕事の進め方とPDCA
