@@ -33,3 +33,9 @@ $ npx hexo generate
 ```
 
 More info: [Generating](https://hexo.io/docs/generating.html)
+
+### Clean
+
+``` bash
+$ npx hexo clean
+```
