@@ -69,291 +69,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Python-exec" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/Python-exec/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T07:07:08.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/Python-exec/">Python exec</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#exec">exec</a></p>
-<p><code>exec</code> 可以把字串當成程式碼來執行</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exec</span>(<span class="string">&#x27;print([x for x in range(10)])&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/Python-exec/" data-id="cm7ow8tit0028gmqc69hp3yak" data-title="Python exec" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-SQL-LIKE" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/SQL-LIKE/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T06:48:47.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/SQL-LIKE/">SQL LIKE</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/pattern-matching.html">LIKE</a></p>
-<p><code>SQL</code> 中可以利用 <code>LIKE</code> 來對字串做模糊查詢</p>
-<p><code>%</code> 表示 0 或任意多個字元</p>
-<p><code>_</code> 表示任意一個字元</p>
-<p>查詢時預設不會分辨大小寫</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;b%&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;_____&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>想找指定字串以外的時候</p>
-<p>可以用 <code>NOT LIKE</code></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;_____&#x27;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/SQL-LIKE/" data-id="cm7ow8tjb003tgmqc9dzm9fzx" data-title="SQL LIKE" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-str-contains" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/19/pandas-str-contains/" class="article-date">
-  <time class="dt-published" datetime="2021-07-19T02:54:59.000Z" itemprop="datePublished">2021-07-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/19/pandas-str-contains/">pandas str.contains</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html">str.contains</a></p>
-<p>檢查 <code>Series</code> 裡面有沒有包含特定字串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="built_in">str</span>.contains(<span class="string">&#x27;text&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>想要忽略大小寫的時候</p>
-<p>可以把 <code>case</code> 設定成 <code>False</code> 預設為 <code>True</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.<span class="built_in">str</span>.contains(<span class="string">&#x27;og&#x27;</span>, <span class="keyword">case</span>=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/19/pandas-str-contains/" data-id="cm7ow8tjw0064gmqcdcz3aoug" data-title="pandas str.contains" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-options" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/18/pandas-options/" class="article-date">
-  <time class="dt-published" datetime="2021-07-18T00:36:07.000Z" itemprop="datePublished">2021-07-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/18/pandas-options/">pandas options</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/options.html">options</a></p>
-<p><code>pandas</code> 的 <code>DataFrame</code> 顯示有預設值</p>
-<p>要顯示更多時，可以用 <code>options</code> 去調整</p>
-<h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.max_columns = <span class="number">30</span></span><br><span class="line">pd.options.display.max_rows = <span class="number">100</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="get"><a href="#get" class="headerlink" title="get"></a>get</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.options.display.max_columns</span><br><span class="line">pd.options.display.max_rows</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/pandas-options/" data-id="cm7ow8tjs005mgmqch36g2qpx" data-title="pandas options" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git-remote" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/18/git-remote/" class="article-date">
-  <time class="dt-published" datetime="2021-07-18T00:18:02.000Z" itemprop="datePublished">2021-07-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/18/git-remote/">git remote</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-remote">git remote</a></p>
-<h2 id="看目前設定"><a href="#看目前設定" class="headerlink" title="看目前設定"></a>看目前設定</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-
-<h2 id="追加設定"><a href="#追加設定" class="headerlink" title="追加設定"></a>追加設定</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;name&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="刪除設定"><a href="#刪除設定" class="headerlink" title="刪除設定"></a>刪除設定</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote remove &lt;name&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="built_in">rm</span> remove &lt;name&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="刪除-remote-上已刪除的-branch"><a href="#刪除-remote-上已刪除的-branch" class="headerlink" title="刪除 remote 上已刪除的 branch"></a>刪除 remote 上已刪除的 branch</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote prune &lt;name&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/git-remote/" data-id="cm7ow8tji004fgmqc5ctd4uzb" data-title="git remote" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-cut" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/17/pandas-cut/" class="article-date">
-  <time class="dt-published" datetime="2021-07-17T23:40:47.000Z" itemprop="datePublished">2021-07-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/17/pandas-cut/">pandas cut</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.cut.html">cut</a></p>
-<p>把資料分成 n 組區間</p>
-<p>n 用 <code>bins</code> 來指定</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pd.cut(age_data[<span class="string">&#x27;YEARS_BIRTH&#x27;</span>], bins=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-<p>也可以自己指定區間的上下界</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cut_rule = [-np.inf, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, np.inf]</span><br><span class="line"></span><br><span class="line">app_train[<span class="string">&#x27;CNT_CHILDREN_GROUP&#x27;</span>] = pd.cut(app_train[<span class="string">&#x27;CNT_CHILDREN&#x27;</span>], cut_rule)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm7ow8tjn004ygmqc7z3yesc0" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
     <article id="post-Python-Decorators" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/15/Python-Decorators/" class="article-date">
@@ -384,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm7ow8tig001igmqc7497b5yh" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm7qb02im0011gfpz6kcec0zt" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -436,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm7ow8tjg0048gmqc8eya530n" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm7qb02ji003igfpzdgrg51zc" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -493,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm7ow8tj6003egmqcf8i3axr8" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm7qb02ja002rgfpz31tv8hd7" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -538,7 +253,510 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm7ow8tj20031gmqcdxno7hfy" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm7qb02j6002fgfpzcfuh3ivv" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/pandas-dtypes/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T03:08:45.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/pandas-dtypes/">pandas dtypes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dtypes.html">dtypes</a></p>
+<p><code>DataFrame</code> 有 <code>dtypes</code> 這個 property</p>
+<p>可以用來檢查各個 columns 的型別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+<p>而在 <code>pandas</code> 有下列的型別</p>
+<table>
+<thead>
+<tr>
+<th>Common data type name</th>
+<th>NumPy&#x2F;pandas object</th>
+<th>Pandas string name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Boolean</td>
+<td>np.bool</td>
+<td>bool</td>
+<td>Stored as a single byte</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>np.int</td>
+<td>int</td>
+<td>Defaulted to 64 bits. Unsigned ints are also available - np.uint.</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>np.float</td>
+<td>float</td>
+<td>Defaulted to 64 bits.</td>
+</tr>
+<tr>
+<td>Complex</td>
+<td>np.complex</td>
+<td>complex</td>
+<td>Rarely seen in data analysis.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>np.object</td>
+<td>O, object</td>
+<td>Typically strings but is a ctach-all for columns with multiple different types or other Python objects(tuples, lists, dicts, and so on).</td>
+</tr>
+<tr>
+<td>Datetime</td>
+<td>np.datetime64, pd.Timestamp</td>
+<td>datetime64</td>
+<td>Specific moment in time with nanosecond precision.</td>
+</tr>
+<tr>
+<td>Timedelta</td>
+<td>np.timedelta64, pd.Timedelta</td>
+<td>timedelta64</td>
+<td>An amount of time, from days to nanoseconds.</td>
+</tr>
+<tr>
+<td>Categorical</td>
+<td>pd.Categorical</td>
+<td>category</td>
+<td>Specific only to pandas. Useful for object columns with relatively few unique values.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm7qb02js0049gfpzezegdieo" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-info" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/pandas-info/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T03:03:23.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/pandas-info/">pandas info</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html">info</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
+
+<p>可以利用 info 來檢查每個 column 的</p>
+<ul>
+<li><p>名稱</p>
+</li>
+<li><p>Non-Null Count</p>
+</li>
+<li><p>型別</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm7qb02jx004pgfpz8ndo7w2w" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-NumPy-inf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/NumPy-inf/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T02:54:49.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/NumPy-inf/">NumPy inf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://numpy.org/devdocs/reference/constants.html#numpy.inf">inf</a></p>
+<p><code>NumPy</code> 中可以用 <code>numpy.inf</code> 來表示無限大</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm7qb02ih000pgfpz19q40fi1" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Recommender-System-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/12/Recommender-System-Model/" class="article-date">
+  <time class="dt-published" datetime="2021-07-12T03:40:47.000Z" itemprop="datePublished">2021-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/12/Recommender-System-Model/">Recommender System Model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Recommender System 中常見的手法</p>
+<h2 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h2><p>其實在還沒有什麼資料的時候</p>
+<p>直接推薦使用者 rank 高的 item 就是個常見的做法</p>
+<p>在計算 rank 的時候</p>
+<p>也可以參考這個<a target="_blank" rel="noopener" href="https://myanimelist.net/info.php?go=topanime">算式</a></p>
+<h2 id="Content-Based-Filtering"><a href="#Content-Based-Filtering" class="headerlink" title="Content Based Filtering"></a>Content Based Filtering</h2><p>利用 item 本身的資訊來找出相似的 item 並推薦</p>
+<p>如果 item 有內容介紹之類的文章</p>
+<p>也可以利用 TF-IDF 來加以分析</p>
+<h3 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h3><p>計算相似度的常用方法</p>
+<ul>
+<li><p>mean squared difference</p>
+</li>
+<li><p>Jaccard similarity</p>
+</li>
+<li><p>Cosine Similarity</p>
+</li>
+<li><p>Pearson Correlation Coefficient</p>
+</li>
+</ul>
+<h2 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h2><h3 id="Model-Based"><a href="#Model-Based" class="headerlink" title="Model Based"></a>Model Based</h3><p>PCA</p>
+<p>SVD</p>
+<p>Matrix Factorization</p>
+<h3 id="Memory-Based"><a href="#Memory-Based" class="headerlink" title="Memory Based"></a>Memory Based</h3><h4 id="User-Based"><a href="#User-Based" class="headerlink" title="User Based"></a>User Based</h4><p>先找與你喜好相近的人</p>
+<p>再推薦他們喜歡的東西給你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>user -&gt; item rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+<th>item4</th>
+<th>item5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>user -&gt; user similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>user2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>user3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>look up similar users</p>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h4 id="Item-Based"><a href="#Item-Based" class="headerlink" title="Item Based"></a>Item Based</h4><p>用你喜歡的 Item 去找相似的 Item 來推薦你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>item -&gt; user rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>item -&gt; item similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>item2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>item3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h2 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h2><p>綜合 <code>Content Based</code> 跟 <code>Collaborative</code> 的方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm7qb02jd0031gfpz74dx9eny" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mac-pbcopy-pbpaste" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/11/Mac-pbcopy-pbpaste/" class="article-date">
+  <time class="dt-published" datetime="2021-07-11T13:23:10.000Z" itemprop="datePublished">2021-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/11/Mac-pbcopy-pbpaste/">Mac pbcopy pbpaste</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Mac 可以利用 <code>pbcopy</code> 這指令來複製</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; target.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> target.txt | pbcopy</span><br></pre></td></tr></table></figure>
+
+<p>然後可以利用 <code>pbpaste</code> 來貼出目前複製的內容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm7qb02if000kgfpzghh72ffk" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-str-replace" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/09/Python-str-replace/" class="article-date">
+  <time class="dt-published" datetime="2021-07-09T16:41:40.000Z" itemprop="datePublished">2021-07-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/09/Python-str-replace/">Python str.replace</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.replace">str.replace()</a></p>
+<p>可用來對字串中的字做替換</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>沒有指定 <code>count</code> 的話，就會對所有字做替換</p>
+<p>有指定 <code>count</code> 的話</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>就只會替換前面 <code>count</code> 次的字</p>
+<p>另外如果 <code>count</code> 設定一個超過目標次數的數值</p>
+<p>也不會出現錯誤</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;target&#x27;</span>.replace(<span class="string">&#x27;t&#x27;</span>, <span class="string">&#x27;T&#x27;</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm7qb02jb002tgfpz7w8vabzn" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -556,7 +774,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/8/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/note/page/10/">10</a><a class="page-number" href="/note/page/11/">11</a><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/10/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/8/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/note/page/10/">10</a><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/10/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -564,20 +782,13 @@
           <aside id="sidebar">
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/note/categories/ja/">ja</a></li></ul>
-    </div>
-  </div>
-
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Scala/" rel="tag">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
     </div>
   </div>
 
@@ -587,7 +798,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 12.86px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.43px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 12.86px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 11.67px;">ビジネス</a>
     </div>
   </div>
 
@@ -596,7 +807,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/01/">January 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
