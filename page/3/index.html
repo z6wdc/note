@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-git-diff" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-pandas-dataframe-from-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2022/12/11/git-diff/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T06:11:21.000Z" itemprop="datePublished">2022-12-11</time>
+    <a href="/note/2021/08/29/pandas-dataframe-from-dict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-29T14:13:12.000Z" itemprop="datePublished">2021-08-29</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/git-diff/">git diff</a>
+      <a class="p-name article-title" href="/note/2021/08/29/pandas-dataframe-from-dict/">pandas dataframe from_dict</a>
     </h1>
   
 
@@ -91,38 +91,23 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="git-diff-とは"><a href="#git-diff-とは" class="headerlink" title="git diff とは"></a>git diff とは</h2><p>commits, commit, working treeなどの間の変更を表示する</p>
-<h3 id="Comparing-with-arbitrary-commits"><a href="#Comparing-with-arbitrary-commits" class="headerlink" title="Comparing with arbitrary commits"></a>Comparing with arbitrary commits</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff main</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html">from_dict</a></p>
+<p>可以利用 <code>from_dict</code> 把 <code>dictionary</code> 做成 <code>dataframe</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;col_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;col_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data)</span><br></pre></td></tr></table></figure>
 
-<p>現在の<strong>branch</strong>と<code>main</code>の<strong>branch</strong>を比較する</p>
-<h3 id="–name-only"><a href="#–name-only" class="headerlink" title="–name-only"></a>–name-only</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">git diff --name-only main</span></span><br><span class="line">a.txt</span><br><span class="line">b.txt</span><br><span class="line">c.txt</span><br></pre></td></tr></table></figure>
-
-<p>変更されたファイルの名前のみを表示する</p>
-<h3 id="–name-status"><a href="#–name-status" class="headerlink" title="–name-status"></a>–name-status</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">git diff --name-status main</span></span><br><span class="line">M       a.txt</span><br><span class="line">D       b.txt</span><br><span class="line">A       c.txt</span><br></pre></td></tr></table></figure>
-
-<p>変更されたファイルの名前と状態のみを表示する</p>
-<h3 id="–diff-filter-A-C-D-M-R-T-U-X-B-…​"><a href="#–diff-filter-A-C-D-M-R-T-U-X-B-…​" class="headerlink" title="–diff-filter&#x3D;[(A|C|D|M|R|T|U|X|B)…​[*]]"></a>–diff-filter&#x3D;[(A|C|D|M|R|T|U|X|B)…​[*]]</h3><p>指定したファイルの変更状態のみを表示する</p>
-<ul>
-<li>A:Added</li>
-<li>D:Deleted</li>
-<li>M:Modified</li>
-<li>R:Renamed</li>
-</ul>
-<p>なお、大文字は指定、小文字は指定しない</p>
-<figure class="highlight plaintext"><figcaption><span>letters</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; git diff --diff-filter=AM --name-status  main</span><br><span class="line">M       a.txt</span><br><span class="line">A       c.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><figcaption><span>letters</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; git diff --diff-filter=a --name-status  main</span><br><span class="line">M       a.txt</span><br><span class="line">D       b.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-diff">https://git-scm.com/docs/git-diff</a></p>
+<p>而 <code>dictionary</code> 的 key 可以當作 column 或是 row 的 name</p>
+<p>預設會當做 column 的 name</p>
+<p>指定為 row 的方法是指定參數 <code>orient</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;row_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;row_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data, orient=<span class="string">&#x27;index&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-diff/" data-id="cm7qb02jj003lgfpz85kl3le4" data-title="git diff" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm7rs1s13003rh1q509ya38pm" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
 
     </footer>
   </div>
@@ -132,10 +117,10 @@
 
 
   
-    <article id="post-git-alias" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-seaborn-plot-types" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2022/12/11/git-alias/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T06:07:15.000Z" itemprop="datePublished">2022-12-11</time>
+    <a href="/note/2021/08/22/seaborn-plot-types/" class="article-date">
+  <time class="dt-published" datetime="2021-08-22T17:14:14.000Z" itemprop="datePublished">2021-08-22</time>
 </a>
     
   </div>
@@ -146,7 +131,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/git-alias/">git alias</a>
+      <a class="p-name article-title" href="/note/2021/08/22/seaborn-plot-types/">seaborn plot types</a>
     </h1>
   
 
@@ -154,23 +139,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="aliasとは"><a href="#aliasとは" class="headerlink" title="aliasとは"></a>aliasとは</h2><p><code>git status</code> というコマンドをaliasを設定することにより、 <code>git st</code> で使える</p>
-<h2 id="設定方法"><a href="#設定方法" class="headerlink" title="設定方法"></a>設定方法</h2><h3 id="command"><a href="#command" class="headerlink" title="command"></a>command</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
-
-<h3 id="gitconfigに追加"><a href="#gitconfigに追加" class="headerlink" title=".gitconfigに追加"></a>.gitconfigに追加</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	st = status</span><br></pre></td></tr></table></figure>
-
-<h2 id="例"><a href="#例" class="headerlink" title="例"></a>例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">	br = branch</span><br><span class="line">	st = status</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases">https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases</a></p>
+        <p>在做 Data Visualization 時</p>
+<p>可以使用 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/index.html">seaborn</a> 這套 library</p>
+<p><code>seaborn</code> 也有提供 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/api.html">API</a> 一欄</p>
+<p>讓你知道可以畫什麼種類的圖</p>
+<p>而我們通常會畫的圖</p>
+<p>可以分為</p>
+<h2 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h2><h3 id="sns-lineplot"><a href="#sns-lineplot" class="headerlink" title="sns.lineplot"></a>sns.lineplot</h3><h2 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h2><h3 id="sns-barplot"><a href="#sns-barplot" class="headerlink" title="sns.barplot"></a>sns.barplot</h3><h3 id="sns-heatmap"><a href="#sns-heatmap" class="headerlink" title="sns.heatmap"></a>sns.heatmap</h3><h3 id="sns-scatterplot"><a href="#sns-scatterplot" class="headerlink" title="sns.scatterplot"></a>sns.scatterplot</h3><h3 id="sns-regplot"><a href="#sns-regplot" class="headerlink" title="sns.regplot"></a>sns.regplot</h3><h3 id="sns-lmplot"><a href="#sns-lmplot" class="headerlink" title="sns.lmplot"></a>sns.lmplot</h3><h3 id="sns-swarmplot"><a href="#sns-swarmplot" class="headerlink" title="sns.swarmplot"></a>sns.swarmplot</h3><h2 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h2><h3 id="sns-distplot"><a href="#sns-distplot" class="headerlink" title="sns.distplot"></a>sns.distplot</h3><h3 id="sns-kdeplot"><a href="#sns-kdeplot" class="headerlink" title="sns.kdeplot"></a>sns.kdeplot</h3><h3 id="sns-jointplot"><a href="#sns-jointplot" class="headerlink" title="sns.jointplot"></a>sns.jointplot</h3><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/alexisbcook/choosing-plot-types-and-custom-styles?scriptVersionId=64768944&cellId=1">REFERENCE</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/git-alias/" data-id="cm7qb02ji003ggfpz7ri93xp9" data-title="git alias" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm7rs1s1g0057h1q5g5n9h5wq" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li></ul>
 
     </footer>
   </div>
@@ -180,10 +164,10 @@
 
 
   
-    <article id="post-Go-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-enumerate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2022/12/11/Go-hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T06:05:39.000Z" itemprop="datePublished">2022-12-11</time>
+    <a href="/note/2021/08/18/Python-enumerate/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T15:38:58.000Z" itemprop="datePublished">2021-08-18</time>
 </a>
     
   </div>
@@ -194,7 +178,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/Go-hello-world/">Go Hello World</a>
+      <a class="p-name article-title" href="/note/2021/08/18/Python-enumerate/">Python enumerate</a>
     </h1>
   
 
@@ -202,77 +186,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;init&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello&quot;</span>, <span class="string">&quot;World&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="package"><a href="#package" class="headerlink" title="package"></a>package</h3><p>コードの先頭では、このファイルに記述するコードがどのパッケージに所属するかを宣言する</p>
-<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p><strong>fmt</strong> というパッケージを <strong>import</strong> する</p>
-<h3 id="func"><a href="#func" class="headerlink" title="func"></a>func</h3><p><strong>func</strong> を使い、<code>main</code>, <code>init</code> という function を宣言する</p>
-<p>実行順は <code>init</code> -&gt; <code>main</code>になる</p>
-<p>なお</p>
-<p><strong>func</strong> <strong>Println</strong>の始まりはPの大文字であればfunctionはPublicになり</p>
-<p>もし始まりは小文字であればprivateになる</p>
-<h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run main.go</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/getting-started">https://go.dev/doc/tutorial/getting-started</a></p>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#enumerate">enumerate</a></p>
+<h2 id="enumerate-iterable-start-0"><a href="#enumerate-iterable-start-0" class="headerlink" title="enumerate(iterable, start&#x3D;0)"></a>enumerate(iterable, start&#x3D;0)</h2><p>對 list 做迴圈時</p>
+<p>可以用 <code>enumerate</code> 來獲取 index 值</p>
+<p>還可以用 <code>start</code> 來指定 index 起始值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seasons = [<span class="string">&#x27;Spring&#x27;</span>, <span class="string">&#x27;Summer&#x27;</span>, <span class="string">&#x27;Fall&#x27;</span>, <span class="string">&#x27;Winter&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, season <span class="keyword">in</span> <span class="built_in">enumerate</span>(seasons):</span><br><span class="line">    <span class="built_in">print</span>(index, season)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, season <span class="keyword">in</span> <span class="built_in">enumerate</span>(seasons, start=<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(index, season)</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Go-hello-world/" data-id="cm7qb02ib000cgfpzcp056gdr" data-title="Go Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-Requests-allow_redirects" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2022/12/11/Python-Requests-allow_redirects/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T05:59:56.000Z" itemprop="datePublished">2022-12-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/Python-Requests-allow_redirects/">Python Requests パラメータ allow_redirects</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="allow-redirects"><a href="#allow-redirects" class="headerlink" title="allow_redirects"></a>allow_redirects</h2><p><code>Request</code>は（<code>HEAD</code>以外）デフォルトリダイレクトする</p>
-<p><code>history</code>のプロパティでリダイレクトされたかの歴史を追跡できる</p>
-<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>GitHub は<code>HTTP</code>を<code>HTTPS</code>にリダイレクトする</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; r = requests.get(&#x27;http://github.com/&#x27;)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.url</span><br><span class="line">&#x27;https://github.com/&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.status_code</span><br><span class="line">200</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.history</span><br><span class="line">[&lt;Response [301]&gt;]</span><br></pre></td></tr></table></figure>
-
-<p><code>allow_redirects=False</code>を設定すると、リダイレクトをしない</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; r = requests.get(&#x27;http://github.com/&#x27;, allow_redirects=False)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.status_code</span><br><span class="line">301</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.history</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
-
-<p><code>HEAD</code>の場合、デフォルトはリダイレクトしない</p>
-<p>リダイレクトをしたい場合、<code>allow_redirects=True</code>を設定すれば</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; r = requests.head(&#x27;http://github.com/&#x27;, allow_redirects=True)</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.url</span><br><span class="line">&#x27;https://github.com/&#x27;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; r.history</span><br><span class="line">[&lt;Response [301]&gt;]</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history">https://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-Requests-allow_redirects/" data-id="cm7qb02ip0018gfpz4ss10pra" data-title="Python Requests パラメータ allow_redirects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm7rs1s0b001ch1q59k0fcle5" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -286,10 +209,10 @@
 
 
   
-    <article id="post-Python-main-module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-PEP8-Programming-Recommendations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2022/12/11/Python-main-module/" class="article-date">
-  <time class="dt-published" datetime="2022-12-11T05:48:24.000Z" itemprop="datePublished">2022-12-11</time>
+    <a href="/note/2021/08/18/PEP8-Programming-Recommendations/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T11:43:12.000Z" itemprop="datePublished">2021-08-18</time>
 </a>
     
   </div>
@@ -300,7 +223,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/12/11/Python-main-module/">Python パッケージ中の main モジュール</a>
+      <a class="p-name article-title" href="/note/2021/08/18/PEP8-Programming-Recommendations/">PEP8 Programming Recommendations</a>
     </h1>
   
 
@@ -308,17 +231,23 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="main-py"><a href="#main-py" class="headerlink" title="__main__.py"></a><code>__main__.py</code></h2><p>パーケージを呼び出す時に、<br><code>-m</code> オプションを追加することで、<br>パッケージ中の <code>__main__.py</code> モジュールが執行されます。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m bandclass</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#programming-recommendations">Programming Recommendations</a></p>
+<h2 id="if-x"><a href="#if-x" class="headerlink" title="if x"></a>if x</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bandclass</span><br><span class="line">  ├── __init__.py</span><br><span class="line">  ├── __main__.py</span><br><span class="line">  └── student.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/__main__.html#main-py-in-python-packages">https://docs.python.org/3/library/__main__.html#main-py-in-python-packages</a></p>
+<p>在某些情況下</p>
+<p>上面兩個 condition 不會有一樣的結果</p>
+<p>譬如說下面的例子中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="literal">False</span></span><br><span class="line">x = <span class="string">&#x27;&#x27;</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line">x = <span class="number">0.0</span></span><br><span class="line">x = []</span><br><span class="line">x = ()</span><br><span class="line">x = &#123;&#125;</span><br><span class="line">x = <span class="built_in">set</span>()</span><br></pre></td></tr></table></figure>
+
+<p><code>if x</code> 的結果會是 <code>Flase</code></p>
+<p>但 <code>if x is not None</code> 會是 <code>True</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/12/11/Python-main-module/" data-id="cm7qb02ix0022gfpzc9bycvox" data-title="Python パッケージ中の main モジュール" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm7rs1s02000kh1q55cla84ar" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -332,10 +261,10 @@
 
 
   
-    <article id="post-gcp-pca-case-study" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-Classes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2022/10/31/gcp-pca-case-study/" class="article-date">
-  <time class="dt-published" datetime="2022-10-31T04:43:27.000Z" itemprop="datePublished">2022-10-31</time>
+    <a href="/note/2021/08/18/Python-Classes/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T06:56:26.000Z" itemprop="datePublished">2021-08-18</time>
 </a>
     
   </div>
@@ -346,7 +275,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/10/31/gcp-pca-case-study/">Professional Cloud Architect Case Study</a>
+      <a class="p-name article-title" href="/note/2021/08/18/Python-Classes/">Python Classes</a>
     </h1>
   
 
@@ -354,117 +283,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://cloud.google.com/certification/guides/professional-cloud-architect?hl=ja">Case Study</a></li>
-</ul>
-<h2 id="解説"><a href="#解説" class="headerlink" title="解説"></a>解説</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-ehr-healthcare/">EHR Healthcare</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-helicopter-racing-league/">Helicopter Racing League</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-mountkirk-games/">Mountkirk Games</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-terramearth/">TerramEarth</a></p>
-</li>
-</ul>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/classes.html">Classes</a></p>
+<h2 id="Class-and-Instance-Variables"><a href="#Class-and-Instance-Variables" class="headerlink" title="Class and Instance Variables"></a>Class and Instance Variables</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables">Class and Instance Variables</a></p>
+<h3 id="instance-variables"><a href="#instance-variables" class="headerlink" title="instance variables"></a>instance variables</h3><p>每個 <code>instance</code> 都會有自己的值</p>
+<h3 id="class-variables"><a href="#class-variables" class="headerlink" title="class variables"></a>class variables</h3><p>會被所有 <code>class</code> 的 <code>instances</code> 給共有</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line"></span><br><span class="line">    kind = <span class="string">&#x27;canine&#x27;</span> <span class="comment"># class variable shared by all instances</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name <span class="comment"># instance variable unique to each instance</span></span><br><span class="line"></span><br><span class="line">d = Dog(<span class="string">&#x27;Fido&#x27;</span>)</span><br><span class="line">e = Dog(<span class="string">&#x27;Buddy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">d.kind <span class="comment"># shared by all dogs</span></span><br><span class="line"><span class="comment"># &#x27;canine&#x27;</span></span><br><span class="line"></span><br><span class="line">e.kind <span class="comment"># shared by all dogs</span></span><br><span class="line"><span class="comment"># &#x27;canine&#x27;</span></span><br><span class="line"></span><br><span class="line">d.name <span class="comment"># unique to d</span></span><br><span class="line"><span class="comment">#&#x27;Fido&#x27;</span></span><br><span class="line"></span><br><span class="line">e.name <span class="comment"># unique to e</span></span><br><span class="line"><span class="comment">#&#x27;Buddy&#x27;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm7qb02jf0038gfpz0bts4qea" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-IPython-timeit" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2022/10/31/IPython-timeit/" class="article-date">
-  <time class="dt-published" datetime="2022-10-31T02:41:14.000Z" itemprop="datePublished">2022-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/10/31/IPython-timeit/">IPython timeit</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">%timeit</a></p>
-<p>可以利用 <code>%timeit</code> 來看 line 的執行時間</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%timeit college.loc[cn, <span class="string">&#x27;UGDS_WHITE&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>如果要看 cell 的執行時間可以利用 <code>%%timeit</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line">row_num = college.index.get_loc(cn)</span><br><span class="line">col_num = college.columns.get_loc(<span class="string">&#x27;UGDS_WHITE&#x27;</span>)</span><br><span class="line">row_num, col_num</span><br></pre></td></tr></table></figure>
-
-<p>還可以利用 <code>-r</code> 跟 <code>-n</code> 來決定 repeat 次數跟 number 大小</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cm7qb02ie000igfpz1kuc9mqt" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-reduce" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/10/20/Python-reduce/" class="article-date">
-  <time class="dt-published" datetime="2021-10-20T02:30:05.000Z" itemprop="datePublished">2021-10-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/10/20/Python-reduce/">Python reduce()</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functools.html#functools.reduce">reduce</a></p>
-<p><code>reduce</code> 也是對 list 每個元素作操作</p>
-<p>但 <code>reduce</code> 會一次處理前後兩個相鄰的元素</p>
-<p>所以 <code>reduce</code> 的參數 <code>function</code> 必須要有兩個參數</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(reduce(<span class="keyword">lambda</span> x, y: x + y, <span class="built_in">range</span>(<span class="number">6</span>)))</span><br><span class="line"><span class="comment"># 15</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cm7qb02j7002hgfpz3soma2ea" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm7rs1s03000ph1q58unehju0" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -478,10 +306,10 @@
 
 
   
-    <article id="post-Python-requests-redirection" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-sklearn-impute-SimpleImputer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/09/30/Python-requests-redirection/" class="article-date">
-  <time class="dt-published" datetime="2021-09-30T12:23:52.000Z" itemprop="datePublished">2021-09-30</time>
+    <a href="/note/2021/08/10/sklearn-impute-SimpleImputer/" class="article-date">
+  <time class="dt-published" datetime="2021-08-10T05:06:21.000Z" itemprop="datePublished">2021-08-10</time>
 </a>
     
   </div>
@@ -492,7 +320,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/30/Python-requests-redirection/">Python requests redirection</a>
+      <a class="p-name article-title" href="/note/2021/08/10/sklearn-impute-SimpleImputer/">sklearn impute SimpleImputer</a>
     </h1>
   
 
@@ -500,17 +328,85 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://docs.python-requests.org/en/latest/user/quickstart/#redirection-and-history">Redirection and History</a></p>
-<p>requests 預設會自動 redirect</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;http://github.com/&#x27;</span>)</span><br><span class="line">r.status_code</span><br><span class="line"><span class="comment"># 200</span></span><br><span class="line"></span><br><span class="line">r.history</span><br><span class="line"><span class="comment"># [&lt;Response [301]&gt;]</span></span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html">sklearn.impute.SimpleImputer</a></p>
+<p>當 data 中有 missing value 的時候</p>
+<p>可以利用 <code>SimpleImputer</code> 來填補值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imputer = SimpleImputer()</span><br><span class="line">imputed_X_train = pd.DataFrame(imputer.fit_transform(X_train))</span><br></pre></td></tr></table></figure>
 
-<p>但可以用 <code>allow_redirects</code> 關掉</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">&#x27;http://github.com/&#x27;</span>, allow_redirects=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">r.status_code</span><br><span class="line"><span class="comment">#301</span></span><br><span class="line"></span><br><span class="line">r.history</span><br><span class="line"><span class="comment">#[]</span></span><br></pre></td></tr></table></figure>
+<h2 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h2><h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>填補值的時候可以選用你想要的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imputer = SimpleImputer(strategy=<span class="string">&#x27;mean&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>除了 <code>mean</code> 以外</p>
+<p>還有下面三種</p>
+<p><code>median</code></p>
+<p><code>most_frequent</code></p>
+<p><code>constant</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cm7qb02j7002jgfpzdjhs35pm" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm7rs1s1h005ch1q5cy2y8jet" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/06/Python-dict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-06T06:00:25.000Z" itemprop="datePublished">2021-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/06/Python-dict/">Python dict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></p>
+<h2 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h2><p>會顯示 (key, value)</p>
+<h2 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h2><p>顯示 key</p>
+<h2 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h2><p>顯示 value</p>
+<h2 id="get-key-default"><a href="#get-key-default" class="headerlink" title="get(key[, default])"></a>get(key[, default])</h2><p>取得 key 對應的 value</p>
+<p>當 key 不在 <code>dict</code> 裡面的時候</p>
+<p>則回傳 deafult 值</p>
+<p>default 值預設為 <code>None</code></p>
+<p>所以使用 <code>get()</code> 不會發生 <code>KeyError</code></p>
+<h2 id="setdefault-key-default"><a href="#setdefault-key-default" class="headerlink" title="setdefault(key[, default])"></a>setdefault(key[, default])</h2><p>當 key 已經存在 <code>dict</code> 裡面</p>
+<p>會回傳 key 對應的 value 的值</p>
+<p>如果不存在就對 key 設定 default 值</p>
+<p>default 值沒設定的話，就會設定成 <code>None</code></p>
+<p>所以用來設定值的時候</p>
+<p>不會覆蓋原本就已經存在的值</p>
+<h2 id="update-other"><a href="#update-other" class="headerlink" title="update([other])"></a>update([other])</h2><p>可以更新字典裡面的內容</p>
+<p>如果 key&#x2F;value 已經存在的話</p>
+<p>會對已經存在的值做覆寫</p>
+<p><code>update()</code> 的參數</p>
+<p>可以代入另一個 <code>dictionary</code></p>
+<p>或是 <code>iterable</code> of <code>key/value pairs</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm7rs1s090016h1q572r7fqkh" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -524,10 +420,10 @@
 
 
   
-    <article id="post-Python-dotenv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-sorting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/09/30/Python-dotenv/" class="article-date">
-  <time class="dt-published" datetime="2021-09-30T12:17:56.000Z" itemprop="datePublished">2021-09-30</time>
+    <a href="/note/2021/08/06/Python-sorting/" class="article-date">
+  <time class="dt-published" datetime="2021-08-06T05:58:56.000Z" itemprop="datePublished">2021-08-06</time>
 </a>
     
   </div>
@@ -538,7 +434,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/30/Python-dotenv/">Python dotenv</a>
+      <a class="p-name article-title" href="/note/2021/08/06/Python-sorting/">Python sorting</a>
     </h1>
   
 
@@ -546,19 +442,147 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://github.com/theskumar/python-dotenv">dotenv</a></p>
-<p>dotenv 會讀取 <code>.env</code> 這個檔案裡面的 <code>key-value</code></p>
-<p>並設定成環境變數</p>
-<p><code>.env</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Development settings</span><br><span class="line">DOMAIN=example.org</span><br><span class="line">ADMIN_EMAIL=admin@$&#123;DOMAIN&#125;</span><br><span class="line">ROOT_URL=$&#123;DOMAIN&#125;/app</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/howto/sorting.html">Sorting HOW TO</a></p>
+<h2 id="Sorting-Basics"><a href="#Sorting-Basics" class="headerlink" title="Sorting Basics"></a>Sorting Basics</h2><p>要排序時</p>
+<p>有 <code>list.sort()</code> method 跟 <code>sorted()</code> function</p>
+<p><code>list.sort()</code> 會直接對 list 做排列，並回傳 <code>None</code></p>
+<p><code>sorted()</code> 則是會回傳一個排列好的 <code>list</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line">a.sort()</span><br></pre></td></tr></table></figure>
 
-<p>使用方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv</span><br><span class="line"></span><br><span class="line">load_dotenv()  <span class="comment"># take environment variables from .env.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Code of your application, which uses environment variables (e.g. from `os.environ` or</span></span><br><span class="line"><span class="comment"># `os.getenv`) as if they came from the actual environment.</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sorted</span>([<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<p>另外 <code>list.sort()</code> 只能對 <code>list</code> 使用</p>
+<p>但 <code>sorted()</code> 則是可以對 <code>iterable</code> 使用</p>
+<h2 id="Key-Functions"><a href="#Key-Functions" class="headerlink" title="Key Functions"></a>Key Functions</h2><p> <code>list.sort()</code> 跟 <code>sorted()</code> 都有 key parameter 讓你輸入 function</p>
+<p> 做 sort 前，便會用每個 element 去 call 這個 function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">student_tuples = [</span><br><span class="line">    (<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="number">15</span>),</span><br><span class="line">    (<span class="string">&#x27;jane&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="number">12</span>),</span><br><span class="line">    (<span class="string">&#x27;dave&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="number">10</span>),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="built_in">sorted</span>(student_tuples, key=<span class="keyword">lambda</span> student: student[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># sort by age</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cm7qb02iu001ogfpz27ul1lgy" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cm7rs1s0m002bh1q54gamcab2" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-re-match-objects" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/05/Python-re-match-objects/" class="article-date">
+  <time class="dt-published" datetime="2021-08-05T23:18:06.000Z" itemprop="datePublished">2021-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/05/Python-re-match-objects/">Python re Match Objects</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/re.html#match-objects">Match Objects</a></p>
+<h2 id="Match-group"><a href="#Match-group" class="headerlink" title="Match.group"></a>Match.group</h2><p>可以利用 <code>group()</code> 來列印出匹配的值</p>
+<p>index 預設為零</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.group()</span><br><span class="line"><span class="comment"># The entire match</span></span><br><span class="line"><span class="comment"># &#x27;Isaac Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># The entire match</span></span><br><span class="line"><span class="comment"># &#x27;Isaac Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">1</span>)</span><br><span class="line"><span class="comment"># The first parenthesized subgroup.</span></span><br><span class="line"><span class="comment"># &#x27;Isaac&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">2</span>)</span><br><span class="line"><span class="comment"># The second parenthesized subgroup.</span></span><br><span class="line"><span class="comment"># &#x27;Newton&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment"># Multiple arguments give us a tuple.</span></span><br><span class="line"><span class="comment"># (&#x27;Isaac&#x27;, &#x27;Newton&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<p>如果正規表達式有設定 <code>(?P&lt;name&gt;...)</code> 的 syntax</p>
+<p>可以利用 <code>name</code> 來指定匹配到的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.group(<span class="string">&#x27;first_name&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;Malcolm&#x27;</span></span><br><span class="line"></span><br><span class="line">m.group(<span class="string">&#x27;last_name&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;Reynolds&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>沒有匹配到的話，就會回傳 <code>None</code></p>
+<h2 id="Match-lastindex"><a href="#Match-lastindex" class="headerlink" title="Match.lastindex"></a>Match.lastindex</h2><p>使用 <code>group()</code> 的時候</p>
+<p>如果代入負數或是大於匹配的結果</p>
+<p>會發生 <code>IndexError</code></p>
+<p>可以利用 <code>lastindex</code> 先找出最大的 index</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.lastindex</span><br><span class="line"><span class="comment"># 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Match-lastgroup"><a href="#Match-lastgroup" class="headerlink" title="Match.lastgroup"></a>Match.lastgroup</h2><p>如果正規表達式有設定  <code>(?P&lt;name&gt;...)</code> 的 syntax</p>
+<p>可以用 <code>lastgroup</code> 來找最後一筆匹配的值的 name</p>
+<h2 id="Match-groups"><a href="#Match-groups" class="headerlink" title="Match.groups"></a>Match.groups</h2><p>可以利用 <code>groups()</code> 來一次列印出匹配的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\w+) (\w+)&quot;</span>, <span class="string">&quot;Isaac Newton, physicist&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groups</span><br><span class="line"><span class="comment"># (&#x27;Isaac&#x27;, &#x27;Newton&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有成功匹配就會印出 <code>None</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(\d+)\.?(\d+)?&quot;</span>, <span class="string">&quot;24&quot;</span>)</span><br><span class="line">m.groups()</span><br><span class="line"><span class="comment"># Second group defaults to None.</span></span><br><span class="line"><span class="comment"># (&#x27;24&#x27;, None)</span></span><br><span class="line"></span><br><span class="line">m.groups(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line"><span class="comment"># Now, the second group defaults to &#x27;0&#x27;.</span></span><br><span class="line"><span class="comment"># (&#x27;24&#x27;, 0)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Match-groupdict"><a href="#Match-groupdict" class="headerlink" title="Match.groupdict"></a>Match.groupdict</h2><p>可以一次列印出設定的 name 與對應的值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\w+)&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groupdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: &#x27;Reynolds&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果沒有成功匹配就會印出 <code>None</code></p>
+<p>一樣可以設定預設值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">m = re.<span class="keyword">match</span>(<span class="string">r&quot;(?P&lt;first_name&gt;\w+) (?P&lt;last_name&gt;\W+)?&quot;</span>, <span class="string">&quot;Malcolm Reynolds&quot;</span>)</span><br><span class="line"></span><br><span class="line">m.groupdict()</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: None&#125;</span></span><br><span class="line"></span><br><span class="line">m.groupdict(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"><span class="comment"># &#123;&#x27;first_name&#x27;: &#x27;Malcolm&#x27;, &#x27;last_name&#x27;: &#x27;&#x27;&#125;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cm7rs1s0j0021h1q5bspn5f6z" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/02/Python-json/" class="article-date">
+  <time class="dt-published" datetime="2021-08-02T09:07:51.000Z" itemprop="datePublished">2021-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/02/Python-json/">Python json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/json.html">json</a></p>
+<p>Python 中拿來處理 <code>json</code> 的 module</p>
+<h2 id="dump"><a href="#dump" class="headerlink" title="dump"></a>dump</h2><p>Serialize obj as a JSON formatted stream to fp</p>
+<h2 id="dumps"><a href="#dumps" class="headerlink" title="dumps"></a>dumps</h2><p>Serialize obj to a JSON formatted <code>str</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.dumps([<span class="string">&#x27;foo&#x27;</span>, &#123;<span class="string">&#x27;bar&#x27;</span>: (<span class="string">&#x27;baz&#x27;</span>, <span class="literal">None</span>, <span class="number">1.0</span>, <span class="number">2</span>)&#125;])</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;: [&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="ensure-ascii-True"><a href="#ensure-ascii-True" class="headerlink" title="ensure_ascii&#x3D;True"></a>ensure_ascii&#x3D;True</h3><p>使用 <code>dump</code> 跟 <code>dumps</code> 的時候</p>
+<p>必須注意 <code>ensure_ascii</code> 的預設值為 <code>True</code></p>
+<p>有時沒有注意這設定的話，會造成亂碼</p>
+<h2 id="load"><a href="#load" class="headerlink" title="load"></a>load</h2><p>Deserialize fp to a Python object</p>
+<h2 id="loads"><a href="#loads" class="headerlink" title="loads"></a>loads</h2><p>Deserialize <code>s</code> to a Python object</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">json.loads(<span class="string">&#x27;[&quot;foo&quot;, &#123;&quot;bar&quot;:[&quot;baz&quot;, null, 1.0, 2]&#125;]&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># [&#x27;foo&#x27;, &#123;&#x27;bar&#x27;: [&#x27;baz&#x27;, None, 1.0, 2]&#125;]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cm7rs1s0f001mh1q5ciyih3xz" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -576,7 +600,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/2/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/2/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/note/page/4/">4</a><a class="page-number" href="/note/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/10/">10</a><a class="extend next" rel="next" href="/note/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -590,7 +614,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -600,7 +624,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 11.67px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
     </div>
   </div>
 
@@ -609,7 +633,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -620,6 +644,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
+          </li>
         
           <li>
             <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
@@ -635,10 +663,6 @@
         
           <li>
             <a href="/note/2025/02/23/socket/">socket</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/23/pipe/">pipe</a>
           </li>
         
       </ul>

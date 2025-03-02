@@ -69,6 +69,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Document-Object-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/02/Document-Object-Model/" class="article-date">
+  <time class="dt-published" datetime="2025-03-02T16:40:51.000Z" itemprop="datePublished">2025-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什麼是-Document-Object-Model-DOM-？"><a href="#什麼是-Document-Object-Model-DOM-？" class="headerlink" title="什麼是 Document Object Model (DOM) ？"></a>什麼是 Document Object Model (DOM) ？</h2><p><strong>文件物件模型（Document Object Model, DOM）</strong> 是一種程式介面，允許開發者使用程式碼來存取和操作 HTML 或 XML 文件的結構。</p>
+<p>DOM 提供了一種樹狀結構的表示方式，讓開發者可以透過 JavaScript 或其他語言來動態修改網頁內容。</p>
+<h2 id="DOM-的結構"><a href="#DOM-的結構" class="headerlink" title="DOM 的結構"></a>DOM 的結構</h2><p>DOM 採用樹狀結構來表示 HTML 文件，每個節點（Node）代表 HTML 文件中的一個元素。</p>
+<p>例如，以下是一個簡單的 HTML 文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, DOM!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這個 HTML 文件在 DOM 中的結構如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Document</span><br><span class="line">└── html</span><br><span class="line">    ├── head</span><br><span class="line">    │   └── title</span><br><span class="line">    │       └── &quot;DOM Example&quot;</span><br><span class="line">    └── body</span><br><span class="line">        ├── h1</span><br><span class="line">        │   └── &quot;Hello, DOM!&quot;</span><br><span class="line">        └── p</span><br><span class="line">            └── &quot;This is a paragraph.&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作-DOM"><a href="#操作-DOM" class="headerlink" title="操作 DOM"></a>操作 DOM</h2><p>開發者可以透過 JavaScript 來存取和操作 DOM。</p>
+<p>例如，以下是一些常見的操作：</p>
+<h3 id="1-獲取元素"><a href="#1-獲取元素" class="headerlink" title="1. 獲取元素"></a>1. 獲取元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 ID 選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用類名選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;myClass&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用標籤名稱選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 CSS 選擇器選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.myClass&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;p&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改內容"><a href="#2-修改內容" class="headerlink" title="2. 修改內容"></a>2. 修改內容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的文字內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">textContent</span> = <span class="string">&quot;新的內容&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改 HTML 內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;&lt;strong&gt;加粗文字&lt;/strong&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-修改屬性"><a href="#3-修改屬性" class="headerlink" title="3. 修改屬性"></a>3. 修改屬性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的屬性</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myLink&quot;</span>).<span class="property">href</span> = <span class="string">&quot;https://example.com&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-修改樣式"><a href="#4-修改樣式" class="headerlink" title="4. 修改樣式"></a>4. 修改樣式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 CSS 樣式</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">style</span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-事件監聽"><a href="#5-事件監聽" class="headerlink" title="5. 事件監聽"></a>5. 事件監聽</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 監聽點擊事件</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;按鈕被點擊了！&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm7rs1rzs0004h1q5fmum9pet" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Go-string-iteration" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/02/27/Go-string-iteration/" class="article-date">
@@ -119,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm7qb02id000ggfpz0jl75h65" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm7rs1rzu0007h1q51p2ah2i1" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -161,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm7qb02ic000fgfpz21r0cvus" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm7rs1rzt0005h1q59pgy4oq9" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -281,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm7qb02k5005ogfpz1wvdfnuw" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm7rs1s1f0055h1q571486sok" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -384,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm7qb02k7005ygfpzerj8117k" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm7rs1s1i005gh1q58eew209v" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -464,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cm7qb02k4005jgfpzeclxh1bw" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cm7rs1s1f0052h1q5a8gxb7rz" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -546,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/18/git-Detached-HEAD/" data-id="cm7qb02jh003dgfpz8zp9de9m" data-title="Detached HEAD" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/18/git-Detached-HEAD/" data-id="cm7rs1s0x0032h1q514qk61zi" data-title="Detached HEAD" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -602,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cm7qb02jl003rgfpz9lfdeeqr" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cm7rs1s0z003ah1q5ho7h7nw0" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -704,7 +762,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cm7qb02jn003vgfpz1x3eai4d" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cm7rs1s0z003ch1q59jh747wd" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -718,10 +776,10 @@
 
 
   
-    <article id="post-Database-Logical-Design" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Relational-Database" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2024/04/12/Database-Logical-Design/" class="article-date">
-  <time class="dt-published" datetime="2024-04-12T21:09:39.000Z" itemprop="datePublished">2024-04-12</time>
+    <a href="/note/2024/04/03/Relational-Database/" class="article-date">
+  <time class="dt-published" datetime="2024-04-03T22:46:12.000Z" itemprop="datePublished">2024-04-03</time>
 </a>
     
   </div>
@@ -732,7 +790,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2024/04/12/Database-Logical-Design/">論理設計</a>
+      <a class="p-name article-title" href="/note/2024/04/03/Relational-Database/">關聯資料庫</a>
     </h1>
   
 
@@ -740,88 +798,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="論理設計のステップ"><a href="#論理設計のステップ" class="headerlink" title="論理設計のステップ"></a>論理設計のステップ</h2><p>論理設計は以下の4つのステップからなる</p>
-<h3 id="1-エンティティの抽出"><a href="#1-エンティティの抽出" class="headerlink" title="1. エンティティの抽出"></a>1. エンティティの抽出</h3><p>どんなデータを管理するエンティティ(テーブル)が必要かを明確にする</p>
-<h3 id="2-エンティティの定義"><a href="#2-エンティティの定義" class="headerlink" title="2. エンティティの定義"></a>2. エンティティの定義</h3><p>エンティティ(テーブル)ごとにどんな属性(カラム)が必要かを明確にする</p>
-<h4 id="エンティティとは"><a href="#エンティティとは" class="headerlink" title="エンティティとは?"></a>エンティティとは?</h4><p>システムにおいて管理する必要があるデータのこと</p>
-<p>エンティティ(Entity)は日本語で「実体」という意味</p>
-<p>具体的には、顧客、社員、店舗のような物理的実体を伴うものもあれば、注文、予約というような概念としてしか存在しないものもある</p>
-<p>RDBにおいては、テーブルの名前になるものという理解でもよい</p>
-<h3 id="3-正規化"><a href="#3-正規化" class="headerlink" title="3. 正規化"></a>3. 正規化</h3><p>テーブルを分割することでデータの冗長性(ムダ、重複)をなくす</p>
-<p>正規形には第1~第5正規形までが存在する</p>
-<p>業務では第3正規形までを考えることが多い</p>
-<h4 id="第1正規形"><a href="#第1正規形" class="headerlink" title="第1正規形"></a>第1正規形</h4><p>「1つのフィールドには1つの値しか含まない」という原則が守られた形</p>
-<h4 id="第2正規形"><a href="#第2正規形" class="headerlink" title="第2正規形"></a>第2正規形</h4><p>部分関数従属が解消されていて、完全関数従属のみのテーブルになっている形</p>
-<h5 id="関数従属性とは"><a href="#関数従属性とは" class="headerlink" title="関数従属性とは"></a>関数従属性とは</h5><p><code>y = f (x)</code>というように<code>x</code>の値を1つ決めれば<code>y</code>の値が1つに決まる関係性のこと</p>
-<p>この関係が成立している状態「<code>y</code>は<code>x</code>に従属するという</p>
-<p>このとき記号では「<code>&#123;x&#125;→&#123;y&#125;</code>」というように表す</p>
-<h4 id="第3正規形"><a href="#第3正規形" class="headerlink" title="第3正規形"></a>第3正規形</h4><p>推移的関数従属が解消されている形</p>
-<h5 id="推移的関数従属とは"><a href="#推移的関数従属とは" class="headerlink" title="推移的関数従属とは"></a>推移的関数従属とは</h5><p>2段階の関数従属がある状態</p>
-<h3 id="4-ER図の作成"><a href="#4-ER図の作成" class="headerlink" title="4. ER図の作成"></a>4. ER図の作成</h3><p>複数のテーブルの関係性(リレーション)を可視化するには、<br>ER図(Entity Relationship Diagram)を用いる</p>
-<h4 id="リレーションの種類"><a href="#リレーションの種類" class="headerlink" title="リレーションの種類"></a>リレーションの種類</h4><p>外部キーなどによって、同じ意味の列を持つテーブル間には、 関連(リレーション)があり、</p>
-<p>テーブル間のリレーションには以下の2種類がある</p>
-<ol>
-<li>1対多(1:N)</li>
-<li>1対1(1:1)</li>
-</ol>
+        <h2 id="Relational-Database-RDB"><a href="#Relational-Database-RDB" class="headerlink" title="Relational Database (RDB)"></a>Relational Database (RDB)</h2><p>關聯資料庫是在資料表、資料列和資料欄中建構資訊的方式。</p>
+<p>RDB 可透過彙整資料表來建立資訊之間的關聯或關係，以便輕鬆瞭解各資料點之間的關係並取得深入分</p>
+<h2 id="Relational-Database-Management-System-RDBMS"><a href="#Relational-Database-Management-System-RDBMS" class="headerlink" title="Relational Database Management System (RDBMS)"></a>Relational Database Management System (RDBMS)</h2><p>關聯資料庫管理系統是用來建立、更新及管理關聯資料庫的程式。</p>
+<p>一些最著名的 RDBMS 包括 MySQL、PostgreSQL、MariaDB、Microsoft SQL Server 和 Oracle 資料庫。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/04/12/Database-Logical-Design/" data-id="cm7qb02i50003gfpz75ab6is3" data-title="論理設計" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="cm7rs1s0r002sh1q5abegdohs" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-MongoDB-install" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2024/04/11/MongoDB-install/" class="article-date">
-  <time class="dt-published" datetime="2024-04-11T19:38:11.000Z" itemprop="datePublished">2024-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2024/04/11/MongoDB-install/">MongoDB install</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Install-MongoDB-Community-Edition-on-macOS"><a href="#Install-MongoDB-Community-Edition-on-macOS" class="headerlink" title="Install MongoDB Community Edition on macOS"></a>Install MongoDB Community Edition on macOS</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew update</span><br><span class="line">brew install mongodb-community@7.0</span><br></pre></td></tr></table></figure>
-
-<h3 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@7.0</span><br></pre></td></tr></table></figure>
-
-<h3 id="Stop"><a href="#Stop" class="headerlink" title="Stop"></a>Stop</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services stop mongodb-community@7.0</span><br></pre></td></tr></table></figure>
-
-<h3 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongosh</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/manual/installation/">https://www.mongodb.com/docs/manual/installation/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/04/11/MongoDB-install/" data-id="cm7qb02ig000ngfpzczuzd81y" data-title="MongoDB install" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li></ul>
 
     </footer>
   </div>
@@ -835,7 +824,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/10/">10</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -849,7 +838,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -859,7 +848,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 11.67px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
     </div>
   </div>
 
@@ -868,7 +857,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -879,6 +868,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
+          </li>
         
           <li>
             <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
@@ -894,10 +887,6 @@
         
           <li>
             <a href="/note/2025/02/23/socket/">socket</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/23/pipe/">pipe</a>
           </li>
         
       </ul>

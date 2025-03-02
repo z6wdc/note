@@ -69,10 +69,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Python-glob" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-pprint" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/09/29/Python-glob/" class="article-date">
-  <time class="dt-published" datetime="2021-09-29T14:01:26.000Z" itemprop="datePublished">2021-09-29</time>
+    <a href="/note/2021/08/01/Python-pprint/" class="article-date">
+  <time class="dt-published" datetime="2021-08-01T03:25:59.000Z" itemprop="datePublished">2021-08-01</time>
 </a>
     
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/29/Python-glob/">Python glob</a>
+      <a class="p-name article-title" href="/note/2021/08/01/Python-pprint/">Python pprint</a>
     </h1>
   
 
@@ -91,14 +91,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/glob.html">‘glob’</a></p>
-<p>會把符合條件的 path 放在 list 並回傳</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"></span><br><span class="line">glob.glob(<span class="string">&#x27;*.gif&#x27;</span>)</span><br><span class="line"><span class="comment"># [&#x27;1.gif&#x27;, &#x27;card.gif&#x27;]</span></span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/pprint.html">pprint</a></p>
+<p>使用 pprint 可以列印出更容易閱讀的格式</p>
+<p>列印 json format 的時候會很有幫助</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">pprint(data, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cm7qb02iw001wgfpz637d2a3z" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="cm7rs1s0i001wh1q5ddta8lom" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -112,10 +113,10 @@
 
 
   
-    <article id="post-Docker-Volume" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-xmltodict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/09/20/Docker-Volume/" class="article-date">
-  <time class="dt-published" datetime="2021-09-20T08:43:55.000Z" itemprop="datePublished">2021-09-20</time>
+    <a href="/note/2021/08/01/Python-xmltodict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-01T01:39:39.000Z" itemprop="datePublished">2021-08-01</time>
 </a>
     
   </div>
@@ -126,7 +127,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/20/Docker-Volume/">Docker Volume</a>
+      <a class="p-name article-title" href="/note/2021/08/01/Python-xmltodict/">Python xmltodict</a>
     </h1>
   
 
@@ -134,76 +135,15 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">Volume</a></p>
-<p>讓我們來存放 data 的地方</p>
-<p>就不會因為 container 被刪除</p>
-<p>而使得 存放在 container 的 data 也連帶被刪除</p>
-<h2 id="Anonymous-Volume"><a href="#Anonymous-Volume" class="headerlink" title="Anonymous Volume"></a>Anonymous Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /app/data</span><br></pre></td></tr></table></figure>
-
-<h2 id="Named-Volume"><a href="#Named-Volume" class="headerlink" title="Named Volume"></a>Named Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v data:/app/data</span><br></pre></td></tr></table></figure>
-
-<h2 id="Bind-Mount"><a href="#Bind-Mount" class="headerlink" title="Bind Mount"></a>Bind Mount</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /path/to/code:/app/code</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://github.com/martinblech/xmltodict#readme">xmltodict</a></p>
+<p>這是一個可以把 xml 轉成 dict 的 module</p>
+<p><code>xmltodict.parse</code> 的 <a target="_blank" rel="noopener" href="https://github.com/martinblech/xmltodict/blob/ae19c452ca000bf243bfc16274c060bf3bf7cf51/xmltodict.py#L198">return value</a> 會是 <code>OrderedDict</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xmltodict</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;sample.xml&#x27;</span>) <span class="keyword">as</span> fd:</span><br><span class="line">    doc = xmltodict.parse(fd.read())</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cm7qb02i60004gfpzhy33ca9o" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-datetime-strftime-vs-strptime" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/" class="article-date">
-  <time class="dt-published" datetime="2021-09-17T02:05:55.000Z" itemprop="datePublished">2021-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/">Python datetime strftime vs strptime</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="strftime"><a href="#strftime" class="headerlink" title="strftime"></a>strftime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strftime">strftime</a></p>
-<p><code>strftime</code> 可以把 <code>datetime</code> object 透過指定的 format</p>
-<p>轉換成 string</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">now = datetime.now()</span><br><span class="line"></span><br><span class="line">year = now.strftime(<span class="string">&quot;%Y&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;year:&quot;</span>, year)</span><br></pre></td></tr></table></figure>
-
-<h2 id="strptime"><a href="#strptime" class="headerlink" title="strptime"></a>strptime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime">strptime</a></p>
-<p><code>strptime</code> 可以把字串轉換成 date object</p>
-<p>使用時必須指定字串的 format</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">date_string = <span class="string">&quot;25 July, 2021&quot;</span></span><br><span class="line"></span><br><span class="line">date_object = datetime.strptime(date_string, <span class="string">&quot;%d %B, %Y&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="strftime-and-strptime-Behavior"><a href="#strftime-and-strptime-Behavior" class="headerlink" title="strftime() and strptime() Behavior"></a>strftime() and strptime() Behavior</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">behavior</a></p>
-<p>兩者主要的差異</p>
-<p>一個從 object 轉成 string</p>
-<p>一個從 string 轉成 object</p>
-<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><p>關於 format 要怎麼指定</p>
-<p>可以參考官方的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">Format Codes</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cm7qb02it001kgfpz8lvhf9c1" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="cm7rs1s0p002nh1q57i4697vf" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -217,10 +157,10 @@
 
 
   
-    <article id="post-pandas-select-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-csv" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/09/12/pandas-select-dtypes/" class="article-date">
-  <time class="dt-published" datetime="2021-09-12T14:04:13.000Z" itemprop="datePublished">2021-09-12</time>
+    <a href="/note/2021/08/01/Python-csv/" class="article-date">
+  <time class="dt-published" datetime="2021-08-01T01:08:10.000Z" itemprop="datePublished">2021-08-01</time>
 </a>
     
   </div>
@@ -231,7 +171,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/12/pandas-select-dtypes/">pandas select_dtypes</a>
+      <a class="p-name article-title" href="/note/2021/08/01/Python-csv/">Python csv</a>
     </h1>
   
 
@@ -239,65 +179,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">select_dtypes</a> 可以對你的 column 做 filter</p>
-<p>包含 <code>float64</code> 類別</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(include=[<span class="string">&#x27;float64&#x27;</span>])</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/csv.html?highlight=csv#module-csv">csv</a></p>
+<p>可以用 <code>csv</code> 這個 module 來讀取跟寫入</p>
+<h2 id="csv-reader"><a href="#csv-reader" class="headerlink" title="csv.reader"></a>csv.reader</h2><p>讀取範例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
 
-<p>排除 <code>int64</code> 類別</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(exclude=[<span class="string">&#x27;int64&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<p>指定 <code>newline=&#39;&#39;</code> 會比較安全</p>
+<p>這樣 <code>csv</code> 就會處理每個平台上的 newline</p>
+<h2 id="csv-writer"><a href="#csv-writer" class="headerlink" title="csv.writer"></a>csv.writer</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    writer = csv.writer(f)</span><br><span class="line">    writer.writerows(someiterable)</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cm7qb02k10055gfpz6zn807qi" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-os-makedirs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/10/Python-os-makedirs/" class="article-date">
-  <time class="dt-published" datetime="2021-09-10T16:40:29.000Z" itemprop="datePublished">2021-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/10/Python-os-makedirs/">Python os makedirs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/os.html#os.makedirs">os.makedirs</a></p>
-<p>可以用來建立新的 directory</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(<span class="string">&#x27;path/dir&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>如果指定的 path 上面 directory 已經存在的話</p>
-<p>會跳出 <code>FileExistsError</code></p>
-<p>但可以指定 <code>exist_ok</code> 為 <code>True</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.makedirs(<span class="string">&#x27;path/dir&#x27;</span>, exist_ok=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Dialects-and-Formatting-Parameters"><a href="#Dialects-and-Formatting-Parameters" class="headerlink" title="Dialects and Formatting Parameters"></a>Dialects and Formatting Parameters</h2><p>可以透過參數來讀取不同類型的 csv file</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;passwd&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f, delimiter=<span class="string">&#x27;:&#x27;</span>, quoting=csv.QUOTE_NONE)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cm7qb02j30027gfpz93tr4zp7" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="cm7rs1s070012h1q5cus063me" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -311,10 +208,10 @@
 
 
   
-    <article id="post-pandas-dataframe-from-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-the-with-statement" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/08/29/pandas-dataframe-from-dict/" class="article-date">
-  <time class="dt-published" datetime="2021-08-29T14:13:12.000Z" itemprop="datePublished">2021-08-29</time>
+    <a href="/note/2021/07/31/Python-the-with-statement/" class="article-date">
+  <time class="dt-published" datetime="2021-07-31T04:35:20.000Z" itemprop="datePublished">2021-07-31</time>
 </a>
     
   </div>
@@ -325,7 +222,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/29/pandas-dataframe-from-dict/">pandas dataframe from_dict</a>
+      <a class="p-name article-title" href="/note/2021/07/31/Python-the-with-statement/">Python the with statement</a>
     </h1>
   
 
@@ -333,111 +230,22 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html">from_dict</a></p>
-<p>可以利用 <code>from_dict</code> 把 <code>dictionary</code> 做成 <code>dataframe</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;col_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;col_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data)</span><br></pre></td></tr></table></figure>
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">The with statement</a></p>
+<p>通常開檔案的時候</p>
+<p>會用下列的語法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;sample.txt&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(f))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
 
-<p>而 <code>dictionary</code> 的 key 可以當作 column 或是 row 的 name</p>
-<p>預設會當做 column 的 name</p>
-<p>指定為 row 的方法是指定參數 <code>orient</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;row_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;row_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data, orient=<span class="string">&#x27;index&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm7qb02jr0047gfpz5dxl43iq" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-seaborn-plot-types" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/22/seaborn-plot-types/" class="article-date">
-  <time class="dt-published" datetime="2021-08-22T17:14:14.000Z" itemprop="datePublished">2021-08-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/22/seaborn-plot-types/">seaborn plot types</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在做 Data Visualization 時</p>
-<p>可以使用 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/index.html">seaborn</a> 這套 library</p>
-<p><code>seaborn</code> 也有提供 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/api.html">API</a> 一欄</p>
-<p>讓你知道可以畫什麼種類的圖</p>
-<p>而我們通常會畫的圖</p>
-<p>可以分為</p>
-<h2 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h2><h3 id="sns-lineplot"><a href="#sns-lineplot" class="headerlink" title="sns.lineplot"></a>sns.lineplot</h3><h2 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h2><h3 id="sns-barplot"><a href="#sns-barplot" class="headerlink" title="sns.barplot"></a>sns.barplot</h3><h3 id="sns-heatmap"><a href="#sns-heatmap" class="headerlink" title="sns.heatmap"></a>sns.heatmap</h3><h3 id="sns-scatterplot"><a href="#sns-scatterplot" class="headerlink" title="sns.scatterplot"></a>sns.scatterplot</h3><h3 id="sns-regplot"><a href="#sns-regplot" class="headerlink" title="sns.regplot"></a>sns.regplot</h3><h3 id="sns-lmplot"><a href="#sns-lmplot" class="headerlink" title="sns.lmplot"></a>sns.lmplot</h3><h3 id="sns-swarmplot"><a href="#sns-swarmplot" class="headerlink" title="sns.swarmplot"></a>sns.swarmplot</h3><h2 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h2><h3 id="sns-distplot"><a href="#sns-distplot" class="headerlink" title="sns.distplot"></a>sns.distplot</h3><h3 id="sns-kdeplot"><a href="#sns-kdeplot" class="headerlink" title="sns.kdeplot"></a>sns.kdeplot</h3><h3 id="sns-jointplot"><a href="#sns-jointplot" class="headerlink" title="sns.jointplot"></a>sns.jointplot</h3><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/alexisbcook/choosing-plot-types-and-custom-styles?scriptVersionId=64768944&cellId=1">REFERENCE</a></p>
+<p>但這樣會有一個風險是</p>
+<p>如果 <code>exception</code> 發生的時候</p>
+<p>可能 <code>f.close()</code> 就不會執行</p>
+<p>比較好的方法是用 <code>try - except - finally</code> 來做保護</p>
+<p>而使用 <code>The with statement</code> 的話就可以直接達到這樣的效果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(path) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(f))</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm7qb02k5005mgfpze0wx6axu" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-enumerate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/18/Python-enumerate/" class="article-date">
-  <time class="dt-published" datetime="2021-08-18T15:38:58.000Z" itemprop="datePublished">2021-08-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/18/Python-enumerate/">Python enumerate</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#enumerate">enumerate</a></p>
-<h2 id="enumerate-iterable-start-0"><a href="#enumerate-iterable-start-0" class="headerlink" title="enumerate(iterable, start&#x3D;0)"></a>enumerate(iterable, start&#x3D;0)</h2><p>對 list 做迴圈時</p>
-<p>可以用 <code>enumerate</code> 來獲取 index 值</p>
-<p>還可以用 <code>start</code> 來指定 index 起始值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seasons = [<span class="string">&#x27;Spring&#x27;</span>, <span class="string">&#x27;Summer&#x27;</span>, <span class="string">&#x27;Fall&#x27;</span>, <span class="string">&#x27;Winter&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, season <span class="keyword">in</span> <span class="built_in">enumerate</span>(seasons):</span><br><span class="line">    <span class="built_in">print</span>(index, season)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, season <span class="keyword">in</span> <span class="built_in">enumerate</span>(seasons, start=<span class="number">1</span>):</span><br><span class="line">    <span class="built_in">print</span>(index, season)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm7qb02iu001qgfpza25sfbm5" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="cm7rs1s0p002lh1q56h816cre" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -451,10 +259,10 @@
 
 
   
-    <article id="post-PEP8-Programming-Recommendations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-sklearn-train-test-split" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/08/18/PEP8-Programming-Recommendations/" class="article-date">
-  <time class="dt-published" datetime="2021-08-18T11:43:12.000Z" itemprop="datePublished">2021-08-18</time>
+    <a href="/note/2021/07/27/sklearn-train-test-split/" class="article-date">
+  <time class="dt-published" datetime="2021-07-27T09:54:10.000Z" itemprop="datePublished">2021-07-27</time>
 </a>
     
   </div>
@@ -465,7 +273,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/18/PEP8-Programming-Recommendations/">PEP8 Programming Recommendations</a>
+      <a class="p-name article-title" href="/note/2021/07/27/sklearn-train-test-split/">sklearn train_test_split</a>
     </h1>
   
 
@@ -473,23 +281,101 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#programming-recommendations">Programming Recommendations</a></p>
-<h2 id="if-x"><a href="#if-x" class="headerlink" title="if x"></a>if x</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
-
-<p>在某些情況下</p>
-<p>上面兩個 condition 不會有一樣的結果</p>
-<p>譬如說下面的例子中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="literal">False</span></span><br><span class="line">x = <span class="string">&#x27;&#x27;</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line">x = <span class="number">0.0</span></span><br><span class="line">x = []</span><br><span class="line">x = ()</span><br><span class="line">x = &#123;&#125;</span><br><span class="line">x = <span class="built_in">set</span>()</span><br></pre></td></tr></table></figure>
-
-<p><code>if x</code> 的結果會是 <code>Flase</code></p>
-<p>但 <code>if x is not None</code> 會是 <code>True</code></p>
+        <p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">sklearn.model_selection.train_test_split</a></p>
+<p><code>train_test_split</code> 可以拿來切分訓練集跟測試集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.33</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm7qb02ik000wgfpze1dhbbzp" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/sklearn-train-test-split/" data-id="cm7rs1s1h005fh1q5ch2y7p73" data-title="sklearn train_test_split" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-NumPy-reshape" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/27/NumPy-reshape/" class="article-date">
+  <time class="dt-published" datetime="2021-07-27T02:44:59.000Z" itemprop="datePublished">2021-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/27/NumPy-reshape/">NumPy reshape</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">reshape</a></p>
+<p><code>reshape</code> 可以重新設定 array 的 shape</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">np.reshape(a, (<span class="number">2</span>, <span class="number">3</span>)) <span class="comment"># C-like index ordering</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">array([[0, 1, 2],</span></span><br><span class="line"><span class="string">       [3, 4, 5]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/27/NumPy-reshape/" data-id="cm7rs1s01000ih1q51e389otp" data-title="NumPy reshape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-str-isdigit" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/26/Python-str-isdigit/" class="article-date">
+  <time class="dt-published" datetime="2021-07-26T15:41:57.000Z" itemprop="datePublished">2021-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/26/Python-str-isdigit/">Python str isdigit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.isdigit">isdigit</a></p>
+<p>如果字串裡所有的字元都是數字的話</p>
+<p>就會回傳 <code>True</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="string">&#x27;1234567890&#x27;</span></span><br><span class="line">s.isdigit()</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-str-isdigit/" data-id="cm7rs1s0m002dh1q50gvi6mdc" data-title="Python str isdigit" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -503,10 +389,10 @@
 
 
   
-    <article id="post-Python-Classes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Python-all" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/note/2021/08/18/Python-Classes/" class="article-date">
-  <time class="dt-published" datetime="2021-08-18T06:56:26.000Z" itemprop="datePublished">2021-08-18</time>
+    <a href="/note/2021/07/26/Python-all/" class="article-date">
+  <time class="dt-published" datetime="2021-07-26T12:43:05.000Z" itemprop="datePublished">2021-07-26</time>
 </a>
     
   </div>
@@ -517,7 +403,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/18/Python-Classes/">Python Classes</a>
+      <a class="p-name article-title" href="/note/2021/07/26/Python-all/">Python all</a>
     </h1>
   
 
@@ -525,16 +411,142 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/classes.html">Classes</a></p>
-<h2 id="Class-and-Instance-Variables"><a href="#Class-and-Instance-Variables" class="headerlink" title="Class and Instance Variables"></a>Class and Instance Variables</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/tutorial/classes.html#class-and-instance-variables">Class and Instance Variables</a></p>
-<h3 id="instance-variables"><a href="#instance-variables" class="headerlink" title="instance variables"></a>instance variables</h3><p>每個 <code>instance</code> 都會有自己的值</p>
-<h3 id="class-variables"><a href="#class-variables" class="headerlink" title="class variables"></a>class variables</h3><p>會被所有 <code>class</code> 的 <code>instances</code> 給共有</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line"></span><br><span class="line">    kind = <span class="string">&#x27;canine&#x27;</span> <span class="comment"># class variable shared by all instances</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name <span class="comment"># instance variable unique to each instance</span></span><br><span class="line"></span><br><span class="line">d = Dog(<span class="string">&#x27;Fido&#x27;</span>)</span><br><span class="line">e = Dog(<span class="string">&#x27;Buddy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">d.kind <span class="comment"># shared by all dogs</span></span><br><span class="line"><span class="comment"># &#x27;canine&#x27;</span></span><br><span class="line"></span><br><span class="line">e.kind <span class="comment"># shared by all dogs</span></span><br><span class="line"><span class="comment"># &#x27;canine&#x27;</span></span><br><span class="line"></span><br><span class="line">d.name <span class="comment"># unique to d</span></span><br><span class="line"><span class="comment">#&#x27;Fido&#x27;</span></span><br><span class="line"></span><br><span class="line">e.name <span class="comment"># unique to e</span></span><br><span class="line"><span class="comment">#&#x27;Buddy&#x27;</span></span><br></pre></td></tr></table></figure>
+        <p>Python Built-in Function 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#all">all()</a></p>
+<p>確認所有的值是不是都為 <code>True</code></p>
+<p>不是的話就是 <code>False</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">all</span>([<span class="literal">True</span>, <span class="literal">True</span>, <span class="literal">True</span>]))</span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">all</span>([<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">True</span>]))</span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm7qb02ik000xgfpzgp7yem1v" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-all/" data-id="cm7rs1s06000xh1q5enupcgce" data-title="Python all" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-any" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/26/Python-any/" class="article-date">
+  <time class="dt-published" datetime="2021-07-26T12:39:36.000Z" itemprop="datePublished">2021-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/26/Python-any/">Python any</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Python Built-in Function 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#any">any()</a></p>
+<p>檢查是否有任何一個值為 <code>True</code></p>
+<p>全部都是 <code>False</code> 的話就為 <code>False</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>([<span class="literal">True</span>, <span class="literal">False</span>, <span class="literal">False</span>]))</span><br><span class="line"><span class="comment"># True</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>([<span class="literal">False</span>, <span class="literal">False</span>, <span class="literal">False</span>]))</span><br><span class="line"><span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/26/Python-any/" data-id="cm7rs1s06000yh1q56062czwr" data-title="Python any" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-Operator-precedence" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/25/Python-Operator-precedence/" class="article-date">
+  <time class="dt-published" datetime="2021-07-25T10:12:48.000Z" itemprop="datePublished">2021-07-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/25/Python-Operator-precedence/">Python Operator precedence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/expressions.html#operator-precedence">Operator precedence</a></p>
+<p>Python 中運算子的優先順序</p>
+<p>通常為了閱讀方便</p>
+<p>都會加上 () 讓人方便理解</p>
+<p>不過有些順序還是可以記起來比較方便</p>
+<h2 id="Boolean-precedence"><a href="#Boolean-precedence" class="headerlink" title="Boolean precedence"></a>Boolean precedence</h2><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>not <code>x</code></td>
+<td>Boolean NOT</td>
+</tr>
+<tr>
+<td>and</td>
+<td>Boolean AND</td>
+</tr>
+<tr>
+<td>or</td>
+<td>Boolean OR</td>
+</tr>
+</tbody></table>
+<h2 id="Comparisons-precedence"><a href="#Comparisons-precedence" class="headerlink" title="Comparisons precedence"></a>Comparisons precedence</h2><p>然後</p>
+<p><code>Comparisons</code> 都比 <code>Boolean</code> 優先</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>in, not in, is, is not, &lt;, &lt;&#x3D;, &gt;, &gt;&#x3D;, !&#x3D;, &#x3D;&#x3D;</td>
+<td>Comparisons, including membership tests and identity tests</td>
+</tr>
+<tr>
+<td>not <code>x</code></td>
+<td>Boolean NOT</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/25/Python-Operator-precedence/" data-id="cm7rs1s05000vh1q59ix5h4l9" data-title="Python Operator precedence" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -552,7 +564,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/3/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/note/page/5/">5</a><a class="page-number" href="/note/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/3/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/note/page/5/">5</a><a class="page-number" href="/note/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/10/">10</a><a class="extend next" rel="next" href="/note/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -566,7 +578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Echo/" rel="tag">Echo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" rel="tag">ビジネス</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -576,7 +588,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/DB/" style="font-size: 10px;">DB</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/Echo/" style="font-size: 10px;">Echo</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 11.67px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16.67px;">git</a> <a href="/note/tags/linux/" style="font-size: 10px;">linux</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a> <a href="/note/tags/%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/" style="font-size: 11.67px;">ビジネス</a>
+      <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
     </div>
   </div>
 
@@ -585,7 +597,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2023/01/">January 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -596,6 +608,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
+          </li>
         
           <li>
             <a href="/note/2025/02/27/Go-string-iteration/">Go string iteration</a>
@@ -611,10 +627,6 @@
         
           <li>
             <a href="/note/2025/02/23/socket/">socket</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/02/23/pipe/">pipe</a>
           </li>
         
       </ul>
