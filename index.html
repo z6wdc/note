@@ -69,6 +69,105 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Von-Neumann-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/18/Von-Neumann-Architecture/" class="article-date">
+  <time class="dt-published" datetime="2025-03-18T09:18:08.000Z" itemprop="datePublished">2025-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什麼是馮·諾依曼架構？"><a href="#1-什麼是馮·諾依曼架構？" class="headerlink" title="1. 什麼是馮·諾依曼架構？"></a>1. 什麼是馮·諾依曼架構？</h2><p><strong>馮·諾依曼架構</strong> 是現代計算機的基本架構模型，由數學家 <strong>約翰·馮·諾依曼（John von Neumann）</strong> 在 1945 年提出。</p>
+<p>其核心概念是 <strong>「存儲程序計算機（Stored-Program Computer）」</strong>，即指令（程式）和數據存儲在同一個記憶體中，並由中央處理單元（CPU）來依序執行。</p>
+<h2 id="2-架構組成（5-大要素）"><a href="#2-架構組成（5-大要素）" class="headerlink" title="2. 架構組成（5 大要素）"></a>2. 架構組成（5 大要素）</h2><h3 id="1-演算裝置（Arithmetic-Unit，ALU）"><a href="#1-演算裝置（Arithmetic-Unit，ALU）" class="headerlink" title="1 演算裝置（Arithmetic Unit，ALU）"></a><strong>1 演算裝置（Arithmetic Unit，ALU）</strong></h3><ul>
+<li>負責執行 <strong>數學運算</strong>（加減乘除）與 <strong>邏輯運算</strong>（AND、OR、NOT 等）。</li>
+<li>這部分通常是 <strong>CPU 內部的一部分</strong>，也稱為「算術邏輯單元（ALU）」。</li>
+</ul>
+<h3 id="2-制御裝置（Control-Unit，CU）"><a href="#2-制御裝置（Control-Unit，CU）" class="headerlink" title="2 制御裝置（Control Unit，CU）"></a><strong>2 制御裝置（Control Unit，CU）</strong></h3><ul>
+<li>負責 <strong>解讀並執行指令</strong>，並控制其他組件的運作。</li>
+<li>透過 <strong>程序計數器（PC, Program Counter）</strong> 控制指令的順序執行。</li>
+</ul>
+<h3 id="3-主記憶裝置（Main-Memory）"><a href="#3-主記憶裝置（Main-Memory）" class="headerlink" title="3 主記憶裝置（Main Memory）"></a><strong>3 主記憶裝置（Main Memory）</strong></h3><ul>
+<li>存儲 <strong>指令（程式）與數據</strong>。</li>
+<li><strong>指令與數據共用相同的記憶體空間</strong>（這是馮·諾依曼架構的特徵）。</li>
+<li>CPU 會根據 <strong>指令地址</strong> 讀取並執行對應的指令。</li>
+</ul>
+<h3 id="4-輸入裝置（Input-Unit）"><a href="#4-輸入裝置（Input-Unit）" class="headerlink" title="4 輸入裝置（Input Unit）"></a><strong>4 輸入裝置（Input Unit）</strong></h3><ul>
+<li>用戶輸入指令或數據的介面，例如 <strong>鍵盤、滑鼠、感測器等</strong>。</li>
+</ul>
+<h3 id="5-輸出裝置（Output-Unit）"><a href="#5-輸出裝置（Output-Unit）" class="headerlink" title="5 輸出裝置（Output Unit）"></a><strong>5 輸出裝置（Output Unit）</strong></h3><ul>
+<li>負責將計算結果顯示給用戶，例如 <strong>顯示器、打印機等</strong>。</li>
+</ul>
+<h2 id="3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）"><a href="#3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）" class="headerlink" title="3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）"></a>3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）</h2><p>雖然馮·諾依曼架構為現代計算機奠定了基礎，但它也存在一些 <strong>缺點</strong>，稱為 <strong>馮·諾依曼瓶頸</strong>：</p>
+<ul>
+<li><strong>指令與數據共用同一條記憶體匯流排</strong>，導致 CPU 需要等待數據或指令的傳輸，影響效能。</li>
+<li><strong>記憶體存取速度比 CPU 運算速度慢</strong>，導致 CPU 閒置的情況增加。</li>
+<li><strong>頻繁的記憶體訪問</strong> 可能會限制整體效能，特別是在高效能運算應用中。</li>
+</ul>
+<h2 id="4-與哈佛架構（Harvard-Architecture）的比較"><a href="#4-與哈佛架構（Harvard-Architecture）的比較" class="headerlink" title="4. 與哈佛架構（Harvard Architecture）的比較"></a>4. 與哈佛架構（Harvard Architecture）的比較</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>馮·諾依曼架構</th>
+<th>哈佛架構</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>記憶體設計</strong></td>
+<td>指令與數據共用同一個記憶體</td>
+<td>指令與數據分開存儲</td>
+</tr>
+<tr>
+<td><strong>匯流排</strong></td>
+<td>指令與數據共用</td>
+<td>指令與數據各有獨立匯流排</td>
+</tr>
+<tr>
+<td><strong>優勢</strong></td>
+<td>設計簡單、通用性強</td>
+<td>可同時存取指令和數據，速度較快</td>
+</tr>
+<tr>
+<td><strong>缺點</strong></td>
+<td>可能有記憶體存取瓶頸</td>
+<td>記憶體設計較複雜，成本較高</td>
+</tr>
+</tbody></table>
+<h2 id="5-結論"><a href="#5-結論" class="headerlink" title="5. 結論"></a>5. 結論</h2><ul>
+<li><strong>馮·諾依曼架構</strong> 是現代電腦的基礎，因為它讓 <strong>程式和數據存儲在同一個記憶體</strong>，大幅提升了電腦的靈活性。</li>
+<li>但其 <strong>「馮·諾依曼瓶頸」</strong> 也影響了 CPU 的運行效率，因此現代 CPU 透過 <strong>高速快取記憶體（Cache）</strong>、<strong>超純量（Superscalar）</strong> 和 <strong>指令流水線（Pipeline）</strong> 來提高效能。</li>
+<li>部分系統（如 <strong>嵌入式設備、DSP 處理器</strong>）會採用 <strong>哈佛架構</strong> 來提升執行效率。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cm8ek1vci0030guqf07p35yh6" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Layered-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/03/16/Layered-Architecture/" class="article-date">
@@ -109,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm8boeztv000ahcq642pgfp9g" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm8ek1vbh000aguqfgxc6bkxr" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -185,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm8boezuu0033hcq65p1k4qlj" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm8ek1vcj0035guqfbzjmebfo" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -263,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm8boezuu0035hcq6crv5c4v9" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm8ek1vck0038guqf0yf38qig" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -356,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm8boezut002yhcq60h7icm2v" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm8ek1vcj0033guqf5pr49szv" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -414,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm8boeztq0004hcq66m2wffpg" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm8ek1vbd0004guqffxtk4w0j" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -476,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm8boeztt0007hcq6co0qawae" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm8ek1vbf0007guqf5uuoak5y" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -518,7 +617,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm8boeztr0005hcq67cmt5ywr" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm8ek1vbe0005guqfecef4yhg" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -638,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm8boezvc0059hcq66c58djr1" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm8ek1vd5005cguqffsfehf3n" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -741,87 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm8boezvf005mhcq6asxb6c0e" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pipe" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/02/23/pipe/" class="article-date">
-  <time class="dt-published" datetime="2025-02-23T16:57:05.000Z" itemprop="datePublished">2025-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/02/23/pipe/">pipe</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>Pipe</strong> 是一種進程間通信（IPC, Inter-Process Communication）機制，通常用於在同一台機器上的進程之間傳遞數據。以下是 Pipe 的一些主要特性：</p>
-<h2 id="1-單向通信"><a href="#1-單向通信" class="headerlink" title="1. 單向通信"></a>1. 單向通信</h2><ul>
-<li><strong>Pipe</strong> 通常是 <strong>單向的</strong>，即數據只能從管道的一端流向另一端。一個進程將數據寫入管道，另一個進程從管道讀取數據。</li>
-</ul>
-<h2 id="2-進程間通信"><a href="#2-進程間通信" class="headerlink" title="2. 進程間通信"></a>2. 進程間通信</h2><ul>
-<li><strong>Pipe</strong> 主要用於在同一台機器上的進程間進行數據傳輸。它是操作系統提供的一個低階 IPC 機制，允許兩個相關的進程（如父子進程）進行簡單的數據交換。</li>
-</ul>
-<h2 id="3-內存中實現"><a href="#3-內存中實現" class="headerlink" title="3. 內存中實現"></a>3. 內存中實現</h2><ul>
-<li>Pipe 是一種 <strong>內存中實現</strong> 的通信方式，數據並不會寫入磁碟，而是存儲在內存中。這使得 Pipe 的操作通常比磁碟操作更快速。</li>
-</ul>
-<h2 id="4-無需顯式打開檔案"><a href="#4-無需顯式打開檔案" class="headerlink" title="4. 無需顯式打開檔案"></a>4. 無需顯式打開檔案</h2><ul>
-<li>使用 Pipe 不需要顯式的檔案操作。它直接通過文件描述符來讀寫數據，這使得它比傳統的檔案處理方式更簡單。</li>
-</ul>
-<h2 id="5-提供簡單的-API"><a href="#5-提供簡單的-API" class="headerlink" title="5. 提供簡單的 API"></a>5. 提供簡單的 API</h2><ul>
-<li>Pipe 提供簡單的 API 來進行數據的寫入和讀取。例如，<code>write()</code> 和 <code>read()</code> 系統調用可以用來在管道中寫入和讀取數據。</li>
-</ul>
-<h2 id="6-具有緩衝區"><a href="#6-具有緩衝區" class="headerlink" title="6. 具有緩衝區"></a>6. 具有緩衝區</h2><ul>
-<li><strong>Pipe</strong> 具有緩衝區，當數據寫入管道時，數據會暫時存在內存中的緩衝區，等待讀取進程來取出。</li>
-</ul>
-<h2 id="7-有名與無名管道"><a href="#7-有名與無名管道" class="headerlink" title="7. 有名與無名管道"></a>7. 有名與無名管道</h2><ul>
-<li><p><strong>無名管道（Anonymous Pipe）</strong>：</p>
-<ul>
-<li>用於父子進程或兄弟進程間的通信。無名管道沒有名稱，通常在進程創建時通過管道文件描述符傳遞。</li>
-</ul>
-</li>
-<li><p><strong>有名管道（Named Pipe 或 FIFO）</strong>：</p>
-<ul>
-<li>有名稱的管道，可以在不同進程間共享。它類似於普通的文件，通過文件系統路徑來訪問。</li>
-</ul>
-</li>
-</ul>
-<h2 id="8-進程之間的同步"><a href="#8-進程之間的同步" class="headerlink" title="8. 進程之間的同步"></a>8. 進程之間的同步</h2><ul>
-<li>使用 <strong>Pipe</strong> 進行通信時，操作系統通常會在寫入和讀取之間進行同步。例如，如果讀取進程嘗試讀取一個空的管道，該進程會被阻塞，直到寫入進程寫入數據。</li>
-</ul>
-<h2 id="9-局限性"><a href="#9-局限性" class="headerlink" title="9. 局限性"></a>9. 局限性</h2><ul>
-<li><strong>單向性</strong>：雖然可以使用兩個管道實現雙向通信，但單個管道本身僅支持單向數據流。</li>
-<li><strong>同一台機器</strong>：Pipe 通常只適用於同一台機器內的進程間通信，不能跨網路進行通信。</li>
-<li><strong>容量限制</strong>：管道的容量是有限的，如果管道滿了，寫入操作會被阻塞。</li>
-</ul>
-<h2 id="10-用途"><a href="#10-用途" class="headerlink" title="10. 用途"></a>10. 用途</h2><ul>
-<li><strong>管道命令</strong>：在類 Unix 系統中，管道經常用於命令行工具的組合，通過 <code>|</code> 符號將命令的輸出傳遞給下一個命令。例如，<code>ps aux | grep python</code>。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cm8boezvc0057hcq6e08o9wdw" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm8ek1vd7005oguqfa4vvd0t5" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -883,6 +902,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/03/16/Layered-Architecture/">Layered Architecture</a>
           </li>
         
@@ -896,10 +919,6 @@
         
           <li>
             <a href="/note/2025/03/03/browser-event/">browser event</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
           </li>
         
       </ul>

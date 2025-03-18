@@ -69,6 +69,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-Decorators" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/15/Python-Decorators/" class="article-date">
+  <time class="dt-published" datetime="2021-07-15T23:19:13.000Z" itemprop="datePublished">2021-07-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/15/Python-Decorators/">Python Decorators</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0318/#examples">Decorators</a></p>
+<p>可以用來修飾 <code>class</code> 跟 <code>function</code></p>
+<p><code>function</code> 的範例如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">decorator_sample</span>(<span class="params">func</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">inner1</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">          </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;before Execution&quot;</span>)          </span><br><span class="line">        returned_value = func(*args, **kwargs)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;after Execution&quot;</span>)</span><br><span class="line">          </span><br><span class="line">        <span class="keyword">return</span> returned_value</span><br><span class="line">          </span><br><span class="line">    <span class="keyword">return</span> inner1</span><br><span class="line">    </span><br><span class="line"><span class="meta">@decorator_sample</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sum_two_numbers</span>(<span class="params">a, b</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Inside the function&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Sum =&quot;</span>, sum_two_numbers(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">before Execution</span></span><br><span class="line"><span class="string">Inside the function</span></span><br><span class="line"><span class="string">after Execution</span></span><br><span class="line"><span class="string">Sum = 3</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm8ek1vbq000tguqf7ridejq0" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git-config-core-ignorecase" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/14/git-config-core-ignorecase/" class="article-date">
@@ -107,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm8boezuw003dhcq6adaja446" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm8ek1vcm003fguqf06qm3evy" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -164,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm8boezul002jhcq6bxq95h10" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm8ek1vcd002jguqf59v91skh" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -209,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm8boezuh0024hcq6cy509tla" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm8ek1vc50024guqf88lhbif9" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -313,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm8boezv10040hcq666bc0ki5" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm8ek1vcs0042guqf1462ftg3" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -365,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm8boezv6004ghcq6d4yl29dp" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm8ek1vcy004iguqfgogshdym" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -407,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm8boeztx000fhcq6hfr282p9" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm8ek1vbj000fguqf7zu2gue6" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -613,7 +657,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm8boezuq002qhcq641c7cbp1" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm8ek1vcf002qguqfcmas6sk8" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -660,7 +704,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm8boeztw000chcq6ba4zd0qv" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm8ek1vbi000cguqf4byl254h" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -712,55 +756,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm8boezuk002ghcq6cypicfyj" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm8ek1vc9002gguqfbj383d6j" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-BigQuery-SELECT-EXCEPT" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/" class="article-date">
-  <time class="dt-published" datetime="2021-07-06T01:48:47.000Z" itemprop="datePublished">2021-07-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/06/BigQuery-SELECT-EXCEPT/">Big Query SELECT * EXCEPT</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_except">SELECT * EXCEPT</a></p>
-<p><code>SELECT * EXCEPT</code> 可以在 select 全部的時候</p>
-<p>指定要除去哪一個特定的 column</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span> orders <span class="keyword">AS</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="number">5</span> <span class="keyword">as</span> order_id,</span><br><span class="line">  &quot;sprocket&quot; <span class="keyword">as</span> item_name,</span><br><span class="line">  <span class="number">200</span> <span class="keyword">as</span> quantity)</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">EXCEPT</span> (order_id)</span><br><span class="line"><span class="keyword">FROM</span> orders;</span><br><span class="line"></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+----------+</span></span><br><span class="line"><span class="operator">|</span> item_name <span class="operator">|</span> quantity <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+----------+</span></span><br><span class="line"><span class="operator">|</span> sprocket  <span class="operator">|</span> <span class="number">200</span>      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-----------+----------+</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm8boezti0000hcq661329kif" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li></ul>
 
     </footer>
   </div>
@@ -820,6 +820,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/03/16/Layered-Architecture/">Layered Architecture</a>
           </li>
         
@@ -833,10 +837,6 @@
         
           <li>
             <a href="/note/2025/03/03/browser-event/">browser event</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
           </li>
         
       </ul>
