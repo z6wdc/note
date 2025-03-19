@@ -60,3 +60,7 @@ scalaVersion := "2.13.12"
 // 新增依賴（例如 Akka）
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.20"
 ```
+
+## Reference
+
+https://www.scala-sbt.org/
