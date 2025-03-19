@@ -4,7 +4,9 @@ date: 2025-03-19 14:42:30
 tags: ["sbt"]
 ---
 ## sbt 是什麼？
-sbt（simple build tool）是一個專為 **Scala 和 Java** 設計的建置工具，主要用於 **編譯、測試、打包與部署**。它是 Scala 生態系統中的標準建置工具，類似於 Java 的 Maven 或 Gradle。
+sbt（simple build tool）是一個專為 **Scala 和 Java** 設計的建置工具，主要用於 **編譯、測試、打包與部署**。
+
+它是 Scala 生態系統中的標準建置工具，類似於 Java 的 Maven 或 Gradle。
 
 ## SBT 的特色
 1. **增量編譯（Incremental Compilation）**
