@@ -69,6 +69,118 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-simple-build-tool" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/19/simple-build-tool/" class="article-date">
+  <time class="dt-published" datetime="2025-03-19T14:42:30.000Z" itemprop="datePublished">2025-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="sbt-是什麼？"><a href="#sbt-是什麼？" class="headerlink" title="sbt 是什麼？"></a>sbt 是什麼？</h2><p>sbt（simple build tool）是一個專為 <strong>Scala 和 Java</strong> 設計的建置工具，主要用於 <strong>編譯、測試、打包與部署</strong>。</p>
+<p>它是 Scala 生態系統中的標準建置工具，類似於 Java 的 Maven 或 Gradle。</p>
+<h2 id="SBT-的特色"><a href="#SBT-的特色" class="headerlink" title="SBT 的特色"></a>SBT 的特色</h2><ol>
+<li><p><strong>增量編譯（Incremental Compilation）</strong></p>
+<ul>
+<li>SBT 只會重新編譯修改過的程式碼，提升開發效率。</li>
+</ul>
+</li>
+<li><p><strong>互動模式（Interactive Mode）</strong></p>
+<ul>
+<li>可以在 SBT 內開啟 REPL（Read-Eval-Print Loop），即時執行指令。</li>
+</ul>
+</li>
+<li><p><strong>支援多模組（Multi-Project Build）</strong></p>
+<ul>
+<li>可同時管理多個子專案，適合大型專案開發。</li>
+</ul>
+</li>
+<li><p><strong>原生支援 Scala</strong></p>
+<ul>
+<li>SBT 使用 Scala 語法來定義建置設定（<code>build.sbt</code>），可靈活擴充。</li>
+</ul>
+</li>
+<li><p><strong>內建測試支援</strong></p>
+<ul>
+<li>內建對 <strong>ScalaTest</strong>、<strong>Specs2</strong> 等測試框架的支援，方便進行單元測試與整合測試。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="SBT-的基本結構"><a href="#SBT-的基本結構" class="headerlink" title="SBT 的基本結構"></a>SBT 的基本結構</h2><p>SBT 項目通常包含以下檔案：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">my-project/</span><br><span class="line">│── project/          <span class="comment"># 存放 SBT 插件與額外設定</span></span><br><span class="line">│── src/              <span class="comment"># 原始碼與測試碼</span></span><br><span class="line">│   ├── main/scala/   <span class="comment"># 主要 Scala 程式碼</span></span><br><span class="line">│   ├── <span class="built_in">test</span>/scala/   <span class="comment"># 測試程式碼</span></span><br><span class="line">│── build.sbt         <span class="comment"># SBT 的主要設定檔</span></span><br><span class="line">│── target/           <span class="comment"># SBT 產生的編譯結果</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sbt-的基本指令"><a href="#sbt-的基本指令" class="headerlink" title="sbt 的基本指令"></a>sbt 的基本指令</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>sbt compile</code></td>
+<td>編譯專案</td>
+</tr>
+<tr>
+<td><code>sbt run</code></td>
+<td>執行專案</td>
+</tr>
+<tr>
+<td><code>sbt test</code></td>
+<td>執行測試</td>
+</tr>
+<tr>
+<td><code>sbt package</code></td>
+<td>產生 JAR 檔</td>
+</tr>
+<tr>
+<td><code>sbt clean</code></td>
+<td>清除編譯後的檔案</td>
+</tr>
+<tr>
+<td><code>sbt console</code></td>
+<td>進入 Scala REPL</td>
+</tr>
+<tr>
+<td><code>sbt ~compile</code></td>
+<td>監聽檔案變更，自動重新編譯</td>
+</tr>
+</tbody></table>
+<h2 id="build-sbt-範例"><a href="#build-sbt-範例" class="headerlink" title="build.sbt 範例"></a><code>build.sbt</code> 範例</h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 設定專案名稱與版本</span></span><br><span class="line">name := <span class="string">&quot;MyScalaProject&quot;</span></span><br><span class="line">version := <span class="string">&quot;0.1.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定 Scala 版本</span></span><br><span class="line">scalaVersion := <span class="string">&quot;2.13.12&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新增依賴（例如 Akka）</span></span><br><span class="line">libraryDependencies += <span class="string">&quot;com.typesafe.akka&quot;</span> %% <span class="string">&quot;akka-actor&quot;</span> % <span class="string">&quot;2.6.20&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.scala-sbt.org/">https://www.scala-sbt.org/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cm8i7z5sf005ghyqb7x4768rk" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Von-Neumann-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/03/18/Von-Neumann-Architecture/" class="article-date">
@@ -156,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cm8ek1vci0030guqf07p35yh6" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cm8i7z5ru0030hyqbc44fbwom" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -208,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm8ek1vbh000aguqfgxc6bkxr" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm8i7z5qt000ahyqb7jq37lk0" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -284,7 +396,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm8ek1vcj0035guqfbzjmebfo" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm8i7z5rv0035hyqb7a7h98zt" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -362,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm8ek1vck0038guqf0yf38qig" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm8i7z5rw0038hyqbctoa4cee" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -455,7 +567,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm8ek1vcj0033guqf5pr49szv" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm8i7z5ru0033hyqbhx74e213" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -513,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm8ek1vbd0004guqffxtk4w0j" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm8i7z5qq0004hyqb46q4f6jp" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -575,7 +687,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm8ek1vbf0007guqf5uuoak5y" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cm8i7z5qr0007hyqb0lfz3qd0" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -617,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm8ek1vbe0005guqfecef4yhg" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cm8i7z5qq0005hyqb1id14e62" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -737,113 +849,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm8ek1vd5005cguqffsfehf3n" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cm8i7z5se005chyqbcp3x0kkc" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-socket" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/02/23/socket/" class="article-date">
-  <time class="dt-published" datetime="2025-02-23T17:17:35.000Z" itemprop="datePublished">2025-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/02/23/socket/">socket</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>Socket</strong> 是進程間通信（IPC）的一種方式，允許不同機器上的進程或同一台機器上的進程之間進行數據傳輸。以下是 Socket 的一些主要特性：</p>
-<h2 id="1-雙向通信"><a href="#1-雙向通信" class="headerlink" title="1. 雙向通信"></a>1. 雙向通信</h2><ul>
-<li><strong>Socket</strong> 支援 <strong>雙向通信</strong>，即數據可以在同一時間從兩端傳輸。這使得 Socket 成為許多網路應用的理想選擇，因為它允許即時的雙向數據交流。</li>
-</ul>
-<h2 id="2-跨平台通信"><a href="#2-跨平台通信" class="headerlink" title="2. 跨平台通信"></a>2. 跨平台通信</h2><ul>
-<li><strong>Socket</strong> 可以用於不同系統間的通信。例如，兩個不同操作系統上的應用程序（如 Windows 和 Linux）也可以使用 TCP&#x2F;IP 或其他協議通過 Socket 進行通信。</li>
-</ul>
-<h2 id="3-支援多種協議"><a href="#3-支援多種協議" class="headerlink" title="3. 支援多種協議"></a>3. 支援多種協議</h2><ul>
-<li><strong>Socket</strong> 不僅限於 TCP&#x2F;IP 協議，它還支持多種不同的協議，例如：<ul>
-<li><strong>SOCK_STREAM</strong>：提供可靠、順序且無錯誤的字節流傳輸，通常使用 TCP 協議。</li>
-<li><strong>SOCK_DGRAM</strong>：提供無連接的數據包服務，通常使用 UDP 協議。</li>
-<li><strong>SOCK_RAW</strong>：允許應用程序直接操作網路層協議（如 ICMP）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="4-連接與非連接模式"><a href="#4-連接與非連接模式" class="headerlink" title="4. 連接與非連接模式"></a>4. 連接與非連接模式</h2><ul>
-<li><strong>連接模式（Connection-oriented）</strong>：如 TCP 協議的 Socket，進程間需要建立連接（通常使用 <code>connect()</code> 和 <code>accept()</code>）後才能進行數據交換。</li>
-<li><strong>非連接模式（Connectionless）</strong>：如 UDP 協議的 Socket，數據可以直接發送到目的地，無需建立持久的連接。</li>
-</ul>
-<h2 id="5-帶外數據（Out-of-Band-Data）"><a href="#5-帶外數據（Out-of-Band-Data）" class="headerlink" title="5. 帶外數據（Out-of-Band Data）"></a>5. 帶外數據（Out-of-Band Data）</h2><ul>
-<li>Socket 支援帶外數據的傳輸，這使得應用程序可以在正常數據流外傳送緊急訊息。例如，TCP 協議支援此功能以傳送高優先級訊息。</li>
-</ul>
-<h2 id="6-多對多通信"><a href="#6-多對多通信" class="headerlink" title="6. 多對多通信"></a>6. 多對多通信</h2><ul>
-<li><strong>Socket</strong> 支援多對多通信，可以用於設計各種分佈式應用程式，例如客戶端-服務器架構。多個客戶端可以連接到同一伺服器，並與伺服器進行通信。</li>
-</ul>
-<h2 id="7-多種資料交換方式"><a href="#7-多種資料交換方式" class="headerlink" title="7. 多種資料交換方式"></a>7. 多種資料交換方式</h2><ul>
-<li><p><strong>阻塞與非阻塞模式</strong>：</p>
-<ul>
-<li><strong>阻塞模式</strong>：默認情況下，Socket 操作是阻塞的，即讀取操作會等待讀取數據，寫入操作會等徹底寫入數據。</li>
-<li><strong>非阻塞模式</strong>：在非阻塞模式下，Socket 操作會立即返回，如果無法完成操作（如讀取或寫入），會返回錯誤代碼。</li>
-</ul>
-</li>
-<li><p><strong>選擇（Select）</strong>：可以使用 <code>select()</code> 或 <code>poll()</code> 等系統調用來監視多個 Socket，檢測是否有數據可讀或可寫。</p>
-</li>
-</ul>
-<h2 id="8-安全性"><a href="#8-安全性" class="headerlink" title="8. 安全性"></a>8. 安全性</h2><ul>
-<li><strong>加密</strong>：Socket 通常可以與加密協議（如 SSL&#x2F;TLS）結合使用，來加密數據並保護通信過程中的隱私和安全性。</li>
-</ul>
-<h2 id="9-Socket-Domain"><a href="#9-Socket-Domain" class="headerlink" title="9. Socket Domain"></a>9. Socket Domain</h2><ul>
-<li><p><strong>Socket Domain</strong> 是指 Socket 的一種分類，描述了通信的範圍與區域。根據 Socket Domain，Socket 可以被劃分為不同的類型，主要有：</p>
-<ul>
-<li><p><strong>AF_INET（IPv4）</strong>：</p>
-<ul>
-<li>用於基於 IPv4 協議的通信。這是最常見的 Socket 類型，適用於互聯網通信。</li>
-</ul>
-</li>
-<li><p><strong>AF_INET6（IPv6）</strong>：</p>
-<ul>
-<li>用於基於 IPv6 協議的通信。隨著 IPv6 的普及，這種 Socket 類型也變得越來越重要。</li>
-</ul>
-</li>
-<li><p><strong>AF_UNIX（Unix 域 Socket）</strong>：</p>
-<ul>
-<li>用於同一台機器上的進程間通信（IPC）。這類 Socket 不通過網路，而是通過內核提供的 Unix 域進行通信，常用於本地應用程式的進程間數據交換。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="10-用途"><a href="#10-用途" class="headerlink" title="10. 用途"></a>10. 用途</h2><ul>
-<li><strong>網路通信</strong>：Socket 是網路通信的基礎，許多網路應用（如 HTTP、FTP、SMTP）都依賴於 Socket 來實現進程間通信。</li>
-<li><strong>分佈式應用</strong>：通過 Socket，開發者可以構建多層次的分佈式應用程式，實現客戶端和伺服器之間的通信。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cm8ek1vd7005oguqfa4vvd0t5" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -870,7 +881,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -880,7 +891,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
     </div>
   </div>
 
@@ -902,6 +913,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
           </li>
         
@@ -915,10 +930,6 @@
         
           <li>
             <a href="/note/2025/03/04/for-in-vs-for-of/">for in vs for of</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/03/browser-event/">browser event</a>
           </li>
         
       </ul>
