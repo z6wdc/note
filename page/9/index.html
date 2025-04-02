@@ -69,6 +69,259 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Recommender-System-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/12/Recommender-System-Model/" class="article-date">
+  <time class="dt-published" datetime="2021-07-12T03:40:47.000Z" itemprop="datePublished">2021-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/12/Recommender-System-Model/">Recommender System Model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Recommender System 中常見的手法</p>
+<h2 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h2><p>其實在還沒有什麼資料的時候</p>
+<p>直接推薦使用者 rank 高的 item 就是個常見的做法</p>
+<p>在計算 rank 的時候</p>
+<p>也可以參考這個<a target="_blank" rel="noopener" href="https://myanimelist.net/info.php?go=topanime">算式</a></p>
+<h2 id="Content-Based-Filtering"><a href="#Content-Based-Filtering" class="headerlink" title="Content Based Filtering"></a>Content Based Filtering</h2><p>利用 item 本身的資訊來找出相似的 item 並推薦</p>
+<p>如果 item 有內容介紹之類的文章</p>
+<p>也可以利用 TF-IDF 來加以分析</p>
+<h3 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h3><p>計算相似度的常用方法</p>
+<ul>
+<li><p>mean squared difference</p>
+</li>
+<li><p>Jaccard similarity</p>
+</li>
+<li><p>Cosine Similarity</p>
+</li>
+<li><p>Pearson Correlation Coefficient</p>
+</li>
+</ul>
+<h2 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h2><h3 id="Model-Based"><a href="#Model-Based" class="headerlink" title="Model Based"></a>Model Based</h3><p>PCA</p>
+<p>SVD</p>
+<p>Matrix Factorization</p>
+<h3 id="Memory-Based"><a href="#Memory-Based" class="headerlink" title="Memory Based"></a>Memory Based</h3><h4 id="User-Based"><a href="#User-Based" class="headerlink" title="User Based"></a>User Based</h4><p>先找與你喜好相近的人</p>
+<p>再推薦他們喜歡的東西給你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>user -&gt; item rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+<th>item4</th>
+<th>item5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>user -&gt; user similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>user2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>user3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>look up similar users</p>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h4 id="Item-Based"><a href="#Item-Based" class="headerlink" title="Item Based"></a>Item Based</h4><p>用你喜歡的 Item 去找相似的 Item 來推薦你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>item -&gt; user rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>item -&gt; item similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>item2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>item3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h2 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h2><p>綜合 <code>Content Based</code> 跟 <code>Collaborative</code> 的方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm8zpgblh002tihq84jhe4xwz" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mac-pbcopy-pbpaste" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/11/Mac-pbcopy-pbpaste/" class="article-date">
+  <time class="dt-published" datetime="2021-07-11T13:23:10.000Z" itemprop="datePublished">2021-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/11/Mac-pbcopy-pbpaste/">Mac pbcopy pbpaste</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Mac 可以利用 <code>pbcopy</code> 這指令來複製</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; target.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> target.txt | pbcopy</span><br></pre></td></tr></table></figure>
+
+<p>然後可以利用 <code>pbpaste</code> 來貼出目前複製的內容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm8zpgbkn000fihq856wl275w" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-str-replace" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/09/Python-str-replace/" class="article-date">
@@ -107,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm8i7z5ro002ghyqb6ydqhtxx" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm8zpgblb002jihq8fema2vbh" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -151,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm8i7z5qp0003hyqb396ufz01" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm8zpgbk90000ihq82ktl5k40" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -202,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm8i7z5r60012hyqbaymj41k8" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm8zpgbkx0014ihq8h2bj5hlp" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -247,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm8i7z5s0003uhyqb5q22e9y3" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm8zpgblu003zihq8datr0z82" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -304,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cm8i7z5s8004khyqb5tbc8frm" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cm8zpgbm1004oihq88brjh59i" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -361,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cm8i7z5s5004ahyqb57o0ej1i" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cm8zpgblz004fihq8g4ujephy" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -418,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cm8i7z5s5004chyqb3io1d5q5" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cm8zpgblz004hihq80fhja2ia" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -476,7 +729,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm8i7z5sc0051hyqb0ytd41ul" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm8zpgbm50056ihq8dq520zva" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -490,114 +743,11 @@
 
 
   
-    <article id="post-pip-install" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/28/pip-install/" class="article-date">
-  <time class="dt-published" datetime="2021-06-28T13:09:40.000Z" itemprop="datePublished">2021-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/28/pip-install/">pip install</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/cli/pip_install/#">pip install</a></p>
-<p>這個可以說是最常用的指令之一</p>
-<p>在一些 command 中可以看到一些加上 option 的用法</p>
-<p>其實最簡單查詢每個 option 的方法就是利用 <code>-h</code></p>
-<h2 id="h"><a href="#h" class="headerlink" title="-h"></a>-h</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -h</span><br></pre></td></tr></table></figure>
-
-<p>就會把 option 都列出來給你看了</p>
-<p>而之中常用的有</p>
-<h2 id="r"><a href="#r" class="headerlink" title="-r"></a>-r</h2><p>-r, –requirement <file> </p>
-<p>Install from the given requirements file. </p>
-<p>This option can be used multiple times.</p>
-<p>關於 requirements file 的格式</p>
-<p>可以參考<a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/cli/pip_install/#example-requirements-file">這裡</a></p>
-<h2 id="U"><a href="#U" class="headerlink" title="-U"></a>-U</h2><p>-U, –upgrade</p>
-<p>Upgrade all specified packages to the newest available version.</p>
-<p>The handling of dependencies depends on the upgrade-strategy used.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cm8i7z5sd0057hyqbe5m7fmbk" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-docstring" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/25/Python-docstring/" class="article-date">
-  <time class="dt-published" datetime="2021-06-25T03:05:57.000Z" itemprop="datePublished">2021-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/25/Python-docstring/">Python docstring</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring">docstring</a></p>
-<p>Python 的 module, function, class, method 首行加入註解的話</p>
-<p>這註解就會是 <code>docstring</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">example</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    A docstring sample</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在寫 <code>docstring</code> 的時候，也有許多 style 可以參考</p>
-<p><code>pandas</code> 的 <a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing_docstring.html">例子</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cm8i7z5r9001ahyqb07kvhu43" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/8/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/note/page/10/">10</a><a class="extend next" rel="next" href="/note/page/10/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/8/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/7/">7</a><a class="page-number" href="/note/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/note/page/10/">10</a><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/10/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -643,6 +793,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/03/26/XSS/">XSS</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/03/26/CSRF/">CSRF</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
           </li>
         
@@ -652,14 +810,6 @@
         
           <li>
             <a href="/note/2025/03/16/Layered-Architecture/">Layered Architecture</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/16/chrome-net-export/">Chrome net-export</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/04/for-in-vs-for-of/">for in vs for of</a>
           </li>
         
       </ul>
