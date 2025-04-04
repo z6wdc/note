@@ -69,6 +69,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-dataframe-from-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/29/pandas-dataframe-from-dict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-29T14:13:12.000Z" itemprop="datePublished">2021-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/29/pandas-dataframe-from-dict/">pandas dataframe from_dict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html">from_dict</a></p>
+<p>可以利用 <code>from_dict</code> 把 <code>dictionary</code> 做成 <code>dataframe</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;col_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;col_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data)</span><br></pre></td></tr></table></figure>
+
+<p>而 <code>dictionary</code> 的 key 可以當作 column 或是 row 的 name</p>
+<p>預設會當做 column 的 name</p>
+<p>指定為 row 的方法是指定參數 <code>orient</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;row_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;row_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data, orient=<span class="string">&#x27;index&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm93ejldv004ai6q1doipeceg" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-seaborn-plot-types" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/08/22/seaborn-plot-types/" class="article-date">
@@ -102,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm904y7xe005mgmp0369ke7st" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm93ejle7005oi6q120ddcdrx" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -147,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm904y7w6001igmp09ajidcxk" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm93ejld0001ii6q12kwph3rc" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -199,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm904y7vw000rgmp04lte668l" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm93ejlcq000ri6q1h6cqa31w" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm904y7vy000vgmp0924a9e65" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm93ejlcs000vi6q1frvr5tpx" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -297,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm904y7xg005ugmp05j0p5e5g" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm93ejle9005wi6q1c03ba77d" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -358,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm904y7w5001cgmp0azlkcjji" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm93ejlcy001ai6q12odh9zu6" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -412,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cm904y7wj002ggmp01jvo0o8b" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cm93ejlde002gi6q158r72mwg" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -482,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cm904y7wd0026gmp02a876jjw" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cm93ejld60021i6q1hh6g6pgs" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -534,51 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cm904y7wa001rgmp0gp2r0176" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-pprint" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/01/Python-pprint/" class="article-date">
-  <time class="dt-published" datetime="2021-08-01T03:25:59.000Z" itemprop="datePublished">2021-08-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/01/Python-pprint/">Python pprint</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/pprint.html">pprint</a></p>
-<p>使用 pprint 可以列印出更容易閱讀的格式</p>
-<p>列印 json format 的時候會很有幫助</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">pprint(data, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="cm904y7wc0021gmp0bc08dzlm" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cm93ejld4001ri6q10bst3xb0" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -642,6 +646,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/04/first-class-object/">first class object</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
           </li>
         
@@ -655,10 +663,6 @@
         
           <li>
             <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
           </li>
         
       </ul>

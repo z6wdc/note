@@ -69,6 +69,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SQL-LIKE" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/20/SQL-LIKE/" class="article-date">
+  <time class="dt-published" datetime="2021-07-20T06:48:47.000Z" itemprop="datePublished">2021-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/20/SQL-LIKE/">SQL LIKE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/pattern-matching.html">LIKE</a></p>
+<p><code>SQL</code> 中可以利用 <code>LIKE</code> 來對字串做模糊查詢</p>
+<p><code>%</code> 表示 0 或任意多個字元</p>
+<p><code>_</code> 表示任意一個字元</p>
+<p>查詢時預設不會分辨大小寫</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;b%&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">LIKE</span> <span class="string">&#x27;_____&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>想找指定字串以外的時候</p>
+<p>可以用 <code>NOT LIKE</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> pet <span class="keyword">WHERE</span> name <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;_____&#x27;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/SQL-LIKE/" data-id="cm93ejldj0030i6q136lf1d30" data-title="SQL LIKE" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-str-contains" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/19/pandas-str-contains/" class="article-date">
@@ -102,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/19/pandas-str-contains/" data-id="cm904y7xc005bgmp0797tdys4" data-title="pandas str.contains" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/19/pandas-str-contains/" data-id="cm93ejle5005di6q15qeu9ygq" data-title="pandas str.contains" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -148,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/pandas-options/" data-id="cm904y7x8004tgmp0dbukg81c" data-title="pandas options" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/18/pandas-options/" data-id="cm93ejle1004vi6q17wl39lsj" data-title="pandas options" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -198,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/git-remote/" data-id="cm904y7wv003pgmp023pz7x5y" data-title="git remote" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/18/git-remote/" data-id="cm93ejldr003si6q10xps54gf" data-title="git remote" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -245,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm904y7x00046gmp06t7jhn2j" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm93ejldv0048i6q15ywxe5uc" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -289,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm904y7vz000xgmp0c2zs0zw5" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm93ejlct000xi6q15memgq6h" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -341,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm904y7wv003ngmp02y7p42wu" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm93ejldq003pi6q1710t5pdl" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -398,7 +450,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm904y7wm002ogmp0493p5par" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm93ejldh002oi6q1enjzbstb" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -443,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm904y7we0029gmp05j5w30b3" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm93ejld80029i6q18tstb1em" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -547,59 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm904y7x2004agmp0dl5zf22q" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-info" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/13/pandas-info/" class="article-date">
-  <time class="dt-published" datetime="2021-07-13T03:03:23.000Z" itemprop="datePublished">2021-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/13/pandas-info/">pandas info</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html">info</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.info()</span><br></pre></td></tr></table></figure>
-
-<p>可以利用 info 來檢查每個 column 的</p>
-<ul>
-<li><p>名稱</p>
-</li>
-<li><p>Non-Null Count</p>
-</li>
-<li><p>型別</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm904y7x7004pgmp09iifddu8" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm93ejldw004ci6q172oc09p8" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -663,6 +663,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/04/first-class-object/">first class object</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
           </li>
         
@@ -676,10 +680,6 @@
         
           <li>
             <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
           </li>
         
       </ul>

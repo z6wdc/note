@@ -69,6 +69,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-first-class-object" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/04/04/first-class-object/" class="article-date">
+  <time class="dt-published" datetime="2025-04-04T17:36:49.000Z" itemprop="datePublished">2025-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/04/04/first-class-object/">first class object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在程式語言中，第一級物件（First-class object）是指可以像變數一樣操作的資料或結構。</p>
+<p>具備以下能力：可以被賦值給變數、可以作為參數傳遞給函式、可以作為函式的回傳值、可以儲存在資料結構中（如陣列、Map、物件等）。</p>
+<p>常見例子：JavaScript 中的函式就是第一級物件，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello!&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> sayHi = greet;</span><br><span class="line"><span class="title function_">sayHi</span>();</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">callFunc</span>(<span class="params">f</span>) &#123;</span><br><span class="line">  <span class="title function_">f</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">callFunc</span>(greet);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">outer</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">inner</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;I&#x27;m inner&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> innerFunc = <span class="title function_">outer</span>();</span><br><span class="line"><span class="title function_">innerFunc</span>();</span><br></pre></td></tr></table></figure>
+
+<p>除了「第一級物件」，實際上並沒有嚴格定義的第二級、第三級物件。</p>
+<p>但有些語言中某些資料型別不具備上述全部特性，會被稱為「非第一級」或「second-class」（非正式術語），代表支援有限，例如早期 Java 中的函式不能被當作值傳遞；C 語言雖有函式指標，但無匿名函式，也不能輕易回傳函式。</p>
+<p>第一級物件的重要性在於它允許使用高階函式（higher-order functions）、函式式編程（functional programming）、實作 callback、Promise、async&#x2F;await 等模式，也能建立 closure（閉包）來保存建立當下的變數環境。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cm93ejldo003fi6q18dmegu2w" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-CAP-Theorem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/04/02/CAP-Theorem/" class="article-date">
@@ -148,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cm904y7vk0003gmp0cnlcexk8" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cm93ejlcd0003i6q1fo6mbbzu" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -246,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cm904y7wr0038gmp05s9se988" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cm93ejldl0038i6q1bg14hm5c" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -347,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cm904y7vl0004gmp01i51d3eq" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cm93ejlce0004i6q13c2v4b8t" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -457,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cm904y7xf005ogmp00cms6zyf" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cm93ejle8005si6q1fvcx2jqe" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -558,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cm904y7wq0035gmp0hq235vkm" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cm93ejldk0035i6q1ge4hc6qp" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -610,7 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm904y7vr000ggmp09ikq0ay1" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cm93ejlck000fi6q1c4i6fhac" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -686,7 +732,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm904y7ws003dgmp03duo59q0" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cm93ejldn003di6q1gma67b6e" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -764,7 +810,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm904y7wt003fgmp01vaegc6s" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cm93ejldo003ii6q1cfb724c6" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -857,65 +903,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm904y7wr003agmp014uz99el" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Document-Object-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/02/Document-Object-Model/" class="article-date">
-  <time class="dt-published" datetime="2025-03-02T16:40:51.000Z" itemprop="datePublished">2025-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什麼是-Document-Object-Model-DOM-？"><a href="#什麼是-Document-Object-Model-DOM-？" class="headerlink" title="什麼是 Document Object Model (DOM) ？"></a>什麼是 Document Object Model (DOM) ？</h2><p><strong>文件物件模型（Document Object Model, DOM）</strong> 是一種程式介面，允許開發者使用程式碼來存取和操作 HTML 或 XML 文件的結構。</p>
-<p>DOM 提供了一種樹狀結構的表示方式，讓開發者可以透過 JavaScript 或其他語言來動態修改網頁內容。</p>
-<h2 id="DOM-的結構"><a href="#DOM-的結構" class="headerlink" title="DOM 的結構"></a>DOM 的結構</h2><p>DOM 採用樹狀結構來表示 HTML 文件，每個節點（Node）代表 HTML 文件中的一個元素。</p>
-<p>例如，以下是一個簡單的 HTML 文件：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, DOM!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>這個 HTML 文件在 DOM 中的結構如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Document</span><br><span class="line">└── html</span><br><span class="line">    ├── head</span><br><span class="line">    │   └── title</span><br><span class="line">    │       └── &quot;DOM Example&quot;</span><br><span class="line">    └── body</span><br><span class="line">        ├── h1</span><br><span class="line">        │   └── &quot;Hello, DOM!&quot;</span><br><span class="line">        └── p</span><br><span class="line">            └── &quot;This is a paragraph.&quot;</span><br></pre></td></tr></table></figure>
-
-<h2 id="操作-DOM"><a href="#操作-DOM" class="headerlink" title="操作 DOM"></a>操作 DOM</h2><p>開發者可以透過 JavaScript 來存取和操作 DOM。</p>
-<p>例如，以下是一些常見的操作：</p>
-<h3 id="1-獲取元素"><a href="#1-獲取元素" class="headerlink" title="1. 獲取元素"></a>1. 獲取元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 ID 選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用類名選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;myClass&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用標籤名稱選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 CSS 選擇器選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.myClass&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;p&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-修改內容"><a href="#2-修改內容" class="headerlink" title="2. 修改內容"></a>2. 修改內容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的文字內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">textContent</span> = <span class="string">&quot;新的內容&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改 HTML 內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;&lt;strong&gt;加粗文字&lt;/strong&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-修改屬性"><a href="#3-修改屬性" class="headerlink" title="3. 修改屬性"></a>3. 修改屬性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的屬性</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myLink&quot;</span>).<span class="property">href</span> = <span class="string">&quot;https://example.com&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-修改樣式"><a href="#4-修改樣式" class="headerlink" title="4. 修改樣式"></a>4. 修改樣式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 CSS 樣式</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">style</span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-事件監聽"><a href="#5-事件監聽" class="headerlink" title="5. 事件監聽"></a>5. 事件監聽</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 監聽點擊事件</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;按鈕被點擊了！&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cm904y7vm0007gmp07mrf2qvq" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cm93ejldm003ai6q14j7m57tv" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -977,6 +965,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/04/first-class-object/">first class object</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
           </li>
         
@@ -990,10 +982,6 @@
         
           <li>
             <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
           </li>
         
       </ul>

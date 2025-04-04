@@ -69,6 +69,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-head-tail" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/29/pandas-head-tail/" class="article-date">
+  <time class="dt-published" datetime="2021-06-29T13:34:25.000Z" itemprop="datePublished">2021-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/29/pandas-head-tail/">pandas head tail</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.head.html">head</a></p>
+<p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.tail.html">tail</a></p>
+<p><code>pandas</code> 可以利用 <code>head</code> 跟 <code>tail</code> 來取出前幾筆跟後幾筆的資料</p>
+<p>如果直接使用，預設會取出前 5 筆跟後 5 筆的資料</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.tail()</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定要取出幾筆資料</p>
+<p>例如取出前十筆資料</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>head</code> 跟 <code>tail</code> 也可以合併使用</p>
+<p>譬如說</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.head(<span class="number">20</span>).tail(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p>這樣就會取出前二十筆中最後十筆的資料</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cm93ejldz004li6q10d0dehgg" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-sort-values" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/06/28/pandas-sort-values/" class="article-date">
@@ -113,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm904y7xc0059gmp0gtgo5qjh" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm93ejle4005bi6q15bvlee5g" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -169,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cm904y7xd005fgmp049iab3iu" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cm93ejle6005hi6q1191ods8e" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -216,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cm904y7w5001egmp04nbaehnl" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cm93ejlcz001ei6q10jhp47sq" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -274,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cm904y7xd005dgmp05mmh0bxr" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cm93ejle5005fi6q17icoaycu" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -324,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cm904y7xb0057gmp03zcw90h9" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cm93ejle40059i6q12ntcg6p3" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -375,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cm904y7x5004lgmp00a7xg71g" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cm93ejldz004ni6q19nnnba8w" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -457,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cm904y7wb001wgmp0hmtxd8s4" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cm93ejld5001wi6q1d93wfh8j" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -533,7 +590,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cm904y7wa001ugmp0hyrg90y7" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cm93ejld4001ui6q1b2lvewc6" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -592,63 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cm904y7wd0024gmp02ezchw7a" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-int" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/05/06/Python-int/" class="article-date">
-  <time class="dt-published" datetime="2021-05-06T16:02:43.000Z" itemprop="datePublished">2021-05-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/05/06/Python-int/">Python int()</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Python Built-in Function 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#int">int()</a></p>
-<h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><p>可以把 <code>str</code> 轉換成 <code>int</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>(<span class="string">&#x27;29&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Output</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">29</span><br></pre></td></tr></table></figure>
-
-<h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><p>可以把 <code>float</code> 轉換成 <code>int</code><br>轉換的時候，會直接捨去小數點後的部分</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>(<span class="number">3.14</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span>(<span class="number">7.0</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Output</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-int/" data-id="cm904y7w9001qgmp0gjp3a5bt" data-title="Python int()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cm93ejld70024i6q1eke74ze4" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -712,6 +713,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/04/first-class-object/">first class object</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
           </li>
         
@@ -725,10 +730,6 @@
         
           <li>
             <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
           </li>
         
       </ul>
