@@ -102,7 +102,7 @@ go version go1.16.15 darwin/arm64
 
 ## 安裝方法整理
 
-```mermaid
+<pre class="mermaid">
 flowchart TD
     A[安裝 Go] --> B{哪種方式安裝？}
 
@@ -112,7 +112,7 @@ flowchart TD
     %% .pkg 安裝流程
     C1 --> D1[/usr/local/go 被建立/]
     D1 --> E1[/etc/paths.d/go 被寫入/]
-    E1 --> F1[PATH 自動包含 /usr/local/go/bin]
+    E1 --> F1[PATH 自動包含<br>/usr/local/go/bin]
     F1 --> G1[go 指令可用 ]
 
     %% go install 安裝流程
@@ -120,9 +120,24 @@ flowchart TD
     D2 --> E2{~/go/bin 是否在 PATH？}
 
     E2 -- 否 --> F2[需要手動加入]
-    F2 --> G2[編輯 ~/.zshrc 或 ~/.zprofile<br>加入：export PATH=\$HOME/go/bin:\$PATH]
-    G2 --> H2[執行 source ~/.zshrc 或重新開 Terminal]
-    H2 --> I2[goX.Y.Z 指令可用 ]
+    F2 --> G2[在 ~/.zshrc 或 ~/.zprofile<br>新增 PATH]
+    G2 --> H2[執行 source ~/.zshrc<br>或重新開 Terminal]
+    H2 --> I2[goX.Y.Z download指令可用]
 
     E2 -- 是 --> I2
-```
+</pre>
+
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+        startOnLoad: true,
+        theme: 'base',
+        themeVariables: {
+            wrap: true, 
+            lineColor: '#ffffff',          // 線條顏色（白色）
+            textColor: '#ffffff',          // 節點文字顏色
+            primaryColor: '#1a1a1a',       // 節點背景（可配深色）
+            primaryTextColor: '#ffffff',   // 節點內文字
+      }
+    });
+</script>
