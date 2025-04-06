@@ -69,6 +69,110 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/pandas-dtypes/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T03:08:45.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/pandas-dtypes/">pandas dtypes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.dtypes.html">dtypes</a></p>
+<p><code>DataFrame</code> 有 <code>dtypes</code> 這個 property</p>
+<p>可以用來檢查各個 columns 的型別</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.dtypes</span><br></pre></td></tr></table></figure>
+
+<p>而在 <code>pandas</code> 有下列的型別</p>
+<table>
+<thead>
+<tr>
+<th>Common data type name</th>
+<th>NumPy&#x2F;pandas object</th>
+<th>Pandas string name</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Boolean</td>
+<td>np.bool</td>
+<td>bool</td>
+<td>Stored as a single byte</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>np.int</td>
+<td>int</td>
+<td>Defaulted to 64 bits. Unsigned ints are also available - np.uint.</td>
+</tr>
+<tr>
+<td>Float</td>
+<td>np.float</td>
+<td>float</td>
+<td>Defaulted to 64 bits.</td>
+</tr>
+<tr>
+<td>Complex</td>
+<td>np.complex</td>
+<td>complex</td>
+<td>Rarely seen in data analysis.</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>np.object</td>
+<td>O, object</td>
+<td>Typically strings but is a ctach-all for columns with multiple different types or other Python objects(tuples, lists, dicts, and so on).</td>
+</tr>
+<tr>
+<td>Datetime</td>
+<td>np.datetime64, pd.Timestamp</td>
+<td>datetime64</td>
+<td>Specific moment in time with nanosecond precision.</td>
+</tr>
+<tr>
+<td>Timedelta</td>
+<td>np.timedelta64, pd.Timedelta</td>
+<td>timedelta64</td>
+<td>An amount of time, from days to nanoseconds.</td>
+</tr>
+<tr>
+<td>Categorical</td>
+<td>pd.Categorical</td>
+<td>category</td>
+<td>Specific only to pandas. Useful for object columns with relatively few unique values.</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-dtypes/" data-id="cm96aaol0004ejrqhafoiewie" data-title="pandas dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-info" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/13/pandas-info/" class="article-date">
@@ -107,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm93ejle0004ri6q142wpadlo" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/pandas-info/" data-id="cm96aaol4004ujrqhh6zx0he3" data-title="pandas info" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -149,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm93ejlcn000ii6q1g89e84xz" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cm96aaojt000ijrqh0gjdgm25" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -355,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm93ejldi002vi6q1exe08enn" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cm96aaokn002yjrqhbphnev9o" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -402,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm93ejlcl000gi6q11wd489pp" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cm96aaojt000kjrqh0uvk0pos" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -454,7 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm93ejldg002li6q10n2gbmb7" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cm96aaokl002ojrqh46e89t6s" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -498,7 +602,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm93ejlc60000i6q17723dgri" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cm96aaojd0000jrqh5gg246vf" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -549,7 +653,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm93ejlcx0016i6q1cqyn212u" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cm96aaok30018jrqhfd2egez0" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -594,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm93ejldu0044i6q18knu9j1q" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cm96aaoky0047jrqhc9nz4mwi" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -651,64 +755,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cm93ejle0004ti6q14anlafma" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-groupby" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/29/pandas-groupby/" class="article-date">
-  <time class="dt-published" datetime="2021-06-29T15:22:58.000Z" itemprop="datePublished">2021-06-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/29/pandas-groupby/">pandas groupby</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">groupby</a></p>
-<p><code>groupby</code> 用來對資料做集結</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<p>也可對複數個 column 做集結</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby([<span class="string">&#x27;column1&#x27;</span>,<span class="string">&#x27;column2&#x27;</span>]).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<p>集結後也可以指定對哪個 column 做處理</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<p>也可以指定複數個 column</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[[<span class="string">&#x27;column2&#x27;</span>,<span class="string">&#x27;column3&#x27;</span>]]</span><br></pre></td></tr></table></figure>
-
-<p>不指定的話，就是對 column1 以外的 column 做處理</p>
-<p>關於處理，也可以同時指定多個</p>
-<p>例如同時使用 <code>count</code> <code>sum</code> <code>max</code> <code>min</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).agg([<span class="string">&#x27;count&#x27;</span>,<span class="string">&#x27;sum&#x27;</span>,<span class="string">&#x27;max&#x27;</span>,<span class="string">&#x27;min&#x27;</span>])[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cm93ejldy004ki6q1b4jsg3zs" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cm96aaol5004vjrqh6ame647i" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -772,6 +819,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/05/Go-install/">Go install</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/04/first-class-object/">first class object</a>
           </li>
         
@@ -785,10 +836,6 @@
         
           <li>
             <a href="/note/2025/03/26/CSRF/">CSRF</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
           </li>
         
       </ul>

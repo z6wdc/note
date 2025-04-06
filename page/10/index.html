@@ -69,6 +69,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-groupby" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/29/pandas-groupby/" class="article-date">
+  <time class="dt-published" datetime="2021-06-29T15:22:58.000Z" itemprop="datePublished">2021-06-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/29/pandas-groupby/">pandas groupby</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">groupby</a></p>
+<p><code>groupby</code> 用來對資料做集結</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<p>也可對複數個 column 做集結</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby([<span class="string">&#x27;column1&#x27;</span>,<span class="string">&#x27;column2&#x27;</span>]).<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<p>集結後也可以指定對哪個 column 做處理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>也可以指定複數個 column</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).<span class="built_in">sum</span>()[[<span class="string">&#x27;column2&#x27;</span>,<span class="string">&#x27;column3&#x27;</span>]]</span><br></pre></td></tr></table></figure>
+
+<p>不指定的話，就是對 column1 以外的 column 做處理</p>
+<p>關於處理，也可以同時指定多個</p>
+<p>例如同時使用 <code>count</code> <code>sum</code> <code>max</code> <code>min</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupby(<span class="string">&#x27;column1&#x27;</span>).agg([<span class="string">&#x27;count&#x27;</span>,<span class="string">&#x27;sum&#x27;</span>,<span class="string">&#x27;max&#x27;</span>,<span class="string">&#x27;min&#x27;</span>])[<span class="string">&#x27;column2&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cm96aaol2004mjrqharus1f2n" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-head-tail" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/06/29/pandas-head-tail/" class="article-date">
@@ -112,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cm93ejldz004li6q10d0dehgg" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cm96aaol3004ojrqh8to6atyv" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -170,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm93ejle4005bi6q15bvlee5g" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cm96aaol8005cjrqh6f1u6p09" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -226,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cm93ejle6005hi6q1191ods8e" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cm96aaola005kjrqhhoiddpgu" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -273,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cm93ejlcz001ei6q10jhp47sq" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cm96aaok5001ijrqh1fg039q0" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -331,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cm93ejle5005fi6q17icoaycu" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cm96aaol9005ijrqhcc42ceuu" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -381,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cm93ejle40059i6q12ntcg6p3" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cm96aaol8005ejrqha9ki7m88" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -432,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cm93ejldz004ni6q19nnnba8w" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cm96aaol3004qjrqhg430acm3" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -514,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cm93ejld5001wi6q1d93wfh8j" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cm96aaokb001zjrqh4s1e3y3c" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -590,66 +647,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cm93ejld4001ui6q1b2lvewc6" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-random-module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/05/18/Python-random-module/" class="article-date">
-  <time class="dt-published" datetime="2021-05-18T13:36:49.000Z" itemprop="datePublished">2021-05-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/05/18/Python-random-module/">Python random module</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Python 有 random 這個 module<br>除了可以產生亂數外，還可以隨機挑選資料  </p>
-<h2 id="How-to-import"><a href="#How-to-import" class="headerlink" title="How to import"></a>How to import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br></pre></td></tr></table></figure>
-
-<h2 id="Functions-for-integers"><a href="#Functions-for-integers" class="headerlink" title="Functions for integers"></a>Functions for integers</h2><h3 id="randint"><a href="#randint" class="headerlink" title="randint"></a>randint</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random.randint(<span class="number">0</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-
-<p>randint 會隨機從 0 &lt;&#x3D; n &lt;&#x3D; 100 的數字隨機挑選一個整數</p>
-<h2 id="Functions-for-sequences"><a href="#Functions-for-sequences" class="headerlink" title="Functions for sequences"></a>Functions for sequences</h2><h3 id="choices"><a href="#choices" class="headerlink" title="choices"></a>choices</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.choices(numbers, k=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>choices</code> 會隨機從指定的 list 中重複取出你要的數目</p>
-<p>要注意的是指定數目的時候需要寫出 keyword <code>k</code></p>
-<p>像是例子中 k&#x3D;3 就會取出三個</p>
-<p>不指定 k 的話，預設值為 1</p>
-<h3 id="sample"><a href="#sample" class="headerlink" title="sample"></a>sample</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">random.sample(numbers, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
-<p><code>sample</code> 會隨機從指定的 list 中取出你要的數目</p>
-<p>而且數字不重複</p>
-<p>但要取出的數目不能大於 list 的 length</p>
-<p>不然就會發生下面的</p>
-<p><code>ValueError: Sample larger than population or is negative</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cm93ejld70024i6q1eke74ze4" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cm96aaoka001wjrqh8i6jfg27" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -713,6 +711,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/05/Go-install/">Go install</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/04/first-class-object/">first class object</a>
           </li>
         
@@ -726,10 +728,6 @@
         
           <li>
             <a href="/note/2025/03/26/CSRF/">CSRF</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/19/simple-build-tool/">simple build tool</a>
           </li>
         
       </ul>
