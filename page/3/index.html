@@ -69,6 +69,164 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git-revert" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2024/11/08/git-revert/" class="article-date">
+  <time class="dt-published" datetime="2024-11-08T15:37:08.000Z" itemprop="datePublished">2024-11-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2024/11/08/git-revert/">git revert</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>當要還原的時候有 <code>git reset</code> 跟 <code>git revert</code> 可以選擇</p>
+<p><code>git reset</code> 是修改歷史（刪除或改寫 commit）</p>
+<p><code>git revert</code> 透過新增一個「反向」commit 來撤銷之前的變更</p>
+<p>所以通常用於想保留歷史記錄的情況</p>
+<h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><p>還原單一commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="option-n-–no-commit"><a href="#option-n-–no-commit" class="headerlink" title="option -n –no-commit"></a>option -n –no-commit</h3><p>使用這選項會執行還原操作但不會自動生成提交（commit）</p>
+<p>會將還原的變更放入暫存區再進行一次性提交</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -n &lt;最新commit&gt; &lt;第二新commit&gt; &lt;最舊commit&gt;</span><br><span class="line">git commit -m <span class="string">&quot;revert multiple commits&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>commit 順序應該從最新到最舊避免依賴錯誤</p>
+<p>或直接指定開頭跟結尾的 commit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert -n &lt;最舊commit&gt;..&lt;最新commit&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-revert.html">https://git-scm.com/docs/git-revert.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cm9yco6v8003yh9oqdpukcoms" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-multiple-ssh-keys-setting-for-different-github-accounts" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" class="article-date">
+  <time class="dt-published" datetime="2024-10-23T11:44:18.000Z" itemprop="datePublished">2024-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/">為不同的 GitHub 帳號設定多把 SSH key</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>如果有多個 github 帳號（例如個人用，工作用）</p>
+<p>如何在同一台電腦上各自設定 SSH key</p>
+<h2 id="step1-產生-SSH-key"><a href="#step1-產生-SSH-key" class="headerlink" title="step1 產生 SSH key"></a>step1 產生 SSH key</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@personal.com&quot;</span> -f <span class="string">&quot;github-personal&quot;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@company.com&quot;</span> -f <span class="string">&quot;github-work&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>這指令會生成新的 SSH 私鑰並將其存儲在 github-work 中，公鑰也會存儲在同樣路徑下，檔案名稱為 github-work.pub</p>
+<h3 id="option-說明"><a href="#option-說明" class="headerlink" title="option 說明"></a>option 說明</h3><ul>
+<li>-t: 用來指定 key 的類型</li>
+<li>-C: 用來更改 key 的註解</li>
+<li>-f: 用來指定生成或操作 key 時的檔案名稱或路徑</li>
+</ul>
+<h2 id="step-2-複製-SSH-公鑰到-GitHub"><a href="#step-2-複製-SSH-公鑰到-GitHub" class="headerlink" title="step 2 複製 SSH 公鑰到 GitHub"></a>step 2 複製 SSH 公鑰到 GitHub</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; ~/.ssh/github-work.pub</span><br></pre></td></tr></table></figure>
+
+<p>如果是 mac 的話可以用上述指令複製 ssh 公鑰</p>
+<p>接著到 GitHub 頁面，進入 Settings → SSH and GPG keys → New SSH key，將複製的公鑰貼上</p>
+<h2 id="step-3-編輯-ssh-config-檔案"><a href="#step-3-編輯-ssh-config-檔案" class="headerlink" title="step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案"></a>step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github-work</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-work</span><br><span class="line"></span><br><span class="line">Host github-personal</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-personal</span><br></pre></td></tr></table></figure>
+
+<p>也可以追加下列設定</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    AddKeysToAgent <span class="built_in">yes</span></span><br><span class="line">    UseKeychain <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="設定說明"><a href="#設定說明" class="headerlink" title="設定說明"></a>設定說明</h3><ul>
+<li>Host: 本地的 SSH 別名，可以是任何你想要的名稱</li>
+<li>HostName: 用來指定實際的伺服器主機名或 IP 地址</li>
+<li>User: 登入用戶名，GitHub上必須設為 git</li>
+<li>IdentityFile: 指定用戶連接到主機時所使用的私鑰檔案</li>
+<li>AddKeysToAgent: 用來自動將 SSH 私鑰添加到 SSH agent 中</li>
+<li>UseKeychain: 在 macOS 上，這選項讓 SSH agent 將私鑰存儲在 macOS 的 Keychain 中，進一步減少輸入密碼的頻率</li>
+</ul>
+<h3 id="step4-測試連接"><a href="#step4-測試連接" class="headerlink" title="step4 測試連接"></a>step4 測試連接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T github-work</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T github-personal</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github-work</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github-personal</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用下列命令查看當前正在使用的金鑰</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
+
+<p>如果 <code>work</code> 的金鑰沒有在列表中，可以使用下列命令將它添加進來</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/github-work</span><br></pre></td></tr></table></figure>
+
+<h3 id="step5-使用-SSH-進行-Clone"><a href="#step5-使用-SSH-進行-Clone" class="headerlink" title="step5 使用 SSH 進行 Clone"></a>step5 使用 SSH 進行 Clone</h3><p>在 GitHub 上找到你想要 clone 的  SSH URL</p>
+<p>通常是這樣</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:username/repository.git</span><br></pre></td></tr></table></figure>
+
+<p>如果修改成自行設定的 <code>Host</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github-work:username/repository.git</span><br></pre></td></tr></table></figure>
+
+<p><code>git clone</code> 命令會使用 SSH 配置中的 <code>Host github-work</code>，並按照該配置文件中的設定，使用正確的私鑰（如 ~&#x2F;.ssh&#x2F;github-work）連接到 GitHub</p>
+<h3 id="PS1-修改遠端-URL-的方法"><a href="#PS1-修改遠端-URL-的方法" class="headerlink" title="PS1 修改遠端 URL 的方法"></a>PS1 修改遠端 URL 的方法</h3><p>使用以下命令檢查當前的遠端 URL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p>修改 origin 的 URL 並使用自定義的 Host（例如 github-work）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin git@github-work:username/repository.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="PS2-git-config"><a href="#PS2-git-config" class="headerlink" title="PS2 git config"></a>PS2 git config</h3><p>設定 Git 的 commit 使用的名稱（name）和電子郵件（email）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.email <span class="string">&quot;your_email@company.com&quot;</span></span><br><span class="line">git config user.name <span class="string">&quot;work&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cm9yco6v90043h9oq5y953asy" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Relational-Database" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2024/04/03/Relational-Database/" class="article-date">
@@ -99,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="cm96aaoko0030jrqh74m52t26" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="cm9yco6uz0032h9oq2rppg33y" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -152,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm96aaokt003njrqh0ctmfgck" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cm9yco6v5003oh9oq0d0l6uqu" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -200,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cm96aaojq000fjrqhbmlr309x" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cm9yco6ty000gh9oqd7241k0i" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -245,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cm96aaoke002bjrqhgnidc9w3" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cm9yco6up002fh9oq4u47f5jz" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -291,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cm96aaokj002gjrqhd1b79m2i" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cm9yco6uq002kh9oq110s3c2y" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -339,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cm96aaok5001gjrqh27qz4p5h" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cm9yco6ue001kh9oqciab81f0" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -382,7 +540,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cm96aaok8001qjrqh0a6106iw" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cm9yco6ui001sh9oq4gju4t6t" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -431,113 +589,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cm96aaojl0005jrqhglb39ryf" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cm9yco6tr0005h9oqgwbjhjq4" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-datetime-strftime-vs-strptime" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/" class="article-date">
-  <time class="dt-published" datetime="2021-09-17T02:05:55.000Z" itemprop="datePublished">2021-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/">Python datetime strftime vs strptime</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="strftime"><a href="#strftime" class="headerlink" title="strftime"></a>strftime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strftime">strftime</a></p>
-<p><code>strftime</code> 可以把 <code>datetime</code> object 透過指定的 format</p>
-<p>轉換成 string</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">now = datetime.now()</span><br><span class="line"></span><br><span class="line">year = now.strftime(<span class="string">&quot;%Y&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;year:&quot;</span>, year)</span><br></pre></td></tr></table></figure>
-
-<h2 id="strptime"><a href="#strptime" class="headerlink" title="strptime"></a>strptime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime">strptime</a></p>
-<p><code>strptime</code> 可以把字串轉換成 date object</p>
-<p>使用時必須指定字串的 format</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">date_string = <span class="string">&quot;25 July, 2021&quot;</span></span><br><span class="line"></span><br><span class="line">date_object = datetime.strptime(date_string, <span class="string">&quot;%d %B, %Y&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="strftime-and-strptime-Behavior"><a href="#strftime-and-strptime-Behavior" class="headerlink" title="strftime() and strptime() Behavior"></a>strftime() and strptime() Behavior</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">behavior</a></p>
-<p>兩者主要的差異</p>
-<p>一個從 object 轉成 string</p>
-<p>一個從 string 轉成 object</p>
-<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><p>關於 format 要怎麼指定</p>
-<p>可以參考官方的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">Format Codes</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cm96aaok4001cjrqh32dd99gp" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-select-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/09/12/pandas-select-dtypes/" class="article-date">
-  <time class="dt-published" datetime="2021-09-12T14:04:13.000Z" itemprop="datePublished">2021-09-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/09/12/pandas-select-dtypes/">pandas select_dtypes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">select_dtypes</a> 可以對你的 column 做 filter</p>
-<p>包含 <code>float64</code> 類別</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(include=[<span class="string">&#x27;float64&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<p>排除 <code>int64</code> 類別</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.select_dtypes(exclude=[<span class="string">&#x27;int64&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cm96aaol70058jrqh2rox30bq" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
 
     </footer>
   </div>
@@ -575,7 +631,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a>
     </div>
   </div>
 
@@ -597,6 +653,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/26/Go-Module/">Go Module</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/26/go-install-vs-go-get/">go install vs go get</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/05/Go-install/">Go install</a>
           </li>
         
@@ -606,14 +670,6 @@
         
           <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/26/XSS/">XSS</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/26/CSRF/">CSRF</a>
           </li>
         
       </ul>

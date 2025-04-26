@@ -69,6 +69,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-qcut" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/20/pandas-qcut/" class="article-date">
+  <time class="dt-published" datetime="2021-07-20T07:20:36.000Z" itemprop="datePublished">2021-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/20/pandas-qcut/">pandas qcut</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.qcut.html">qcut</a></p>
+<p><code>qcut</code> 可以用 quantile 來把資料分成 n 組區間</p>
+<p>做 Decile rank 的時候很方便</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Decile_rank&#x27;</span>] = pd.qcut(df[<span class="string">&#x27;Score&#x27;</span>], <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-qcut/" data-id="cm9yco6vl0056h9oq1tg81i7f" data-title="pandas qcut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-quantile" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/20/pandas-quantile/" class="article-date">
+  <time class="dt-published" datetime="2021-07-20T07:13:58.000Z" itemprop="datePublished">2021-07-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/20/pandas-quantile/">pandas quantile</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.quantile.html">qunatile</a></p>
+<p><code>quantile()</code> 可以取得分位數</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.quantile(<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-quantile/" data-id="cm9yco6vm0057h9oq8bsh5owj" data-title="pandas quantile" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-exec" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/20/Python-exec/" class="article-date">
@@ -98,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/Python-exec/" data-id="cm96aaok7001mjrqhh94g3vul" data-title="Python exec" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/Python-exec/" data-id="cm9yco6ug001oh9oq2wy9569p" data-title="Python exec" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -150,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/SQL-LIKE/" data-id="cm96aaokp0033jrqh1nfqhehh" data-title="SQL LIKE" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/SQL-LIKE/" data-id="cm9yco6uz0034h9oq35vud609" data-title="SQL LIKE" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -197,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/19/pandas-str-contains/" data-id="cm96aaol9005gjrqhgybucy5j" data-title="pandas str.contains" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/19/pandas-str-contains/" data-id="cm9yco6vq005kh9oqgysx5ha2" data-title="pandas str.contains" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -243,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/pandas-options/" data-id="cm96aaol5004yjrqhe7i775ym" data-title="pandas options" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/18/pandas-options/" data-id="cm9yco6vk0052h9oqaacj2oyk" data-title="pandas options" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -293,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/18/git-remote/" data-id="cm96aaoku003sjrqhe7iv0b0h" data-title="git remote" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/18/git-remote/" data-id="cm9yco6v7003th9oq05nlce85" data-title="git remote" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -340,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm96aaokz004bjrqh8shpeqmy" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/17/pandas-cut/" data-id="cm9yco6vc004dh9oq8hp1cape" data-title="pandas cut" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -384,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm96aaojz000yjrqh71x23k95" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/15/Python-Decorators/" data-id="cm9yco6u70011h9oqe1qpcsrg" data-title="Python Decorators" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -436,113 +523,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm96aaokt003pjrqh5sj90oql" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/14/git-config-core-ignorecase/" data-id="cm9yco6v6003rh9oq7dlb96b5" data-title="git config core.ignorecase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-str-strip" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/14/Python-str-strip/" class="article-date">
-  <time class="dt-published" datetime="2021-07-14T23:19:03.000Z" itemprop="datePublished">2021-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/14/Python-str-strip/">Python str.strip</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.strip">strip()</a></p>
-<p>strip() 可以用來刪除字串前後的字元</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;www.example.com&#x27;</span>.strip(<span class="string">&#x27;cmowz.&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;example&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>也可以用來刪除空白或是換行記號</p>
-<p>預設值是刪除空白所以不用輸入參數</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27; example &#x27;</span>.strip()</span><br><span class="line"><span class="comment"># &#x27;example&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;\nexample\n&#x27;</span>.strip(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;example&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="lstrip"><a href="#lstrip" class="headerlink" title="lstrip()"></a>lstrip()</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.lstrip">lstrip()</a></p>
-<p><code>lstrip()</code> 只會刪除左邊的字元</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;www.example.com&#x27;</span>.lstrip(<span class="string">&#x27;cmowz.&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;example.com&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="rstrip"><a href="#rstrip" class="headerlink" title="rstrip()"></a>rstrip()</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#str.lstrip">rstrip()</a></p>
-<p><code>rstrip()</code> 只會刪除右邊的字元</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;mississippi&#x27;</span>.rstrip(<span class="string">&#x27;ipz&#x27;</span>)</span><br><span class="line"><span class="comment"># &#x27;mississ&#x27;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/14/Python-str-strip/" data-id="cm96aaokl002qjrqhe2jiaa44" data-title="Python str.strip" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-re-search-vs-match" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/13/Python-re-search-vs-match/" class="article-date">
-  <time class="dt-published" datetime="2021-07-13T16:00:37.000Z" itemprop="datePublished">2021-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/13/Python-re-search-vs-match/">Python re search vs match</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/re.html#search-vs-match"><code>search</code> vs <code>match</code></a></p>
-<p>在 Python 中</p>
-<p><code>re.search()</code> 會找目標文字中第一個出現的字串</p>
-<p><code>re.match()</code> 只會找目標文字中最初出現的字串</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">re.<span class="keyword">match</span>(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;abcdef&quot;</span>) <span class="comment"># No match</span></span><br><span class="line">re.search(<span class="string">&quot;c&quot;</span>, <span class="string">&quot;abcdef&quot;</span>) <span class="comment"># Match</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/13/Python-re-search-vs-match/" data-id="cm96aaokd0029jrqhe79r7jm1" data-title="Python re search vs match" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -580,7 +565,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 12px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 12px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 14px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 16px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 16px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 16px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a>
     </div>
   </div>
 
@@ -602,6 +587,14 @@
       <ul>
         
           <li>
+            <a href="/note/2025/04/26/Go-Module/">Go Module</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/26/go-install-vs-go-get/">go install vs go get</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/04/05/Go-install/">Go install</a>
           </li>
         
@@ -611,14 +604,6 @@
         
           <li>
             <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/26/XSS/">XSS</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/03/26/CSRF/">CSRF</a>
           </li>
         
       </ul>
