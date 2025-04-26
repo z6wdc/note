@@ -1,7 +1,7 @@
 ---
 title: Go install
 date: 2025-04-05 10:01:58
-tags:
+tags: ["Go"]
 ---
 ## 安裝方法
 
