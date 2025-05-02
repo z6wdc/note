@@ -69,6 +69,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Docker-Volume" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/20/Docker-Volume/" class="article-date">
+  <time class="dt-published" datetime="2021-09-20T08:43:55.000Z" itemprop="datePublished">2021-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/20/Docker-Volume/">Docker Volume</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">Volume</a></p>
+<p>讓我們來存放 data 的地方</p>
+<p>就不會因為 container 被刪除</p>
+<p>而使得 存放在 container 的 data 也連帶被刪除</p>
+<h2 id="Anonymous-Volume"><a href="#Anonymous-Volume" class="headerlink" title="Anonymous Volume"></a>Anonymous Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /app/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="Named-Volume"><a href="#Named-Volume" class="headerlink" title="Named Volume"></a>Named Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v data:/app/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bind-Mount"><a href="#Bind-Mount" class="headerlink" title="Bind Mount"></a>Bind Mount</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /path/to/code:/app/code</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cma6xszpl0005guqmbfp03nws" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-datetime-strftime-vs-strptime" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/" class="article-date">
@@ -111,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cm9yco6ud001eh9oqhmk2asnq" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cma6xszq2001eguqm1taoha90" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -157,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cm9yco6vo005eh9oqenblg07t" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cma6xszre005dguqm7vkkcisd" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -205,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cm9yco6ul0023h9oqge9f6rkn" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cma6xszq9001zguqm093j5497" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -253,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cm9yco6ve004hh9oqf6aobtg1" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cma6xszr4004gguqmbx0fcy5q" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -300,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cm9yco6vt005xh9oq9mgt4czc" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cma6xszri005uguqm266vhb2f" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -345,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cm9yco6uf001mh9oq2jbecrhc" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cma6xszq5001mguqmdz2v3moo" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -397,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cm9yco6u4000th9oqf8zi9nyw" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cma6xszpx000xguqm1c1109pv" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -442,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cm9yco6u6000zh9oqf14ihszt" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cma6xszpy000zguqm9a9tggo0" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -495,72 +544,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cm9yco6vv0063h9oq9twwhevm" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cma6xszrk0062guqmh5cr4bpm" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/06/Python-dict/" class="article-date">
-  <time class="dt-published" datetime="2021-08-06T06:00:25.000Z" itemprop="datePublished">2021-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/06/Python-dict/">Python dict</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></p>
-<h2 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h2><p>會顯示 (key, value)</p>
-<h2 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h2><p>顯示 key</p>
-<h2 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h2><p>顯示 value</p>
-<h2 id="get-key-default"><a href="#get-key-default" class="headerlink" title="get(key[, default])"></a>get(key[, default])</h2><p>取得 key 對應的 value</p>
-<p>當 key 不在 <code>dict</code> 裡面的時候</p>
-<p>則回傳 deafult 值</p>
-<p>default 值預設為 <code>None</code></p>
-<p>所以使用 <code>get()</code> 不會發生 <code>KeyError</code></p>
-<h2 id="setdefault-key-default"><a href="#setdefault-key-default" class="headerlink" title="setdefault(key[, default])"></a>setdefault(key[, default])</h2><p>當 key 已經存在 <code>dict</code> 裡面</p>
-<p>會回傳 key 對應的 value 的值</p>
-<p>如果不存在就對 key 設定 default 值</p>
-<p>default 值沒設定的話，就會設定成 <code>None</code></p>
-<p>所以用來設定值的時候</p>
-<p>不會覆蓋原本就已經存在的值</p>
-<h2 id="update-other"><a href="#update-other" class="headerlink" title="update([other])"></a>update([other])</h2><p>可以更新字典裡面的內容</p>
-<p>如果 key&#x2F;value 已經存在的話</p>
-<p>會對已經存在的值做覆寫</p>
-<p><code>update()</code> 的參數</p>
-<p>可以代入另一個 <code>dictionary</code></p>
-<p>或是 <code>iterable</code> of <code>key/value pairs</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cm9yco6ud001gh9oqdyohgdw0" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -607,7 +595,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -618,6 +606,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/05/02/go-mock/">go mock</a>
+          </li>
         
           <li>
             <a href="/note/2025/04/26/Go-Module/">Go Module</a>
@@ -633,10 +625,6 @@
         
           <li>
             <a href="/note/2025/04/04/first-class-object/">first class object</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
           </li>
         
       </ul>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>go mock | note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="uber-go&#x2F;mock 是 Uber fork 並維護的 mock 工具 提供自動產生 interface 的 mock 實作與 gomock 測試支援，方便我們在單元測試中進行隔離測試與驗證行為。 為什麼要用 Mock？在單元測試中，我們常需要將測試主體與其依賴的資源（如資料庫、API）隔離。使用 mock 有以下好處：  ✅ 隔離依賴：模擬資料庫、API 等外部系統 ✅ 驗證行為：確認方法是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go mock">
+<meta property="og:url" content="http://z6wdc.github.io/note/2025/05/02/go-mock/index.html">
+<meta property="og:site_name" content="note">
+<meta property="og:description" content="uber-go&#x2F;mock 是 Uber fork 並維護的 mock 工具 提供自動產生 interface 的 mock 實作與 gomock 測試支援，方便我們在單元測試中進行隔離測試與驗證行為。 為什麼要用 Mock？在單元測試中，我們常需要將測試主體與其依賴的資源（如資料庫、API）隔離。使用 mock 有以下好處：  ✅ 隔離依賴：模擬資料庫、API 等外部系統 ✅ 驗證行為：確認方法是">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-05-02T16:31:52.000Z">
+<meta property="article:modified_time" content="2025-05-02T15:16:47.913Z">
+<meta property="article:author" content="z6wdc">
+<meta property="article:tag" content="Go">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/note/favicon.ico">
+  
+  
+  
+<link rel="stylesheet" href="/note/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/note/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/note/" id="logo">note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/note/">Home</a>
+        
+          <a class="main-nav-link" href="/note/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/note/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://z6wdc.github.io/note"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-go-mock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/02/go-mock/" class="article-date">
+  <time class="dt-published" datetime="2025-05-02T16:31:52.000Z" itemprop="datePublished">2025-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      go mock
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/uber-go/mock"><code>uber-go/mock</code></a> 是 Uber fork 並維護的 mock 工具</p>
+<p>提供自動產生 interface 的 mock 實作與 <code>gomock</code> 測試支援，方便我們在單元測試中進行隔離測試與驗證行為。</p>
+<h2 id="為什麼要用-Mock？"><a href="#為什麼要用-Mock？" class="headerlink" title="為什麼要用 Mock？"></a>為什麼要用 Mock？</h2><p>在單元測試中，我們常需要將測試主體與其依賴的資源（如資料庫、API）隔離。使用 mock 有以下好處：</p>
+<ul>
+<li>✅ 隔離依賴：模擬資料庫、API 等外部系統</li>
+<li>✅ 驗證行為：確認方法是否被呼叫、呼叫次數與參數</li>
+<li>✅ 測試例外情況：模擬錯誤回傳以測試錯誤處理邏輯</li>
+<li>✅ 加速測試：無需啟動真實伺服器或資料庫</li>
+</ul>
+<h2 id="安裝方式"><a href="#安裝方式" class="headerlink" title="安裝方式"></a>安裝方式</h2><h3 id="安裝-gomock-API（加入-go-mod）"><a href="#安裝-gomock-API（加入-go-mod）" class="headerlink" title="安裝 gomock API（加入 go.mod）"></a>安裝 gomock API（加入 <code>go.mod</code>）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get go.uber.org/mock@latest</span><br></pre></td></tr></table></figure>
+
+<p>這會把 <code>go.uber.org/mock/gomock</code> 加入專案依賴中，方便在測試中使用。</p>
+<h3 id="安裝-mockgen-CLI-工具（Go-1-16-）"><a href="#安裝-mockgen-CLI-工具（Go-1-16-）" class="headerlink" title="安裝 mockgen CLI 工具（Go 1.16+）"></a>安裝 mockgen CLI 工具（Go 1.16+）</h3><p>從 Go 1.16 開始，不再使用 <code>go get</code> 安裝 CLI 工具，請使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install go.uber.org/mock/mockgen@latest</span><br></pre></td></tr></table></figure>
+
+<p>安裝後 <code>mockgen</code> 會出現在 <code>$GOBIN</code>（預設是 <code>$HOME/go/bin</code>）目錄下，請確認該路徑已加入 <code>PATH</code>。</p>
+<h2 id="使用範例"><a href="#使用範例" class="headerlink" title="使用範例"></a>使用範例</h2><h3 id="1-定義-interface"><a href="#1-定義-interface" class="headerlink" title="1. 定義 interface"></a>1. 定義 interface</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/domain/user/repository.go</span></span><br><span class="line"><span class="keyword">package</span> user</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID   <span class="type">int</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserRepository <span class="keyword">interface</span> &#123;</span><br><span class="line">    GetByID(id <span class="type">int</span>) (*User, <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-產生-mock（手動）"><a href="#2-產生-mock（手動）" class="headerlink" title="2. 產生 mock（手動）"></a>2. 產生 mock（手動）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mockgen -<span class="built_in">source</span>=internal/domain/user/repository.go \</span><br><span class="line">  -destination=internal/mocks/user_repository_mock.go \</span><br><span class="line">  -package=mocks</span><br></pre></td></tr></table></figure>
+
+<h4 id="package-mocks-是什麼？"><a href="#package-mocks-是什麼？" class="headerlink" title="-package=mocks 是什麼？"></a><code>-package=mocks</code> 是什麼？</h4><p>這個選項指定產生出來的 mock 檔案要屬於哪個 Go 套件。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mocks</span><br></pre></td></tr></table></figure>
+
+<p>這樣你就可以在測試中這樣使用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line"></span><br><span class="line">mock := mocks.NewMockUserRepository(ctrl)</span><br></pre></td></tr></table></figure>
+
+<p>這個 package name 應該與你 mock 檔案放置的目錄一致（如 <code>internal/mocks/</code>），否則會導致 import 錯誤。</p>
+<h3 id="3-使用-go-generate（推薦）"><a href="#3-使用-go-generate（推薦）" class="headerlink" title="3. 使用 go generate（推薦）"></a>3. 使用 go generate（推薦）</h3><p>在 interface 定義的檔案上方加註：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//go:generate mockgen -source=repository.go -destination=../../mocks/user_repository_mock.go -package=mocks</span></span><br></pre></td></tr></table></figure>
+
+<p>然後執行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go generate ./...</span><br></pre></td></tr></table></figure>
+
+<p>這樣日後只要執行一次 <code>go generate</code> 就能統一更新所有 mock。</p>
+<h3 id="4-測試中使用-mock"><a href="#4-測試中使用-mock" class="headerlink" title="4. 測試中使用 mock"></a>4. 測試中使用 mock</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/usecase/user_usecase_test.go</span></span><br><span class="line"><span class="keyword">package</span> usecase_test</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/domain/user&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGetUserByID</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    ctrl := gomock.NewController(t)</span><br><span class="line">    <span class="keyword">defer</span> ctrl.Finish()</span><br><span class="line"></span><br><span class="line">    mockRepo := mocks.NewMockUserRepository(ctrl)</span><br><span class="line">    mockUser := &amp;user.User&#123;ID: <span class="number">1</span>, Name: <span class="string">&quot;Alice&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    mockRepo.EXPECT().</span><br><span class="line">        GetByID(<span class="number">1</span>).</span><br><span class="line">        Return(mockUser, <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">    uc := YourUserUsecase&#123;UserRepo: mockRepo&#125;</span><br><span class="line"></span><br><span class="line">    result, err := uc.GetUserByID(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        t.Fatalf(<span class="string">&quot;unexpected error: %v&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> result.Name != <span class="string">&quot;Alice&quot;</span> &#123;</span><br><span class="line">        t.Errorf(<span class="string">&quot;expected Alice, got %v&quot;</span>, result.Name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事項與常見問題"><a href="#注意事項與常見問題" class="headerlink" title="注意事項與常見問題"></a>注意事項與常見問題</h2><h3 id="gomock-的來源？"><a href="#gomock-的來源？" class="headerlink" title="gomock 的來源？"></a>gomock 的來源？</h3><p>Uber 已經 fork 並接手維護原本的 <code>golang/mock</code> 專案，並整合為 <code>go.uber.org/mock</code>。你可以直接：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>不再需要使用已經 archived 的 <code>github.com/golang/mock/gomock</code>。</p>
+<h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul>
+<li>repo: <a target="_blank" rel="noopener" href="https://github.com/uber-go/mock">https://github.com/uber-go/mock</a></li>
+<li>doc: <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/mock">https://pkg.go.dev/go.uber.org/mock</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cma6xszqz0040guqmb2ifbtxm" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2025/04/26/Go-Module/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Go Module</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/note/2025/05/02/go-mock/">go mock</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/26/Go-Module/">Go Module</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/26/go-install-vs-go-get/">go install vs go get</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/05/Go-install/">Go install</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/04/04/first-class-object/">first class object</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 z6wdc<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/note/" class="mobile-nav-link">Home</a>
+  
+    <a href="/note/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/note/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/note/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/note/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
