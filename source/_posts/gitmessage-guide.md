@@ -3,9 +3,9 @@ title: gitmessage guide
 date: 2025-05-05 20:38:53
 tags: ["git"]
 ---
-`.gitmessage` 是一個純文字檔案，用來定義 Git commit 訊息的預設格式。
+`.gitmessage` 是一個純文字檔案，用來定義 git commit 訊息的預設格式。
 
-透過這個機制，可以統一開發流程中的 commit 格式，提升可讀性與一致性。
+透過這個機制，可以提示開發流程中的 commit 格式，提升可讀性與一致性。
 
 
 ## 如何設定 commit template
