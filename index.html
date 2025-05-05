@@ -69,6 +69,118 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gitmessage-guide" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/05/gitmessage-guide/" class="article-date">
+  <time class="dt-published" datetime="2025-05-05T20:38:53.000Z" itemprop="datePublished">2025-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>.gitmessage</code> 是一個純文字檔案，用來定義 Git commit 訊息的預設格式。</p>
+<p>透過這個機制，可以統一開發流程中的 commit 格式，提升可讀性與一致性。</p>
+<h2 id="如何設定-commit-template"><a href="#如何設定-commit-template" class="headerlink" title="如何設定 commit template"></a>如何設定 commit template</h2><ol>
+<li><strong>建立 commit template 檔案</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>編輯內容（範例見下方）</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>設定 git 使用該檔案</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global commit.template .gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>確認設定</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --get commit.template</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="gitmessage-範例格式"><a href="#gitmessage-範例格式" class="headerlink" title=".gitmessage 範例格式"></a>.gitmessage 範例格式</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 類型: 簡短描述</span></span><br><span class="line"><span class="section"># 空一行</span></span><br><span class="line"><span class="section"># 詳細描述（選填）</span></span><br><span class="line"><span class="section"># - 說明動機</span></span><br><span class="line"><span class="section"># - 涉及模組</span></span><br><span class="line"><span class="section"># - 後續影響</span></span><br><span class="line"></span><br><span class="line"><span class="section"># issue 連結（選填）</span></span><br><span class="line"><span class="section"># ref: #123</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ------- 範例 -------</span></span><br><span class="line">feat: 加入使用者登入功能</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 新增 JWT 驗證流程</span><br><span class="line"><span class="bullet">-</span> 調整 login controller 的錯誤處理</span><br><span class="line"><span class="bullet">-</span> 對應 issue #42</span><br><span class="line"></span><br><span class="line">ref: #42</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="常見的-Commit-類型（Conventional-Commits）"><a href="#常見的-Commit-類型（Conventional-Commits）" class="headerlink" title="常見的 Commit 類型（Conventional Commits）"></a>常見的 Commit 類型（Conventional Commits）</h2><table>
+<thead>
+<tr>
+<th>類型</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>feat</td>
+<td>新功能</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>錯誤修正</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>文件變更</td>
+</tr>
+<tr>
+<td>style</td>
+<td>格式（不影響程式邏輯）</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>重構（非功能變更）</td>
+</tr>
+<tr>
+<td>test</td>
+<td>增加測試</td>
+</tr>
+<tr>
+<td>chore</td>
+<td>其他更新（建置、工具等）</td>
+</tr>
+</tbody></table>
+<h2 id="使用建議與好處"><a href="#使用建議與好處" class="headerlink" title="使用建議與好處"></a>使用建議與好處</h2><ul>
+<li>確保團隊成員使用一致的 commit message</li>
+<li>提升專案可維護性與回溯紀錄</li>
+</ul>
+<h2 id="取消-template-設定"><a href="#取消-template-設定" class="headerlink" title="取消 template 設定"></a>取消 template 設定</h2><p>若不再使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> commit.template</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/zh-hant/v1.0.0/">Conventional Commits</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmab0vboh0040gmp075tfc18m" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-go-mock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/05/02/go-mock/" class="article-date">
@@ -139,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cma6xszqz0040guqmb2ifbtxm" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmab0vboi0044gmp0cfyxecl2" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -259,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cma6xszpm0007guqmah7u1ocz" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmab0vbnb0008gmp03ndxbhdq" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -384,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cma6xszqz003yguqmfkko1trf" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmab0vboi0042gmp0d1lnc6rc" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -522,7 +634,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cma6xszpo000aguqmc8fx290b" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmab0vbnc000agmp09gr81c52" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -570,7 +682,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cma6xszqu003hguqmg3we4y8j" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmab0vbod003igmp07x59c09h" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -661,7 +773,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cma6xszpj0003guqm86igf9rv" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmab0vbn80003gmp0gkpj8sug" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -759,7 +871,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cma6xszqs003aguqma4pr164r" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmab0vboc003dgmp0911mg10l" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -860,7 +972,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cma6xszpk0004guqm29x493xd" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cmab0vbn80004gmp01t3z7ld7" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -970,111 +1082,12 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cma6xszri005wguqmecll8vf4" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cmab0vboz0060gmp0fylv6v0l" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Von-Neumann-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/18/Von-Neumann-Architecture/" class="article-date">
-  <time class="dt-published" datetime="2025-03-18T09:18:08.000Z" itemprop="datePublished">2025-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-什麼是馮·諾依曼架構？"><a href="#1-什麼是馮·諾依曼架構？" class="headerlink" title="1. 什麼是馮·諾依曼架構？"></a>1. 什麼是馮·諾依曼架構？</h2><p><strong>馮·諾依曼架構</strong> 是現代計算機的基本架構模型，由數學家 <strong>約翰·馮·諾依曼（John von Neumann）</strong> 在 1945 年提出。</p>
-<p>其核心概念是 <strong>「存儲程序計算機（Stored-Program Computer）」</strong>，即指令（程式）和數據存儲在同一個記憶體中，並由中央處理單元（CPU）來依序執行。</p>
-<h2 id="2-架構組成（5-大要素）"><a href="#2-架構組成（5-大要素）" class="headerlink" title="2. 架構組成（5 大要素）"></a>2. 架構組成（5 大要素）</h2><h3 id="1-演算裝置（Arithmetic-Unit，ALU）"><a href="#1-演算裝置（Arithmetic-Unit，ALU）" class="headerlink" title="1 演算裝置（Arithmetic Unit，ALU）"></a><strong>1 演算裝置（Arithmetic Unit，ALU）</strong></h3><ul>
-<li>負責執行 <strong>數學運算</strong>（加減乘除）與 <strong>邏輯運算</strong>（AND、OR、NOT 等）。</li>
-<li>這部分通常是 <strong>CPU 內部的一部分</strong>，也稱為「算術邏輯單元（ALU）」。</li>
-</ul>
-<h3 id="2-制御裝置（Control-Unit，CU）"><a href="#2-制御裝置（Control-Unit，CU）" class="headerlink" title="2 制御裝置（Control Unit，CU）"></a><strong>2 制御裝置（Control Unit，CU）</strong></h3><ul>
-<li>負責 <strong>解讀並執行指令</strong>，並控制其他組件的運作。</li>
-<li>透過 <strong>程序計數器（PC, Program Counter）</strong> 控制指令的順序執行。</li>
-</ul>
-<h3 id="3-主記憶裝置（Main-Memory）"><a href="#3-主記憶裝置（Main-Memory）" class="headerlink" title="3 主記憶裝置（Main Memory）"></a><strong>3 主記憶裝置（Main Memory）</strong></h3><ul>
-<li>存儲 <strong>指令（程式）與數據</strong>。</li>
-<li><strong>指令與數據共用相同的記憶體空間</strong>（這是馮·諾依曼架構的特徵）。</li>
-<li>CPU 會根據 <strong>指令地址</strong> 讀取並執行對應的指令。</li>
-</ul>
-<h3 id="4-輸入裝置（Input-Unit）"><a href="#4-輸入裝置（Input-Unit）" class="headerlink" title="4 輸入裝置（Input Unit）"></a><strong>4 輸入裝置（Input Unit）</strong></h3><ul>
-<li>用戶輸入指令或數據的介面，例如 <strong>鍵盤、滑鼠、感測器等</strong>。</li>
-</ul>
-<h3 id="5-輸出裝置（Output-Unit）"><a href="#5-輸出裝置（Output-Unit）" class="headerlink" title="5 輸出裝置（Output Unit）"></a><strong>5 輸出裝置（Output Unit）</strong></h3><ul>
-<li>負責將計算結果顯示給用戶，例如 <strong>顯示器、打印機等</strong>。</li>
-</ul>
-<h2 id="3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）"><a href="#3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）" class="headerlink" title="3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）"></a>3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）</h2><p>雖然馮·諾依曼架構為現代計算機奠定了基礎，但它也存在一些 <strong>缺點</strong>，稱為 <strong>馮·諾依曼瓶頸</strong>：</p>
-<ul>
-<li><strong>指令與數據共用同一條記憶體匯流排</strong>，導致 CPU 需要等待數據或指令的傳輸，影響效能。</li>
-<li><strong>記憶體存取速度比 CPU 運算速度慢</strong>，導致 CPU 閒置的情況增加。</li>
-<li><strong>頻繁的記憶體訪問</strong> 可能會限制整體效能，特別是在高效能運算應用中。</li>
-</ul>
-<h2 id="4-與哈佛架構（Harvard-Architecture）的比較"><a href="#4-與哈佛架構（Harvard-Architecture）的比較" class="headerlink" title="4. 與哈佛架構（Harvard Architecture）的比較"></a>4. 與哈佛架構（Harvard Architecture）的比較</h2><table>
-<thead>
-<tr>
-<th>特性</th>
-<th>馮·諾依曼架構</th>
-<th>哈佛架構</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>記憶體設計</strong></td>
-<td>指令與數據共用同一個記憶體</td>
-<td>指令與數據分開存儲</td>
-</tr>
-<tr>
-<td><strong>匯流排</strong></td>
-<td>指令與數據共用</td>
-<td>指令與數據各有獨立匯流排</td>
-</tr>
-<tr>
-<td><strong>優勢</strong></td>
-<td>設計簡單、通用性強</td>
-<td>可同時存取指令和數據，速度較快</td>
-</tr>
-<tr>
-<td><strong>缺點</strong></td>
-<td>可能有記憶體存取瓶頸</td>
-<td>記憶體設計較複雜，成本較高</td>
-</tr>
-</tbody></table>
-<h2 id="5-結論"><a href="#5-結論" class="headerlink" title="5. 結論"></a>5. 結論</h2><ul>
-<li><strong>馮·諾依曼架構</strong> 是現代電腦的基礎，因為它讓 <strong>程式和數據存儲在同一個記憶體</strong>，大幅提升了電腦的靈活性。</li>
-<li>但其 <strong>「馮·諾依曼瓶頸」</strong> 也影響了 CPU 的運行效率，因此現代 CPU 透過 <strong>高速快取記憶體（Cache）</strong>、<strong>超純量（Superscalar）</strong> 和 <strong>指令流水線（Pipeline）</strong> 來提高效能。</li>
-<li>部分系統（如 <strong>嵌入式設備、DSP 處理器</strong>）會採用 <strong>哈佛架構</strong> 來提升執行效率。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cma6xszqr0037guqm64yy99wh" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -1111,7 +1124,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.67px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 16.67px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 13.33px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 15px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.33px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 15px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -1133,6 +1146,10 @@ flowchart TD
       <ul>
         
           <li>
+            <a href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/05/02/go-mock/">go mock</a>
           </li>
         
@@ -1146,10 +1163,6 @@ flowchart TD
         
           <li>
             <a href="/note/2025/04/05/Go-install/">Go install</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/04/first-class-object/">first class object</a>
           </li>
         
       </ul>
