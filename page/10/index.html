@@ -69,6 +69,301 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-NumPy-inf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/13/NumPy-inf/" class="article-date">
+  <time class="dt-published" datetime="2021-07-13T02:54:49.000Z" itemprop="datePublished">2021-07-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/13/NumPy-inf/">NumPy inf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://numpy.org/devdocs/reference/constants.html#numpy.inf">inf</a></p>
+<p><code>NumPy</code> 中可以用 <code>numpy.inf</code> 來表示無限大</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/13/NumPy-inf/" data-id="cmauf9m0x000pk2q9gh0449fy" data-title="NumPy inf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Recommender-System-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/12/Recommender-System-Model/" class="article-date">
+  <time class="dt-published" datetime="2021-07-12T03:40:47.000Z" itemprop="datePublished">2021-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/12/Recommender-System-Model/">Recommender System Model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Recommender System 中常見的手法</p>
+<h2 id="Rank"><a href="#Rank" class="headerlink" title="Rank"></a>Rank</h2><p>其實在還沒有什麼資料的時候</p>
+<p>直接推薦使用者 rank 高的 item 就是個常見的做法</p>
+<p>在計算 rank 的時候</p>
+<p>也可以參考這個<a target="_blank" rel="noopener" href="https://myanimelist.net/info.php?go=topanime">算式</a></p>
+<h2 id="Content-Based-Filtering"><a href="#Content-Based-Filtering" class="headerlink" title="Content Based Filtering"></a>Content Based Filtering</h2><p>利用 item 本身的資訊來找出相似的 item 並推薦</p>
+<p>如果 item 有內容介紹之類的文章</p>
+<p>也可以利用 TF-IDF 來加以分析</p>
+<h3 id="Similarity"><a href="#Similarity" class="headerlink" title="Similarity"></a>Similarity</h3><p>計算相似度的常用方法</p>
+<ul>
+<li><p>mean squared difference</p>
+</li>
+<li><p>Jaccard similarity</p>
+</li>
+<li><p>Cosine Similarity</p>
+</li>
+<li><p>Pearson Correlation Coefficient</p>
+</li>
+</ul>
+<h2 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h2><h3 id="Model-Based"><a href="#Model-Based" class="headerlink" title="Model Based"></a>Model Based</h3><p>PCA</p>
+<p>SVD</p>
+<p>Matrix Factorization</p>
+<h3 id="Memory-Based"><a href="#Memory-Based" class="headerlink" title="Memory Based"></a>Memory Based</h3><h4 id="User-Based"><a href="#User-Based" class="headerlink" title="User Based"></a>User Based</h4><p>先找與你喜好相近的人</p>
+<p>再推薦他們喜歡的東西給你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>user -&gt; item rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+<th>item4</th>
+<th>item5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>user -&gt; user similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>user2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>user3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>look up similar users</p>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h4 id="Item-Based"><a href="#Item-Based" class="headerlink" title="Item Based"></a>Item Based</h4><p>用你喜歡的 Item 去找相似的 Item 來推薦你</p>
+<p>流程如下：</p>
+<ol>
+<li><p>item -&gt; user rating matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>user1</th>
+<th>user2</th>
+<th>user3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>4</td>
+<td>5</td>
+<td></td>
+</tr>
+<tr>
+<td>user2</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>user3</td>
+<td></td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>item -&gt; item similarity matrix</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>item1</th>
+<th>item2</th>
+<th>item3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>item1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>item2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>item3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>candidate filtering</p>
+</li>
+</ol>
+<h2 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h2><p>綜合 <code>Content Based</code> 跟 <code>Collaborative</code> 的方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/12/Recommender-System-Model/" data-id="cmauf9m1p0030k2q9dfi2hua7" data-title="Recommender System Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Mac-pbcopy-pbpaste" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/11/Mac-pbcopy-pbpaste/" class="article-date">
+  <time class="dt-published" datetime="2021-07-11T13:23:10.000Z" itemprop="datePublished">2021-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/11/Mac-pbcopy-pbpaste/">Mac pbcopy pbpaste</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Mac 可以利用 <code>pbcopy</code> 這指令來複製</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &lt; target.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> target.txt | pbcopy</span><br></pre></td></tr></table></figure>
+
+<p>然後可以利用 <code>pbpaste</code> 來貼出目前複製的內容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbpaste</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/11/Mac-pbcopy-pbpaste/" data-id="cmauf9m0w000nk2q90vao2hfq" data-title="Mac pbcopy pbpaste" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-str-replace" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/09/Python-str-replace/" class="article-date">
@@ -107,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cmaf4t4xt002oiwq85u7w4jhk" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/09/Python-str-replace/" data-id="cmauf9m1m002qk2q9bc5meg4e" data-title="Python str.replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -151,7 +446,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cmaf4t4wl0000iwq81ne1122w" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/06/BigQuery-SELECT-EXCEPT/" data-id="cmauf9m0e0000k2q9831jb87p" data-title="Big Query SELECT * EXCEPT" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -202,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cmaf4t4xc001aiwq8bass7l9m" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/05/Python-collections-defaultdict/" data-id="cmauf9m15001ck2q9ab211mlf" data-title="Python collections defaultdict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -247,7 +542,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cmaf4t4yb004giwq8ddrp7kej" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/04/pandas-clip/" data-id="cmauf9m25004nk2q9c08fc4z5" data-title="pandas clip" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -304,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cmaf4t4yj0055iwq8ev302whs" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cmauf9m2c005ck2q93b7z8azj" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -361,7 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cmaf4t4yg004wiwq86vjn8dqa" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cmauf9m2a0052k2q9897y1m1x" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -418,172 +713,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cmaf4t4yh004xiwq87t48hbe5" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cmauf9m2b0055k2q9dxr3h2q8" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-sort-values" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/28/pandas-sort-values/" class="article-date">
-  <time class="dt-published" datetime="2021-06-28T13:24:52.000Z" itemprop="datePublished">2021-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/28/pandas-sort-values/">pandas sort_values</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.sort_values.html">sort_values()</a></p>
-<p>想對資料做排序的時候，可以利用 <code>sort_values()</code></p>
-<h2 id="Sort-by-column"><a href="#Sort-by-column" class="headerlink" title="Sort by column"></a>Sort by column</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">&#x27;column_name&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>只要指出要對哪個 column 做排列就可以</p>
-<p>要注意的是 <code>sort_values()</code></p>
-<p>會回傳一個排序好的 <code>DataFrame</code></p>
-<p>而不會去改變原本的排序</p>
-<h2 id="Sort-by-multiple-columns"><a href="#Sort-by-multiple-columns" class="headerlink" title="Sort by multiple columns"></a>Sort by multiple columns</h2><p>也可以同時對複數個 column 做排序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=[<span class="string">&#x27;column1&#x27;</span>, <span class="string">&#x27;column2&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<h2 id="Sort-Descending"><a href="#Sort-Descending" class="headerlink" title="Sort Descending"></a>Sort Descending</h2><p>另外也可以指定是昇序或是降序</p>
-<p>預設會是昇序，所以需要降序的時候再設定就好</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">&#x27;column_name&#x27;</span>, ascending=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<p>對複數個 column 做排序的時候</p>
-<p>也可以分別指定昇序，或是降序</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=[<span class="string">&#x27;column1&#x27;</span>, <span class="string">&#x27;column2&#x27;</span>], ascending=[<span class="literal">True</span>, <span class="literal">False</span>])</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cmaf4t4ym005miwq819tjc1kn" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pip-install" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/28/pip-install/" class="article-date">
-  <time class="dt-published" datetime="2021-06-28T13:09:40.000Z" itemprop="datePublished">2021-06-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/28/pip-install/">pip install</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/cli/pip_install/#">pip install</a></p>
-<p>這個可以說是最常用的指令之一</p>
-<p>在一些 command 中可以看到一些加上 option 的用法</p>
-<p>其實最簡單查詢每個 option 的方法就是利用 <code>-h</code></p>
-<h2 id="h"><a href="#h" class="headerlink" title="-h"></a>-h</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -h</span><br></pre></td></tr></table></figure>
-
-<p>就會把 option 都列出來給你看了</p>
-<p>而之中常用的有</p>
-<h2 id="r"><a href="#r" class="headerlink" title="-r"></a>-r</h2><p>-r, –requirement <file> </p>
-<p>Install from the given requirements file. </p>
-<p>This option can be used multiple times.</p>
-<p>關於 requirements file 的格式</p>
-<p>可以參考<a target="_blank" rel="noopener" href="https://pip.pypa.io/en/stable/cli/pip_install/#example-requirements-file">這裡</a></p>
-<h2 id="U"><a href="#U" class="headerlink" title="-U"></a>-U</h2><p>-U, –upgrade</p>
-<p>Upgrade all specified packages to the newest available version.</p>
-<p>The handling of dependencies depends on the upgrade-strategy used.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cmaf4t4yo005tiwq8cn9bbbla" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-docstring" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/06/25/Python-docstring/" class="article-date">
-  <time class="dt-published" datetime="2021-06-25T03:05:57.000Z" itemprop="datePublished">2021-06-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/06/25/Python-docstring/">Python docstring</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring">docstring</a></p>
-<p>Python 的 module, function, class, method 首行加入註解的話</p>
-<p>這註解就會是 <code>docstring</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">example</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    A docstring sample</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>在寫 <code>docstring</code> 的時候，也有許多 style 可以參考</p>
-<p><code>pandas</code> 的 <a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing_docstring.html">例子</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cmaf4t4xf001iiwq8eiqhbbp1" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
   </div>
@@ -597,7 +731,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/page/9/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/8/">8</a><a class="page-number" href="/note/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/note/page/11/">11</a><a class="extend next" rel="next" href="/note/page/11/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/page/9/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/8/">8</a><a class="page-number" href="/note/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/note/page/11/">11</a><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/11/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -611,7 +745,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -621,7 +755,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -643,23 +777,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/05/08/avro-overview-and-examples/">avro overview and examples</a>
           </li>
         
           <li>
             <a href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/02/go-mock/">go mock</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/26/Go-Module/">Go Module</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/04/26/go-install-vs-go-get/">go install vs go get</a>
           </li>
         
       </ul>
