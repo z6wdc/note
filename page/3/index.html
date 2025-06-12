@@ -69,6 +69,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Document-Object-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/02/Document-Object-Model/" class="article-date">
+  <time class="dt-published" datetime="2025-03-02T16:40:51.000Z" itemprop="datePublished">2025-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/02/Document-Object-Model/">Document Object Model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什麼是-Document-Object-Model-DOM-？"><a href="#什麼是-Document-Object-Model-DOM-？" class="headerlink" title="什麼是 Document Object Model (DOM) ？"></a>什麼是 Document Object Model (DOM) ？</h2><p><strong>文件物件模型（Document Object Model, DOM）</strong> 是一種程式介面，允許開發者使用程式碼來存取和操作 HTML 或 XML 文件的結構。</p>
+<p>DOM 提供了一種樹狀結構的表示方式，讓開發者可以透過 JavaScript 或其他語言來動態修改網頁內容。</p>
+<h2 id="DOM-的結構"><a href="#DOM-的結構" class="headerlink" title="DOM 的結構"></a>DOM 的結構</h2><p>DOM 採用樹狀結構來表示 HTML 文件，每個節點（Node）代表 HTML 文件中的一個元素。</p>
+<p>例如，以下是一個簡單的 HTML 文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM Example<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, DOM!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is a paragraph.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>這個 HTML 文件在 DOM 中的結構如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Document</span><br><span class="line">└── html</span><br><span class="line">    ├── head</span><br><span class="line">    │   └── title</span><br><span class="line">    │       └── &quot;DOM Example&quot;</span><br><span class="line">    └── body</span><br><span class="line">        ├── h1</span><br><span class="line">        │   └── &quot;Hello, DOM!&quot;</span><br><span class="line">        └── p</span><br><span class="line">            └── &quot;This is a paragraph.&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作-DOM"><a href="#操作-DOM" class="headerlink" title="操作 DOM"></a>操作 DOM</h2><p>開發者可以透過 JavaScript 來存取和操作 DOM。</p>
+<p>例如，以下是一些常見的操作：</p>
+<h3 id="1-獲取元素"><a href="#1-獲取元素" class="headerlink" title="1. 獲取元素"></a>1. 獲取元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 ID 選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用類名選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;myClass&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用標籤名稱選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 CSS 選擇器選取元素</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.myClass&quot;</span>);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;p&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-修改內容"><a href="#2-修改內容" class="headerlink" title="2. 修改內容"></a>2. 修改內容</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的文字內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">textContent</span> = <span class="string">&quot;新的內容&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改 HTML 內容</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;&lt;strong&gt;加粗文字&lt;/strong&gt;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-修改屬性"><a href="#3-修改屬性" class="headerlink" title="3. 修改屬性"></a>3. 修改屬性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改元素的屬性</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myLink&quot;</span>).<span class="property">href</span> = <span class="string">&quot;https://example.com&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-修改樣式"><a href="#4-修改樣式" class="headerlink" title="4. 修改樣式"></a>4. 修改樣式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改 CSS 樣式</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myElement&quot;</span>).<span class="property">style</span>.<span class="property">color</span> = <span class="string">&quot;red&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-事件監聽"><a href="#5-事件監聽" class="headerlink" title="5. 事件監聽"></a>5. 事件監聽</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 監聽點擊事件</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myButton&quot;</span>).<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;按鈕被點擊了！&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cmbt6zyb50007jvpy9eip060q" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Go-string-iteration" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/02/27/Go-string-iteration/" class="article-date">
@@ -119,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cmauf9m0s000fk2q93p40hkvh" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cmbt6zyb9000fjvpy69drd8z6" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -161,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cmauf9m0q000ck2q9h83c13ez" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cmbt6zyb8000cjvpy0liic192" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -281,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cmauf9m2i0064k2q9771c37eu" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cmbt6zyd00067jvpybd8iezmu" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -384,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cmauf9m2l006ik2q92xmx9de1" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cmbt6zyd4006ljvpy78zm30o9" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -464,7 +522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cmauf9m2h0062k2q9hxx80rsl" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cmbt6zyd00064jvpy6zeg077o" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -546,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/18/git-Detached-HEAD/" data-id="cmauf9m1x003wk2q9ge3dcyc3" data-title="Detached HEAD" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/18/git-Detached-HEAD/" data-id="cmbt6zycg003zjvpycpisexhp" data-title="Detached HEAD" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -602,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cmauf9m1z0044k2q9ch6v490z" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cmbt6zyci0046jvpycrcr44yx" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -704,7 +762,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cmauf9m23004fk2q9gp4p1rpx" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cmbt6zycm004hjvpy2g9o6i0z" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -748,64 +806,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="cmauf9m1p0032k2q9dpw6avvw" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/04/03/Relational-Database/" data-id="cmbt6zyc70032jvpya5nf978l" data-title="關聯資料庫" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-gcp-pca-case-study" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2022/10/31/gcp-pca-case-study/" class="article-date">
-  <time class="dt-published" datetime="2022-10-31T04:43:27.000Z" itemprop="datePublished">2022-10-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2022/10/31/gcp-pca-case-study/">Professional Cloud Architect Case Study</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><a target="_blank" rel="noopener" href="https://cloud.google.com/certification/guides/professional-cloud-architect?hl=ja">Case Study</a></li>
-</ul>
-<h2 id="解説"><a href="#解説" class="headerlink" title="解説"></a>解説</h2><ul>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-ehr-healthcare/">EHR Healthcare</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-helicopter-racing-league/">Helicopter Racing League</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-mountkirk-games/">Mountkirk Games</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://o2mamiblog.com/gcp-pca-casestudy-terramearth/">TerramEarth</a></p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2022/10/31/gcp-pca-case-study/" data-id="cmauf9m1w003uk2q99yqh3ie6" data-title="Professional Cloud Architect Case Study" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li></ul>
 
     </footer>
   </div>
@@ -852,7 +857,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -863,6 +868,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
+          </li>
         
           <li>
             <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
@@ -878,10 +887,6 @@
         
           <li>
             <a href="/note/2025/05/08/avro-overview-and-examples/">avro overview and examples</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
           </li>
         
       </ul>
