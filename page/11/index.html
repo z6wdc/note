@@ -69,6 +69,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-isnull" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/30/pandas-isnull/" class="article-date">
+  <time class="dt-published" datetime="2021-06-30T15:32:27.000Z" itemprop="datePublished">2021-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/30/pandas-isnull/">pandas isnull</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.isnull.html">isnull()</a></p>
+<p>可以用 <code>isnull()</code> 來找出 <code>NaN</code> 的值</p>
+<p>也可以寫成 <code>isna()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull()</span><br></pre></td></tr></table></figure>
+
+<p>也可以和 <code>any()</code> 跟 <code>sum()</code> 搭配使用</p>
+<h2 id="sum"><a href="#sum" class="headerlink" title="sum()"></a>sum()</h2><p>可以計算每一個 column 各有幾個 <code>NaN</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<p>也可以計算每一個 row 各有幾個 <code>NaN</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">sum</span>(axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="any"><a href="#any" class="headerlink" title="any()"></a>any()</h2><p>用 <code>any()</code> 來判斷每一個 column 有沒有 <code>NaN</code> 值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.isnull().<span class="built_in">any</span>()</span><br></pre></td></tr></table></figure>
+
+<p>想要看那一個 row 缺值的話</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">query = df.isnull().<span class="built_in">any</span>(axis=<span class="number">1</span>)</span><br><span class="line">df[query].head()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/30/pandas-isnull/" data-id="cmd377o0t005fmd9b0j0a61wd" data-title="pandas isnull" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-groupby" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/06/29/pandas-groupby/" class="article-date">
@@ -112,7 +169,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cmcx9eb590056mo8sc2d86ksf" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-groupby/" data-id="cmd377o0s0058md9b6kss7vjc" data-title="pandas groupby" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -169,7 +226,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cmcx9eb590058mo8s666ob6lp" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/29/pandas-head-tail/" data-id="cmd377o0s0059md9bgsy4dwn3" data-title="pandas head tail" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -227,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cmcx9eb5e005ymo8shl90gsen" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pandas-sort-values/" data-id="cmd377o0x005ymd9b1b03e1vw" data-title="pandas sort_values" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -283,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cmcx9eb5g0064mo8se61nay3m" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/28/pip-install/" data-id="cmd377o0z0067md9be0b898bu" data-title="pip install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -330,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cmcx9eb48001kmo8s42aoebm3" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/25/Python-docstring/" data-id="cmd377nzo001mmd9b4uyd01j5" data-title="Python docstring" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -388,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cmcx9eb5f0062mo8s0a38h126" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-value-counts/" data-id="cmd377o0y0063md9bg0n8gg1x" data-title="pandas value_counts" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -438,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cmcx9eb5e005vmo8saozb9i06" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cmd377o0x005wmd9b3bvt22ii" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -489,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cmcx9eb59005amo8sdp0qakpx" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cmd377o0s005cmd9b0w6k4rsu" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -571,83 +628,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cmcx9eb4g0022mo8sfl4i1vrv" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/05/21/Python-map/" class="article-date">
-  <time class="dt-published" datetime="2021-05-21T22:09:40.000Z" itemprop="datePublished">2021-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/05/21/Python-map/">Python map()</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>我們可以利用</p>
-<p>Python Built-in Function 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html#map">map()</a></p>
-<p>來對 iterable object 做想要的處理</p>
-<h2 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h2><p><code>map(function, iterable, ...)</code></p>
-<p>function 就是要對 iterable 使用的函式</p>
-<p>回傳值為 map object</p>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, [<span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;2&#x27;</span>, <span class="string">&#x27;3&#x27;</span>]))</span><br></pre></td></tr></table></figure>
-
-<p>這個例子中</p>
-<p><code>map()</code> 會把 <code>[&#39;1&#39;, &#39;2&#39;, &#39;3&#39;]</code> 這個 list 裡面的字串當作參數</p>
-<p>去使用 <code>int()</code> 這個 function</p>
-<p>因為 <code>map()</code> 回傳值為 map object</p>
-<p>最後對回傳值使用 <code>list()</code> 可以方便檢查結果</p>
-<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">x, y</span>):</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line"></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">list2 = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(add, list1, list2))</span><br></pre></td></tr></table></figure>
-
-<p>Output</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[4, 6]</span><br></pre></td></tr></table></figure>
-
-<p><code>map()</code> 也可以使用自己定義的 function</p>
-<p>如果自定義的 function 有兩個參數</p>
-<p>後面就必須帶入相對應數量的 iterable</p>
-<p>這個例子中為兩個 list</p>
-<p>另外當 list 不一樣長的時候</p>
-<p>最短的 list 處理完時就會停止</p>
-<h3 id="Example-3"><a href="#Example-3" class="headerlink" title="Example 3"></a>Example 3</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, [<span class="string">&#x27;10&#x27;</span>]*<span class="number">10</span>, <span class="built_in">range</span>(<span class="number">2</span>, <span class="number">11</span>)))</span><br></pre></td></tr></table></figure>
-
-<p>Output</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[2, 3, 4, 5, 6, 7, 8, 9, 10]</span><br></pre></td></tr></table></figure>
-
-<p>這個例子中還是使用 <code>int()</code></p>
-<p>這次對 <code>int()</code> 輸入兩個參數</p>
-<p>第一個為要轉換的數字，使用了字串 10</p>
-<p>第二個是要轉換的進制</p>
-<p>因為是 <code>range(2, 11)</code></p>
-<p>所以結果會印出 10 這個數</p>
-<p>在 2 進位到 10 進位下的數值</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cmcx9eb4f001zmo8s93xihtf3" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cmd377nzv0023md9bd9wx7lue" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -711,6 +692,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
           </li>
         
@@ -724,10 +709,6 @@
         
           <li>
             <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
           </li>
         
       </ul>
