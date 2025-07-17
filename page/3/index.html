@@ -69,6 +69,235 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Von-Neumann-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/18/Von-Neumann-Architecture/" class="article-date">
+  <time class="dt-published" datetime="2025-03-18T09:18:08.000Z" itemprop="datePublished">2025-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什麼是馮·諾依曼架構？"><a href="#1-什麼是馮·諾依曼架構？" class="headerlink" title="1. 什麼是馮·諾依曼架構？"></a>1. 什麼是馮·諾依曼架構？</h2><p><strong>馮·諾依曼架構</strong> 是現代計算機的基本架構模型，由數學家 <strong>約翰·馮·諾依曼（John von Neumann）</strong> 在 1945 年提出。</p>
+<p>其核心概念是 <strong>「存儲程序計算機（Stored-Program Computer）」</strong>，即指令（程式）和數據存儲在同一個記憶體中，並由中央處理單元（CPU）來依序執行。</p>
+<h2 id="2-架構組成（5-大要素）"><a href="#2-架構組成（5-大要素）" class="headerlink" title="2. 架構組成（5 大要素）"></a>2. 架構組成（5 大要素）</h2><h3 id="1-演算裝置（Arithmetic-Unit，ALU）"><a href="#1-演算裝置（Arithmetic-Unit，ALU）" class="headerlink" title="1 演算裝置（Arithmetic Unit，ALU）"></a><strong>1 演算裝置（Arithmetic Unit，ALU）</strong></h3><ul>
+<li>負責執行 <strong>數學運算</strong>（加減乘除）與 <strong>邏輯運算</strong>（AND、OR、NOT 等）。</li>
+<li>這部分通常是 <strong>CPU 內部的一部分</strong>，也稱為「算術邏輯單元（ALU）」。</li>
+</ul>
+<h3 id="2-制御裝置（Control-Unit，CU）"><a href="#2-制御裝置（Control-Unit，CU）" class="headerlink" title="2 制御裝置（Control Unit，CU）"></a><strong>2 制御裝置（Control Unit，CU）</strong></h3><ul>
+<li>負責 <strong>解讀並執行指令</strong>，並控制其他組件的運作。</li>
+<li>透過 <strong>程序計數器（PC, Program Counter）</strong> 控制指令的順序執行。</li>
+</ul>
+<h3 id="3-主記憶裝置（Main-Memory）"><a href="#3-主記憶裝置（Main-Memory）" class="headerlink" title="3 主記憶裝置（Main Memory）"></a><strong>3 主記憶裝置（Main Memory）</strong></h3><ul>
+<li>存儲 <strong>指令（程式）與數據</strong>。</li>
+<li><strong>指令與數據共用相同的記憶體空間</strong>（這是馮·諾依曼架構的特徵）。</li>
+<li>CPU 會根據 <strong>指令地址</strong> 讀取並執行對應的指令。</li>
+</ul>
+<h3 id="4-輸入裝置（Input-Unit）"><a href="#4-輸入裝置（Input-Unit）" class="headerlink" title="4 輸入裝置（Input Unit）"></a><strong>4 輸入裝置（Input Unit）</strong></h3><ul>
+<li>用戶輸入指令或數據的介面，例如 <strong>鍵盤、滑鼠、感測器等</strong>。</li>
+</ul>
+<h3 id="5-輸出裝置（Output-Unit）"><a href="#5-輸出裝置（Output-Unit）" class="headerlink" title="5 輸出裝置（Output Unit）"></a><strong>5 輸出裝置（Output Unit）</strong></h3><ul>
+<li>負責將計算結果顯示給用戶，例如 <strong>顯示器、打印機等</strong>。</li>
+</ul>
+<h2 id="3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）"><a href="#3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）" class="headerlink" title="3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）"></a>3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）</h2><p>雖然馮·諾依曼架構為現代計算機奠定了基礎，但它也存在一些 <strong>缺點</strong>，稱為 <strong>馮·諾依曼瓶頸</strong>：</p>
+<ul>
+<li><strong>指令與數據共用同一條記憶體匯流排</strong>，導致 CPU 需要等待數據或指令的傳輸，影響效能。</li>
+<li><strong>記憶體存取速度比 CPU 運算速度慢</strong>，導致 CPU 閒置的情況增加。</li>
+<li><strong>頻繁的記憶體訪問</strong> 可能會限制整體效能，特別是在高效能運算應用中。</li>
+</ul>
+<h2 id="4-與哈佛架構（Harvard-Architecture）的比較"><a href="#4-與哈佛架構（Harvard-Architecture）的比較" class="headerlink" title="4. 與哈佛架構（Harvard Architecture）的比較"></a>4. 與哈佛架構（Harvard Architecture）的比較</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>馮·諾依曼架構</th>
+<th>哈佛架構</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>記憶體設計</strong></td>
+<td>指令與數據共用同一個記憶體</td>
+<td>指令與數據分開存儲</td>
+</tr>
+<tr>
+<td><strong>匯流排</strong></td>
+<td>指令與數據共用</td>
+<td>指令與數據各有獨立匯流排</td>
+</tr>
+<tr>
+<td><strong>優勢</strong></td>
+<td>設計簡單、通用性強</td>
+<td>可同時存取指令和數據，速度較快</td>
+</tr>
+<tr>
+<td><strong>缺點</strong></td>
+<td>可能有記憶體存取瓶頸</td>
+<td>記憶體設計較複雜，成本較高</td>
+</tr>
+</tbody></table>
+<h2 id="5-結論"><a href="#5-結論" class="headerlink" title="5. 結論"></a>5. 結論</h2><ul>
+<li><strong>馮·諾依曼架構</strong> 是現代電腦的基礎，因為它讓 <strong>程式和數據存儲在同一個記憶體</strong>，大幅提升了電腦的靈活性。</li>
+<li>但其 <strong>「馮·諾依曼瓶頸」</strong> 也影響了 CPU 的運行效率，因此現代 CPU 透過 <strong>高速快取記憶體（Cache）</strong>、<strong>超純量（Superscalar）</strong> 和 <strong>指令流水線（Pipeline）</strong> 來提高效能。</li>
+<li>部分系統（如 <strong>嵌入式設備、DSP 處理器</strong>）會採用 <strong>哈佛架構</strong> 來提升執行效率。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cmd789xpg0039nd9b059acxqc" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Layered-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/16/Layered-Architecture/" class="article-date">
+  <time class="dt-published" datetime="2025-03-16T21:47:10.000Z" itemprop="datePublished">2025-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/16/Layered-Architecture/">Layered Architecture</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p><strong>Layered Architecture</strong> 是一種常見的軟體設計模式，透過將系統的不同功能劃分成不同的層（Layer），提高 <strong>模組化、可維護性和可擴展性</strong>。</p>
+<h2 id="2-三層架構的組成"><a href="#2-三層架構的組成" class="headerlink" title="2. 三層架構的組成"></a>2. 三層架構的組成</h2><h3 id="表示層（Presentation-Layer）"><a href="#表示層（Presentation-Layer）" class="headerlink" title="表示層（Presentation Layer）"></a><strong>表示層（Presentation Layer）</strong></h3><ul>
+<li>負責 <strong>用戶介面（UI）</strong>，讓使用者與系統互動</li>
+<li>接收 <strong>用戶請求</strong>，並將結果呈現給用戶</li>
+<li><strong>不包含業務邏輯</strong>，只負責請求轉發與顯示</li>
+</ul>
+<h3 id="業務邏輯層（Logic-Layer）"><a href="#業務邏輯層（Logic-Layer）" class="headerlink" title="業務邏輯層（Logic Layer）"></a><strong>業務邏輯層（Logic Layer）</strong></h3><ul>
+<li>負責應用的 <strong>業務邏輯處理</strong></li>
+<li>接收 <strong>表示層的請求</strong>，處理後再傳給 <strong>資料層</strong></li>
+<li>可包含 <strong>驗證、計算、交易流程控制等</strong></li>
+</ul>
+<h3 id="資料層（Data-Layer）"><a href="#資料層（Data-Layer）" class="headerlink" title="資料層（Data Layer）"></a><strong>資料層（Data Layer）</strong></h3><ul>
+<li>主要負責 <strong>數據存取與管理</strong></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cmd789xom000nnd9b5vm8898s" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-chrome-net-export" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/03/16/chrome-net-export/" class="article-date">
+  <time class="dt-published" datetime="2025-03-16T09:44:59.000Z" itemprop="datePublished">2025-03-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/03/16/chrome-net-export/">Chrome net-export</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>net-export</code> 是 Google Chrome 內建的工具，用來擷取網路流量的記錄（NetLog），以便進行網路診斷和除錯。</p>
+<p>這個工具可以記錄所有經過 Chrome 的網路請求，包括 HTTP&#x2F;HTTPS、WebSocket、DNS 查詢等，並輸出成 JSON 格式的 NetLog 檔案。</p>
+<h2 id="如何使用-net-export-來擷取-NetLog？"><a href="#如何使用-net-export-來擷取-NetLog？" class="headerlink" title="如何使用 net-export 來擷取 NetLog？"></a><strong>如何使用 <code>net-export</code> 來擷取 NetLog？</strong></h2><h3 id="方法-1：透過-Chrome-內建-UI"><a href="#方法-1：透過-Chrome-內建-UI" class="headerlink" title="方法 1：透過 Chrome 內建 UI"></a><strong>方法 1：透過 Chrome 內建 UI</strong></h3><ol>
+<li><p>在 Chrome 地址列輸入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://net-export/</span><br></pre></td></tr></table></figure>
+<p>然後按 Enter 進入 <code>Net Export</code> 頁面。</p>
+</li>
+<li><p>點擊 <strong>「Start Logging to Disk」</strong> 按鈕，選擇一個儲存 NetLog 檔案的路徑（例如 <code>netlog.json</code>）。</p>
+</li>
+<li><p>在 Chrome 中進行你的操作（例如載入有問題的網站、執行 API 請求等）。</p>
+</li>
+<li><p>完成後，回到 <code>chrome://net-export/</code> 頁面，點擊 <strong>「Stop Logging」</strong> 按鈕。</p>
+</li>
+<li><p>你的 NetLog 檔案已儲存，可以用來進行分析。</p>
+</li>
+</ol>
+<h2 id="如何分析-NetLog-檔案？"><a href="#如何分析-NetLog-檔案？" class="headerlink" title="如何分析 NetLog 檔案？"></a><strong>如何分析 NetLog 檔案？</strong></h2><p>你可以使用 Chrome 提供的 NetLog Viewer 來開啟這個 JSON 檔案：</p>
+<ol>
+<li>打開 <code>chrome://net-internals/#import</code>（或使用 <a target="_blank" rel="noopener" href="https://netlog-viewer.appspot.com/">NetLog Viewer</a>）。</li>
+<li>點擊 <strong>「Choose File」</strong> 上傳 <code>JSON</code> 檔案。</li>
+<li>瀏覽記錄的詳細資訊，找出可能的網路問題。</li>
+</ol>
+<h2 id="方法-2：透過命令列擷取-NetLog"><a href="#方法-2：透過命令列擷取-NetLog" class="headerlink" title="方法 2：透過命令列擷取 NetLog"></a><strong>方法 2：透過命令列擷取 NetLog</strong></h2><p>如果你想從命令列啟動 Chrome 並自動擷取 NetLog，可以使用以下指令：</p>
+<h3 id="Windows（cmd）"><a href="#Windows（cmd）" class="headerlink" title="Windows（cmd）"></a><strong>Windows（cmd）</strong></h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.exe --log-net-log=C:\path\to\netlog.json --net-log-capture-mode=IncludeSocketBytes</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mac-Linux"><a href="#Mac-Linux" class="headerlink" title="Mac&#x2F;Linux"></a><strong>Mac&#x2F;Linux</strong></h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --log-net-log=~/netlog.json --net-log-capture-mode=IncludeSocketBytes</span><br></pre></td></tr></table></figure>
+
+<p>這樣 Chrome 啟動後就會開始記錄所有網路請求，直到你手動關閉 Chrome。</p>
+<h2 id="NetLog-捕捉模式（可選）"><a href="#NetLog-捕捉模式（可選）" class="headerlink" title="NetLog 捕捉模式（可選）"></a><strong>NetLog 捕捉模式（可選）</strong></h2><p>在命令中，<code>--net-log-capture-mode</code> 參數有幾種模式：</p>
+<ul>
+<li><code>Default</code>（預設）：只捕捉基本的網路事件。</li>
+<li><code>IncludeCookiesAndCredentials</code>：包含 HTTP cookies 和授權資訊。</li>
+<li><code>IncludeRawBytes</code>：記錄完整的傳輸資料。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.exe --log-net-log=C:\netlog.json --net-log-capture-mode=IncludeCookiesAndCredentials</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cmd789xpj003lnd9bf6sh8lij" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-for-in-vs-for-of" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/03/04/for-in-vs-for-of/" class="article-date">
@@ -133,7 +362,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cmd377o0g003ymd9b2cmq4y65" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/04/for-in-vs-for-of/" data-id="cmd789xpl003vnd9bgsjd0jdr" data-title="for in vs for of" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -226,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cmd377o0b003jmd9b89n3h07m" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/03/browser-event/" data-id="cmd789xpi003jnd9bbe0qh6v3" data-title="browser event" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -284,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cmd377nz40008md9b0fsc6rhi" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/02/Document-Object-Model/" data-id="cmd789xod0008nd9b7ridgw0t" data-title="Document Object Model" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -346,7 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cmd377nz8000gmd9bchy1b2y2" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-string-iteration/" data-id="cmd789xoi000gnd9baxcq7alr" data-title="Go string iteration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -388,7 +617,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cmd377nz7000fmd9b2y6s4p2w" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/27/Go-set-implementation/" data-id="cmd789xoh000fnd9b4o8rf3d5" data-title="Go set implementation" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -508,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cmd377o0z0069md9be3hgcz4y" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/26/scalability/" data-id="cmd789xq6006gnd9b9von7nxm" data-title="scalability" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -611,230 +840,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cmd377o13006omd9b3lewckvx" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/02/23/socket/" data-id="cmd789xq9006snd9b37yobnc7" data-title="socket" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pipe" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/02/23/pipe/" class="article-date">
-  <time class="dt-published" datetime="2025-02-23T16:57:05.000Z" itemprop="datePublished">2025-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/02/23/pipe/">pipe</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>Pipe</strong> 是一種進程間通信（IPC, Inter-Process Communication）機制，通常用於在同一台機器上的進程之間傳遞數據。以下是 Pipe 的一些主要特性：</p>
-<h2 id="1-單向通信"><a href="#1-單向通信" class="headerlink" title="1. 單向通信"></a>1. 單向通信</h2><ul>
-<li><strong>Pipe</strong> 通常是 <strong>單向的</strong>，即數據只能從管道的一端流向另一端。一個進程將數據寫入管道，另一個進程從管道讀取數據。</li>
-</ul>
-<h2 id="2-進程間通信"><a href="#2-進程間通信" class="headerlink" title="2. 進程間通信"></a>2. 進程間通信</h2><ul>
-<li><strong>Pipe</strong> 主要用於在同一台機器上的進程間進行數據傳輸。它是操作系統提供的一個低階 IPC 機制，允許兩個相關的進程（如父子進程）進行簡單的數據交換。</li>
-</ul>
-<h2 id="3-內存中實現"><a href="#3-內存中實現" class="headerlink" title="3. 內存中實現"></a>3. 內存中實現</h2><ul>
-<li>Pipe 是一種 <strong>內存中實現</strong> 的通信方式，數據並不會寫入磁碟，而是存儲在內存中。這使得 Pipe 的操作通常比磁碟操作更快速。</li>
-</ul>
-<h2 id="4-無需顯式打開檔案"><a href="#4-無需顯式打開檔案" class="headerlink" title="4. 無需顯式打開檔案"></a>4. 無需顯式打開檔案</h2><ul>
-<li>使用 Pipe 不需要顯式的檔案操作。它直接通過文件描述符來讀寫數據，這使得它比傳統的檔案處理方式更簡單。</li>
-</ul>
-<h2 id="5-提供簡單的-API"><a href="#5-提供簡單的-API" class="headerlink" title="5. 提供簡單的 API"></a>5. 提供簡單的 API</h2><ul>
-<li>Pipe 提供簡單的 API 來進行數據的寫入和讀取。例如，<code>write()</code> 和 <code>read()</code> 系統調用可以用來在管道中寫入和讀取數據。</li>
-</ul>
-<h2 id="6-具有緩衝區"><a href="#6-具有緩衝區" class="headerlink" title="6. 具有緩衝區"></a>6. 具有緩衝區</h2><ul>
-<li><strong>Pipe</strong> 具有緩衝區，當數據寫入管道時，數據會暫時存在內存中的緩衝區，等待讀取進程來取出。</li>
-</ul>
-<h2 id="7-有名與無名管道"><a href="#7-有名與無名管道" class="headerlink" title="7. 有名與無名管道"></a>7. 有名與無名管道</h2><ul>
-<li><p><strong>無名管道（Anonymous Pipe）</strong>：</p>
-<ul>
-<li>用於父子進程或兄弟進程間的通信。無名管道沒有名稱，通常在進程創建時通過管道文件描述符傳遞。</li>
-</ul>
-</li>
-<li><p><strong>有名管道（Named Pipe 或 FIFO）</strong>：</p>
-<ul>
-<li>有名稱的管道，可以在不同進程間共享。它類似於普通的文件，通過文件系統路徑來訪問。</li>
-</ul>
-</li>
-</ul>
-<h2 id="8-進程之間的同步"><a href="#8-進程之間的同步" class="headerlink" title="8. 進程之間的同步"></a>8. 進程之間的同步</h2><ul>
-<li>使用 <strong>Pipe</strong> 進行通信時，操作系統通常會在寫入和讀取之間進行同步。例如，如果讀取進程嘗試讀取一個空的管道，該進程會被阻塞，直到寫入進程寫入數據。</li>
-</ul>
-<h2 id="9-局限性"><a href="#9-局限性" class="headerlink" title="9. 局限性"></a>9. 局限性</h2><ul>
-<li><strong>單向性</strong>：雖然可以使用兩個管道實現雙向通信，但單個管道本身僅支持單向數據流。</li>
-<li><strong>同一台機器</strong>：Pipe 通常只適用於同一台機器內的進程間通信，不能跨網路進行通信。</li>
-<li><strong>容量限制</strong>：管道的容量是有限的，如果管道滿了，寫入操作會被阻塞。</li>
-</ul>
-<h2 id="10-用途"><a href="#10-用途" class="headerlink" title="10. 用途"></a>10. 用途</h2><ul>
-<li><strong>管道命令</strong>：在類 Unix 系統中，管道經常用於命令行工具的組合，通過 <code>|</code> 符號將命令的輸出傳遞給下一個命令。例如，<code>ps aux | grep python</code>。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/23/pipe/" data-id="cmd377o0y0065md9bc2l17sth" data-title="pipe" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git-Detached-HEAD" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/02/18/git-Detached-HEAD/" class="article-date">
-  <time class="dt-published" datetime="2025-02-18T06:11:21.000Z" itemprop="datePublished">2025-02-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/02/18/git-Detached-HEAD/">Detached HEAD</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什麼是-Detached-HEAD？"><a href="#什麼是-Detached-HEAD？" class="headerlink" title="什麼是 Detached HEAD？"></a>什麼是 Detached HEAD？</h2><p><strong>Detached HEAD</strong> 狀態表示你的 <code>HEAD</code> 並未指向任何分支，而是直接指向了一個特定的 commit。</p>
-<h2 id="何時會進入-Detached-HEAD？"><a href="#何時會進入-Detached-HEAD？" class="headerlink" title="何時會進入 Detached HEAD？"></a>何時會進入 Detached HEAD？</h2><ul>
-<li>使用特定 commit：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;commit-id&gt;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>切換到 tag：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;tag-name&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Detached-HEAD-的影響"><a href="#Detached-HEAD-的影響" class="headerlink" title="Detached HEAD 的影響"></a>Detached HEAD 的影響</h2><ul>
-<li><p><strong>你所做的任何 commit 不會被分支保留</strong>：</p>
-<ul>
-<li><p>若切換到其他分支，這些 commit 會「遺失」（實際上還存在於 <code>reflog</code> 中）。</p>
-</li>
-<li><p><strong>解決方法</strong>：在 Detached HEAD 下完成工作後，創建一個新分支保留：</p>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new-branch</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何離開-Detached-HEAD？"><a href="#如何離開-Detached-HEAD？" class="headerlink" title="如何離開 Detached HEAD？"></a>如何離開 Detached HEAD？</h2><ul>
-<li>切回原本的分支：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br></pre></td></tr></table></figure>
-
-<h2 id="如何找回-Detached-HEAD-下的-commit？"><a href="#如何找回-Detached-HEAD-下的-commit？" class="headerlink" title="如何找回 Detached HEAD 下的 commit？"></a>如何找回 Detached HEAD 下的 commit？</h2><p>使用 <code>git reflog</code> 來查看並找回遺失的 commit：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<h3 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abcd123 HEAD@&#123;0&#125;: commit: 修正</span><br><span class="line">efgh456 HEAD@&#123;1&#125;: checkout: moving from main to abcd123</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>找到你在 Detached HEAD 下的 commit 後，使用以下指令建立新分支：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new-branch abcd123</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h2><ul>
-<li><p>Detached HEAD 狀態適合「<strong>查看</strong>」歷史 commit 或 tag，不適合直接進行修改，除非確定要創建分支保存。</p>
-</li>
-<li><p><strong><code>git reflog</code></strong> 可以找回已遺失的 commit，但 Git 最終會清理掉沒有被任何分支或 tag 指向的 commit（約30天內）。</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/02/18/git-Detached-HEAD/" data-id="cmd377o0g0040md9b2j9d4c2u" data-title="Detached HEAD" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git-revert" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2024/11/08/git-revert/" class="article-date">
-  <time class="dt-published" datetime="2024-11-08T15:37:08.000Z" itemprop="datePublished">2024-11-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2024/11/08/git-revert/">git revert</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>當要還原的時候有 <code>git reset</code> 跟 <code>git revert</code> 可以選擇</p>
-<p><code>git reset</code> 是修改歷史（刪除或改寫 commit）</p>
-<p><code>git revert</code> 透過新增一個「反向」commit 來撤銷之前的變更</p>
-<p>所以通常用於想保留歷史記錄的情況</p>
-<h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><p>還原單一commit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert &lt;commit&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="option-n-–no-commit"><a href="#option-n-–no-commit" class="headerlink" title="option -n –no-commit"></a>option -n –no-commit</h3><p>使用這選項會執行還原操作但不會自動生成提交（commit）</p>
-<p>會將還原的變更放入暫存區再進行一次性提交</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git -n &lt;最新commit&gt; &lt;第二新commit&gt; &lt;最舊commit&gt;</span><br><span class="line">git commit -m <span class="string">&quot;revert multiple commits&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>commit 順序應該從最新到最舊避免依賴錯誤</p>
-<p>或直接指定開頭跟結尾的 commit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert -n &lt;最舊commit&gt;..&lt;最新commit&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://git-scm.com/docs/git-revert.html">https://git-scm.com/docs/git-revert.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/11/08/git-revert/" data-id="cmd377o0j0049md9bbr346ulo" data-title="git revert" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
-
     </footer>
   </div>
   
@@ -893,23 +902,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>

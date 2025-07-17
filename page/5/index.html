@@ -69,6 +69,154 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Python-glob" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/29/Python-glob/" class="article-date">
+  <time class="dt-published" datetime="2021-09-29T14:01:26.000Z" itemprop="datePublished">2021-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/29/Python-glob/">Python glob</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/glob.html">‘glob’</a></p>
+<p>會把符合條件的 path 放在 list 並回傳</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> glob</span><br><span class="line"></span><br><span class="line">glob.glob(<span class="string">&#x27;*.gif&#x27;</span>)</span><br><span class="line"><span class="comment"># [&#x27;1.gif&#x27;, &#x27;card.gif&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cmd789xp2001vnd9bfzjd4ak2" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Docker-Volume" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/20/Docker-Volume/" class="article-date">
+  <time class="dt-published" datetime="2021-09-20T08:43:55.000Z" itemprop="datePublished">2021-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/20/Docker-Volume/">Docker Volume</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.docker.com/storage/volumes/">Volume</a></p>
+<p>讓我們來存放 data 的地方</p>
+<p>就不會因為 container 被刪除</p>
+<p>而使得 存放在 container 的 data 也連帶被刪除</p>
+<h2 id="Anonymous-Volume"><a href="#Anonymous-Volume" class="headerlink" title="Anonymous Volume"></a>Anonymous Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /app/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="Named-Volume"><a href="#Named-Volume" class="headerlink" title="Named Volume"></a>Named Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v data:/app/data</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bind-Mount"><a href="#Bind-Mount" class="headerlink" title="Bind Mount"></a>Bind Mount</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /path/to/code:/app/code</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cmd789xod0007nd9b2z5332mk" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-datetime-strftime-vs-strptime" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/" class="article-date">
+  <time class="dt-published" datetime="2021-09-17T02:05:55.000Z" itemprop="datePublished">2021-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/09/17/Python-datetime-strftime-vs-strptime/">Python datetime strftime vs strptime</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="strftime"><a href="#strftime" class="headerlink" title="strftime"></a>strftime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strftime">strftime</a></p>
+<p><code>strftime</code> 可以把 <code>datetime</code> object 透過指定的 format</p>
+<p>轉換成 string</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">now = datetime.now()</span><br><span class="line"></span><br><span class="line">year = now.strftime(<span class="string">&quot;%Y&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;year:&quot;</span>, year)</span><br></pre></td></tr></table></figure>
+
+<h2 id="strptime"><a href="#strptime" class="headerlink" title="strptime"></a>strptime</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime">strptime</a></p>
+<p><code>strptime</code> 可以把字串轉換成 date object</p>
+<p>使用時必須指定字串的 format</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line">date_string = <span class="string">&quot;25 July, 2021&quot;</span></span><br><span class="line"></span><br><span class="line">date_object = datetime.strptime(date_string, <span class="string">&quot;%d %B, %Y&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="strftime-and-strptime-Behavior"><a href="#strftime-and-strptime-Behavior" class="headerlink" title="strftime() and strptime() Behavior"></a>strftime() and strptime() Behavior</h2><p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">behavior</a></p>
+<p>兩者主要的差異</p>
+<p>一個從 object 轉成 string</p>
+<p>一個從 string 轉成 object</p>
+<h2 id="format"><a href="#format" class="headerlink" title="format"></a>format</h2><p>關於 format 要怎麼指定</p>
+<p>可以參考官方的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes">Format Codes</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cmd789xov001ind9b09p2d7p6" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-pandas-select-dtypes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/09/12/pandas-select-dtypes/" class="article-date">
@@ -101,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cmd377o0w005tmd9bbpf2hmgg" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cmd789xq20060nd9ba5x7f9fy" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -149,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cmd377nzw0026md9bfoave7rj" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cmd789xp50026nd9b1qo11vwz" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -197,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cmd377o0q004ymd9bd4nl124r" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cmd789xpv0054nd9bhzyofod2" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cmd377o10006bmd9bc3567t8q" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cmd789xq6006ind9b113ae5gg" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -289,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cmd377nzs001qmd9b09gg9uz0" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cmd789xp1001qnd9bhg1kc3fp" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -341,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cmd377nzg000zmd9b0z1s2c9l" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cmd789xoq000znd9bd7hv2soo" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -386,175 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmd377nzh0013md9b7b5g7w33" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-sklearn-impute-SimpleImputer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/10/sklearn-impute-SimpleImputer/" class="article-date">
-  <time class="dt-published" datetime="2021-08-10T05:06:21.000Z" itemprop="datePublished">2021-08-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/10/sklearn-impute-SimpleImputer/">sklearn impute SimpleImputer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html">sklearn.impute.SimpleImputer</a></p>
-<p>當 data 中有 missing value 的時候</p>
-<p>可以利用 <code>SimpleImputer</code> 來填補值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imputer = SimpleImputer()</span><br><span class="line">imputed_X_train = pd.DataFrame(imputer.fit_transform(X_train))</span><br></pre></td></tr></table></figure>
-
-<h2 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h2><h3 id="strategy"><a href="#strategy" class="headerlink" title="strategy"></a>strategy</h3><p>填補值的時候可以選用你想要的方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">imputer = SimpleImputer(strategy=<span class="string">&#x27;mean&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>除了 <code>mean</code> 以外</p>
-<p>還有下面三種</p>
-<p><code>median</code></p>
-<p><code>most_frequent</code></p>
-<p><code>constant</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cmd377o11006imd9b8chdb6o2" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/06/Python-dict/" class="article-date">
-  <time class="dt-published" datetime="2021-08-06T06:00:25.000Z" itemprop="datePublished">2021-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/06/Python-dict/">Python dict</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></p>
-<h2 id="items"><a href="#items" class="headerlink" title="items()"></a>items()</h2><p>會顯示 (key, value)</p>
-<h2 id="keys"><a href="#keys" class="headerlink" title="keys()"></a>keys()</h2><p>顯示 key</p>
-<h2 id="values"><a href="#values" class="headerlink" title="values()"></a>values()</h2><p>顯示 value</p>
-<h2 id="get-key-default"><a href="#get-key-default" class="headerlink" title="get(key[, default])"></a>get(key[, default])</h2><p>取得 key 對應的 value</p>
-<p>當 key 不在 <code>dict</code> 裡面的時候</p>
-<p>則回傳 deafult 值</p>
-<p>default 值預設為 <code>None</code></p>
-<p>所以使用 <code>get()</code> 不會發生 <code>KeyError</code></p>
-<h2 id="setdefault-key-default"><a href="#setdefault-key-default" class="headerlink" title="setdefault(key[, default])"></a>setdefault(key[, default])</h2><p>當 key 已經存在 <code>dict</code> 裡面</p>
-<p>會回傳 key 對應的 value 的值</p>
-<p>如果不存在就對 key 設定 default 值</p>
-<p>default 值沒設定的話，就會設定成 <code>None</code></p>
-<p>所以用來設定值的時候</p>
-<p>不會覆蓋原本就已經存在的值</p>
-<h2 id="update-other"><a href="#update-other" class="headerlink" title="update([other])"></a>update([other])</h2><p>可以更新字典裡面的內容</p>
-<p>如果 key&#x2F;value 已經存在的話</p>
-<p>會對已經存在的值做覆寫</p>
-<p><code>update()</code> 的參數</p>
-<p>可以代入另一個 <code>dictionary</code></p>
-<p>或是 <code>iterable</code> of <code>key/value pairs</code></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cmd377nzn001kmd9b3lfwb7x5" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-sorting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/06/Python-sorting/" class="article-date">
-  <time class="dt-published" datetime="2021-08-06T05:58:56.000Z" itemprop="datePublished">2021-08-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/06/Python-sorting/">Python sorting</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/howto/sorting.html">Sorting HOW TO</a></p>
-<h2 id="Sorting-Basics"><a href="#Sorting-Basics" class="headerlink" title="Sorting Basics"></a>Sorting Basics</h2><p>要排序時</p>
-<p>有 <code>list.sort()</code> method 跟 <code>sorted()</code> function</p>
-<p><code>list.sort()</code> 會直接對 list 做排列，並回傳 <code>None</code></p>
-<p><code>sorted()</code> 則是會回傳一個排列好的 <code>list</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>]</span><br><span class="line">a.sort()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sorted</span>([<span class="number">5</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-
-<p>另外 <code>list.sort()</code> 只能對 <code>list</code> 使用</p>
-<p>但 <code>sorted()</code> 則是可以對 <code>iterable</code> 使用</p>
-<h2 id="Key-Functions"><a href="#Key-Functions" class="headerlink" title="Key Functions"></a>Key Functions</h2><p> <code>list.sort()</code> 跟 <code>sorted()</code> 都有 key parameter 讓你輸入 function</p>
-<p> 做 sort 前，便會用每個 element 去 call 這個 function</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">student_tuples = [</span><br><span class="line">    (<span class="string">&#x27;john&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="number">15</span>),</span><br><span class="line">    (<span class="string">&#x27;jane&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="number">12</span>),</span><br><span class="line">    (<span class="string">&#x27;dave&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="number">10</span>),</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="built_in">sorted</span>(student_tuples, key=<span class="keyword">lambda</span> student: student[<span class="number">2</span>])</span><br><span class="line"><span class="comment"># sort by age</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cmd377o00002mmd9b1ekg99wm" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmd789xor0013nd9bh0bxe8yq" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -618,23 +598,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>

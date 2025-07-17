@@ -69,6 +69,191 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sklearn-LabelEncoder" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/23/sklearn-LabelEncoder/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T05:33:30.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/23/sklearn-LabelEncoder/">sklearn LabelEncoder</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">LabelEncoder</a></p>
+<p>處理類別型的資料時</p>
+<p>可以用的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"></span><br><span class="line">df[c] = LabelEncoder().fit_transform(df[c])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/sklearn-LabelEncoder/" data-id="cmd789xq7006mnd9b2d45cr2l" data-title="sklearn LabelEncoder" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-NumPy-log1p" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/23/NumPy-log1p/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T02:52:40.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/23/NumPy-log1p/">NumPy log1p</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://numpy.org/doc/stable/reference/generated/numpy.log1p.html">lop1p</a></p>
+<p>去除偏態的時候</p>
+<p>可以利用的函數 <code>log1p</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Fare&#x27;</span>] = np.log1p(df[<span class="string">&#x27;Fare&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>必須注意的是代入的值必須大於等於 0</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/NumPy-log1p/" data-id="cmd789xop000vnd9bf4n498n6" data-title="NumPy log1p" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SciPy-stats-boxcox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/07/23/SciPy-stats-boxcox/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T02:26:42.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/07/23/SciPy-stats-boxcox/">SciPy stats boxcox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.boxcox.html">boxcox</a></p>
+<p>去除資料偏態的時候</p>
+<p>可以利用的函數 <code>boxcox</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line">df_fixed[<span class="string">&#x27;Fare&#x27;</span>] = stats.boxcox(df_fixed[<span class="string">&#x27;Fare&#x27;</span>] + <span class="number">1e-6</span>, lmbda=<span class="number">0.15</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用要必須注意的是</p>
+<p>代入 <code>boxcox</code> 函數的值不可小於或等於零</p>
+<p>在上面例子中加上了一個微小的數字 <code>1e-6</code></p>
+<p>目的就是為了不讓值等於 0</p>
+<h2 id="lmbda-value"><a href="#lmbda-value" class="headerlink" title="lmbda value"></a>lmbda value</h2><p>當 <code>lmbda</code> 值為特定的數字是</p>
+<p>就會是下列的函數</p>
+<table>
+<thead>
+<tr>
+<th align="left">lmbda</th>
+<th align="center">Y</th>
+<th align="left">Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-2</td>
+<td align="center">1&#x2F;(Y**2)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">-1</td>
+<td align="center">1&#x2F;Y</td>
+<td align="left">inverse transformation</td>
+</tr>
+<tr>
+<td align="left">-0.5</td>
+<td align="center">1&#x2F;sqrt(Y)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">0</td>
+<td align="center">logY</td>
+<td align="left">logarithmic transformation</td>
+</tr>
+<tr>
+<td align="left">0.5</td>
+<td align="center">sqrt(Y)</td>
+<td align="left">square root transformation</td>
+</tr>
+<tr>
+<td align="left">1</td>
+<td align="center">Y</td>
+<td align="left">no transformation</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="center">Y**2</td>
+<td align="left">quadratic transformation</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/SciPy-stats-boxcox/" data-id="cmd789xph003bnd9b1xb11d00" data-title="SciPy stats boxcox" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-floating-point-literals" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/07/23/Python-floating-point-literals/" class="article-date">
@@ -98,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/23/Python-floating-point-literals/" data-id="cmd377nzt001umd9b7dpg8342" data-title="Python floating point literals" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/23/Python-floating-point-literals/" data-id="cmd789xp2001und9b86um5wzh" data-title="Python floating point literals" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -143,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-count/" data-id="cmd377o0p004wmd9ba5b632do" data-title="pandas count" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-count/" data-id="cmd789xpu004znd9b57aaflor" data-title="pandas count" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -209,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="cmd377o0t005dmd9be3frfpkr" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/pandas-index/" data-id="cmd789xpy005jnd9bdpvu0v64" data-title="pandas index" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -256,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/21/NumPy-linspace/" data-id="cmd377nzd000tmd9bfq0d97r6" data-title="NumPy linspace" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/21/NumPy-linspace/" data-id="cmd789xon000rnd9bgvnb9pn2" data-title="NumPy linspace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -299,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-get-loc/" data-id="cmd377o0r0056md9bdk9s8ryj" data-title="pandas get_loc" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-get-loc/" data-id="cmd789xpx005bnd9b1zl23yrq" data-title="pandas get_loc" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -346,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-pivot/" data-id="cmd377o0u005jmd9b3ex79toy" data-title="pandas pivot" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-pivot/" data-id="cmd789xq0005rnd9b8g8g9rji" data-title="pandas pivot" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -390,142 +575,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-replace/" data-id="cmd377o0w005umd9bd7edhrs1" data-title="pandas replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Parameters-and-Arguments" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/Parameters-and-Arguments/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T07:34:59.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/Parameters-and-Arguments/">Parameters and Arguments</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><code>Parameters</code></p>
-<p>寫在函數宣告裡面的變數稱為 <code>Parameters</code></p>
-<p><code>Arguments</code></p>
-<p>帶入函數時的變數稱為 <code>Arguments</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">sum</span>(<span class="params">parameter_a, parameter_b</span>):</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line"></span><br><span class="line"><span class="built_in">sum</span>(argument_a, argument_b)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/Parameters-and-Arguments/" data-id="cmd377nzh0011md9b47gk30cz" data-title="Parameters and Arguments" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-duplicated" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/pandas-duplicated/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T07:26:06.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/pandas-duplicated/">pandas duplicated</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.duplicated.html">duplicated()</a></p>
-<p>可以用來找重複值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.duplicated()</span><br></pre></td></tr></table></figure>
-
-<p>重複的資料中</p>
-<p>第一筆為 False 重複的第二筆開始都會是 True</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-duplicated/" data-id="cmd377o0q0052md9benmxh9f6" data-title="pandas duplicated" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-pandas-qcut" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/20/pandas-qcut/" class="article-date">
-  <time class="dt-published" datetime="2021-07-20T07:20:36.000Z" itemprop="datePublished">2021-07-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/20/pandas-qcut/">pandas qcut</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/docs/reference/api/pandas.qcut.html">qcut</a></p>
-<p><code>qcut</code> 可以用 quantile 來把資料分成 n 組區間</p>
-<p>做 Decile rank 的時候很方便</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;Decile_rank&#x27;</span>] = pd.qcut(df[<span class="string">&#x27;Score&#x27;</span>], <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-qcut/" data-id="cmd377o0v005nmd9b8ch46me4" data-title="pandas qcut" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/07/20/pandas-replace/" data-id="cmd789xq2005ynd9b2iue92df" data-title="pandas replace" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -589,23 +639,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>

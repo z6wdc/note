@@ -69,6 +69,361 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-unicode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/17/unicode/" class="article-date">
+  <time class="dt-published" datetime="2025-07-17T17:52:58.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什麼是-Unicode-與-Code-Point？"><a href="#什麼是-Unicode-與-Code-Point？" class="headerlink" title="什麼是 Unicode 與 Code Point？"></a>什麼是 Unicode 與 Code Point？</h2><p><strong>Unicode</strong> 是一個全球統一的字元編碼標準，用來表示世界上所有語言的文字。</p>
+<p>每個字元在 Unicode 中都有一個唯一的編號，稱為 <strong>Code Point（碼位）</strong>，以 <code>U+</code> 加上十六進位表示，例如：</p>
+<ul>
+<li><code>A</code> 的 Code Point 是 <code>U+0041</code></li>
+<li><code>你</code> 的 Code Point 是 <code>U+4F60</code></li>
+</ul>
+<p>Unicode 標準定義了超過 140,000 個字元，Code Point 的有效範圍是：<br><strong>U+0000 ~ U+10FFFF</strong></p>
+<h2 id="UTF-Unicode-Transformation-Format-編碼格式概觀"><a href="#UTF-Unicode-Transformation-Format-編碼格式概觀" class="headerlink" title="UTF(Unicode Transformation Format) 編碼格式概觀"></a>UTF(Unicode Transformation Format) 編碼格式概觀</h2><p>Unicode 的實際儲存與傳輸需要編碼方式，最常見的有三種：</p>
+<table>
+<thead>
+<tr>
+<th>編碼格式</th>
+<th>可變&#x2F;固定長度</th>
+<th>每個字元所需位元組數</th>
+<th>特點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UTF-8</td>
+<td>可變長度</td>
+<td>1 ~ 4 bytes</td>
+<td>相容 ASCII，網路應用最常見</td>
+</tr>
+<tr>
+<td>UTF-16</td>
+<td>可變長度</td>
+<td>2 或 4 bytes</td>
+<td>多用於 Windows、Java 平台</td>
+</tr>
+<tr>
+<td>UTF-32</td>
+<td>固定長度</td>
+<td>4 bytes</td>
+<td>編碼簡單，但空間浪費大</td>
+</tr>
+</tbody></table>
+<h2 id="UTF-8-編碼規則"><a href="#UTF-8-編碼規則" class="headerlink" title="UTF-8 編碼規則"></a>UTF-8 編碼規則</h2><table>
+<thead>
+<tr>
+<th>Unicode 範圍</th>
+<th>Bytes</th>
+<th>格式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>U+0000 ~ U+007F</td>
+<td>1</td>
+<td>0xxxxxxx</td>
+</tr>
+<tr>
+<td>U+0080 ~ U+07FF</td>
+<td>2</td>
+<td>110xxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>U+0800 ~ U+FFFF</td>
+<td>3</td>
+<td>1110xxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+<tr>
+<td>U+10000 ~ U+10FFFF</td>
+<td>4</td>
+<td>11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</td>
+</tr>
+</tbody></table>
+<ul>
+<li>向後相容 ASCII</li>
+<li>無需 BOM，廣泛用於網頁與資料交換</li>
+</ul>
+<h2 id="UTF-16-編碼規則"><a href="#UTF-16-編碼規則" class="headerlink" title="UTF-16 編碼規則"></a>UTF-16 編碼規則</h2><table>
+<thead>
+<tr>
+<th>Unicode 範圍</th>
+<th>Bytes</th>
+<th>格式說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>U+0000 ~ U+FFFF</td>
+<td>2</td>
+<td>直接儲存為 2 bytes</td>
+</tr>
+<tr>
+<td>U+10000 ~ U+10FFFF</td>
+<td>4</td>
+<td>使用「代理對」(Surrogate Pair) 編碼為 2 個 2 bytes</td>
+</tr>
+</tbody></table>
+<p>範例：</p>
+<ul>
+<li><code>你</code> (U+4F60)：直接用 2 bytes 表示</li>
+<li><code>𐍈</code> (U+10348)：需轉換為代理對：D800–DBFF（高位）與 DC00–DFFF（低位）</li>
+</ul>
+<p><strong>需要注意大小端問題</strong>（Big Endian &#x2F; Little Endian），常使用 BOM 表示。</p>
+<h2 id="UTF-32-編碼規則"><a href="#UTF-32-編碼規則" class="headerlink" title="UTF-32 編碼規則"></a>UTF-32 編碼規則</h2><ul>
+<li>所有字元皆使用 <strong>4 bytes</strong> 表示，不論是 ASCII 或罕見字元。</li>
+<li>編碼簡單，對應一對一，但浪費空間。</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li><code>A</code> (U+0041) → 0x00000041</li>
+<li><code>𐍈</code> (U+10348) → 0x00010348</li>
+</ul>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>Unicode 提供統一的字元碼位（Code Point），而 UTF-8、UTF-16、UTF-32 是其三種主要的編碼方式。</p>
+<table>
+<thead>
+<tr>
+<th>編碼格式</th>
+<th>優點</th>
+<th>缺點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UTF-8</td>
+<td>相容 ASCII、省空間、廣泛支援</td>
+<td>多位元組處理較複雜</td>
+</tr>
+<tr>
+<td>UTF-16</td>
+<td>介於 UTF-8 與 UTF-32 之間，較常見於內部處理</td>
+<td>處理代理對與 BOM 增加複雜度</td>
+</tr>
+<tr>
+<td>UTF-32</td>
+<td>編碼簡單，易於計算與跳轉</td>
+<td>空間浪費大，實際應用較少</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmd789xqa006vnd9b2g4tfctt" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-go-string-byte-rune" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/17/go-string-byte-rune/" class="article-date">
+  <time class="dt-published" datetime="2025-07-17T17:48:31.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Go 語言中，字串（<code>string</code>）的底層實作是 **UTF-8 編碼的 <code>[]byte</code>**。</p>
+<p>這帶來了一些重要的性質與操作上的細節。</p>
+<h2 id="1-string-的底層是-byte"><a href="#1-string-的底層是-byte" class="headerlink" title="1. string 的底層是 []byte"></a>1. string 的底層是 []byte</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">b := []<span class="type">byte</span>(s)    <span class="comment">// string 轉 []byte</span></span><br><span class="line">s2 := <span class="type">string</span>(b)   <span class="comment">// []byte 轉 string</span></span><br></pre></td></tr></table></figure>
+
+<p>字串可以轉成 byte slice，這對於處理 I&#x2F;O、檔案、JSON 等操作非常重要。</p>
+<h2 id="2-UTF-8-是可變長度編碼格式"><a href="#2-UTF-8-是可變長度編碼格式" class="headerlink" title="2. UTF-8 是可變長度編碼格式"></a>2. UTF-8 是可變長度編碼格式</h2><p>UTF-8 的設計讓：</p>
+<ul>
+<li>英文字母（ASCII）只需要 <strong>1 個 byte</strong></li>
+<li>常見中文字通常需要 <strong>3 個 byte</strong></li>
+<li>有些特殊符號會用到 <strong>4 個 byte</strong></li>
+</ul>
+<p>因此，雖然字串是以 <code>[]byte</code> 存的，但「一個字元佔幾個 byte」是不固定的。</p>
+<h2 id="3-rune-是用來表示「一個-Unicode-字元」"><a href="#3-rune-是用來表示「一個-Unicode-字元」" class="headerlink" title="3. rune 是用來表示「一個 Unicode 字元」"></a>3. rune 是用來表示「一個 Unicode 字元」</h2><p>Go 提供了 <code>rune</code>（實際上是 int32）來對應 <strong>一個 Unicode code point</strong>，例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="string">&quot;世界&quot;</span></span><br><span class="line">runes := []<span class="type">rune</span>(s) <span class="comment">// 將每個 Unicode 字元取出</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(s))     <span class="comment">// byte 數量：6（每個中文字是 3 bytes）</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(runes)) <span class="comment">// 字元數量：2（兩個 rune）</span></span><br></pre></td></tr></table></figure>
+
+<p>這解釋了為什麼：</p>
+<ul>
+<li><code>len(string)</code> 得到的是 byte 數量</li>
+<li><code>len([]rune(string))</code> 才是實際的「字數」</li>
+</ul>
+<h2 id="4-為什麼要用-rune-存取字元？"><a href="#4-為什麼要用-rune-存取字元？" class="headerlink" title="4. 為什麼要用 rune 存取字元？"></a>4. 為什麼要用 rune 存取字元？</h2><p>因為 UTF-8 是變長編碼，如果你單純用 <code>[]byte</code> 存取字串，會遇到「亂碼」或「中斷在半個字」的問題：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="string">&quot;世&quot;</span></span><br><span class="line">fmt.Println(s[<span class="number">0</span>]) <span class="comment">// byte 值 228（不是完整字元）</span></span><br></pre></td></tr></table></figure>
+
+<p>所以如果你要處理「一個個字元」，正確的方式是轉成 <code>[]rune</code> 再操作。</p>
+<h2 id="5-總結"><a href="#5-總結" class="headerlink" title="5. 總結"></a>5. 總結</h2><ul>
+<li>Go 中的 <code>string</code> 是 UTF-8 編碼的 <code>[]byte</code></li>
+<li>每個 Unicode 字元長度不同，因此不能用 <code>[]byte[i]</code> 來當作一個「字」</li>
+<li><code>rune</code> 是對應「一個字元」的單位（int32）</li>
+<li>如果要逐字處理，應該轉成 <code>[]rune</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmd789xpr004hnd9b7u7ahlb3" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-go-type-casting" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/17/go-type-casting/" class="article-date">
+  <time class="dt-published" datetime="2025-07-17T16:55:14.000Z" itemprop="datePublished">2025-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Go 語言是一種靜態型別語言，因此會遇到需要明確「型別轉換」的情況。</p>
+<p>以下是一些常見的類型轉換範例與對應說明：</p>
+<h2 id="整數與浮點數"><a href="#整數與浮點數" class="headerlink" title="整數與浮點數"></a>整數與浮點數</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i <span class="type">int</span> = <span class="number">42</span></span><br><span class="line"><span class="keyword">var</span> f <span class="type">float64</span> = <span class="type">float64</span>(i)</span><br><span class="line"><span class="keyword">var</span> u <span class="type">uint</span> = <span class="type">uint</span>(f)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>int -&gt; float64</code>: 可以直接轉換，浮點數會保留小數點。</li>
+<li><code>float64 -&gt; uint</code>: 會捨去小數部分，且負數會變成很大的正整數（因為溢位），要小心。</li>
+</ul>
+<h2 id="字串與數值"><a href="#字串與數值" class="headerlink" title="字串與數值"></a>字串與數值</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;strconv&quot;</span></span><br><span class="line"></span><br><span class="line">s := <span class="string">&quot;123&quot;</span></span><br><span class="line">i, err := strconv.Atoi(s) <span class="comment">// 字串轉 int</span></span><br><span class="line"></span><br><span class="line">f := <span class="number">3.14</span></span><br><span class="line">s2 := strconv.FormatFloat(f, <span class="string">&#x27;f&#x27;</span>, <span class="number">2</span>, <span class="number">64</span>) <span class="comment">// float64 轉字串</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>strconv</code> 套件進行數值與字串的轉換。</li>
+<li>注意錯誤處理，像 <code>Atoi</code> 可能會轉換失敗。</li>
+</ul>
+<h2 id="rune（字元）與-int"><a href="#rune（字元）與-int" class="headerlink" title="rune（字元）與 int"></a>rune（字元）與 int</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> r <span class="type">rune</span> = <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="keyword">var</span> i <span class="type">int</span> = <span class="type">int</span>(r) <span class="comment">// 轉換為 ASCII 整數值</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>rune</code> 實際上是 <code>int32</code>，表示 Unicode 編碼的單一字元。</li>
+<li>可以直接當作整數做運算。</li>
+</ul>
+<h2 id="interface-與具體型別"><a href="#interface-與具體型別" class="headerlink" title="interface{} 與具體型別"></a>interface{} 與具體型別</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x <span class="keyword">interface</span>&#123;&#125; = <span class="string">&quot;hello&quot;</span></span><br><span class="line">s := x.(<span class="type">string</span>) <span class="comment">// 型別斷言，斷言 x 是 string</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>x.(T)</code> 用來從 <code>interface&#123;&#125;</code> 取出實際型別。</li>
+<li>若型別不符會 panic，建議使用：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s, ok := x.(<span class="type">string</span>)</span><br><span class="line"><span class="keyword">if</span> ok &#123;</span><br><span class="line">    <span class="comment">// 斷言成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用型別斷言處理多型行為（Polymorphism）"><a href="#使用型別斷言處理多型行為（Polymorphism）" class="headerlink" title="使用型別斷言處理多型行為（Polymorphism）"></a>使用型別斷言處理多型行為（Polymorphism）</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Animal <span class="keyword">interface</span> &#123;</span><br><span class="line">    Speak() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Dog <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(Dog)</span></span> Speak() <span class="type">string</span> &#123; <span class="keyword">return</span> <span class="string">&quot;Woof&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Cat <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(Cat)</span></span> Speak() <span class="type">string</span> &#123; <span class="keyword">return</span> <span class="string">&quot;Meow&quot;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Describe</span><span class="params">(a Animal)</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Animal says:&quot;</span>, a.Speak())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> v := a.(<span class="keyword">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> Dog:</span><br><span class="line">        fmt.Println(<span class="string">&quot;This is a dog&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> Cat:</span><br><span class="line">        fmt.Println(<span class="string">&quot;This is a cat&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        fmt.Println(<span class="string">&quot;Unknown animal:&quot;</span>, v)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    Describe(Dog&#123;&#125;)</span><br><span class="line">    Describe(Cat&#123;&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Animal says: Woof</span><br><span class="line">This is a dog</span><br><span class="line">Animal says: Meow</span><br><span class="line">This is a cat</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 <code>switch v := x.(type)</code> 可根據實際型別做特化處理，是 Go 中處理多型行為的常見模式。</li>
+</ul>
+<h2 id="byte、-byte、rune-與-string"><a href="#byte、-byte、rune-與-string" class="headerlink" title="byte、[]byte、rune 與 string"></a>byte、[]byte、rune 與 string</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="string">&quot;hello&quot;</span></span><br><span class="line">b := []<span class="type">byte</span>(s)        <span class="comment">// string 轉 []byte</span></span><br><span class="line">s2 := <span class="type">string</span>(b)       <span class="comment">// []byte 轉 string</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>string</code> 是 UTF-8 編碼的唯讀不可變字串（immutable）。</li>
+<li><code>[]byte</code> 是可修改的位元組資料（mutable），可用於編輯、加解密、I&#x2F;O 等情境。</li>
+<li><code>string</code> 與 <code>[]byte</code> 互轉時，代表的是「UTF-8 編碼 ↔ 位元資料」的轉換。</li>
+</ul>
+<h3 id="當-string-含有非-ASCII-字元時"><a href="#當-string-含有非-ASCII-字元時" class="headerlink" title="當 string 含有非 ASCII 字元時"></a>當 string 含有非 ASCII 字元時</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="string">&quot;你好&quot;</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(s))              <span class="comment">// 會印出6 因為每個中文字是 3 個 byte（UTF-8 編碼）</span></span><br><span class="line">fmt.Println([]<span class="type">rune</span>(s))           <span class="comment">// [20320 22909] → Unicode 編碼</span></span><br><span class="line">fmt.Println(<span class="type">string</span>([]<span class="type">rune</span>(s)))   <span class="comment">// 還原成 &quot;你好&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>len(s)</code> 是計算 byte 長度，不是字元數。</li>
+<li>若直接用 <code>s[i]</code> 取值，會是 byte，不一定會是完整字元！</li>
+<li>若你要逐字處理，可以轉成 <code>[]rune</code>：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _, r := <span class="keyword">range</span> s &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;%c、&quot;</span>, r) <span class="comment">// 正確逐字印出 &quot;你&quot; 和 &quot;好&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>型別</th>
+<th>本質</th>
+<th>描述</th>
+<th>適用情境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>string</code></td>
+<td>UTF-8</td>
+<td>只讀、不可變</td>
+<td>儲存和傳遞文字資料</td>
+</tr>
+<tr>
+<td><code>[]byte</code></td>
+<td><code>[]uint8</code></td>
+<td>可修改的原始位元組資料</td>
+<td>I&#x2F;O、加解密、網路傳輸等</td>
+</tr>
+<tr>
+<td><code>[]rune</code></td>
+<td><code>[]int32</code></td>
+<td>一個一個的 Unicode 字元</td>
+<td>字元處理、計算顯示長度等</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmd789xps004mnd9b1tb9fh4n" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Bitwise-Operators-in-Go" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/07/14/Bitwise-Operators-in-Go/" class="article-date">
@@ -156,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmd377nz10003md9b32vt95c4" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmd789xoa0003nd9b3pr963we" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -258,7 +613,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmd377o0i0045md9b4i2vb0m9" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmd789xpn0045nd9bhs3a6h5i" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -393,7 +748,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmd377o0d003omd9bfwbg3vf5" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmd789xpj003ond9b02ah7mo0" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -485,7 +840,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmd377o0d003qmd9b6nzt6vt8" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmd789xpk003qnd9b5q5u49o7" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -545,7 +900,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmd377nza000kmd9bbvgg7h2m" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmd789xok000knd9b4iz84zcz" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -619,7 +974,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmd377o0m004hmd9b1z2lezvj" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmd789xpr004knd9bg6vucmvn" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -703,327 +1058,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmd377o0a003gmd9bep4p1r24" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmd789xpi003gnd9b9xjjbyvc" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-gitmessage-guide" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/05/05/gitmessage-guide/" class="article-date">
-  <time class="dt-published" datetime="2025-05-05T20:38:53.000Z" itemprop="datePublished">2025-05-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><code>.gitmessage</code> 是一個純文字檔案，用來定義 git commit 訊息的預設格式。</p>
-<p>透過這個機制，可以提示開發流程中的 commit 格式，提升可讀性與一致性。</p>
-<h2 id="如何設定-commit-template"><a href="#如何設定-commit-template" class="headerlink" title="如何設定 commit template"></a>如何設定 commit template</h2><ol>
-<li><strong>建立 commit template 檔案</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.gitmessage</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><strong>編輯內容（範例見下方）</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.gitmessage</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><strong>設定 git 使用該檔案</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global commit.template .gitmessage</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li><strong>確認設定</strong></li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --get commit.template</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="gitmessage-範例格式"><a href="#gitmessage-範例格式" class="headerlink" title=".gitmessage 範例格式"></a>.gitmessage 範例格式</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 類型: 簡短描述</span></span><br><span class="line"><span class="section"># 空一行</span></span><br><span class="line"><span class="section"># 詳細描述（選填）</span></span><br><span class="line"><span class="section"># - 說明動機</span></span><br><span class="line"><span class="section"># - 涉及模組</span></span><br><span class="line"><span class="section"># - 後續影響</span></span><br><span class="line"></span><br><span class="line"><span class="section"># issue 連結（選填）</span></span><br><span class="line"><span class="section"># ref: #123</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ------- 範例 -------</span></span><br><span class="line">feat: 加入使用者登入功能</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 新增 JWT 驗證流程</span><br><span class="line"><span class="bullet">-</span> 調整 login controller 的錯誤處理</span><br><span class="line"><span class="bullet">-</span> 對應 issue #42</span><br><span class="line"></span><br><span class="line">ref: #42</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="常見的-Commit-類型（Conventional-Commits）"><a href="#常見的-Commit-類型（Conventional-Commits）" class="headerlink" title="常見的 Commit 類型（Conventional Commits）"></a>常見的 Commit 類型（Conventional Commits）</h2><table>
-<thead>
-<tr>
-<th>類型</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>feat</td>
-<td>新功能</td>
-</tr>
-<tr>
-<td>fix</td>
-<td>錯誤修正</td>
-</tr>
-<tr>
-<td>docs</td>
-<td>文件變更</td>
-</tr>
-<tr>
-<td>style</td>
-<td>格式（不影響程式邏輯）</td>
-</tr>
-<tr>
-<td>refactor</td>
-<td>重構（非功能變更）</td>
-</tr>
-<tr>
-<td>test</td>
-<td>增加測試</td>
-</tr>
-<tr>
-<td>chore</td>
-<td>其他更新（建置、工具等）</td>
-</tr>
-</tbody></table>
-<h2 id="使用建議與好處"><a href="#使用建議與好處" class="headerlink" title="使用建議與好處"></a>使用建議與好處</h2><ul>
-<li>確保團隊成員使用一致的 commit message</li>
-<li>提升專案可維護性與回溯紀錄</li>
-</ul>
-<h2 id="取消-template-設定"><a href="#取消-template-設定" class="headerlink" title="取消 template 設定"></a>取消 template 設定</h2><p>若不再使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> commit.template</span><br></pre></td></tr></table></figure>
-
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/zh-hant/v1.0.0/">Conventional Commits</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmd377o0k004bmd9beoh33p0h" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-go-mock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/05/02/go-mock/" class="article-date">
-  <time class="dt-published" datetime="2025-05-02T16:31:52.000Z" itemprop="datePublished">2025-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/05/02/go-mock/">go mock</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://github.com/uber-go/mock"><code>uber-go/mock</code></a> 是 Uber fork 並維護的 mock 工具</p>
-<p>提供自動產生 interface 的 mock 實作與 <code>gomock</code> 測試支援，方便我們在單元測試中進行隔離測試與驗證行為。</p>
-<h2 id="為什麼要用-Mock？"><a href="#為什麼要用-Mock？" class="headerlink" title="為什麼要用 Mock？"></a>為什麼要用 Mock？</h2><p>在單元測試中，我們常需要將測試主體與其依賴的資源（如資料庫、API）隔離。使用 mock 有以下好處：</p>
-<ul>
-<li>✅ 隔離依賴：模擬資料庫、API 等外部系統</li>
-<li>✅ 驗證行為：確認方法是否被呼叫、呼叫次數與參數</li>
-<li>✅ 測試例外情況：模擬錯誤回傳以測試錯誤處理邏輯</li>
-<li>✅ 加速測試：無需啟動真實伺服器或資料庫</li>
-</ul>
-<h2 id="安裝方式"><a href="#安裝方式" class="headerlink" title="安裝方式"></a>安裝方式</h2><h3 id="安裝-gomock-API（加入-go-mod）"><a href="#安裝-gomock-API（加入-go-mod）" class="headerlink" title="安裝 gomock API（加入 go.mod）"></a>安裝 gomock API（加入 <code>go.mod</code>）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get go.uber.org/mock@latest</span><br></pre></td></tr></table></figure>
-
-<p>這會把 <code>go.uber.org/mock/gomock</code> 加入專案依賴中，方便在測試中使用。</p>
-<h3 id="安裝-mockgen-CLI-工具（Go-1-16-）"><a href="#安裝-mockgen-CLI-工具（Go-1-16-）" class="headerlink" title="安裝 mockgen CLI 工具（Go 1.16+）"></a>安裝 mockgen CLI 工具（Go 1.16+）</h3><p>從 Go 1.16 開始，不再使用 <code>go get</code> 安裝 CLI 工具，請使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install go.uber.org/mock/mockgen@latest</span><br></pre></td></tr></table></figure>
-
-<p>安裝後 <code>mockgen</code> 會出現在 <code>$GOBIN</code>（預設是 <code>$HOME/go/bin</code>）目錄下，請確認該路徑已加入 <code>PATH</code>。</p>
-<h2 id="使用範例"><a href="#使用範例" class="headerlink" title="使用範例"></a>使用範例</h2><h3 id="1-定義-interface"><a href="#1-定義-interface" class="headerlink" title="1. 定義 interface"></a>1. 定義 interface</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/domain/user/repository.go</span></span><br><span class="line"><span class="keyword">package</span> user</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID   <span class="type">int</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserRepository <span class="keyword">interface</span> &#123;</span><br><span class="line">    GetByID(id <span class="type">int</span>) (*User, <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-產生-mock（手動）"><a href="#2-產生-mock（手動）" class="headerlink" title="2. 產生 mock（手動）"></a>2. 產生 mock（手動）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mockgen -<span class="built_in">source</span>=internal/domain/user/repository.go \</span><br><span class="line">  -destination=internal/mocks/user_repository_mock.go \</span><br><span class="line">  -package=mocks</span><br></pre></td></tr></table></figure>
-
-<h4 id="package-mocks-是什麼？"><a href="#package-mocks-是什麼？" class="headerlink" title="-package=mocks 是什麼？"></a><code>-package=mocks</code> 是什麼？</h4><p>這個選項指定產生出來的 mock 檔案要屬於哪個 Go 套件。例如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mocks</span><br></pre></td></tr></table></figure>
-
-<p>這樣你就可以在測試中這樣使用：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line"></span><br><span class="line">mock := mocks.NewMockUserRepository(ctrl)</span><br></pre></td></tr></table></figure>
-
-<p>這個 package name 應該與你 mock 檔案放置的目錄一致（如 <code>internal/mocks/</code>），否則會導致 import 錯誤。</p>
-<h3 id="3-使用-go-generate（推薦）"><a href="#3-使用-go-generate（推薦）" class="headerlink" title="3. 使用 go generate（推薦）"></a>3. 使用 go generate（推薦）</h3><p>在 interface 定義的檔案上方加註：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//go:generate mockgen -source=repository.go -destination=../../mocks/user_repository_mock.go -package=mocks</span></span><br></pre></td></tr></table></figure>
-
-<p>然後執行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go generate ./...</span><br></pre></td></tr></table></figure>
-
-<p>這樣日後只要執行一次 <code>go generate</code> 就能統一更新所有 mock。</p>
-<h3 id="4-測試中使用-mock"><a href="#4-測試中使用-mock" class="headerlink" title="4. 測試中使用 mock"></a>4. 測試中使用 mock</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/usecase/user_usecase_test.go</span></span><br><span class="line"><span class="keyword">package</span> usecase_test</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/domain/user&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGetUserByID</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    ctrl := gomock.NewController(t)</span><br><span class="line">    <span class="keyword">defer</span> ctrl.Finish()</span><br><span class="line"></span><br><span class="line">    mockRepo := mocks.NewMockUserRepository(ctrl)</span><br><span class="line">    mockUser := &amp;user.User&#123;ID: <span class="number">1</span>, Name: <span class="string">&quot;Alice&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    mockRepo.EXPECT().</span><br><span class="line">        GetByID(<span class="number">1</span>).</span><br><span class="line">        Return(mockUser, <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">    uc := YourUserUsecase&#123;UserRepo: mockRepo&#125;</span><br><span class="line"></span><br><span class="line">    result, err := uc.GetUserByID(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        t.Fatalf(<span class="string">&quot;unexpected error: %v&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> result.Name != <span class="string">&quot;Alice&quot;</span> &#123;</span><br><span class="line">        t.Errorf(<span class="string">&quot;expected Alice, got %v&quot;</span>, result.Name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事項與常見問題"><a href="#注意事項與常見問題" class="headerlink" title="注意事項與常見問題"></a>注意事項與常見問題</h2><h3 id="gomock-的來源？"><a href="#gomock-的來源？" class="headerlink" title="gomock 的來源？"></a>gomock 的來源？</h3><p>Uber 已經 fork 並接手維護原本的 <code>golang/mock</code> 專案，並整合為 <code>go.uber.org/mock</code>。你可以直接：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>不再需要使用已經 archived 的 <code>github.com/golang/mock/gomock</code>。</p>
-<h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul>
-<li>repo: <a target="_blank" rel="noopener" href="https://github.com/uber-go/mock">https://github.com/uber-go/mock</a></li>
-<li>doc: <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/mock">https://pkg.go.dev/go.uber.org/mock</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmd377o0m004fmd9b447rgmo7" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Go-Module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/04/26/Go-Module/" class="article-date">
-  <time class="dt-published" datetime="2025-04-26T23:46:34.000Z" itemprop="datePublished">2025-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/04/26/Go-Module/">Go Module</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="go-mod-init"><a href="#go-mod-init" class="headerlink" title="go mod init"></a><code>go mod init</code></h2><ul>
-<li><code>go mod init</code> 是建立 Go Module 的指令。</li>
-<li>Go Module 是 Go 語言用來管理套件依賴的系統（從 Go 1.11 引入）。</li>
-<li>執行後會建立 <code>go.mod</code> 檔案，記錄：<ul>
-<li>模組名稱（通常是 GitHub Repo 路徑或自訂名）</li>
-<li>Go 語言版本</li>
-<li>專案依賴的套件與版本</li>
-</ul>
-</li>
-</ul>
-<h2 id="常用指令整理"><a href="#常用指令整理" class="headerlink" title="常用指令整理"></a>常用指令整理</h2><h3 id="1-go-mod-init"><a href="#1-go-mod-init" class="headerlink" title="1. go mod init"></a>1. <code>go mod init</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init 模組名稱</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>建立 <code>go.mod</code> 檔案</li>
-<li>初始化專案的 Module 環境</li>
-</ul>
-<h3 id="2-go-get"><a href="#2-go-get" class="headerlink" title="2. go get"></a>2. <code>go get</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get 套件路徑[@版本]</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>下載外部套件並加入 <code>go.mod</code></li>
-<li>可以指定套件版本</li>
-<li>從 Go 1.17 起，建議用 <code>go install</code> 取代安裝 CLI 工具的用途</li>
-</ul>
-<h3 id="3-go-mod-tidy"><a href="#3-go-mod-tidy" class="headerlink" title="3. go mod tidy"></a>3. <code>go mod tidy</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>清理 <code>go.mod</code> 和 <code>go.sum</code></li>
-<li>加回漏掉的必要依賴</li>
-<li>刪除不再使用的依賴</li>
-</ul>
-<h3 id="4-go-mod-download"><a href="#4-go-mod-download" class="headerlink" title="4. go mod download"></a>4. <code>go mod download</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod download</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>依據 <code>go.mod</code> 下載所有需要的依賴到本地 cache</li>
-<li>但不會自動更新 <code>go.mod</code></li>
-</ul>
-<h3 id="5-go-mod-verify"><a href="#5-go-mod-verify" class="headerlink" title="5. go mod verify"></a>5. <code>go mod verify</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod verify</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>驗證本地下載的 module 是否與 <code>go.sum</code> 中的 hash 紀錄一致</li>
-<li>用來確保依賴沒有被篡改</li>
-</ul>
-<h3 id="6-go-mod-graph"><a href="#6-go-mod-graph" class="headerlink" title="6. go mod graph"></a>6. <code>go mod graph</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod graph</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>顯示 module 之間的依賴關係圖（文字版）</li>
-<li>有助於了解套件之間的關聯性</li>
-</ul>
-<h3 id="7-go-mod-vendor"><a href="#7-go-mod-vendor" class="headerlink" title="7. go mod vendor"></a>7. <code>go mod vendor</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod vendor</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>把所有依賴複製到 <code>vendor/</code> 資料夾</li>
-<li>一些公司內部開發或 build server 禁止外部下載時很有用</li>
-</ul>
-<h2 id="開發常見流程（推薦）"><a href="#開發常見流程（推薦）" class="headerlink" title="開發常見流程（推薦）"></a>開發常見流程（推薦）</h2><ol>
-<li>在專案目錄下初始化 module：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init github.com/yourname/yourproject</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>引入需要的套件：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>程式開發中有刪除&#x2F;新增 import 時，整理依賴：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>完成開發，驗證 modules 完整性：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod verify</span><br></pre></td></tr></table></figure>
-
-<h2 id="小提醒"><a href="#小提醒" class="headerlink" title="小提醒"></a>小提醒</h2><ul>
-<li>每個專案只要跑一次 <code>go mod init</code> 就好。</li>
-<li><code>go.mod</code> 和 <code>go.sum</code> 都應該一起 commit 到 Git，確保團隊開發一致性。</li>
-<li>如果只是 clone 別人的專案，通常只需要 <code>go mod tidy</code> 就可以跑起來，不必自己 <code>go get</code>。</li>
-</ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/create-module">https://go.dev/doc/tutorial/create-module</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmd377nz5000amd9b6j8wczdt" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
 
     </footer>
   </div>
@@ -1083,23 +1122,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>

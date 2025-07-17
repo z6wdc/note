@@ -69,6 +69,322 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gitmessage-guide" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/05/gitmessage-guide/" class="article-date">
+  <time class="dt-published" datetime="2025-05-05T20:38:53.000Z" itemprop="datePublished">2025-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/05/gitmessage-guide/">gitmessage guide</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><code>.gitmessage</code> 是一個純文字檔案，用來定義 git commit 訊息的預設格式。</p>
+<p>透過這個機制，可以提示開發流程中的 commit 格式，提升可讀性與一致性。</p>
+<h2 id="如何設定-commit-template"><a href="#如何設定-commit-template" class="headerlink" title="如何設定 commit template"></a>如何設定 commit template</h2><ol>
+<li><strong>建立 commit template 檔案</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> ~/.gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>編輯內容（範例見下方）</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>設定 git 使用該檔案</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global commit.template .gitmessage</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><strong>確認設定</strong></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --get commit.template</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="gitmessage-範例格式"><a href="#gitmessage-範例格式" class="headerlink" title=".gitmessage 範例格式"></a>.gitmessage 範例格式</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 類型: 簡短描述</span></span><br><span class="line"><span class="section"># 空一行</span></span><br><span class="line"><span class="section"># 詳細描述（選填）</span></span><br><span class="line"><span class="section"># - 說明動機</span></span><br><span class="line"><span class="section"># - 涉及模組</span></span><br><span class="line"><span class="section"># - 後續影響</span></span><br><span class="line"></span><br><span class="line"><span class="section"># issue 連結（選填）</span></span><br><span class="line"><span class="section"># ref: #123</span></span><br><span class="line"></span><br><span class="line"><span class="section"># ------- 範例 -------</span></span><br><span class="line">feat: 加入使用者登入功能</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 新增 JWT 驗證流程</span><br><span class="line"><span class="bullet">-</span> 調整 login controller 的錯誤處理</span><br><span class="line"><span class="bullet">-</span> 對應 issue #42</span><br><span class="line"></span><br><span class="line">ref: #42</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="常見的-Commit-類型（Conventional-Commits）"><a href="#常見的-Commit-類型（Conventional-Commits）" class="headerlink" title="常見的 Commit 類型（Conventional Commits）"></a>常見的 Commit 類型（Conventional Commits）</h2><table>
+<thead>
+<tr>
+<th>類型</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>feat</td>
+<td>新功能</td>
+</tr>
+<tr>
+<td>fix</td>
+<td>錯誤修正</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>文件變更</td>
+</tr>
+<tr>
+<td>style</td>
+<td>格式（不影響程式邏輯）</td>
+</tr>
+<tr>
+<td>refactor</td>
+<td>重構（非功能變更）</td>
+</tr>
+<tr>
+<td>test</td>
+<td>增加測試</td>
+</tr>
+<tr>
+<td>chore</td>
+<td>其他更新（建置、工具等）</td>
+</tr>
+</tbody></table>
+<h2 id="使用建議與好處"><a href="#使用建議與好處" class="headerlink" title="使用建議與好處"></a>使用建議與好處</h2><ul>
+<li>確保團隊成員使用一致的 commit message</li>
+<li>提升專案可維護性與回溯紀錄</li>
+</ul>
+<h2 id="取消-template-設定"><a href="#取消-template-設定" class="headerlink" title="取消 template 設定"></a>取消 template 設定</h2><p>若不再使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> commit.template</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.conventionalcommits.org/zh-hant/v1.0.0/">Conventional Commits</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmd789xpp004bnd9b9m6hcqnf" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-go-mock" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/02/go-mock/" class="article-date">
+  <time class="dt-published" datetime="2025-05-02T16:31:52.000Z" itemprop="datePublished">2025-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/02/go-mock/">go mock</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://github.com/uber-go/mock"><code>uber-go/mock</code></a> 是 Uber fork 並維護的 mock 工具</p>
+<p>提供自動產生 interface 的 mock 實作與 <code>gomock</code> 測試支援，方便我們在單元測試中進行隔離測試與驗證行為。</p>
+<h2 id="為什麼要用-Mock？"><a href="#為什麼要用-Mock？" class="headerlink" title="為什麼要用 Mock？"></a>為什麼要用 Mock？</h2><p>在單元測試中，我們常需要將測試主體與其依賴的資源（如資料庫、API）隔離。使用 mock 有以下好處：</p>
+<ul>
+<li>✅ 隔離依賴：模擬資料庫、API 等外部系統</li>
+<li>✅ 驗證行為：確認方法是否被呼叫、呼叫次數與參數</li>
+<li>✅ 測試例外情況：模擬錯誤回傳以測試錯誤處理邏輯</li>
+<li>✅ 加速測試：無需啟動真實伺服器或資料庫</li>
+</ul>
+<h2 id="安裝方式"><a href="#安裝方式" class="headerlink" title="安裝方式"></a>安裝方式</h2><h3 id="安裝-gomock-API（加入-go-mod）"><a href="#安裝-gomock-API（加入-go-mod）" class="headerlink" title="安裝 gomock API（加入 go.mod）"></a>安裝 gomock API（加入 <code>go.mod</code>）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get go.uber.org/mock@latest</span><br></pre></td></tr></table></figure>
+
+<p>這會把 <code>go.uber.org/mock/gomock</code> 加入專案依賴中，方便在測試中使用。</p>
+<h3 id="安裝-mockgen-CLI-工具（Go-1-16-）"><a href="#安裝-mockgen-CLI-工具（Go-1-16-）" class="headerlink" title="安裝 mockgen CLI 工具（Go 1.16+）"></a>安裝 mockgen CLI 工具（Go 1.16+）</h3><p>從 Go 1.16 開始，不再使用 <code>go get</code> 安裝 CLI 工具，請使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go install go.uber.org/mock/mockgen@latest</span><br></pre></td></tr></table></figure>
+
+<p>安裝後 <code>mockgen</code> 會出現在 <code>$GOBIN</code>（預設是 <code>$HOME/go/bin</code>）目錄下，請確認該路徑已加入 <code>PATH</code>。</p>
+<h2 id="使用範例"><a href="#使用範例" class="headerlink" title="使用範例"></a>使用範例</h2><h3 id="1-定義-interface"><a href="#1-定義-interface" class="headerlink" title="1. 定義 interface"></a>1. 定義 interface</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/domain/user/repository.go</span></span><br><span class="line"><span class="keyword">package</span> user</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    ID   <span class="type">int</span></span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> UserRepository <span class="keyword">interface</span> &#123;</span><br><span class="line">    GetByID(id <span class="type">int</span>) (*User, <span class="type">error</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-產生-mock（手動）"><a href="#2-產生-mock（手動）" class="headerlink" title="2. 產生 mock（手動）"></a>2. 產生 mock（手動）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mockgen -<span class="built_in">source</span>=internal/domain/user/repository.go \</span><br><span class="line">  -destination=internal/mocks/user_repository_mock.go \</span><br><span class="line">  -package=mocks</span><br></pre></td></tr></table></figure>
+
+<h4 id="package-mocks-是什麼？"><a href="#package-mocks-是什麼？" class="headerlink" title="-package=mocks 是什麼？"></a><code>-package=mocks</code> 是什麼？</h4><p>這個選項指定產生出來的 mock 檔案要屬於哪個 Go 套件。例如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> mocks</span><br></pre></td></tr></table></figure>
+
+<p>這樣你就可以在測試中這樣使用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line"></span><br><span class="line">mock := mocks.NewMockUserRepository(ctrl)</span><br></pre></td></tr></table></figure>
+
+<p>這個 package name 應該與你 mock 檔案放置的目錄一致（如 <code>internal/mocks/</code>），否則會導致 import 錯誤。</p>
+<h3 id="3-使用-go-generate（推薦）"><a href="#3-使用-go-generate（推薦）" class="headerlink" title="3. 使用 go generate（推薦）"></a>3. 使用 go generate（推薦）</h3><p>在 interface 定義的檔案上方加註：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//go:generate mockgen -source=repository.go -destination=../../mocks/user_repository_mock.go -package=mocks</span></span><br></pre></td></tr></table></figure>
+
+<p>然後執行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go generate ./...</span><br></pre></td></tr></table></figure>
+
+<p>這樣日後只要執行一次 <code>go generate</code> 就能統一更新所有 mock。</p>
+<h3 id="4-測試中使用-mock"><a href="#4-測試中使用-mock" class="headerlink" title="4. 測試中使用 mock"></a>4. 測試中使用 mock</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// internal/usecase/user_usecase_test.go</span></span><br><span class="line"><span class="keyword">package</span> usecase_test</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/domain/user&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/your-project/internal/mocks&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGetUserByID</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">    ctrl := gomock.NewController(t)</span><br><span class="line">    <span class="keyword">defer</span> ctrl.Finish()</span><br><span class="line"></span><br><span class="line">    mockRepo := mocks.NewMockUserRepository(ctrl)</span><br><span class="line">    mockUser := &amp;user.User&#123;ID: <span class="number">1</span>, Name: <span class="string">&quot;Alice&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    mockRepo.EXPECT().</span><br><span class="line">        GetByID(<span class="number">1</span>).</span><br><span class="line">        Return(mockUser, <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line">    uc := YourUserUsecase&#123;UserRepo: mockRepo&#125;</span><br><span class="line"></span><br><span class="line">    result, err := uc.GetUserByID(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        t.Fatalf(<span class="string">&quot;unexpected error: %v&quot;</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> result.Name != <span class="string">&quot;Alice&quot;</span> &#123;</span><br><span class="line">        t.Errorf(<span class="string">&quot;expected Alice, got %v&quot;</span>, result.Name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事項與常見問題"><a href="#注意事項與常見問題" class="headerlink" title="注意事項與常見問題"></a>注意事項與常見問題</h2><h3 id="gomock-的來源？"><a href="#gomock-的來源？" class="headerlink" title="gomock 的來源？"></a>gomock 的來源？</h3><p>Uber 已經 fork 並接手維護原本的 <code>golang/mock</code> 專案，並整合為 <code>go.uber.org/mock</code>。你可以直接：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;go.uber.org/mock/gomock&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>不再需要使用已經 archived 的 <code>github.com/golang/mock/gomock</code>。</p>
+<h2 id="參考連結"><a href="#參考連結" class="headerlink" title="參考連結"></a>參考連結</h2><ul>
+<li>repo: <a target="_blank" rel="noopener" href="https://github.com/uber-go/mock">https://github.com/uber-go/mock</a></li>
+<li>doc: <a target="_blank" rel="noopener" href="https://pkg.go.dev/go.uber.org/mock">https://pkg.go.dev/go.uber.org/mock</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmd789xpq004fnd9b38nx42t6" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Go-Module" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/04/26/Go-Module/" class="article-date">
+  <time class="dt-published" datetime="2025-04-26T23:46:34.000Z" itemprop="datePublished">2025-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/04/26/Go-Module/">Go Module</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="go-mod-init"><a href="#go-mod-init" class="headerlink" title="go mod init"></a><code>go mod init</code></h2><ul>
+<li><code>go mod init</code> 是建立 Go Module 的指令。</li>
+<li>Go Module 是 Go 語言用來管理套件依賴的系統（從 Go 1.11 引入）。</li>
+<li>執行後會建立 <code>go.mod</code> 檔案，記錄：<ul>
+<li>模組名稱（通常是 GitHub Repo 路徑或自訂名）</li>
+<li>Go 語言版本</li>
+<li>專案依賴的套件與版本</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用指令整理"><a href="#常用指令整理" class="headerlink" title="常用指令整理"></a>常用指令整理</h2><h3 id="1-go-mod-init"><a href="#1-go-mod-init" class="headerlink" title="1. go mod init"></a>1. <code>go mod init</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init 模組名稱</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>建立 <code>go.mod</code> 檔案</li>
+<li>初始化專案的 Module 環境</li>
+</ul>
+<h3 id="2-go-get"><a href="#2-go-get" class="headerlink" title="2. go get"></a>2. <code>go get</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get 套件路徑[@版本]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下載外部套件並加入 <code>go.mod</code></li>
+<li>可以指定套件版本</li>
+<li>從 Go 1.17 起，建議用 <code>go install</code> 取代安裝 CLI 工具的用途</li>
+</ul>
+<h3 id="3-go-mod-tidy"><a href="#3-go-mod-tidy" class="headerlink" title="3. go mod tidy"></a>3. <code>go mod tidy</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>清理 <code>go.mod</code> 和 <code>go.sum</code></li>
+<li>加回漏掉的必要依賴</li>
+<li>刪除不再使用的依賴</li>
+</ul>
+<h3 id="4-go-mod-download"><a href="#4-go-mod-download" class="headerlink" title="4. go mod download"></a>4. <code>go mod download</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod download</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>依據 <code>go.mod</code> 下載所有需要的依賴到本地 cache</li>
+<li>但不會自動更新 <code>go.mod</code></li>
+</ul>
+<h3 id="5-go-mod-verify"><a href="#5-go-mod-verify" class="headerlink" title="5. go mod verify"></a>5. <code>go mod verify</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod verify</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>驗證本地下載的 module 是否與 <code>go.sum</code> 中的 hash 紀錄一致</li>
+<li>用來確保依賴沒有被篡改</li>
+</ul>
+<h3 id="6-go-mod-graph"><a href="#6-go-mod-graph" class="headerlink" title="6. go mod graph"></a>6. <code>go mod graph</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod graph</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>顯示 module 之間的依賴關係圖（文字版）</li>
+<li>有助於了解套件之間的關聯性</li>
+</ul>
+<h3 id="7-go-mod-vendor"><a href="#7-go-mod-vendor" class="headerlink" title="7. go mod vendor"></a>7. <code>go mod vendor</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod vendor</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>把所有依賴複製到 <code>vendor/</code> 資料夾</li>
+<li>一些公司內部開發或 build server 禁止外部下載時很有用</li>
+</ul>
+<h2 id="開發常見流程（推薦）"><a href="#開發常見流程（推薦）" class="headerlink" title="開發常見流程（推薦）"></a>開發常見流程（推薦）</h2><ol>
+<li>在專案目錄下初始化 module：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init github.com/yourname/yourproject</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>引入需要的套件：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>程式開發中有刪除&#x2F;新增 import 時，整理依賴：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod tidy</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>完成開發，驗證 modules 完整性：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod verify</span><br></pre></td></tr></table></figure>
+
+<h2 id="小提醒"><a href="#小提醒" class="headerlink" title="小提醒"></a>小提醒</h2><ul>
+<li>每個專案只要跑一次 <code>go mod init</code> 就好。</li>
+<li><code>go.mod</code> 和 <code>go.sum</code> 都應該一起 commit 到 Git，確保團隊開發一致性。</li>
+<li>如果只是 clone 別人的專案，通常只需要 <code>go mod tidy</code> 就可以跑起來，不必自己 <code>go get</code>。</li>
+</ul>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><p><a target="_blank" rel="noopener" href="https://go.dev/doc/tutorial/create-module">https://go.dev/doc/tutorial/create-module</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmd789xof000and9bgfh112c6" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-go-install-vs-go-get" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/04/26/go-install-vs-go-get/" class="article-date">
@@ -180,7 +496,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmd377o0l004dmd9bhbeufzgz" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmd789xpq004dnd9b11uaaa6c" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -318,7 +634,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmd377nz6000cmd9bevc073ps" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmd789xog000cnd9b0a5pblhp" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -366,7 +682,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmd377o0e003tmd9b1x7a4lv0" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmd789xpk003tnd9b6vje04hg" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -457,7 +773,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmd377nz10004md9b78b71nel" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmd789xob0004nd9b7o3z753m" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -555,7 +871,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmd377o09003emd9b6gny2jmp" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmd789xph003end9bfsrudtvj" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -656,7 +972,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cmd377nz20005md9b3c9wgzsd" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cmd789xoc0005nd9bct003k10" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -766,240 +1082,11 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cmd377o10006emd9baba4a6r7" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/19/simple-build-tool/" data-id="cmd789xq7006knd9ben083xbc" data-title="simple build tool" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Von-Neumann-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/18/Von-Neumann-Architecture/" class="article-date">
-  <time class="dt-published" datetime="2025-03-18T09:18:08.000Z" itemprop="datePublished">2025-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/18/Von-Neumann-Architecture/">Von Neumann Architecture</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-什麼是馮·諾依曼架構？"><a href="#1-什麼是馮·諾依曼架構？" class="headerlink" title="1. 什麼是馮·諾依曼架構？"></a>1. 什麼是馮·諾依曼架構？</h2><p><strong>馮·諾依曼架構</strong> 是現代計算機的基本架構模型，由數學家 <strong>約翰·馮·諾依曼（John von Neumann）</strong> 在 1945 年提出。</p>
-<p>其核心概念是 <strong>「存儲程序計算機（Stored-Program Computer）」</strong>，即指令（程式）和數據存儲在同一個記憶體中，並由中央處理單元（CPU）來依序執行。</p>
-<h2 id="2-架構組成（5-大要素）"><a href="#2-架構組成（5-大要素）" class="headerlink" title="2. 架構組成（5 大要素）"></a>2. 架構組成（5 大要素）</h2><h3 id="1-演算裝置（Arithmetic-Unit，ALU）"><a href="#1-演算裝置（Arithmetic-Unit，ALU）" class="headerlink" title="1 演算裝置（Arithmetic Unit，ALU）"></a><strong>1 演算裝置（Arithmetic Unit，ALU）</strong></h3><ul>
-<li>負責執行 <strong>數學運算</strong>（加減乘除）與 <strong>邏輯運算</strong>（AND、OR、NOT 等）。</li>
-<li>這部分通常是 <strong>CPU 內部的一部分</strong>，也稱為「算術邏輯單元（ALU）」。</li>
-</ul>
-<h3 id="2-制御裝置（Control-Unit，CU）"><a href="#2-制御裝置（Control-Unit，CU）" class="headerlink" title="2 制御裝置（Control Unit，CU）"></a><strong>2 制御裝置（Control Unit，CU）</strong></h3><ul>
-<li>負責 <strong>解讀並執行指令</strong>，並控制其他組件的運作。</li>
-<li>透過 <strong>程序計數器（PC, Program Counter）</strong> 控制指令的順序執行。</li>
-</ul>
-<h3 id="3-主記憶裝置（Main-Memory）"><a href="#3-主記憶裝置（Main-Memory）" class="headerlink" title="3 主記憶裝置（Main Memory）"></a><strong>3 主記憶裝置（Main Memory）</strong></h3><ul>
-<li>存儲 <strong>指令（程式）與數據</strong>。</li>
-<li><strong>指令與數據共用相同的記憶體空間</strong>（這是馮·諾依曼架構的特徵）。</li>
-<li>CPU 會根據 <strong>指令地址</strong> 讀取並執行對應的指令。</li>
-</ul>
-<h3 id="4-輸入裝置（Input-Unit）"><a href="#4-輸入裝置（Input-Unit）" class="headerlink" title="4 輸入裝置（Input Unit）"></a><strong>4 輸入裝置（Input Unit）</strong></h3><ul>
-<li>用戶輸入指令或數據的介面，例如 <strong>鍵盤、滑鼠、感測器等</strong>。</li>
-</ul>
-<h3 id="5-輸出裝置（Output-Unit）"><a href="#5-輸出裝置（Output-Unit）" class="headerlink" title="5 輸出裝置（Output Unit）"></a><strong>5 輸出裝置（Output Unit）</strong></h3><ul>
-<li>負責將計算結果顯示給用戶，例如 <strong>顯示器、打印機等</strong>。</li>
-</ul>
-<h2 id="3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）"><a href="#3-馮·諾依曼瓶頸（Von-Neumann-Bottleneck）" class="headerlink" title="3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）"></a>3. 馮·諾依曼瓶頸（Von Neumann Bottleneck）</h2><p>雖然馮·諾依曼架構為現代計算機奠定了基礎，但它也存在一些 <strong>缺點</strong>，稱為 <strong>馮·諾依曼瓶頸</strong>：</p>
-<ul>
-<li><strong>指令與數據共用同一條記憶體匯流排</strong>，導致 CPU 需要等待數據或指令的傳輸，影響效能。</li>
-<li><strong>記憶體存取速度比 CPU 運算速度慢</strong>，導致 CPU 閒置的情況增加。</li>
-<li><strong>頻繁的記憶體訪問</strong> 可能會限制整體效能，特別是在高效能運算應用中。</li>
-</ul>
-<h2 id="4-與哈佛架構（Harvard-Architecture）的比較"><a href="#4-與哈佛架構（Harvard-Architecture）的比較" class="headerlink" title="4. 與哈佛架構（Harvard Architecture）的比較"></a>4. 與哈佛架構（Harvard Architecture）的比較</h2><table>
-<thead>
-<tr>
-<th>特性</th>
-<th>馮·諾依曼架構</th>
-<th>哈佛架構</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>記憶體設計</strong></td>
-<td>指令與數據共用同一個記憶體</td>
-<td>指令與數據分開存儲</td>
-</tr>
-<tr>
-<td><strong>匯流排</strong></td>
-<td>指令與數據共用</td>
-<td>指令與數據各有獨立匯流排</td>
-</tr>
-<tr>
-<td><strong>優勢</strong></td>
-<td>設計簡單、通用性強</td>
-<td>可同時存取指令和數據，速度較快</td>
-</tr>
-<tr>
-<td><strong>缺點</strong></td>
-<td>可能有記憶體存取瓶頸</td>
-<td>記憶體設計較複雜，成本較高</td>
-</tr>
-</tbody></table>
-<h2 id="5-結論"><a href="#5-結論" class="headerlink" title="5. 結論"></a>5. 結論</h2><ul>
-<li><strong>馮·諾依曼架構</strong> 是現代電腦的基礎，因為它讓 <strong>程式和數據存儲在同一個記憶體</strong>，大幅提升了電腦的靈活性。</li>
-<li>但其 <strong>「馮·諾依曼瓶頸」</strong> 也影響了 CPU 的運行效率，因此現代 CPU 透過 <strong>高速快取記憶體（Cache）</strong>、<strong>超純量（Superscalar）</strong> 和 <strong>指令流水線（Pipeline）</strong> 來提高效能。</li>
-<li>部分系統（如 <strong>嵌入式設備、DSP 處理器</strong>）會採用 <strong>哈佛架構</strong> 來提升執行效率。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/18/Von-Neumann-Architecture/" data-id="cmd377o08003bmd9bbmz158op" data-title="Von Neumann Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Layered-Architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/16/Layered-Architecture/" class="article-date">
-  <time class="dt-published" datetime="2025-03-16T21:47:10.000Z" itemprop="datePublished">2025-03-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/16/Layered-Architecture/">Layered Architecture</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p><strong>Layered Architecture</strong> 是一種常見的軟體設計模式，透過將系統的不同功能劃分成不同的層（Layer），提高 <strong>模組化、可維護性和可擴展性</strong>。</p>
-<h2 id="2-三層架構的組成"><a href="#2-三層架構的組成" class="headerlink" title="2. 三層架構的組成"></a>2. 三層架構的組成</h2><h3 id="表示層（Presentation-Layer）"><a href="#表示層（Presentation-Layer）" class="headerlink" title="表示層（Presentation Layer）"></a><strong>表示層（Presentation Layer）</strong></h3><ul>
-<li>負責 <strong>用戶介面（UI）</strong>，讓使用者與系統互動</li>
-<li>接收 <strong>用戶請求</strong>，並將結果呈現給用戶</li>
-<li><strong>不包含業務邏輯</strong>，只負責請求轉發與顯示</li>
-</ul>
-<h3 id="業務邏輯層（Logic-Layer）"><a href="#業務邏輯層（Logic-Layer）" class="headerlink" title="業務邏輯層（Logic Layer）"></a><strong>業務邏輯層（Logic Layer）</strong></h3><ul>
-<li>負責應用的 <strong>業務邏輯處理</strong></li>
-<li>接收 <strong>表示層的請求</strong>，處理後再傳給 <strong>資料層</strong></li>
-<li>可包含 <strong>驗證、計算、交易流程控制等</strong></li>
-</ul>
-<h3 id="資料層（Data-Layer）"><a href="#資料層（Data-Layer）" class="headerlink" title="資料層（Data Layer）"></a><strong>資料層（Data Layer）</strong></h3><ul>
-<li>主要負責 <strong>數據存取與管理</strong></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/Layered-Architecture/" data-id="cmd377nzb000nmd9b0t0jcujc" data-title="Layered Architecture" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-chrome-net-export" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/16/chrome-net-export/" class="article-date">
-  <time class="dt-published" datetime="2025-03-16T09:44:59.000Z" itemprop="datePublished">2025-03-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/16/chrome-net-export/">Chrome net-export</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><code>net-export</code> 是 Google Chrome 內建的工具，用來擷取網路流量的記錄（NetLog），以便進行網路診斷和除錯。</p>
-<p>這個工具可以記錄所有經過 Chrome 的網路請求，包括 HTTP&#x2F;HTTPS、WebSocket、DNS 查詢等，並輸出成 JSON 格式的 NetLog 檔案。</p>
-<h2 id="如何使用-net-export-來擷取-NetLog？"><a href="#如何使用-net-export-來擷取-NetLog？" class="headerlink" title="如何使用 net-export 來擷取 NetLog？"></a><strong>如何使用 <code>net-export</code> 來擷取 NetLog？</strong></h2><h3 id="方法-1：透過-Chrome-內建-UI"><a href="#方法-1：透過-Chrome-內建-UI" class="headerlink" title="方法 1：透過 Chrome 內建 UI"></a><strong>方法 1：透過 Chrome 內建 UI</strong></h3><ol>
-<li><p>在 Chrome 地址列輸入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome://net-export/</span><br></pre></td></tr></table></figure>
-<p>然後按 Enter 進入 <code>Net Export</code> 頁面。</p>
-</li>
-<li><p>點擊 <strong>「Start Logging to Disk」</strong> 按鈕，選擇一個儲存 NetLog 檔案的路徑（例如 <code>netlog.json</code>）。</p>
-</li>
-<li><p>在 Chrome 中進行你的操作（例如載入有問題的網站、執行 API 請求等）。</p>
-</li>
-<li><p>完成後，回到 <code>chrome://net-export/</code> 頁面，點擊 <strong>「Stop Logging」</strong> 按鈕。</p>
-</li>
-<li><p>你的 NetLog 檔案已儲存，可以用來進行分析。</p>
-</li>
-</ol>
-<h2 id="如何分析-NetLog-檔案？"><a href="#如何分析-NetLog-檔案？" class="headerlink" title="如何分析 NetLog 檔案？"></a><strong>如何分析 NetLog 檔案？</strong></h2><p>你可以使用 Chrome 提供的 NetLog Viewer 來開啟這個 JSON 檔案：</p>
-<ol>
-<li>打開 <code>chrome://net-internals/#import</code>（或使用 <a target="_blank" rel="noopener" href="https://netlog-viewer.appspot.com/">NetLog Viewer</a>）。</li>
-<li>點擊 <strong>「Choose File」</strong> 上傳 <code>JSON</code> 檔案。</li>
-<li>瀏覽記錄的詳細資訊，找出可能的網路問題。</li>
-</ol>
-<h2 id="方法-2：透過命令列擷取-NetLog"><a href="#方法-2：透過命令列擷取-NetLog" class="headerlink" title="方法 2：透過命令列擷取 NetLog"></a><strong>方法 2：透過命令列擷取 NetLog</strong></h2><p>如果你想從命令列啟動 Chrome 並自動擷取 NetLog，可以使用以下指令：</p>
-<h3 id="Windows（cmd）"><a href="#Windows（cmd）" class="headerlink" title="Windows（cmd）"></a><strong>Windows（cmd）</strong></h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.exe --log-net-log=C:\path\to\netlog.json --net-log-capture-mode=IncludeSocketBytes</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mac-Linux"><a href="#Mac-Linux" class="headerlink" title="Mac&#x2F;Linux"></a><strong>Mac&#x2F;Linux</strong></h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --log-net-log=~/netlog.json --net-log-capture-mode=IncludeSocketBytes</span><br></pre></td></tr></table></figure>
-
-<p>這樣 Chrome 啟動後就會開始記錄所有網路請求，直到你手動關閉 Chrome。</p>
-<h2 id="NetLog-捕捉模式（可選）"><a href="#NetLog-捕捉模式（可選）" class="headerlink" title="NetLog 捕捉模式（可選）"></a><strong>NetLog 捕捉模式（可選）</strong></h2><p>在命令中，<code>--net-log-capture-mode</code> 參數有幾種模式：</p>
-<ul>
-<li><code>Default</code>（預設）：只捕捉基本的網路事件。</li>
-<li><code>IncludeCookiesAndCredentials</code>：包含 HTTP cookies 和授權資訊。</li>
-<li><code>IncludeRawBytes</code>：記錄完整的傳輸資料。</li>
-</ul>
-<p>例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chrome.exe --log-net-log=C:\netlog.json --net-log-capture-mode=IncludeCookiesAndCredentials</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/16/chrome-net-export/" data-id="cmd377o0c003lmd9b8q829mgw" data-title="Chrome net-export" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li></ul>
 
     </footer>
   </div>
@@ -1059,23 +1146,23 @@ flowchart TD
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>

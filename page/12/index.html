@@ -69,6 +69,189 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-shape" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/24/pandas-shape/" class="article-date">
+  <time class="dt-published" datetime="2021-06-24T08:41:34.000Z" itemprop="datePublished">2021-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/24/pandas-shape/">pandas shape</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>想知道 <code>DataFrame</code> 有幾個 row 跟 columns 的時候</p>
+<p>可以使用 <code>shape</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape</span><br></pre></td></tr></table></figure>
+
+<p>如果只想知道 row 或是 column 分別個數時</p>
+<p>後頭加上 index 0 或 1</p>
+<p>就可以分別取得 row 跟 column 的個數</p>
+<h2 id="row"><a href="#row" class="headerlink" title="row"></a>row</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="column"><a href="#column" class="headerlink" title="column"></a>column</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.shape[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/24/pandas-shape/" data-id="cmd789xq20062nd9bh7q9gj5y" data-title="pandas shape" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pandas-import" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/06/05/pandas-import/" class="article-date">
+  <time class="dt-published" datetime="2021-06-05T04:01:27.000Z" itemprop="datePublished">2021-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/06/05/pandas-import/">pandas import</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+<p>在 import <code>pandas</code> 的時候</p>
+<p>幾乎都會使用 <code>pd</code> 這個縮寫</p>
+<p>另外因為 <code>Series</code> <code>DataFrame</code> 很常用</p>
+<p>如果覺得每次使用都要用 <code>pd</code> 去呼叫很麻煩的話</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.Series()</span><br><span class="line">pd.DataFrame()</span><br></pre></td></tr></table></figure>
+
+<p>可以直接 import 進來</p>
+<p>就可以直接使用了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pandas <span class="keyword">import</span> Series, DataFrame</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/06/05/pandas-import/" data-id="cmd789xpy005hnd9bfwit7n6t" data-title="pandas import" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Python-mutable-immutable" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/05/21/Python-mutable-immutable/" class="article-date">
+  <time class="dt-published" datetime="2021-05-21T23:49:09.000Z" itemprop="datePublished">2021-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/05/21/Python-mutable-immutable/">Python mutable immutable</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Python 的 <a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/datamodel.html#objects-values-and-types">object</a> 有分成</p>
+<p>mutable 跟 immutable 兩種</p>
+<p>mutable object 是指</p>
+<p>object 的值可以被更改</p>
+<p>immutable 則反之</p>
+<p>當 object 被 create 之後，值就不能被更改</p>
+<h2 id="mutable-example"><a href="#mutable-example" class="headerlink" title="mutable example"></a>mutable example</h2><p>例如：list, dictionary</p>
+<h3 id="list-example"><a href="#list-example" class="headerlink" title="list example"></a>list example</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">numbers[<span class="number">2</span>] = <span class="number">4</span></span><br><span class="line"><span class="built_in">print</span>(numbers)</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 4]</span><br></pre></td></tr></table></figure>
+
+<h2 id="immutable-example"><a href="#immutable-example" class="headerlink" title="immutable example"></a>immutable example</h2><p>例如：<a target="_blank" rel="noopener" href="https://docs.python.org/3/library/numbers.html">numbers</a>, string, tuple</p>
+<p>但 immutable object 還需要注意</p>
+<p>值不能被更改的意思</p>
+<h3 id="numbers-example"><a href="#numbers-example" class="headerlink" title="numbers example"></a>numbers example</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a))</span><br><span class="line">a = <span class="number">4</span></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a))</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+
+<p>可以看到 a 的值被更改了</p>
+<p>但如果用 <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/functions.html?highlight=id#id">id()</a> 把 a 的 address 印出來的話</p>
+<p>就會發現 a 的 address 已經改變了</p>
+<p>因為 a 是 immutable object</p>
+<p>所以對 a 指定新的值的時候</p>
+<p>就會被指去新的 address</p>
+<p>雖然值更換了，但也不是原本的 object 了</p>
+<h3 id="tuple-example"><a href="#tuple-example" class="headerlink" title="tuple example"></a>tuple example</h3><p>還有另外一個關於 tuple 的例子</p>
+<p>雖然 tuple 是 immutable object</p>
+<p>但如果 tuple 裡面包含 mutable object</p>
+<p>譬如說 list</p>
+<p>那在 tuple 裡面的 list 是可以更改值的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">t = (<span class="number">1</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">t[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">4</span></span><br><span class="line"><span class="built_in">print</span>(t)</span><br></pre></td></tr></table></figure>
+
+<p>Output</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1, [1, 2, 4])</span><br></pre></td></tr></table></figure>
+
+<p>但如果想把 tuple 裡面的 list 變成 numbers 的話</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = (<span class="number">1</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">t[<span class="number">1</span>] = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<p>就會跳出下面的 error</p>
+<p><code>TypeError: &#39;tuple&#39; object does not support item assignment</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-mutable-immutable/" data-id="cmd789xp40023nd9bf27w5lf3" data-title="Python mutable immutable" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/05/21/Python-map/" class="article-date">
@@ -131,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cmd377nzv0022md9bglzucucq" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/21/Python-map/" data-id="cmd789xp40022nd9bc07n4uyc" data-title="Python map()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -190,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cmd377nzx002amd9b91s4bp8j" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/18/Python-random-module/" data-id="cmd789xp6002and9b2te5465d" data-title="Python random module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -246,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-int/" data-id="cmd377nzu001ymd9b9zi6c0hu" data-title="Python int()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-int/" data-id="cmd789xp3001ynd9b9b5narl3" data-title="Python int()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -291,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-List-Comprehension/" data-id="cmd377nzj0017md9bdw078kf3" data-title="Python List Comprehension" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/06/Python-List-Comprehension/" data-id="cmd789xos0017nd9b89o8ayfn" data-title="Python List Comprehension" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -341,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/" data-id="cmd377nyy0001md9b3jq9845l" data-title="Big Query SELECT list expression references column x which is neither grouped nor aggregated at [position]" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/05/05/BigQuery-SELECT-list-expression-references-column-x-which-is-neither-grouped-nor-aggregated-at-position/" data-id="cmd789xo80001nd9b09jj5tpy" data-title="Big Query SELECT list expression references column x which is neither grouped nor aggregated at [position]" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -405,23 +588,23 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
           <li>
             <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/06/11/common-open-source-licenses/">common open source licenses</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
           </li>
         
       </ul>
