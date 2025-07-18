@@ -69,6 +69,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Go-LoopvarExperiment" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/18/Go-LoopvarExperiment/" class="article-date">
+  <time class="dt-published" datetime="2025-07-18T20:09:10.000Z" itemprop="datePublished">2025-07-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>這段程式碼展示了在 <code>for</code> 迴圈中，閉包（closure）如何捕捉迴圈變數。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> fns []<span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		fns = <span class="built_in">append</span>(fns, <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">			fmt.Println(i)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, fn := <span class="keyword">range</span> fns &#123;</span><br><span class="line">		fn()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Go-1-22-以前"><a href="#Go-1-22-以前" class="headerlink" title="Go 1.22 以前"></a>Go 1.22 以前</h2><p>上述程式會印出三次 <code>3</code>。</p>
+<p>這是因為匿名函式捕捉的是迴圈變數 <code>i</code> 的參考（reference），當迴圈結束時，<code>i</code> 的值已經變成 <code>3</code>。</p>
+<h3 id="輸出"><a href="#輸出" class="headerlink" title="輸出"></a>輸出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">3</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h2 id="Go-1-22-起"><a href="#Go-1-22-起" class="headerlink" title="Go 1.22 起"></a>Go 1.22 起</h2><p>Go 1.22 修正了這個行為，將每次迴圈中的變數 <code>i</code> 視為新的區域變數。</p>
+<p>因此，輸出會是預期中的 <code>0 1 2</code>。</p>
+<h3 id="輸出-1"><a href="#輸出-1" class="headerlink" title="輸出"></a>輸出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0</span><br><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://go.dev/wiki/LoopvarExperiment">Go Wiki: LoopvarExperiment</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/z6wdc/go-version-lab">Go 語言版本差異測試專案</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmd8qm68c000ami9b57rdbr62" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-unicode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/07/17/unicode/" class="article-date">
@@ -223,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmd789xqa006vnd9b2g4tfctt" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmd8qm6a9006zmi9b0ww198k6" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -291,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmd789xpr004hnd9b7u7ahlb3" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmd8qm69p004mmi9b447m1jo0" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -410,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmd789xps004mnd9b1tb9fh4n" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmd8qm69q004rmi9b7jt21c0v" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -511,7 +566,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmd789xoa0003nd9b3pr963we" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmd8qm6880003mi9b47b128lt" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -613,7 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmd789xpn0045nd9bhs3a6h5i" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmd8qm69l0049mi9b1ypcbdo5" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -748,7 +803,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmd789xpj003ond9b02ah7mo0" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmd8qm69h003rmi9b4kxj0h7p" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -840,7 +895,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmd789xpk003qnd9b5q5u49o7" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmd8qm69i003umi9b36030cuq" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -900,7 +955,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmd789xok000knd9b4iz84zcz" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmd8qm68h000nmi9b1wgggpog" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -974,95 +1029,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmd789xpr004knd9bg6vucmvn" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmd8qm69p004omi9b1jcbbpcb" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-avro-overview-and-examples" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/05/08/avro-overview-and-examples/" class="article-date">
-  <time class="dt-published" datetime="2025-05-08T16:36:00.000Z" itemprop="datePublished">2025-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/05/08/avro-overview-and-examples/">avro overview and examples</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="什麼是-AVRO"><a href="#什麼是-AVRO" class="headerlink" title="什麼是 AVRO"></a>什麼是 AVRO</h2><p>Apache Avro 是一種資料序列化格式</p>
-<p>專為高效的資料儲存與傳輸而設計，屬於 Apache Hadoop 生態系中的一部分。</p>
-<p>它的特點包括：</p>
-<ul>
-<li>使用 JSON 定義 schema</li>
-<li>使用二進位格式儲存資料（compact）</li>
-<li>支援 schema 演化（例如加欄位、改型別）</li>
-<li>非常適合用於 Kafka、HDFS、RPC 等場景</li>
-</ul>
-<h2 id="為了解決什麼問題"><a href="#為了解決什麼問題" class="headerlink" title="為了解決什麼問題"></a>為了解決什麼問題</h2><p>AVRO 的設計目的是為了解決資料交換與儲存過程中，常見的以下幾個問題：</p>
-<h3 id="1-JSON-CSV-的結構不穩定與冗長問題"><a href="#1-JSON-CSV-的結構不穩定與冗長問題" class="headerlink" title="1. JSON&#x2F;CSV 的結構不穩定與冗長問題"></a>1. JSON&#x2F;CSV 的結構不穩定與冗長問題</h3><h4 id="問題說明："><a href="#問題說明：" class="headerlink" title="問題說明："></a>問題說明：</h4><p>你可能使用 JSON 存放 Kafka 傳來的事件記錄，例如：</p>
-<p>{ “userId”: “u123”, “loginTime”: “2024-05-08T10:00:00Z” }</p>
-<p>但過了一段時間，有人新增了一個欄位叫做 ipAddress，導致下游處理程式爆錯，因為：</p>
-<ul>
-<li>沒有固定 schema，難以保證欄位存在與型別正確</li>
-<li>JSON 沒有型別驗證</li>
-<li>每筆資料都要寫入欄位名稱 → 檔案很大、傳輸慢</li>
-</ul>
-<h4 id="AVRO-的解法："><a href="#AVRO-的解法：" class="headerlink" title="AVRO 的解法："></a>AVRO 的解法：</h4><ul>
-<li>schema 明確定義欄位名稱與型別</li>
-<li>資料本體為二進位格式，不含欄位名稱（節省空間）</li>
-<li>透過 schema 驗證，可以提前擋掉不符欄位的資料</li>
-</ul>
-<h3 id="2-不同服務間資料交換，格式不一致"><a href="#2-不同服務間資料交換，格式不一致" class="headerlink" title="2. 不同服務間資料交換，格式不一致"></a>2. 不同服務間資料交換，格式不一致</h3><h4 id="問題說明：-1"><a href="#問題說明：-1" class="headerlink" title="問題說明："></a>問題說明：</h4><p>假設一個系統由多個服務組成：</p>
-<ul>
-<li>A 系統產出一批使用者資料（userId, name, birthday）</li>
-<li>B 系統只需要 userId 和 name，但使用 JSON 解析時，常因欄位不一致導致失敗或錯誤行為</li>
-</ul>
-<h4 id="AVRO-的解法：-1"><a href="#AVRO-的解法：-1" class="headerlink" title="AVRO 的解法："></a>AVRO 的解法：</h4><ul>
-<li>A 寫入時附帶 schema</li>
-<li>B 可以用自己的 reader schema 讀取自己關心的欄位，忽略其他欄位</li>
-</ul>
-<h3 id="3-資料結構的版本更新（Schema-Evolution）"><a href="#3-資料結構的版本更新（Schema-Evolution）" class="headerlink" title="3. 資料結構的版本更新（Schema Evolution）"></a>3. 資料結構的版本更新（Schema Evolution）</h3><h4 id="問題說明：-2"><a href="#問題說明：-2" class="headerlink" title="問題說明："></a>問題說明：</h4><p>你設計了一個活動紀錄格式如下：</p>
-<p>{ “userId”: “u456”, “event”: “purchase” }</p>
-<p>後來你希望加上商品 ID 與金額欄位：</p>
-<p>{ “userId”: “u456”, “event”: “purchase”, “itemId”: “i789”, “amount”: 100 }</p>
-<p>舊資料沒有這些欄位，會不會壞掉？</p>
-<h4 id="AVRO-的解法：-2"><a href="#AVRO-的解法：-2" class="headerlink" title="AVRO 的解法："></a>AVRO 的解法：</h4><ul>
-<li>可為新增欄位設定預設值（例如 amount &#x3D; 0）</li>
-<li>讀取舊資料時，自動補上這些欄位</li>
-</ul>
-<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://avro.apache.org/">https://avro.apache.org/</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmd789xpi003gnd9b9xjjbyvc" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li></ul>
 
     </footer>
   </div>
@@ -1122,6 +1093,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
           </li>
         
@@ -1135,10 +1110,6 @@
         
           <li>
             <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
           </li>
         
       </ul>
