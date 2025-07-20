@@ -69,6 +69,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PEP8-Programming-Recommendations" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/18/PEP8-Programming-Recommendations/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T11:43:12.000Z" itemprop="datePublished">2021-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/18/PEP8-Programming-Recommendations/">PEP8 Programming Recommendations</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0008/#programming-recommendations">Programming Recommendations</a></p>
+<h2 id="if-x"><a href="#if-x" class="headerlink" title="if x"></a>if x</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="comment"># do something</span></span><br></pre></td></tr></table></figure>
+
+<p>在某些情況下</p>
+<p>上面兩個 condition 不會有一樣的結果</p>
+<p>譬如說下面的例子中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="literal">False</span></span><br><span class="line">x = <span class="string">&#x27;&#x27;</span></span><br><span class="line">x = <span class="number">0</span></span><br><span class="line">x = <span class="number">0.0</span></span><br><span class="line">x = []</span><br><span class="line">x = ()</span><br><span class="line">x = &#123;&#125;</span><br><span class="line">x = <span class="built_in">set</span>()</span><br></pre></td></tr></table></figure>
+
+<p><code>if x</code> 的結果會是 <code>Flase</code></p>
+<p>但 <code>if x is not None</code> 會是 <code>True</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cmdb95d210012n99b92pb9c4q" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-Classes" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/08/18/Python-Classes/" class="article-date">
@@ -100,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmd8qm68n0016mi9b4mcz2j8v" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmdb95d220016n99bbw3g8hti" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -153,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cmd8qm6a7006tmi9bgbxyb21j" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cmdb95d3m006sn99bg25y8tls" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -214,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cmd8qm68v001nmi9b0o3qe468" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cmdb95d2c001on99bh0ii9uux" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -268,7 +320,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cmd8qm696002qmi9bb31f5fj0" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cmdb95d2m002pn99bfyvy3mk6" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -338,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cmd8qm692002gmi9bbmb1677e" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cmdb95d2k002fn99b4x5xeu3l" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -390,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cmd8qm68z0023mi9b86tg2upz" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cmdb95d2f0023n99b2goh6dqn" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -434,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="cmd8qm692002dmi9b61k1gnzc" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="cmdb95d2i002bn99bdneu0ox6" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -478,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="cmd8qm69a0032mi9bb7426v4f" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-xmltodict/" data-id="cmdb95d2q0032n99bb0cfffi8" data-title="Python xmltodict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -529,58 +581,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="cmd8qm68r001jmi9b8jdp7c7n" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-the-with-statement" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/07/31/Python-the-with-statement/" class="article-date">
-  <time class="dt-published" datetime="2021-07-31T04:35:20.000Z" itemprop="datePublished">2021-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/07/31/Python-the-with-statement/">Python the with statement</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/reference/compound_stmts.html#the-with-statement">The with statement</a></p>
-<p>通常開檔案的時候</p>
-<p>會用下列的語法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = <span class="built_in">open</span>(<span class="string">&#x27;sample.txt&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(f))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
-
-<p>但這樣會有一個風險是</p>
-<p>如果 <code>exception</code> 發生的時候</p>
-<p>可能 <code>f.close()</code> 就不會執行</p>
-<p>比較好的方法是用 <code>try - except - finally</code> 來做保護</p>
-<p>而使用 <code>The with statement</code> 的話就可以直接達到這樣的效果</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(path) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">type</span>(f))</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/07/31/Python-the-with-statement/" data-id="cmd8qm6990030mi9b3vfhecw1" data-title="Python the with statement" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-csv/" data-id="cmdb95d2a001kn99bevcp3lbl" data-title="Python csv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -612,7 +613,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -622,7 +623,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -644,6 +645,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
           </li>
         
@@ -657,10 +662,6 @@
         
           <li>
             <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
       </ul>

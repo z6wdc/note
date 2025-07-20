@@ -69,6 +69,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-go-table-driven-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/go-table-driven-test/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T05:45:38.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Go 語言中，<code>table-driven test</code>（表格驅動測試）是一種非常常見且被推薦的測試寫法。</p>
+<p>這種風格強調「資料與邏輯分離」，能讓測試碼更簡潔、可維護性更高，特別適合處理多組輸入&#x2F;輸出測試案例。</p>
+<h2 id="為什麼要使用-Table-Driven-Test？"><a href="#為什麼要使用-Table-Driven-Test？" class="headerlink" title="為什麼要使用 Table-Driven Test？"></a>為什麼要使用 Table-Driven Test？</h2><p>當你要針對同一個函式測試多種情境時，若每個情境都手動撰寫重複的 <code>t.Run(...)</code>，程式碼會變得冗長、難以維護。使用 table-driven 測試可以：</p>
+<ul>
+<li>集中維護測試案例</li>
+<li>自動迴圈跑測試，避免重複程式碼</li>
+<li>提高可讀性與一致性</li>
+</ul>
+<h2 id="起源與推廣者"><a href="#起源與推廣者" class="headerlink" title="起源與推廣者"></a>起源與推廣者</h2><p>Table-driven test 並不是某個單一開發者發明的設計模式，而是由 Go 核心開發者 <strong>Andrew Gerrand</strong> 在多次演講與部落格中推廣的實踐方式。</p>
+<blockquote>
+<p>“In Go, we often use table-driven tests. They are a good way to test multiple scenarios without duplicating code.”<br>— Andrew Gerrand, Go Developer Advocate</p>
+</blockquote>
+<p>這種風格也出現在 Go 官方標準函式庫的測試檔案中，例如 <code>strings</code>, <code>strconv</code>, <code>time</code> 等，成為 idiomatic Go 的一部分。</p>
+<h2 id="實作範例：檢查通知類型是否有效"><a href="#實作範例：檢查通知類型是否有效" class="headerlink" title="實作範例：檢查通知類型是否有效"></a>實作範例：檢查通知類型是否有效</h2><p>以下是一個簡單的例子：驗證輸入的通知類型是否為 <code>email</code>、<code>push</code> 或 <code>sms</code>。</p>
+<h3 id="被測試的程式碼（notification-go）"><a href="#被測試的程式碼（notification-go）" class="headerlink" title="被測試的程式碼（notification.go）"></a>被測試的程式碼（<code>notification.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">func IsValidNotificationType(t string) bool &#123;</span><br><span class="line">    switch t &#123;</span><br><span class="line">    case &quot;email&quot;, &quot;push&quot;, &quot;sms&quot;:</span><br><span class="line">        return true</span><br><span class="line">    default:</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="測試檔案（notification-test-go）"><a href="#測試檔案（notification-test-go）" class="headerlink" title="測試檔案（notification_test.go）"></a>測試檔案（<code>notification_test.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">import &quot;testing&quot;</span><br><span class="line"></span><br><span class="line">func TestIsValidNotificationType(t *testing.T) &#123;</span><br><span class="line">    tests := []struct &#123;</span><br><span class="line">        name     string</span><br><span class="line">        input    string</span><br><span class="line">        expected bool</span><br><span class="line">    &#125;&#123;</span><br><span class="line">        &#123;&quot;valid_email&quot;, &quot;email&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_push&quot;, &quot;push&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_sms&quot;, &quot;sms&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;invalid_type&quot;, &quot;fax&quot;, false&#125;,</span><br><span class="line">        &#123;&quot;empty_string&quot;, &quot;&quot;, false&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, tt := range tests &#123;</span><br><span class="line">        t.Run(tt.name, func(t *testing.T) &#123;</span><br><span class="line">            actual := IsValidNotificationType(tt.input)</span><br><span class="line">            if actual != tt.expected &#123;</span><br><span class="line">                t.Errorf(&quot;IsValidNotificationType(%q) = %v; want %v&quot;, tt.input, actual, tt.expected)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解說重點"><a href="#解說重點" class="headerlink" title="解說重點"></a>解說重點</h2><ul>
+<li><code>tests := []struct&#123;...&#125;</code>：定義多筆測試資料</li>
+<li><code>t.Run(tt.name, ...)</code>：獨立執行每筆測試並標記名稱（更容易查錯）</li>
+<li>如果測試失敗，<code>t.Errorf</code> 會印出詳細資訊</li>
+</ul>
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><p>Table-driven 測試也適用於：</p>
+<ul>
+<li>多種輸入條件組合測試（如邊界值測試）</li>
+<li>多個子函式共用邏輯測試</li>
+<li>單元測試與整合測試中的資料組合處理</li>
+</ul>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Go 的 table-driven 測試風格簡單易讀、方便維護，是撰寫單元測試的最佳實踐之一。當你在寫測試時遇到需要覆蓋多種條件的情境，請優先考慮這種寫法。</p>
+<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><ul>
+<li>Go Wiki - <a target="_blank" rel="noopener" href="https://go.dev/wiki/TableDrivenTests">“Table-Driven Tests”</a></li>
+<li>Andrew Gerrand, <a target="_blank" rel="noopener" href="https://talks.golang.org/2014/testing.slide">“Go testing techniques”</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmdb95d35004mn99b13jdgd92" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-avro-overview-and-examples" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/05/08/avro-overview-and-examples/" class="article-date">
@@ -139,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmd8qm69f003kmi9bexixazpc" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmdb95d2u003jn99b2kh554ui" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -251,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmd8qm69n004dmi9b4w7ta9t3" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmdb95d32004dn99bgnd48xy7" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -335,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmd8qm69p004jmi9bf1web1mg" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmdb95d34004hn99bg7hd9m7g" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -455,7 +529,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmd8qm68d000cmi9b64332sel" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmdb95d1s000en99b045663wg" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -580,7 +654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmd8qm69o004hmi9b27a6acwp" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmdb95d33004fn99balte31wk" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -718,7 +792,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmd8qm68e000fmi9b0yms9v3h" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmdb95d1t000gn99barqtexuc" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -766,7 +840,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmd8qm69i003wmi9bgj432wdr" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmdb95d2x003wn99bfuab54ym" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -857,7 +931,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmd8qm6890004mi9beyzn5xwd" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmdb95d1m0005n99bdv61fxo5" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -955,108 +1029,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmd8qm69e003hmi9b760a76bx" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CSRF" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/26/CSRF/" class="article-date">
-  <time class="dt-published" datetime="2025-03-26T16:02:29.000Z" itemprop="datePublished">2025-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/26/CSRF/">CSRF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>CSRF（Cross-Site Request Forgery，跨站請求偽造） 是一種 Web 安全漏洞</p>
-<p>攻擊者可以利用受害者已經驗證的會話，在未經授權的情況下，透過受害者的瀏覽器發送惡意請求到受害者已登入的網站，執行未經授權的操作。</p>
-<h2 id="CSRF-攻擊流程"><a href="#CSRF-攻擊流程" class="headerlink" title="CSRF 攻擊流程"></a><strong>CSRF 攻擊流程</strong></h2><ol>
-<li><strong>受害者登入受信任的網站</strong>（如銀行、購物網站、社交平台），並且瀏覽器存有該網站的認證 Cookie。</li>
-<li><strong>攻擊者誘導受害者訪問惡意網站</strong>，例如：<ul>
-<li>透過電子郵件、社群媒體或廣告放置惡意連結。</li>
-<li>在受害者造訪的網站中嵌入惡意的 JavaScript 代碼（如 XSS 攻擊）。</li>
-</ul>
-</li>
-<li><strong>受害者的瀏覽器在未察覺的情況下向受信任的網站發送請求</strong>：<ul>
-<li>瀏覽器會自動附帶該網站的 Cookie，因為請求來自受害者的瀏覽器，網站會認為該請求是合法的。</li>
-<li>例如，攻擊者可以讓受害者透過 <code>GET</code> 或 <code>POST</code> 方法執行敏感操作，如轉帳、修改密碼、發送訊息等。</li>
-</ul>
-</li>
-<li><strong>受害者的請求成功執行</strong>，攻擊者達成目的。</li>
-</ol>
-<hr>
-<h2 id="CSRF-攻擊範例"><a href="#CSRF-攻擊範例" class="headerlink" title="CSRF 攻擊範例"></a><strong>CSRF 攻擊範例</strong></h2><p>假設受害者已登入某個銀行網站（<code>bank.com</code>），攻擊者可以在惡意網站中放置以下 HTML 代碼：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://bank.com/transfer?amount=1000&amp;to=attacker_account&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>當受害者造訪這個網站時，瀏覽器會自動向 <code>bank.com</code> 發送請求，並附帶受害者的登入 Cookie，導致資金被轉移到攻擊者的帳戶。</p>
-<hr>
-<h2 id="如何防禦-CSRF"><a href="#如何防禦-CSRF" class="headerlink" title="如何防禦 CSRF"></a><strong>如何防禦 CSRF</strong></h2><h3 id="1-CSRF-Token"><a href="#1-CSRF-Token" class="headerlink" title="1. CSRF Token"></a><strong>1. CSRF Token</strong></h3><ul>
-<li>伺服器在每次表單提交或敏感操作時，生成一個獨特的隨機字串（Token）。</li>
-<li>這個 Token 必須隨著請求一起提交，伺服器會驗證 Token 是否正確。</li>
-<li>由於攻擊者無法輕易獲取這個 Token，因此無法偽造請求。</li>
-</ul>
-<p><strong>範例：</strong><br>後端返回 CSRF Token：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/transfer&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;csrf_token&quot;</span> <span class="attr">value</span>=<span class="string">&quot;random_csrf_token&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;amount&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>轉帳<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>伺服器驗證 <code>csrf_token</code> 是否正確，若無效則拒絕請求。</p>
-<hr>
-<h3 id="2-SameSite-Cookie-設定"><a href="#2-SameSite-Cookie-設定" class="headerlink" title="2. SameSite Cookie 設定"></a><strong>2. SameSite Cookie 設定</strong></h3><ul>
-<li>設定 <code>SameSite=Strict</code> 或 <code>SameSite=Lax</code>，防止瀏覽器在跨站請求時自動附帶 Cookie。</li>
-<li><code>SameSite=Lax</code> 適用於大部分情境，<code>SameSite=Strict</code> 更為嚴格，但可能影響部分功能。</li>
-</ul>
-<p>範例：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>session_id=abc123; Secure; HttpOnly; SameSite=Strict</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="3-驗證-Referer-或-Origin"><a href="#3-驗證-Referer-或-Origin" class="headerlink" title="3. 驗證 Referer 或 Origin"></a><strong>3. 驗證 <code>Referer</code> 或 <code>Origin</code></strong></h3><ul>
-<li>伺服器可以檢查 HTTP <code>Referer</code> 或 <code>Origin</code>，確認請求是否來自受信任的來源。</li>
-</ul>
-<hr>
-<h3 id="4-強制使用-POST-請求"><a href="#4-強制使用-POST-請求" class="headerlink" title="4. 強制使用 POST 請求"></a><strong>4. 強制使用 POST 請求</strong></h3><ul>
-<li>確保敏感操作（如轉帳、修改密碼）不使用 <code>GET</code> 方法，而是 <code>POST</code>，並搭配 CSRF Token。</li>
-</ul>
-<hr>
-<h3 id="5-用戶驗證"><a href="#5-用戶驗證" class="headerlink" title="5. 用戶驗證"></a><strong>5. 用戶驗證</strong></h3><ul>
-<li>在關鍵操作前，要求用戶重新輸入密碼或 2FA 驗證，例如：<ul>
-<li>銀行轉帳時，要求用戶輸入 OTP（一次性密碼）。</li>
-<li>修改郵箱或密碼時，要求重新登入。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a><strong>結論</strong></h2><p>CSRF 是一種利用使用者瀏覽器信任關係的攻擊方式，主要防禦措施包括：</p>
-<ul>
-<li>使用 CSRF Token 驗證請求來源。</li>
-<li>設置 <code>SameSite</code> 屬性的 Cookie 限制跨站請求。</li>
-<li>驗證 <code>Referer</code> 或 <code>Origin</code> 以過濾可疑請求。</li>
-<li>限制敏感操作只允許 <code>POST</code>，並要求額外身份驗證。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/CSRF/" data-id="cmd8qm6890005mi9b1wop6maa" data-title="CSRF" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmdb95d2u003hn99b60mz9xai" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1086,7 +1059,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -1096,7 +1069,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -1118,6 +1091,10 @@ flowchart TD
       <ul>
         
           <li>
+            <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
           </li>
         
@@ -1131,10 +1108,6 @@ flowchart TD
         
           <li>
             <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
       </ul>

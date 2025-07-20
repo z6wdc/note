@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>雙向 Hash Map | note</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="什麼時候要用雙向 Hash Map？當題目需要你判斷：  兩組資料之間是否為一一對應（bijection）  「不能有重複對應」，也就是：  A → X B → Y ✅ 合法 A → X，但 B 也 → X ❌ 不合法    題目整理   題號 題名 類型 難度    205 Isomorphic Strings 字串 ↔ 字串 Easy   290 Word Pattern pattern ↔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="雙向 Hash Map">
+<meta property="og:url" content="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/index.html">
+<meta property="og:site_name" content="note">
+<meta property="og:description" content="什麼時候要用雙向 Hash Map？當題目需要你判斷：  兩組資料之間是否為一一對應（bijection）  「不能有重複對應」，也就是：  A → X B → Y ✅ 合法 A → X，但 B 也 → X ❌ 不合法    題目整理   題號 題名 類型 難度    205 Isomorphic Strings 字串 ↔ 字串 Easy   290 Word Pattern pattern ↔">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-19T07:56:04.000Z">
+<meta property="article:modified_time" content="2025-07-20T05:44:30.728Z">
+<meta property="article:author" content="z6wdc">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/note/atom.xml" title="note" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/note/favicon.ico">
+  
+  
+  
+<link rel="stylesheet" href="/note/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/note/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/note/" id="logo">note</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/note/">Home</a>
+        
+          <a class="main-nav-link" href="/note/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/note/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://z6wdc.github.io/note"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Bidirectional-Map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/19/Bidirectional-Map/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T07:56:04.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      雙向 Hash Map
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什麼時候要用雙向-Hash-Map？"><a href="#什麼時候要用雙向-Hash-Map？" class="headerlink" title="什麼時候要用雙向 Hash Map？"></a>什麼時候要用雙向 Hash Map？</h2><p>當題目需要你判斷：</p>
+<ul>
+<li><p>兩組資料之間是否為<strong>一一對應（bijection）</strong></p>
+</li>
+<li><p>「不能有重複對應」，也就是：</p>
+<ul>
+<li>A → X</li>
+<li>B → Y ✅ 合法</li>
+<li>A → X，但 B 也 → X ❌ 不合法</li>
+</ul>
+</li>
+</ul>
+<h2 id="題目整理"><a href="#題目整理" class="headerlink" title="題目整理"></a>題目整理</h2><table>
+<thead>
+<tr>
+<th>題號</th>
+<th>題名</th>
+<th>類型</th>
+<th>難度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/isomorphic-strings">205</a></td>
+<td>Isomorphic Strings</td>
+<td>字串 ↔ 字串</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-pattern">290</a></td>
+<td>Word Pattern</td>
+<td>pattern ↔ words</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-pattern-ii">291</a></td>
+<td>Word Pattern II</td>
+<td>回溯 + 雙向 map</td>
+<td>Hard</td>
+</tr>
+</tbody></table>
+<h2 id="時間與空間複雜度分析"><a href="#時間與空間複雜度分析" class="headerlink" title="時間與空間複雜度分析"></a>時間與空間複雜度分析</h2><h3 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h3><ul>
+<li><p>設 pattern 長度為 n</p>
+</li>
+<li><p>每個 map 查詢 &#x2F; 插入為 O(1)，共做 n 次（對每個字元或單字做一次對應判斷與設定）</p>
+<p>為什麼是 n 次？因為我們對每個輸入字元（如 ‘a’、’b’）或單字（如 “dog”、”cat”）都進行最多兩次查詢（正向與反向）與最多兩次插入，總共進行 n 輪處理。因此整體時間與 pattern 或輸入字串長度成正比。</p>
+</li>
+</ul>
+<p><strong>時間複雜度：O(n)</strong></p>
+<h3 id="空間複雜度"><a href="#空間複雜度" class="headerlink" title="空間複雜度"></a>空間複雜度</h3><ul>
+<li>使用兩個 map，各最多存 n 筆</li>
+</ul>
+<p><strong>空間複雜度：O(n)</strong></p>
+<h2 id="解題技巧與小提醒"><a href="#解題技巧與小提醒" class="headerlink" title="解題技巧與小提醒"></a>解題技巧與小提醒</h2><ol>
+<li><p>題目出現「每個 A 對一個 B，B 也只對一個 A」時，幾乎可以判斷需要雙向 map。</p>
+</li>
+<li><p>使用兩個 map 可避免「一對多、多對一」錯誤，<strong>比只用一個 map 更穩定</strong>。</p>
+</li>
+<li><p>注意判斷是否存在時要用 <code>ok</code> 判斷，而非依賴 default value。</p>
+<p>在 Go 語言中，從 map 取值即使 key 不存在，<br>也會回傳對應型別的 default value（如整數 0、空字串 “”、布林 false 等），可能造成邏輯誤判。</p>
+<p>錯誤示範：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>)</span><br><span class="line">fmt.Println(m[<span class="string">&quot;x&quot;</span>]) <span class="comment">// 輸出 0，但 &quot;x&quot; 並不在 map 中</span></span><br></pre></td></tr></table></figure>
+
+<p>正確寫法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> val, ok := m[<span class="string">&quot;x&quot;</span>]; ok &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;存在，值為&quot;</span>, val)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;key 不存在&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmdb95d1d0000n99b0zd437vn" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/note/2025/07/18/Go-LoopvarExperiment/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Go語言 for 迴圈中閉包捕捉變數行為</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
+          </li>
+        
+          <li>
+            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 z6wdc<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/note/" class="mobile-nav-link">Home</a>
+  
+    <a href="/note/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/note/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/note/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/note/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

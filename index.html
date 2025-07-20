@@ -69,6 +69,111 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Bidirectional-Map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/07/19/Bidirectional-Map/" class="article-date">
+  <time class="dt-published" datetime="2025-07-19T07:56:04.000Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什麼時候要用雙向-Hash-Map？"><a href="#什麼時候要用雙向-Hash-Map？" class="headerlink" title="什麼時候要用雙向 Hash Map？"></a>什麼時候要用雙向 Hash Map？</h2><p>當題目需要你判斷：</p>
+<ul>
+<li><p>兩組資料之間是否為<strong>一一對應（bijection）</strong></p>
+</li>
+<li><p>「不能有重複對應」，也就是：</p>
+<ul>
+<li>A → X</li>
+<li>B → Y ✅ 合法</li>
+<li>A → X，但 B 也 → X ❌ 不合法</li>
+</ul>
+</li>
+</ul>
+<h2 id="題目整理"><a href="#題目整理" class="headerlink" title="題目整理"></a>題目整理</h2><table>
+<thead>
+<tr>
+<th>題號</th>
+<th>題名</th>
+<th>類型</th>
+<th>難度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/isomorphic-strings">205</a></td>
+<td>Isomorphic Strings</td>
+<td>字串 ↔ 字串</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-pattern">290</a></td>
+<td>Word Pattern</td>
+<td>pattern ↔ words</td>
+<td>Easy</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://leetcode.com/problems/word-pattern-ii">291</a></td>
+<td>Word Pattern II</td>
+<td>回溯 + 雙向 map</td>
+<td>Hard</td>
+</tr>
+</tbody></table>
+<h2 id="時間與空間複雜度分析"><a href="#時間與空間複雜度分析" class="headerlink" title="時間與空間複雜度分析"></a>時間與空間複雜度分析</h2><h3 id="時間複雜度"><a href="#時間複雜度" class="headerlink" title="時間複雜度"></a>時間複雜度</h3><ul>
+<li><p>設 pattern 長度為 n</p>
+</li>
+<li><p>每個 map 查詢 &#x2F; 插入為 O(1)，共做 n 次（對每個字元或單字做一次對應判斷與設定）</p>
+<p>為什麼是 n 次？因為我們對每個輸入字元（如 ‘a’、’b’）或單字（如 “dog”、”cat”）都進行最多兩次查詢（正向與反向）與最多兩次插入，總共進行 n 輪處理。因此整體時間與 pattern 或輸入字串長度成正比。</p>
+</li>
+</ul>
+<p><strong>時間複雜度：O(n)</strong></p>
+<h3 id="空間複雜度"><a href="#空間複雜度" class="headerlink" title="空間複雜度"></a>空間複雜度</h3><ul>
+<li>使用兩個 map，各最多存 n 筆</li>
+</ul>
+<p><strong>空間複雜度：O(n)</strong></p>
+<h2 id="解題技巧與小提醒"><a href="#解題技巧與小提醒" class="headerlink" title="解題技巧與小提醒"></a>解題技巧與小提醒</h2><ol>
+<li><p>題目出現「每個 A 對一個 B，B 也只對一個 A」時，幾乎可以判斷需要雙向 map。</p>
+</li>
+<li><p>使用兩個 map 可避免「一對多、多對一」錯誤，<strong>比只用一個 map 更穩定</strong>。</p>
+</li>
+<li><p>注意判斷是否存在時要用 <code>ok</code> 判斷，而非依賴 default value。</p>
+<p>在 Go 語言中，從 map 取值即使 key 不存在，<br>也會回傳對應型別的 default value（如整數 0、空字串 “”、布林 false 等），可能造成邏輯誤判。</p>
+<p>錯誤示範：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>)</span><br><span class="line">fmt.Println(m[<span class="string">&quot;x&quot;</span>]) <span class="comment">// 輸出 0，但 &quot;x&quot; 並不在 map 中</span></span><br></pre></td></tr></table></figure>
+
+<p>正確寫法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> val, ok := m[<span class="string">&quot;x&quot;</span>]; ok &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;存在，值為&quot;</span>, val)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;key 不存在&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmdb95d1d0000n99b0zd437vn" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Go-LoopvarExperiment" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/07/18/Go-LoopvarExperiment/" class="article-date">
@@ -110,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmd8qm68c000ami9b57rdbr62" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmdb95d1q000cn99bfng56jzw" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -278,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmd8qm6a9006zmi9b0ww198k6" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmdb95d3n006xn99bdn0n9w1r" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -346,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmd8qm69p004mmi9b447m1jo0" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmdb95d34004jn99b8cli81gl" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -465,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmd8qm69q004rmi9b7jt21c0v" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmdb95d36004on99b5xfq60xx" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -566,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmd8qm6880003mi9b47b128lt" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmdb95d1m0004n99b615p2lwr" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -668,7 +773,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmd8qm69l0049mi9b1ypcbdo5" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmdb95d300047n99b0166eeke" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -803,7 +908,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmd8qm69h003rmi9b4kxj0h7p" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmdb95d2v003on99b2r2xfljn" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -895,7 +1000,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmd8qm69i003umi9b36030cuq" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmdb95d2w003tn99bfop4f8q8" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -955,85 +1060,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmd8qm68h000nmi9b1wgggpog" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmdb95d1x000on99bfogi41zy" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-go-table-driven-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/05/17/go-table-driven-test/" class="article-date">
-  <time class="dt-published" datetime="2025-05-17T05:45:38.000Z" itemprop="datePublished">2025-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/05/17/go-table-driven-test/">go table-driven test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Go 語言中，<code>table-driven test</code>（表格驅動測試）是一種非常常見且被推薦的測試寫法。</p>
-<p>這種風格強調「資料與邏輯分離」，能讓測試碼更簡潔、可維護性更高，特別適合處理多組輸入&#x2F;輸出測試案例。</p>
-<h2 id="為什麼要使用-Table-Driven-Test？"><a href="#為什麼要使用-Table-Driven-Test？" class="headerlink" title="為什麼要使用 Table-Driven Test？"></a>為什麼要使用 Table-Driven Test？</h2><p>當你要針對同一個函式測試多種情境時，若每個情境都手動撰寫重複的 <code>t.Run(...)</code>，程式碼會變得冗長、難以維護。使用 table-driven 測試可以：</p>
-<ul>
-<li>集中維護測試案例</li>
-<li>自動迴圈跑測試，避免重複程式碼</li>
-<li>提高可讀性與一致性</li>
-</ul>
-<h2 id="起源與推廣者"><a href="#起源與推廣者" class="headerlink" title="起源與推廣者"></a>起源與推廣者</h2><p>Table-driven test 並不是某個單一開發者發明的設計模式，而是由 Go 核心開發者 <strong>Andrew Gerrand</strong> 在多次演講與部落格中推廣的實踐方式。</p>
-<blockquote>
-<p>“In Go, we often use table-driven tests. They are a good way to test multiple scenarios without duplicating code.”<br>— Andrew Gerrand, Go Developer Advocate</p>
-</blockquote>
-<p>這種風格也出現在 Go 官方標準函式庫的測試檔案中，例如 <code>strings</code>, <code>strconv</code>, <code>time</code> 等，成為 idiomatic Go 的一部分。</p>
-<h2 id="實作範例：檢查通知類型是否有效"><a href="#實作範例：檢查通知類型是否有效" class="headerlink" title="實作範例：檢查通知類型是否有效"></a>實作範例：檢查通知類型是否有效</h2><p>以下是一個簡單的例子：驗證輸入的通知類型是否為 <code>email</code>、<code>push</code> 或 <code>sms</code>。</p>
-<h3 id="被測試的程式碼（notification-go）"><a href="#被測試的程式碼（notification-go）" class="headerlink" title="被測試的程式碼（notification.go）"></a>被測試的程式碼（<code>notification.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">func IsValidNotificationType(t string) bool &#123;</span><br><span class="line">    switch t &#123;</span><br><span class="line">    case &quot;email&quot;, &quot;push&quot;, &quot;sms&quot;:</span><br><span class="line">        return true</span><br><span class="line">    default:</span><br><span class="line">        return false</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="測試檔案（notification-test-go）"><a href="#測試檔案（notification-test-go）" class="headerlink" title="測試檔案（notification_test.go）"></a>測試檔案（<code>notification_test.go</code>）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package notification</span><br><span class="line"></span><br><span class="line">import &quot;testing&quot;</span><br><span class="line"></span><br><span class="line">func TestIsValidNotificationType(t *testing.T) &#123;</span><br><span class="line">    tests := []struct &#123;</span><br><span class="line">        name     string</span><br><span class="line">        input    string</span><br><span class="line">        expected bool</span><br><span class="line">    &#125;&#123;</span><br><span class="line">        &#123;&quot;valid_email&quot;, &quot;email&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_push&quot;, &quot;push&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;valid_sms&quot;, &quot;sms&quot;, true&#125;,</span><br><span class="line">        &#123;&quot;invalid_type&quot;, &quot;fax&quot;, false&#125;,</span><br><span class="line">        &#123;&quot;empty_string&quot;, &quot;&quot;, false&#125;,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for _, tt := range tests &#123;</span><br><span class="line">        t.Run(tt.name, func(t *testing.T) &#123;</span><br><span class="line">            actual := IsValidNotificationType(tt.input)</span><br><span class="line">            if actual != tt.expected &#123;</span><br><span class="line">                t.Errorf(&quot;IsValidNotificationType(%q) = %v; want %v&quot;, tt.input, actual, tt.expected)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="解說重點"><a href="#解說重點" class="headerlink" title="解說重點"></a>解說重點</h2><ul>
-<li><code>tests := []struct&#123;...&#125;</code>：定義多筆測試資料</li>
-<li><code>t.Run(tt.name, ...)</code>：獨立執行每筆測試並標記名稱（更容易查錯）</li>
-<li>如果測試失敗，<code>t.Errorf</code> 會印出詳細資訊</li>
-</ul>
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><p>Table-driven 測試也適用於：</p>
-<ul>
-<li>多種輸入條件組合測試（如邊界值測試）</li>
-<li>多個子函式共用邏輯測試</li>
-<li>單元測試與整合測試中的資料組合處理</li>
-</ul>
-<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>Go 的 table-driven 測試風格簡單易讀、方便維護，是撰寫單元測試的最佳實踐之一。當你在寫測試時遇到需要覆蓋多種條件的情境，請優先考慮這種寫法。</p>
-<h2 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h2><ul>
-<li>Go Wiki - <a target="_blank" rel="noopener" href="https://go.dev/wiki/TableDrivenTests">“Table-Driven Tests”</a></li>
-<li>Andrew Gerrand, <a target="_blank" rel="noopener" href="https://talks.golang.org/2014/testing.slide">“Go testing techniques”</a></li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmd8qm69p004omi9b1jcbbpcb" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
 
     </footer>
   </div>
@@ -1061,7 +1092,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Big-Query/" rel="tag">Big Query</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Chrome/" rel="tag">Chrome</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Google-Cloud-Platform/" rel="tag">Google Cloud Platform</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Mac/" rel="tag">Mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/NumPy/" rel="tag">NumPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Professional-Cloud-Architect/" rel="tag">Professional Cloud Architect</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/RDB/" rel="tag">RDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/Recommender-System/" rel="tag">Recommender System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/SciPy/" rel="tag">SciPy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/System-Design/" rel="tag">System Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/avro/" rel="tag">avro</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/programming/" rel="tag">programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sbt/" rel="tag">sbt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li><li class="tag-list-item"><a class="tag-list-link" href="/note/tags/sklearn/" rel="tag">sklearn</a></li></ul>
     </div>
   </div>
 
@@ -1071,7 +1102,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
+      <a href="/note/tags/Architecture/" style="font-size: 10px;">Architecture</a> <a href="/note/tags/Big-Query/" style="font-size: 11.43px;">Big Query</a> <a href="/note/tags/Chrome/" style="font-size: 10px;">Chrome</a> <a href="/note/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/note/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/note/tags/Go/" style="font-size: 17.14px;">Go</a> <a href="/note/tags/Google-Cloud-Platform/" style="font-size: 12.86px;">Google Cloud Platform</a> <a href="/note/tags/IPython/" style="font-size: 10px;">IPython</a> <a href="/note/tags/Java/" style="font-size: 11.43px;">Java</a> <a href="/note/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/note/tags/LeetCode/" style="font-size: 10px;">LeetCode</a> <a href="/note/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/note/tags/NumPy/" style="font-size: 14.29px;">NumPy</a> <a href="/note/tags/Professional-Cloud-Architect/" style="font-size: 10px;">Professional Cloud Architect</a> <a href="/note/tags/Python/" style="font-size: 20px;">Python</a> <a href="/note/tags/RDB/" style="font-size: 10px;">RDB</a> <a href="/note/tags/Recommender-System/" style="font-size: 10px;">Recommender System</a> <a href="/note/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/note/tags/SciPy/" style="font-size: 10px;">SciPy</a> <a href="/note/tags/System-Design/" style="font-size: 10px;">System Design</a> <a href="/note/tags/avro/" style="font-size: 10px;">avro</a> <a href="/note/tags/git/" style="font-size: 15.71px;">git</a> <a href="/note/tags/pandas/" style="font-size: 18.57px;">pandas</a> <a href="/note/tags/programming/" style="font-size: 10px;">programming</a> <a href="/note/tags/sbt/" style="font-size: 10px;">sbt</a> <a href="/note/tags/seaborn/" style="font-size: 10px;">seaborn</a> <a href="/note/tags/sklearn/" style="font-size: 14.29px;">sklearn</a>
     </div>
   </div>
 
@@ -1093,6 +1124,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
           </li>
         
@@ -1106,10 +1141,6 @@
         
           <li>
             <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/14/Bitwise-Operators-in-Go/">Bitwise Operators in Go</a>
           </li>
         
       </ul>
