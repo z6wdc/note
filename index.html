@@ -69,6 +69,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-go-variable-declaration" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/08/28/go-variable-declaration/" class="article-date">
+  <time class="dt-published" datetime="2025-08-28T23:21:00.000Z" itemprop="datePublished">2025-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/08/28/go-variable-declaration/">Go variable declaration</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Go-變數宣告速查表"><a href="#Go-變數宣告速查表" class="headerlink" title="Go 變數宣告速查表"></a>Go 變數宣告速查表</h1><h2 id="1-基本宣告（指定型別，不給值）"><a href="#1-基本宣告（指定型別，不給值）" class="headerlink" title="1. 基本宣告（指定型別，不給值）"></a>1. 基本宣告（指定型別，不給值）</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x <span class="type">int</span>     <span class="comment">// x = 0</span></span><br><span class="line"><span class="keyword">var</span> s <span class="type">string</span>  <span class="comment">// s = &quot;&quot;</span></span><br><span class="line"><span class="keyword">var</span> b <span class="type">bool</span>    <span class="comment">// b = false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-自動推斷型別（給值，不指定型別）"><a href="#2-自動推斷型別（給值，不指定型別）" class="headerlink" title="2. 自動推斷型別（給值，不指定型別）"></a>2. 自動推斷型別（給值，不指定型別）</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">10</span>        <span class="comment">// int</span></span><br><span class="line"><span class="keyword">var</span> s = <span class="string">&quot;hello&quot;</span>   <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-同時指定型別與初始值"><a href="#3-同時指定型別與初始值" class="headerlink" title="3. 同時指定型別與初始值"></a>3. 同時指定型別與初始值</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x <span class="type">int</span> = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> s <span class="type">string</span> = <span class="string">&quot;hi&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-短變數宣告（函式內專用）"><a href="#4-短變數宣告（函式內專用）" class="headerlink" title="4. 短變數宣告（函式內專用）"></a>4. 短變數宣告（函式內專用）</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x := <span class="number">10</span></span><br><span class="line">s := <span class="string">&quot;world&quot;</span></span><br><span class="line">b := <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-多重變數宣告"><a href="#5-多重變數宣告" class="headerlink" title="5. 多重變數宣告"></a>5. 多重變數宣告</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a, b, c <span class="type">int</span>           <span class="comment">// 全部 int，初始值 0</span></span><br><span class="line"><span class="keyword">var</span> x, y = <span class="number">1</span>, <span class="string">&quot;hello&quot;</span>     <span class="comment">// 自動推斷型別</span></span><br><span class="line">m, n := <span class="number">10</span>, <span class="literal">false</span>         <span class="comment">// 短變數宣告</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-分組宣告（常用於多個變數）"><a href="#6-分組宣告（常用於多個變數）" class="headerlink" title="6. 分組宣告（常用於多個變數）"></a>6. 分組宣告（常用於多個變數）</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    a <span class="type">int</span></span><br><span class="line">    b = <span class="string">&quot;string&quot;</span></span><br><span class="line">    c <span class="type">bool</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="使用建議：var-vs"><a href="#使用建議：var-vs" class="headerlink" title="使用建議：var vs :&#x3D;"></a>使用建議：var vs :&#x3D;</h1><ul>
+<li><p><strong>用 <code>var</code> 的情境：</strong></p>
+<ul>
+<li>需要宣告在函式外（package 層級）</li>
+<li>需要指定型別但暫時不賦值</li>
+<li>需要保持程式碼一致性（例如團隊規範）</li>
+</ul>
+</li>
+<li><p><strong>用 <code>:=</code> 的情境：</strong></p>
+<ul>
+<li>在函式內，想快速宣告並初始化</li>
+<li>讓編譯器自動推斷型別即可</li>
+<li>更簡潔，Go 程式碼中最常見</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/08/28/go-variable-declaration/" data-id="cmeviocbo004rnr8pb7wwdlzh" data-title="Go variable declaration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Bidirectional-Map" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/07/19/Bidirectional-Map/" class="article-date">
@@ -160,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmdb95d1d0000n99b0zd437vn" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmevioc9p0000nr8p39aaffwz" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -215,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmdb95d1q000cn99bfng56jzw" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmevioca3000cnr8phqhngzxb" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -383,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmdb95d3n006xn99bdn0n9w1r" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmevioccg0071nr8p0y0ue1w9" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -451,7 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmdb95d34004jn99b8cli81gl" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmeviocbm004jnr8p05rp5s94" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -570,7 +638,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmdb95d36004on99b5xfq60xx" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmeviocbn004onr8pa2o5g0to" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -671,7 +739,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmdb95d1m0004n99b615p2lwr" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmevioc9y0004nr8pcnxueo0i" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -773,7 +841,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmdb95d300047n99b0166eeke" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmeviocbi0047nr8p4g99aroo" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -908,7 +976,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmdb95d2v003on99b2r2xfljn" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/06/11/common-open-source-licenses/" data-id="cmeviocbe003rnr8ph64xaboq" data-title="common open source licenses" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1000,67 +1068,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmdb95d2w003tn99bfop4f8q8" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Java-virtual-method" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/05/17/Java-virtual-method/" class="article-date">
-  <time class="dt-published" datetime="2025-05-17T05:51:56.000Z" itemprop="datePublished">2025-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在 Java 中，虛擬方法（Virtual Method）是指在執行階段會根據「實際物件的類型」來動態決定要執行哪個方法實作的機制。</p>
-<p>這是物件導向程式設計中實現多型（polymorphism）的核心功能之一。</p>
-<h2 id="Java-的虛擬方法定義"><a href="#Java-的虛擬方法定義" class="headerlink" title="Java 的虛擬方法定義"></a>Java 的虛擬方法定義</h2><p>在 Java 中，<strong>除了 <code>static</code>、<code>private</code> 和 <code>final</code> 方法之外，所有的方法預設都是虛擬方法</strong>。也就是說，大多數的實例方法都會在執行時被動態繫結（dynamic dispatch）。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
-<li>使用父類別參考指向子類別物件時，呼叫的方法會依照「實際物件的類型」決定。</li>
-<li>呼叫的決策發生在執行階段，而不是編譯階段。</li>
-<li>支援 override：子類別可以覆寫父類別的方法實作。</li>
-</ul>
-<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal speaks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog barks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();  <span class="comment">// 父類別參考指向 Dog 實體</span></span><br><span class="line">        a.speak();             <span class="comment">// 輸出：Dog barks</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>雖然變數 a 是 Animal 型別，但實際物件是 Dog，因此呼叫的是 Dog 類別中的 speak 方法。這就是虛擬方法的行為。</p>
-<h2 id="非虛擬方法（Non-Virtual-Method）"><a href="#非虛擬方法（Non-Virtual-Method）" class="headerlink" title="非虛擬方法（Non-Virtual Method）"></a>非虛擬方法（Non-Virtual Method）</h2><p>以下幾種方法不是虛擬方法，因為它們不支援 override 或不會被動態繫結：</p>
-<ul>
-<li>static 方法：屬於類別本身</li>
-<li>private 方法：僅能在定義該方法的類別中使用</li>
-<li>final 方法：不允許被子類別覆寫</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">staticMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal static&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">privateMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal private&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">finalMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal final&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>Java 中的虛擬方法機制是實現多型的關鍵。除非方法被聲明為 <code>static</code>、<code>final</code> 或 <code>private</code>，否則它預設就是虛擬的，會依照執行時的實際物件決定呼叫的版本。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmdb95d1x000on99bfogi41zy" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmeviocbe003tnr8pa47h8xzp" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1078,7 +1086,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/note/page/2/">2</a><a class="page-number" href="/note/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/13/">13</a><a class="extend next" rel="next" href="/note/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1111,7 +1119,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -1122,6 +1130,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/08/28/go-variable-declaration/">Go variable declaration</a>
+          </li>
         
           <li>
             <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
@@ -1137,10 +1149,6 @@
         
           <li>
             <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
           </li>
         
       </ul>

