@@ -3,7 +3,7 @@ title: Go variable declaration
 date: 2025-08-28 23:21:00
 tags: ['Go']
 ---
-# Go 變數宣告速查表
+# Go 變數宣告
 
 ## 1. 基本宣告（指定型別，不給值）
 ```go
