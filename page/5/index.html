@@ -69,6 +69,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-IPython-timeit" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2022/10/31/IPython-timeit/" class="article-date">
+  <time class="dt-published" datetime="2022-10-31T02:41:14.000Z" itemprop="datePublished">2022-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2022/10/31/IPython-timeit/">IPython timeit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit">%timeit</a></p>
+<p>可以利用 <code>%timeit</code> 來看 line 的執行時間</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%timeit college.loc[cn, <span class="string">&#x27;UGDS_WHITE&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>如果要看 cell 的執行時間可以利用 <code>%%timeit</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%%timeit</span><br><span class="line">row_num = college.index.get_loc(cn)</span><br><span class="line">col_num = college.columns.get_loc(<span class="string">&#x27;UGDS_WHITE&#x27;</span>)</span><br><span class="line">row_num, col_num</span><br></pre></td></tr></table></figure>
+
+<p>還可以利用 <code>-r</code> 跟 <code>-n</code> 來決定 repeat 次數跟 number 大小</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2022/10/31/IPython-timeit/" data-id="cmex242my000mm68p22iy1eke" data-title="IPython timeit" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/IPython/" rel="tag">IPython</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Python-reduce" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/10/20/Python-reduce/" class="article-date">
@@ -100,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cmeviocb2002knr8pae15e2vj" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/10/20/Python-reduce/" data-id="cmex242no002km68p0pem5fr7" data-title="Python reduce()" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -146,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cmeviocb3002nnr8pb3zd7sfe" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-requests-redirection/" data-id="cmex242np002nm68p9rcphysc" data-title="Python requests redirection" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -194,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cmeviocap001snr8pgkqzdyt1" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/30/Python-dotenv/" data-id="cmex242ng001ym68pc0kzbv1y" data-title="Python dotenv" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -237,7 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cmeviocav001znr8pejnx9pjl" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/29/Python-glob/" data-id="cmex242nh001zm68p6887en8n" data-title="Python glob" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -286,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cmevioca10009nr8p05ey4v2j" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/20/Docker-Volume/" data-id="cmex242mt000cm68pfmvoffg9" data-title="Docker Volume" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -342,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cmeviocan001mnr8phwwh9jgl" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/17/Python-datetime-strftime-vs-strptime/" data-id="cmex242nc001km68p372s6wta" data-title="Python datetime strftime vs strptime" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -388,7 +436,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cmeviocc50066nr8phm5c6yam" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/12/pandas-select-dtypes/" data-id="cmex242oq0068m68p38naahiu" data-title="pandas select_dtypes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -436,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cmeviocaz0029nr8p65fv0yj7" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/09/10/Python-os-makedirs/" data-id="cmex242nk0029m68pazvqdjx1" data-title="Python os makedirs" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -484,58 +532,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cmeviocbt0058nr8p18u2f9xw" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cmex242og0058m68p1jm9684p" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-seaborn-plot-types" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/22/seaborn-plot-types/" class="article-date">
-  <time class="dt-published" datetime="2021-08-22T17:14:14.000Z" itemprop="datePublished">2021-08-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/22/seaborn-plot-types/">seaborn plot types</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>在做 Data Visualization 時</p>
-<p>可以使用 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/index.html">seaborn</a> 這套 library</p>
-<p><code>seaborn</code> 也有提供 <a target="_blank" rel="noopener" href="https://seaborn.pydata.org/api.html">API</a> 一欄</p>
-<p>讓你知道可以畫什麼種類的圖</p>
-<p>而我們通常會畫的圖</p>
-<p>可以分為</p>
-<h2 id="Trend"><a href="#Trend" class="headerlink" title="Trend"></a>Trend</h2><h3 id="sns-lineplot"><a href="#sns-lineplot" class="headerlink" title="sns.lineplot"></a>sns.lineplot</h3><h2 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h2><h3 id="sns-barplot"><a href="#sns-barplot" class="headerlink" title="sns.barplot"></a>sns.barplot</h3><h3 id="sns-heatmap"><a href="#sns-heatmap" class="headerlink" title="sns.heatmap"></a>sns.heatmap</h3><h3 id="sns-scatterplot"><a href="#sns-scatterplot" class="headerlink" title="sns.scatterplot"></a>sns.scatterplot</h3><h3 id="sns-regplot"><a href="#sns-regplot" class="headerlink" title="sns.regplot"></a>sns.regplot</h3><h3 id="sns-lmplot"><a href="#sns-lmplot" class="headerlink" title="sns.lmplot"></a>sns.lmplot</h3><h3 id="sns-swarmplot"><a href="#sns-swarmplot" class="headerlink" title="sns.swarmplot"></a>sns.swarmplot</h3><h2 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h2><h3 id="sns-distplot"><a href="#sns-distplot" class="headerlink" title="sns.distplot"></a>sns.distplot</h3><h3 id="sns-kdeplot"><a href="#sns-kdeplot" class="headerlink" title="sns.kdeplot"></a>sns.kdeplot</h3><h3 id="sns-jointplot"><a href="#sns-jointplot" class="headerlink" title="sns.jointplot"></a>sns.jointplot</h3><p><a target="_blank" rel="noopener" href="https://www.kaggle.com/alexisbcook/choosing-plot-types-and-custom-styles?scriptVersionId=64768944&cellId=1">REFERENCE</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cmeviocca006lnr8phuhyhhqr" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/seaborn/" rel="tag">seaborn</a></li></ul>
 
     </footer>
   </div>
@@ -595,6 +596,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/08/30/name-type-vs-literal-type/">name type vs literal type</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/08/28/go-variable-declaration/">Go variable declaration</a>
           </li>
         
@@ -608,10 +613,6 @@
         
           <li>
             <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
           </li>
         
       </ul>

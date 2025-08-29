@@ -69,6 +69,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-constructor-virtual-method-problem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/05/17/constructor-virtual-method-problem/" class="article-date">
+  <time class="dt-published" datetime="2025-05-17T06:03:46.000Z" itemprop="datePublished">2025-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/05/17/constructor-virtual-method-problem/">constructor virtual method problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在 Java 中，如果你在建構子內呼叫了一個「可以被子類覆寫」的方法（也就是虛擬方法 &#x2F; 非 <code>final</code> &#x2F; 非 <code>private</code> 的方法）</p>
+<p>而該方法實際上在子類中有實作，這會導致父類建構子呼叫時，<strong>執行的是子類的版本</strong></p>
+<p>但此時子類的欄位還沒初始化完成，可能發生以下問題：</p>
+<ul>
+<li><code>NullPointerException</code></li>
+<li>初始化邏輯錯誤</li>
+<li>難以除錯的 bug</li>
+</ul>
+<h2 id="範例：錯誤使用"><a href="#範例：錯誤使用" class="headerlink" title="範例：錯誤使用"></a>範例：錯誤使用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Parent</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Parent constructor start&quot;</span>);</span><br><span class="line">        init(); <span class="comment">// 呼叫虛擬方法</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Parent constructor end&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Parent init&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_">Parent</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">message</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Child</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Child constructor&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Child init: &quot;</span> + message.length()); <span class="comment">// NPE 發生</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Child</span> <span class="variable">c</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Child</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="輸出結果"><a href="#輸出結果" class="headerlink" title="輸出結果"></a>輸出結果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Parent constructor start</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.NullPointerException</span><br></pre></td></tr></table></figure>
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Java 的物件建構流程是：先執行父類別建構子 → 再執行子類別建構子</p>
+<p>但 init() 是 <code>virtual method</code>，因此在 Parent() 裡呼叫會走向 Child.init()</p>
+<p>而此時 Child 的建構子還沒開始跑 → 欄位尚未初始化</p>
+<h2 id="實務範例：Service-初始化失敗"><a href="#實務範例：Service-初始化失敗" class="headerlink" title="實務範例：Service 初始化失敗"></a>實務範例：Service 初始化失敗</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BaseService</span><span class="params">()</span> &#123;</span><br><span class="line">        init(); <span class="comment">// 呼叫虛擬方法</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = <span class="keyword">new</span> <span class="title class_">UserRepository</span>(); <span class="comment">// 尚未初始化</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect(); <span class="comment">// 這裡會 NPE</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="正確寫法"><a href="#正確寫法" class="headerlink" title="正確寫法"></a>正確寫法</h2><h3 id="1-在子類-constructor-中主動呼叫"><a href="#1-在子類-constructor-中主動呼叫" class="headerlink" title="1. 在子類 constructor 中主動呼叫"></a>1. 在子類 constructor 中主動呼叫</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = <span class="keyword">new</span> <span class="title class_">UserRepository</span>();</span><br><span class="line">        init(); <span class="comment">// 子類自行控制時機</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-使用工廠模式或建構器（Builder）"><a href="#2-使用工廠模式或建構器（Builder）" class="headerlink" title="2. 使用工廠模式或建構器（Builder）"></a>2. 使用工廠模式或建構器（Builder）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">UserService</span> <span class="keyword">extends</span> <span class="title class_">BaseService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserService</span><span class="params">(UserRepository userRepository)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userRepository = userRepository;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> &#123;</span><br><span class="line">        userRepository.connect();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="避免錯誤的原則"><a href="#避免錯誤的原則" class="headerlink" title="避免錯誤的原則"></a>避免錯誤的原則</h2><table>
+<thead>
+<tr>
+<th>原則</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>❌ 建構子內呼叫虛擬方法</td>
+<td>子類尚未初始化，可能導致 NPE</td>
+</tr>
+<tr>
+<td>✅ 在子類中手動呼叫</td>
+<td>子類控制初始化時機</td>
+</tr>
+<tr>
+<td>✅ 使用組合代替繼承</td>
+<td>避免虛擬呼叫的風險</td>
+</tr>
+<tr>
+<td>✅ 使用 <code>final</code> 或 <code>private</code> 方法</td>
+<td>保證建構期內方法不會被覆寫</td>
+</tr>
+</tbody></table>
+<h2 id="總結"><a href="#總結" class="headerlink" title="總結"></a>總結</h2><p>在 constructor 中呼叫會被覆寫的方法是 Java 中著名的設計陷阱。實務上應：</p>
+<ul>
+<li>儘量避免繼承中帶有邏輯的 constructor</li>
+<li>初始化責任應交給子類</li>
+<li>改用組合與明確初始化階段（例如 <code>init()</code>、<code>setup()</code> 方法）</li>
+</ul>
+<p>這樣可以讓程式碼更穩定、可預測、也更容易維護。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/constructor-virtual-method-problem/" data-id="cmex242o0003tm68p8qdbdo4y" data-title="constructor virtual method problem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Java-virtual-method" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/05/17/Java-virtual-method/" class="article-date">
@@ -115,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmeviocaa000onr8p1q095sii" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/Java-virtual-method/" data-id="cmex242mz000om68pfrws1d0h" data-title="Java virtual method" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -189,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmeviocbm004mnr8p01cg1z0m" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/17/go-table-driven-test/" data-id="cmex242oa004mm68p1e829ahs" data-title="go table-driven test" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -273,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmeviocbc003jnr8pfrqg6nkg" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/08/avro-overview-and-examples/" data-id="cmex242ny003jm68pb74zcyjj" data-title="avro overview and examples" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -385,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmeviocbk004dnr8phsss89u8" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/05/gitmessage-guide/" data-id="cmex242o7004dm68pgeyjh14r" data-title="gitmessage guide" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -469,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmeviocbl004hnr8p4xo581h8" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/05/02/go-mock/" data-id="cmex242o8004fm68pd9n469ak" data-title="go mock" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -589,7 +683,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmevioca5000enr8pbxmb61b4" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/Go-Module/" data-id="cmex242mv000em68p0avldfq8" data-title="Go Module" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -714,7 +808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmeviocbl004fnr8pbiwsael1" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/26/go-install-vs-go-get/" data-id="cmex242o9004jm68phina14xb" data-title="go install vs go get" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -852,7 +946,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmevioca7000gnr8p7h0geaqs" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/05/Go-install/" data-id="cmex242mw000gm68pgxcchmhb" data-title="Go install" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -900,98 +994,7 @@ flowchart TD
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmeviocbf003wnr8phol7edik" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-CAP-Theorem" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/04/02/CAP-Theorem/" class="article-date">
-  <time class="dt-published" datetime="2025-04-02T18:07:39.000Z" itemprop="datePublished">2025-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/04/02/CAP-Theorem/">CAP Theorem</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>CAP 理論是由美國計算機科學家 Eric Brewer 提出，指出在一個<strong>分散式資料庫系統</strong>中，以下三者無法同時完全滿足，只能選擇其中兩個：</p>
-<ul>
-<li><strong>C：Consistency（一致性）</strong></li>
-<li><strong>A：Availability（可用性）</strong></li>
-<li><strong>P：Partition Tolerance（分區容忍性）</strong></li>
-</ul>
-<hr>
-<h2 id="三要素說明"><a href="#三要素說明" class="headerlink" title="三要素說明"></a>三要素說明</h2><h3 id="一致性（Consistency）"><a href="#一致性（Consistency）" class="headerlink" title="一致性（Consistency）"></a>一致性（Consistency）</h3><p>所有節點在同一時間看到的資料都是一致的。例如：使用者 A 寫入後，使用者 B 馬上讀到同樣的資料。</p>
-<h3 id="可用性（Availability）"><a href="#可用性（Availability）" class="headerlink" title="可用性（Availability）"></a>可用性（Availability）</h3><p>每個請求都能在合理時間內獲得回應，即使部分節點有問題也能繼續提供服務。</p>
-<h3 id="分區容忍性（Partition-Tolerance）"><a href="#分區容忍性（Partition-Tolerance）" class="headerlink" title="分區容忍性（Partition Tolerance）"></a>分區容忍性（Partition Tolerance）</h3><p>系統能容忍網路分區或節點之間通訊中斷的情況，仍然能繼續運作。</p>
-<hr>
-<h2 id="為什麼不能三者兼得？"><a href="#為什麼不能三者兼得？" class="headerlink" title="為什麼不能三者兼得？"></a>為什麼不能三者兼得？</h2><p>當網路分區（P）發生時，必須在「一致性（C）」與「可用性（A）」之間做出選擇：</p>
-<ul>
-<li>如果選擇 <strong>一致性（C）</strong>，系統會犧牲可用性來保證資料一致性（可能暫時拒絕請求）。</li>
-<li>如果選擇 <strong>可用性（A）</strong>，系統會犧牲一致性來保持服務持續可用（可能讀到舊資料）。</li>
-</ul>
-<hr>
-<h2 id="CAP-組合與代表系統"><a href="#CAP-組合與代表系統" class="headerlink" title="CAP 組合與代表系統"></a>CAP 組合與代表系統</h2><table>
-<thead>
-<tr>
-<th>類型</th>
-<th>組合</th>
-<th>特性說明</th>
-<th>代表系統</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CP</td>
-<td>一致性 + 分區容忍性</td>
-<td>保證一致性，但可能暫時無法服務</td>
-<td>HBase、MongoDB（某些設定）</td>
-</tr>
-<tr>
-<td>AP</td>
-<td>可用性 + 分區容忍性</td>
-<td>系統持續可用，但資料可能不同步</td>
-<td>Cassandra、CouchDB</td>
-</tr>
-<tr>
-<td>CA</td>
-<td>一致性 + 可用性</td>
-<td>僅適用於單節點，無法容忍分區</td>
-<td>傳統單機資料庫（非分散式系統）</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><strong>現代分散式系統幾乎都會選擇 P（分區容忍性），因為網路分區是不可避免的情況。</strong></p>
-</blockquote>
-<hr>
-<h2 id="小結"><a href="#小結" class="headerlink" title="小結"></a>小結</h2><ul>
-<li>分散式系統中 CAP 三者不可兼得，只能取其二。</li>
-<li>系統設計需根據業務需求，在一致性與可用性中取得平衡。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/04/02/CAP-Theorem/" data-id="cmevioc9z0005nr8p7ocf7fzz" data-title="CAP Theorem" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/04/04/first-class-object/" data-id="cmex242o1003wm68p2ji9a7s4" data-title="first class object" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -1053,6 +1056,10 @@ flowchart TD
       <ul>
         
           <li>
+            <a href="/note/2025/08/30/name-type-vs-literal-type/">name type vs literal type</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/08/28/go-variable-declaration/">Go variable declaration</a>
           </li>
         
@@ -1066,10 +1073,6 @@ flowchart TD
         
           <li>
             <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/17/go-string-byte-rune/">Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理</a>
           </li>
         
       </ul>
