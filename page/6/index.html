@@ -69,6 +69,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-pandas-dataframe-from-dict" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2021/08/29/pandas-dataframe-from-dict/" class="article-date">
+  <time class="dt-published" datetime="2021-08-29T14:13:12.000Z" itemprop="datePublished">2021-08-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2021/08/29/pandas-dataframe-from-dict/">pandas dataframe from_dict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html">from_dict</a></p>
+<p>可以利用 <code>from_dict</code> 把 <code>dictionary</code> 做成 <code>dataframe</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;col_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;col_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data)</span><br></pre></td></tr></table></figure>
+
+<p>而 <code>dictionary</code> 的 key 可以當作 column 或是 row 的 name</p>
+<p>預設會當做 column 的 name</p>
+<p>指定為 row 的方法是指定參數 <code>orient</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;<span class="string">&#x27;row_1&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>], <span class="string">&#x27;row_2&#x27;</span>: [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>]&#125;</span><br><span class="line">pd.DataFrame.from_dict(data, orient=<span class="string">&#x27;index&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2021/08/29/pandas-dataframe-from-dict/" data-id="cmfbs24ot005dn24z2dtn0nvu" data-title="pandas dataframe from_dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/pandas/" rel="tag">pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-seaborn-plot-types" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2021/08/22/seaborn-plot-types/" class="article-date">
@@ -102,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cmex242ot006pm68pa6nharho" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/22/seaborn-plot-types/" data-id="cmfbs24p4006sn24zdg24e1nr" data-title="seaborn plot types" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -147,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cmex242nf001sm68pfat9gx0f" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-enumerate/" data-id="cmfbs24nw001un24zcurqg4mm" data-title="Python enumerate" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -199,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cmex242n30012m68paa5ba9uw" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/PEP8-Programming-Recommendations/" data-id="cmfbs24nk0012n24z5qnlccfp" data-title="PEP8 Programming Recommendations" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmex242n40016m68pdia1274r" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/18/Python-Classes/" data-id="cmfbs24nl0016n24zfxovdka6" data-title="Python Classes" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -297,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cmex242ow006ym68p2so40hz1" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/10/sklearn-impute-SimpleImputer/" data-id="cmfbs24p70073n24zcrox5q46" data-title="sklearn impute SimpleImputer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -358,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cmex242ne001om68pgttihijb" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-dict/" data-id="cmfbs24nu001on24zb1jpcgki" data-title="Python dict" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -412,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cmex242np002pm68pfo7j9hfx" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/06/Python-sorting/" data-id="cmfbs24o4002pn24zai0m5249" data-title="Python sorting" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -482,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cmex242nm002fm68pdx9xf9zr" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/05/Python-re-match-objects/" data-id="cmfbs24o2002fn24zapsbhdbm" data-title="Python re Match Objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -534,51 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cmex242ni0023m68p6box4x1j" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Python-pprint" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2021/08/01/Python-pprint/" class="article-date">
-  <time class="dt-published" datetime="2021-08-01T03:25:59.000Z" itemprop="datePublished">2021-08-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2021/08/01/Python-pprint/">Python pprint</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a target="_blank" rel="noopener" href="https://docs.python.org/3/library/pprint.html">pprint</a></p>
-<p>使用 pprint 可以列印出更容易閱讀的格式</p>
-<p>列印 json format 的時候會很有幫助</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint</span><br><span class="line"></span><br><span class="line">pprint(data, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2021/08/01/Python-pprint/" data-id="cmex242nl002bm68pamgw9eb5" data-title="Python pprint" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2021/08/02/Python-json/" data-id="cmfbs24ny0023n24z441hcttk" data-title="Python json" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -629,7 +633,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/09/">September 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/08/">August 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/07/">July 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/note/archives/2021/05/">May 2021</a></li></ul>
     </div>
   </div>
 
@@ -640,6 +644,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/note/2025/09/07/go-escape-analysis/">Escape Analysis</a>
+          </li>
         
           <li>
             <a href="/note/2025/08/30/name-type-vs-literal-type/">name type vs literal type</a>
@@ -655,10 +663,6 @@
         
           <li>
             <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/17/unicode/">Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point</a>
           </li>
         
       </ul>
