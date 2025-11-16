@@ -69,6 +69,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-go-stack-growth" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/note/2025/09/09/go-stack-growth/" class="article-date">
+  <time class="dt-published" datetime="2025-09-09T09:45:38.000Z" itemprop="datePublished">2025-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/note/2025/09/09/go-stack-growth/">stack growth</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Go-的-Stack-成長特性"><a href="#Go-的-Stack-成長特性" class="headerlink" title="Go 的 Stack 成長特性"></a>Go 的 Stack 成長特性</h2><ul>
+<li>Go 採用 <strong>動態可擴展的 stack</strong>。</li>
+<li>Go 一開始每個 goroutine 的 stack <strong>只有 2 KB</strong>。</li>
+<li>當遞迴或函式呼叫需要更多空間時，Go 會自動分配更大的 stack，並把原本的內容搬移過去。</li>
+<li>Stack 會成倍成長（通常是 2 倍）。例如：2 KB → 4 KB → 8 KB → 16 KB…</li>
+</ul>
+<h3 id="特點"><a href="#特點" class="headerlink" title="特點"></a>特點</h3><ul>
+<li><strong>優點</strong>：節省記憶體，goroutine 可以非常多。</li>
+<li><strong>缺點</strong>：需要搬移時有額外成本。</li>
+</ul>
+<h2 id="程式碼範例"><a href="#程式碼範例" class="headerlink" title="程式碼範例"></a>程式碼範例</h2><p><a target="_blank" rel="noopener" href="https://github.com/z6wdc/go-snippets/tree/main/stackgrowth">https://github.com/z6wdc/go-snippets/tree/main/stackgrowth</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://z6wdc.github.io/note/2025/09/09/go-stack-growth/" data-id="cmi1iskvm004mn9295v1s3mz8" data-title="stack growth" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-go-escape-analysis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/note/2025/09/07/go-escape-analysis/" class="article-date">
@@ -109,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/09/07/go-escape-analysis/" data-id="cmfbs24ok004fn24zdh6abxax" data-title="Escape Analysis" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/09/07/go-escape-analysis/" data-id="cmi1iskvk004fn9296td2603t" data-title="Escape Analysis" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -164,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/08/30/name-type-vs-literal-type/" data-id="cmfbs24oq004yn24ze9m9gpt3" data-title="name type vs literal type" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/08/30/name-type-vs-literal-type/" data-id="cmi1iskvq0051n9296usla2xx" data-title="name type vs literal type" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -232,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/08/28/go-variable-declaration/" data-id="cmfbs24oo004rn24z8bqa5qrt" data-title="Go variable declaration" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/08/28/go-variable-declaration/" data-id="cmi1iskvp004wn92975zqgnn0" data-title="Go variable declaration" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -337,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmfbs24mz0000n24zgdal0xrb" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/19/Bidirectional-Map/" data-id="cmi1isktv0000n929denua15o" data-title="雙向 Hash Map" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -392,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmfbs24nb000cn24z5sv17mu4" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/18/Go-LoopvarExperiment/" data-id="cmi1isku7000cn9298g400v08" data-title="Go語言 for 迴圈中閉包捕捉變數行為" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -560,7 +611,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmfbs24p80077n24z3qyk84mc" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/unicode/" data-id="cmi1iskw80079n92923dw17n2" data-title="Unicode 編碼設計說明：UTF-8、UTF-16、UTF-32 與 Code Point" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -628,7 +679,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmfbs24on004mn24zgrty1y6t" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-string-byte-rune/" data-id="cmi1iskvn004on929gxukf6wv" data-title="Go 語言中的 string、byte、rune 與 UTF-8 編碼關係整理" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -747,7 +798,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmfbs24op004tn24z5if1fwij" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/17/go-type-casting/" data-id="cmi1iskvp004tn9298w3yb7tr" data-title="Go 型別轉換" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -848,113 +899,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmfbs24n60004n24zgtyc6e76" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2025/07/14/Bitwise-Operators-in-Go/" data-id="cmi1isku30004n929hho3d27e" data-title="Bitwise Operators in Go" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/Go/" rel="tag">Go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-git-merge-vs-rebase" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/note/2025/07/09/git-merge-vs-rebase/" class="article-date">
-  <time class="dt-published" datetime="2025-07-09T07:31:06.000Z" itemprop="datePublished">2025-07-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/note/2025/07/09/git-merge-vs-rebase/">git merge vs rebase</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>多人協作開發中，merge 與 rebase 是最常見的兩種分支整合策略</p>
-<h2 id="多人-merge-流程"><a href="#多人-merge-流程" class="headerlink" title="多人 merge 流程"></a>多人 merge 流程</h2><p>以下是兩位開發者共同開發 <code>feature/main</code>，使用 merge 進行同步與整合的完整流程：</p>
-<ol>
-<li><p>從 <code>feature/main</code> 切出各自的開發分支<br>例如 <code>feature/user1-work</code> 與 <code>feature/user2-work</code></p>
-</li>
-<li><p>各自進行開發工作<br>user1 完成 commit B，user2 完成 commit C</p>
-</li>
-<li><p><code>feature/main</code> 有了新的進度 F<br>可能來自其他成員的 merge 或修正</p>
-</li>
-<li><p>雙方將最新主線進度 merge 回自己的分支<br>user1 執行 git merge feature&#x2F;main → 產生 commit D（merge commit）<br>user2 也執行相同操作 → 產生 commit E（merge commit）</p>
-</li>
-<li><p>user1 完成開發後，將分支 merge 回 <code>feature/main</code><br>→ 產生 merge commit M1</p>
-</li>
-<li><p>user2 在合併前，再次與最新的 <code>feature/main</code> 同步<br>→ 將 M1（user1 的改動）merge 回自己的分支，解決衝突並確認測試通過<br>→ 然後將自己的分支 merge 回 <code>feature/main</code>，產生 M2</p>
-</li>
-</ol>
-<h2 id="多人-rebase-流程"><a href="#多人-rebase-流程" class="headerlink" title="多人 rebase 流程"></a>多人 rebase 流程</h2><p>以下是兩位開發者共同開發 <code>feature/main</code>，使用 rebase 進行同步與整合的完整流程：</p>
-<ol>
-<li><p>從 <code>feature/main</code> 切出各自的開發分支<br>例如 <code>feature/user1-work</code> 與 <code>feature/user2-work</code></p>
-</li>
-<li><p>各自進行開發工作<br>user1 完成 commit B，user2 完成 commit C</p>
-</li>
-<li><p><code>feature/main</code> 有了新的進度 F<br>可能來自其他成員的 merge 或修正</p>
-</li>
-<li><p>雙方將自己的 commit 以 rebase 方式接在 F 後面<br>user1 執行 git rebase feature&#x2F;main → 得到 B’<br>user2 執行 git rebase feature&#x2F;main → 得到 C’</p>
-</li>
-<li><p>user1 將自己的變更合併回 feature&#x2F;main<br>→ 形成 commit M1</p>
-</li>
-<li><p>user2 在合併前，<br>將自己的 commit 再次以 rebase 方式接在 M1 後面 → 得到 C’’</p>
-</li>
-<li><p>user2 再將自己的 C’’ 合併回 feature&#x2F;main<br>→ 形成 commit M2</p>
-</li>
-</ol>
-<h2 id="比較"><a href="#比較" class="headerlink" title="比較"></a>比較</h2><table>
-<thead>
-<tr>
-<th>比較項目</th>
-<th><code>git merge</code></th>
-<th><code>git rebase</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>歷史結構</td>
-<td>保留分支與合併脈絡，可能出現多叉歷史</td>
-<td>線性歷史，結構整齊清楚</td>
-</tr>
-<tr>
-<td>是否產生新 commit</td>
-<td>會產生一個新的 merge commit</td>
-<td>將原本 commit 重新建立在新基礎上（產生新hash）</td>
-</tr>
-<tr>
-<td>commit 順序</td>
-<td>保留原始順序</td>
-<td>會根據 rebase 順序重排</td>
-</tr>
-<tr>
-<td>衝突處理方式</td>
-<td>每次 merge 解一次衝突</td>
-<td>每個 commit 都可能產生 conflict，需要逐個處理</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2025/07/09/git-merge-vs-rebase/" data-id="cmfbs24oi0047n24z7tcj86r2" data-title="git merge vs rebase" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/note/tags/git/" rel="tag">git</a></li></ul>
 
     </footer>
   </div>
@@ -1014,6 +963,10 @@
       <ul>
         
           <li>
+            <a href="/note/2025/09/09/go-stack-growth/">stack growth</a>
+          </li>
+        
+          <li>
             <a href="/note/2025/09/07/go-escape-analysis/">Escape Analysis</a>
           </li>
         
@@ -1027,10 +980,6 @@
         
           <li>
             <a href="/note/2025/07/19/Bidirectional-Map/">雙向 Hash Map</a>
-          </li>
-        
-          <li>
-            <a href="/note/2025/07/18/Go-LoopvarExperiment/">Go語言 for 迴圈中閉包捕捉變數行為</a>
           </li>
         
       </ul>
