@@ -6,15 +6,15 @@
   
   <title>為不同的 GitHub 帳號設定多把 SSH key | note</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="如果有多個 github 帳號（例如個人用，工作用） 如何在同一台電腦上各自設定 SSH key step1 產生 SSH key1ssh-keygen -t ed25519 -C &quot;your_email@personal.com&quot; -f &quot;github-personal&quot;  1ssh-keygen -t ed25519 -C &quot;your_emai">
+  <meta name="description" content="如果有多個 github 帳號（例如個人用，工作用） 如何在同一台電腦上各自設定 SSH key step 1 產生 SSH key1ssh-keygen -t ed25519 -C &quot;your_email@personal.com&quot; -f ~&#x2F;.ssh&#x2F;github-personal  1ssh-keygen -t ed25519 -C &quot;your_email@co">
 <meta property="og:type" content="article">
 <meta property="og:title" content="為不同的 GitHub 帳號設定多把 SSH key">
 <meta property="og:url" content="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/index.html">
 <meta property="og:site_name" content="note">
-<meta property="og:description" content="如果有多個 github 帳號（例如個人用，工作用） 如何在同一台電腦上各自設定 SSH key step1 產生 SSH key1ssh-keygen -t ed25519 -C &quot;your_email@personal.com&quot; -f &quot;github-personal&quot;  1ssh-keygen -t ed25519 -C &quot;your_emai">
+<meta property="og:description" content="如果有多個 github 帳號（例如個人用，工作用） 如何在同一台電腦上各自設定 SSH key step 1 產生 SSH key1ssh-keygen -t ed25519 -C &quot;your_email@personal.com&quot; -f ~&#x2F;.ssh&#x2F;github-personal  1ssh-keygen -t ed25519 -C &quot;your_email@co">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-10-23T11:44:18.000Z">
-<meta property="article:modified_time" content="2025-11-16T09:35:18.788Z">
+<meta property="article:modified_time" content="2026-10-03T14:42:52.623Z">
 <meta property="article:author" content="z6wdc">
 <meta property="article:tag" content="GitHub">
 <meta name="twitter:card" content="summary">
@@ -96,11 +96,11 @@
       
         <p>如果有多個 github 帳號（例如個人用，工作用）</p>
 <p>如何在同一台電腦上各自設定 SSH key</p>
-<h2 id="step1-產生-SSH-key"><a href="#step1-產生-SSH-key" class="headerlink" title="step1 產生 SSH key"></a>step1 產生 SSH key</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@personal.com&quot;</span> -f <span class="string">&quot;github-personal&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="step-1-產生-SSH-key"><a href="#step-1-產生-SSH-key" class="headerlink" title="step 1 產生 SSH key"></a>step 1 產生 SSH key</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@personal.com&quot;</span> -f ~/.ssh/github-personal</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@company.com&quot;</span> -f <span class="string">&quot;github-work&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@company.com&quot;</span> -f ~/.ssh/github-work</span><br></pre></td></tr></table></figure>
 
-<p>這指令會生成新的 SSH 私鑰並將其存儲在 github-work 中，公鑰也會存儲在同樣路徑下，檔案名稱為 github-work.pub</p>
+<p>這指令會生成新的 SSH 私鑰並將其存儲在 ~&#x2F;.ssh&#x2F;github-work 中，公鑰也會存儲在同樣路徑下，檔案名稱為 github-work.pub</p>
 <h3 id="option-說明"><a href="#option-說明" class="headerlink" title="option 說明"></a>option 說明</h3><ul>
 <li>-t: 用來指定 key 的類型</li>
 <li>-C: 用來更改 key 的註解</li>
@@ -110,20 +110,27 @@
 
 <p>如果是 mac 的話可以用上述指令複製 ssh 公鑰</p>
 <p>接著到 GitHub 頁面，進入 Settings → SSH and GPG keys → New SSH key，將複製的公鑰貼上</p>
-<h2 id="step-3-編輯-ssh-config-檔案"><a href="#step-3-編輯-ssh-config-檔案" class="headerlink" title="step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案"></a>step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Host github-work</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-work</span><br><span class="line"></span><br><span class="line">Host github-personal</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-personal</span><br></pre></td></tr></table></figure>
+<p>personal 的公鑰（<code>~/.ssh/github-personal.pub</code>）也用同樣的方式，加到另一個 GitHub 帳號</p>
+<h2 id="step-3-編輯-ssh-config-檔案"><a href="#step-3-編輯-ssh-config-檔案" class="headerlink" title="step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案"></a>step 3 編輯 ~&#x2F;.ssh&#x2F;config 檔案</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Host github-work</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-work</span><br><span class="line">    IdentitiesOnly yes</span><br><span class="line"></span><br><span class="line">Host github-personal</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/github-personal</span><br><span class="line">    IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
 
+<p>如果希望沒有修改 Host 的網址（<code>git@github.com:...</code>）也能使用某個預設帳號，可以再加上 <code>github.com</code> 的設定</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    User git</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br><span class="line">    IdentitiesOnly yes</span><br></pre></td></tr></table></figure>
+
+<p><code>IdentityFile</code> 可以換成想當作預設帳號的私鑰，例如 <code>~/.ssh/github-personal</code></p>
 <p>也可以追加下列設定</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    AddKeysToAgent <span class="built_in">yes</span></span><br><span class="line">    UseKeychain <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">    AddKeysToAgent yes</span><br><span class="line">    UseKeychain yes</span><br></pre></td></tr></table></figure>
 
+<p>SSH 對同一個選項會採用第一個符合的值，所以 <code>Host *</code> 這類通用設定建議放在檔案最後面，避免蓋掉前面個別 Host 的設定</p>
 <h3 id="設定說明"><a href="#設定說明" class="headerlink" title="設定說明"></a>設定說明</h3><ul>
 <li>Host: 本地的 SSH 別名，可以是任何你想要的名稱</li>
 <li>HostName: 用來指定實際的伺服器主機名或 IP 地址</li>
 <li>User: 登入用戶名，GitHub上必須設為 git</li>
 <li>IdentityFile: 指定用戶連接到主機時所使用的私鑰檔案</li>
+<li>IdentitiesOnly: 設為 yes 時，只使用 IdentityFile 指定的私鑰，不會去嘗試 SSH agent 裡的其他金鑰。多帳號時一定要加，否則 SSH 可能先用到另一個帳號的金鑰並認證成功，導致以錯誤的帳號身分操作</li>
 <li>AddKeysToAgent: 用來自動將 SSH 私鑰添加到 SSH agent 中</li>
 <li>UseKeychain: 在 macOS 上，這選項讓 SSH agent 將私鑰存儲在 macOS 的 Keychain 中，進一步減少輸入密碼的頻率</li>
 </ul>
-<h3 id="step4-測試連接"><a href="#step4-測試連接" class="headerlink" title="step4 測試連接"></a>step4 測試連接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T github-work</span><br></pre></td></tr></table></figure>
+<h2 id="step-4-測試連接"><a href="#step-4-測試連接" class="headerlink" title="step 4 測試連接"></a>step 4 測試連接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T github-work</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T github-personal</span><br></pre></td></tr></table></figure>
 
@@ -132,35 +139,39 @@
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github-personal</span><br></pre></td></tr></table></figure>
 
-<p>也可以使用下列命令查看當前正在使用的金鑰</p>
+<p>成功的話會看到類似下面的訊息，可以從 username 確認連到的是哪個帳號</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+
+<h3 id="（選用）查看-SSH-agent-中的金鑰"><a href="#（選用）查看-SSH-agent-中的金鑰" class="headerlink" title="（選用）查看 SSH agent 中的金鑰"></a>（選用）查看 SSH agent 中的金鑰</h3><p>因為 config 中已經用 <code>IdentityFile</code> 指定私鑰，SSH 會直接讀取該檔案，不需要手動加進 SSH agent</p>
+<p>如果想確認 agent 中目前有哪些金鑰，可以使用下列命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
 
-<p>如果 <code>work</code> 的金鑰沒有在列表中，可以使用下列命令將它添加進來</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/github-work</span><br></pre></td></tr></table></figure>
+<p>需要手動加入時，可以使用下列命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/github-work</span><br></pre></td></tr></table></figure>
 
-<h3 id="step5-使用-SSH-進行-Clone"><a href="#step5-使用-SSH-進行-Clone" class="headerlink" title="step5 使用 SSH 進行 Clone"></a>step5 使用 SSH 進行 Clone</h3><p>在 GitHub 上找到你想要 clone 的  SSH URL</p>
+<h2 id="step-5-使用-SSH-進行-Clone"><a href="#step-5-使用-SSH-進行-Clone" class="headerlink" title="step 5 使用 SSH 進行 Clone"></a>step 5 使用 SSH 進行 Clone</h2><p>在 GitHub 上找到你想要 clone 的 SSH URL</p>
 <p>通常是這樣</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:username/repository.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:username/repository.git</span><br></pre></td></tr></table></figure>
 
 <p>如果修改成自行設定的 <code>Host</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github-work:username/repository.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github-work:username/repository.git</span><br></pre></td></tr></table></figure>
 
 <p><code>git clone</code> 命令會使用 SSH 配置中的 <code>Host github-work</code>，並按照該配置文件中的設定，使用正確的私鑰（如 ~&#x2F;.ssh&#x2F;github-work）連接到 GitHub</p>
-<h3 id="PS1-修改遠端-URL-的方法"><a href="#PS1-修改遠端-URL-的方法" class="headerlink" title="PS1 修改遠端 URL 的方法"></a>PS1 修改遠端 URL 的方法</h3><p>使用以下命令檢查當前的遠端 URL</p>
+<h2 id="PS1-修改遠端-URL-的方法"><a href="#PS1-修改遠端-URL-的方法" class="headerlink" title="PS1 修改遠端 URL 的方法"></a>PS1 修改遠端 URL 的方法</h2><p>使用以下命令檢查當前的遠端 URL</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
 
 <p>修改 origin 的 URL 並使用自定義的 Host（例如 github-work）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin git@github-work:username/repository.git</span><br></pre></td></tr></table></figure>
 
-<h3 id="PS2-git-config"><a href="#PS2-git-config" class="headerlink" title="PS2 git config"></a>PS2 git config</h3><p>設定 Git 的 commit 使用的名稱（name）和電子郵件（email）</p>
+<h2 id="PS2-git-config"><a href="#PS2-git-config" class="headerlink" title="PS2 git config"></a>PS2 git config</h2><p>設定 Git 的 commit 使用的名稱（name）和電子郵件（email）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.email <span class="string">&quot;your_email@company.com&quot;</span></span><br><span class="line">git config user.name <span class="string">&quot;work&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cmi1iskvq004yn929bq101yh9" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://z6wdc.github.io/note/2024/10/23/multiple-ssh-keys-setting-for-different-github-accounts/" data-id="cmusi4krm005bn51o1nv87brq" data-title="為不同的 GitHub 帳號設定多把 SSH key" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -268,7 +279,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2025 z6wdc<br>
+      &copy; 2026 z6wdc<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
